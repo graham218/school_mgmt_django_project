@@ -1,0 +1,1 @@
+# school_mgmt_django_project
