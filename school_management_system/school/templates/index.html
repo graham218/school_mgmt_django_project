@@ -21,7 +21,6 @@
   </head>
   <body>
     <div class="container-scroller">
-      {% if request.user.is_authenticated %}
       {% include 'navbar.html' %}
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
@@ -30,11 +29,6 @@
         {% include 'main_panel.html' %}
       </div>
       <!-- page-body-wrapper ends -->
-      {% else %}
-      <button>
-        <a href="{% url 'login' %}"> Click Hear to Login</a>
-      </button>
-      {% endif %}
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->

@@ -8,6 +8,7 @@
           <div class="brand-logo">
             <img src="{% static 'dash/assets/images/logo.svg' %}">
           </div>
+          {% include 'messages.html' %}
           <h4>New here?</h4>
           <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
           <form class="pt-3">
@@ -25,6 +26,52 @@
             <div class="text-center mt-4 font-weight-light"> Already have an account? <a href="{% url 'login' %}" class="text-primary">Login</a>
             </div>
           </form>
+
+
+
+
+
+
+
+
+          <div class="card-header">
+            <small>
+            With a this account, you can save time during payement of school fees and access it on any device
+            </small>
+          </div>
+          <div class="card-body">
+
+            {% include 'partials/_messages.html' %}
+
+            <form method="post" action="">
+              <fieldset>
+                {% csrf_token %}
+
+                {% for fm in form %}
+                    <div class="form-group">
+                        {{fm.label_tag}}
+                        {{fm}}
+                        <small class="text-danger">{{fm.errors|striptags}}</small>
+                    </div>
+                {% endfor %}
+                <button class="btn btn-primary" type="submit">Submit</button>
+              </fieldset>
+
+              {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p class="alert alert-danger alert-dismissible fade show" role="alert" my-3">
+                        {{error}}
+                    </p>
+                {% endfor %}
+              {% endif %}
+
+            </form>
+
+            <hr>
+
+            Already have an account? <a href="{% url 'store:login' %}">Log In </a>
+            
+          </div>
         </div>
       </div>
     </div>

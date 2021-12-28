@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from .forms import *
 from django.contrib import messages
-from django.views import View
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def home(request):
     title="Home"
     context={
