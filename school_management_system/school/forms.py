@@ -1,13 +1,8 @@
 from django.contrib.auth import password_validation
 #from .models import *
 from django import forms
-import django
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm, PasswordResetForm, SetPasswordForm
-from django.db import models
-from django.db.models import fields
-from django.forms import widgets
-from django.forms.fields import CharField
 from django.utils.translation import gettext, gettext_lazy as _
 
 
@@ -16,7 +11,6 @@ class RegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
-        labels = {'email': 'Email'}
         widgets = {'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Username'}),
         'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder':'Enter Email Address'}),
         'password1': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder':'password1'}),
@@ -28,11 +22,13 @@ class LoginForm(AuthenticationForm):
     password = forms.CharField(label=_("Password"), strip=False, widget=forms.PasswordInput(attrs={'autocomplete':'current-password', 'class':'form-control'}))
 
 
-class AddressForm(forms.ModelForm):
-    class Meta:
-        model = Address
-        fields = ['locality', 'city', 'state']
-        widgets = {'locality':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Popular Place like Restaurant, Religious Site, etc.'}), 'city':forms.TextInput(attrs={'class':'form-control', 'placeholder':'City'}), 'state':forms.TextInput(attrs={'class':'form-control', 'placeholder':'State or Province'})}
+#class AddressForm(forms.ModelForm):
+#    class Meta:
+#        model = Address
+#        fields = ['locality', 'city', 'state']
+#        widgets = {'locality':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Popular Place like Restaurant, Religious Site, etc.'}),
+#         'city':forms.TextInput(attrs={'class':'form-control', 'placeholder':'City'}),
+#          'state':forms.TextInput(attrs={'class':'form-control', 'placeholder':'State or Province'})}
 
 
 class PasswordChangeForm(PasswordChangeForm):

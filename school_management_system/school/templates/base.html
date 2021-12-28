@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>School MIS-grahambill011</title>
+    <title>{{title}}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{% static 'dash/assets/vendors/mdi/css/materialdesignicons.min.css' %}">
     <link rel="stylesheet" href="{% static 'dash/assets/vendors/css/vendor.bundle.base.css' %}">
@@ -21,20 +21,13 @@
   </head>
   <body>
     <div class="container-scroller">
-      {% if request.user.is_authenticated %}
-      {% include 'navbar.html' %}
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
-        {% include 'side_bar.html' %}
-        <!-- partial -->
-        {% include 'main_panel.html' %}
+      {% block content %}
+        
+      {% endblock content %}
       </div>
       <!-- page-body-wrapper ends -->
-      {% else %}
-      <button>
-        <a href="{% url 'login' %}"> Click Hear to Login</a>
-      </button>
-      {% endif %}
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
