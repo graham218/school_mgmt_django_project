@@ -20,7 +20,8 @@ from school import views
 from school.forms import LoginForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm
 from django.contrib.auth import views as auth_views
 
-app_name='school'
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,3 +44,6 @@ urlpatterns = [
     path('accounts/password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(template_name='account/password_reset_complete.html'), name="password_reset_complete"),
 
 ]
+# To display images
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
