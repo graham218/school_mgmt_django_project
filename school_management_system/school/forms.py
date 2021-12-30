@@ -25,7 +25,9 @@ class RegistrationForm(UserCreationForm):
         model = User
         fields = ['first_name','last_name','username', 'email', 'password1', 'password2','is_staff','is_active','is_superuser']
         labels = {'email': 'Email'}
-        widgets = {'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Username'})}
+        widgets = {'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Username'}),
+        'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'First Name'}),
+        'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Last Name'})}
 
 
 class LoginForm(AuthenticationForm):
