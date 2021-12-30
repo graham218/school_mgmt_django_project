@@ -1,5 +1,5 @@
 from django.contrib.auth import password_validation
-#from .models import *
+from .models import *
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm, PasswordResetForm, SetPasswordForm
@@ -25,23 +25,21 @@ class RegistrationForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
         labels = {'email': 'Email'}
-        widgets = {'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Username'}),
-        'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder':'someone@gmail.com'}),
-        'password1': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder':'password'}),
-        'password2': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder':'password'}),}
+        widgets = {'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Username'})}
+
 
 class LoginForm(AuthenticationForm):
     username = UsernameField(widget=forms.TextInput(attrs={'autofocus': True, 'class': 'form-control'}))
     password = forms.CharField(label=_("Password"), strip=False, widget=forms.PasswordInput(attrs={'autocomplete':'current-password', 'class':'form-control'}))
 
 
-#class AddressForm(forms.ModelForm):
-#    class Meta:
-#        model = Address
-#        fields = ['locality', 'city', 'state']
-#        widgets = {'locality':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Popular Place like Restaurant, Religious Site, etc.'}),
-#         'city':forms.TextInput(attrs={'class':'form-control', 'placeholder':'City'}),
-#          'state':forms.TextInput(attrs={'class':'form-control', 'placeholder':'State or Province'})}
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        fields = ['locality', 'city', 'state']
+        widgets = {'locality':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Popular Place like Restaurant, Religious Site, etc.'}),
+         'city':forms.TextInput(attrs={'class':'form-control', 'placeholder':'City'}),
+          'state':forms.TextInput(attrs={'class':'form-control', 'placeholder':'State or Province'})}
 
 
 class PasswordChangeForm(PasswordChangeForm):

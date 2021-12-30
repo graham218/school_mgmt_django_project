@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block content %}
+
+      <div class="container py-5">
+        {% include 'messages.html' %}
+
+        <div class="jumbotron">
+          <h1>{{request.user.first_name}} {{request.user.last_name}}</h1>
+          <p><strong>Email:</strong> {{request.user.email}}</p>
+          <p><strong>Username:</strong> {{request.user.username}}</p>
+          <p><a class="btn btn-primary btn-large" href="{% url 'add-address' %}">Add Address »</a> <a class="btn btn-outline-primary btn-large" href="#">My Receipts »</a></p>
+        </div>
+
+
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="card mb-4" id="headings">
+              <div class="card-header">Addresses <span class="float-right"><a href="{% url 'store:add-address' %}">Add Address</a></span></div>
+              <div class="card-body">
+                {% if addresses %}
+                    {% for address in addresses %}
+                        <h4 class="mb-3">Address {{forloop.counter}}</h4> 
+                        
+                        <span class="float-right"><a href="{% url 'store:remove-address' address.id %}"><i class="fas fa-trash-alt small text-muted"></i></a></span>
+
+                        <p>
+                            <strong>Locality: </strong>{{address.locality}} <br>
+                            <strong>City: </strong>{{address.city}} <br>
+                            <strong>State: </strong>{{address.state}} <br>
+                        </p>
+
+                        <hr>
+                    {% endfor %}
+                {% else %}
+                <div class="text-danger">
+                  Address not Added.
+                </div>
+                {% endif %}
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card mb-4" id="tables">
+              <div class="card-header">Orders</div>
+              <div class="card-body">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Item</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                  </tbody>
+                </table>
+                
+              </div>
+            </div>
+          </div>
+          
+        </div>
+    
+        
+        
+      </div>
+{% endblock content %}
