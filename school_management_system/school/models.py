@@ -60,8 +60,8 @@ class Students(models.Model):
 
 class Units(models.Model):
     unit_name=models.CharField(max_length=255, blank=True)
-    date_created=models.DateTimeField(auto_now_add=True,auto_now=False)
-    date_updated=models.DateTimeField(auto_now=True, auto_now_add=False)
+    date_created=models.DateTimeField()
+    date_updated=models.DateTimeField()
 
     def __str__(self):
         return self.unit_name
