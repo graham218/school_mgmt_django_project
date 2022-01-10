@@ -38,9 +38,15 @@ class StudentsAdmin(admin.ModelAdmin):
     list_per_page = 10
     search_fields = ('admission_no', 'user', 'full_name')
 
+class UnitsAdmin(admin.ModelAdmin):
+    list_display=('unit_name','date_created','date_updated')
+    list_filter=('unit_name')
+    search_fields=('unit_name')
 
 admin.site.register(Address, AddressAdmin)
 admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(Programmes, ProgrammesAdmin)
 admin.site.register(Stages, StagesAdmin)
 admin.site.register(Gender, GenderAdmin)
+admin.site.register(Students, StudentsAdmin)
+admin.site.register(Units, UnitsAdmin)
