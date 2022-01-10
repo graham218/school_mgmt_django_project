@@ -28,6 +28,17 @@ class GenderAdmin(admin.ModelAdmin):
     list_filter=('gender')
     search_fields=('gender')
 
+class StudentsAdmin(admin.ModelAdmin):
+    list_display = ('user', 'admission_no', 'full_name', 'nationality',
+     'gender', 'national_ID_number', 'birth_cert_no', 'phone_number',
+     'DOB', 'date_of_admission', 'date_of_graduation', 'programme',
+     'stage', 'postal_address', 'school_email', 'school_email_password',
+     'total_fees_billed', 'total_fees_paid', 'balance')
+    list_filter = ('city', 'state')
+    list_per_page = 10
+    search_fields = ('locality', 'city', 'state')
+
+
 admin.site.register(Address, AddressAdmin)
 admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(Programmes, ProgrammesAdmin)
