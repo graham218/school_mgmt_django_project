@@ -15,14 +15,14 @@ class Address(models.Model):
 
 class Faculty(models.Model):
     school=models.CharField(max_length=255, blank=True, null=True)
-    date_created=models.DateTimeField(blank=True, null=True)
-    date_updated=models.DateTimeField(blank=True, null=True)
+    date_created=models.DateTimeField(auto_now_add=True, default=1)
+    date_updated=models.DateTimeField(auto_now=True, default=1)
     def __str__(self):
         return self.school
 
 class Programmes(models.Model):
     name=models.CharField(max_length=255, blank=True, null=True)
-    faculty=models.ForeignKey(Faculty, on_delete=models.CASCADE, blank=True, null=True)
+    faculty=models.ForeignKey(Faculty, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -61,8 +61,8 @@ class Students(models.Model):
 
 class Units(models.Model):
     unit_name=models.CharField(max_length=255, blank=True, null=True)
-    date_created=models.DateTimeField(blank=True, null=True)
-    date_updated=models.DateTimeField(blank=True, null=True)
+    date_created=models.DateTimeField(auto_now_add=True, default=1)
+    date_updated=models.DateTimeField(auto_now=True, default=1)
 
     def __str__(self):
         return self.unit_name
