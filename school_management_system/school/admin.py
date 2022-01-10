@@ -23,6 +23,13 @@ class StagesAdmin(admin.ModelAdmin):
     list_filter=('year')
     search_fields=('year')
 
+class GenderAdmin(admin.ModelAdmin):
+    list_display=('gender')
+    list_filter=('gender')
+    search_fields=('gender')
+
 admin.site.register(Address, AddressAdmin)
 admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(Programmes, ProgrammesAdmin)
+admin.site.register(Stages, StagesAdmin)
+admin.site.register(Gender, GenderAdmin)
