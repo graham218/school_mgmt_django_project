@@ -34,9 +34,9 @@ class StudentsAdmin(admin.ModelAdmin):
      'DOB', 'date_of_admission', 'date_of_graduation', 'programme',
      'stage', 'postal_address', 'school_email', 'school_email_password',
      'total_fees_billed', 'total_fees_paid', 'balance')
-    list_filter = ('city', 'state')
+    list_filter = ('user', 'full_name', 'admission_no')
     list_per_page = 10
-    search_fields = ('locality', 'city', 'state')
+    search_fields = ('admission_no', 'user', 'full_name')
 
 
 admin.site.register(Address, AddressAdmin)
