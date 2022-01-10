@@ -12,27 +12,28 @@ class Address(models.Model):
 
     def __str__(self):
         return self.locality
+
 class Faculty(models.Model):
-    school=models.CharField(max_length=255, blank=False)
-    date_created=models.DateTimeField(auto_now_add=True,auto_now=False)
-    date_updated=models.DateTimeField(auto_now=True, auto_now_add=False)
+    school=models.CharField(max_length=255, blank=True, null=True)
+    date_created=models.DateTimeField(blank=True, null=True)
+    date_updated=models.DateTimeField(blank=True, null=True)
     def __str__(self):
         return self.school
 
 class Programmes(models.Model):
-    name=models.CharField(max_length=255, blank=False)
-    faculty=models.ForeignKey(Faculty, on_delete=models.CASCADE)
+    name=models.CharField(max_length=255, blank=True, null=True)
+    faculty=models.ForeignKey(Faculty, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.name
 
 class Stages(models.Model):
-    year=models.CharField(max_length=255, blank=False)
+    year=models.CharField(max_length=255, blank=True, null=True)
     def __str__(self):
         return self.year
 
 class Gender(models.Model):
-    gender=models.CharField(max_length=255, blank=False)
+    gender=models.CharField(max_length=255, blank=True, null=True)
     def __str_(self):
         return self.gender
 
@@ -50,7 +51,7 @@ class Students(models.Model):
     date_of_graduation=models.DateTimeField(auto_now_add=False, auto_now=False)
     programme=models.ForeignKey(Programmes, on_delete=models.CASCADE, max_length=255)
     stage=models.ForeignKey(Stages, on_delete=models.CASCADE)
-    #profile_photo=models.ImageField(upload_to="students_pic", blank=True )
+    profile_photo=models.ImageField(upload_to="students_pic", blank=True )
     postal_address=models.CharField(max_length=255, blank=True)
     school_email=models.EmailField(max_length=255, blank=True)
     school_email_password=models.CharField(max_length=255, blank=True)
@@ -59,9 +60,9 @@ class Students(models.Model):
     balance=models.DecimalField(max_digits=10, decimal_places=2)
 
 class Units(models.Model):
-    unit_name=models.CharField(max_length=255, blank=True)
-    date_created=models.DateTimeField()
-    date_updated=models.DateTimeField()
+    unit_name=models.CharField(max_length=255, blank=True, null=True)
+    date_created=models.DateTimeField(blank=True, null=True)
+    date_updated=models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
         return self.unit_name
