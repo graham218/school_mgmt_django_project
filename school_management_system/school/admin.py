@@ -46,7 +46,7 @@ class UnitsAdmin(admin.ModelAdmin):
 class LectureAdmin(admin.ModelAdmin):
     list_display = ['user', 'lec_no', 'full_name', 'nationality',
      'gender', 'national_ID_number', 'phone_number',
-     'DOB', 'stage', 'postal_address', 'school_email', 'school_email_password',
+     'DOB','postal_address', 'school_email', 'school_email_password',
      'total_salary_billed', 'total_salary_paid', 'balance']
     list_filter = ['user', 'full_name', 'lec_no']
     list_per_page = 10
