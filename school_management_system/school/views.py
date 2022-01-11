@@ -479,3 +479,19 @@ def Listlectures(request):
 	"queryset": queryset,
 	}
 	return render(request, "school/list-lecturers.html", context)
+
+@login_required
+def Listlectures(request):
+	title = 'List of All Lectures'
+	form = LecturerSearchForm(request.POST or None)
+	queryset = Lectures.objects.all()
+	context = {
+		"title": title,
+		"queryset": queryset,
+	}
+	context = {
+	"form": form,
+	"title": title,
+	"queryset": queryset,
+	}
+	return render(request, "school/list-lecturers.html", context)
