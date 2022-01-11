@@ -159,3 +159,10 @@ class UnitSearchForm(forms.ModelForm):
         model=Units
         fields=['unit_name']
         widgets = {'unit_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Search Unit With Name'})}
+
+class ProgrammeSearchForm(forms.ModelForm):
+    class Meta:
+        model=Programmes
+        fields=['name', 'faculty']
+        widgets = {'unit_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Search Programme Name'}),
+        'faculty':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: School Of Computing & Informatics'})}
