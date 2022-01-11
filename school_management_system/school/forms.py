@@ -111,11 +111,15 @@ class AddFacultyForm(forms.ModelForm):
     class Meta:
         model=Faculty
         fields=['school']
+        widgets = {'school':forms.TextInput(attrs={'class':'form-control', 'placeholder':'eg: School Of Computing & Informatics'})}
 
 class AddProgrammes(forms.ModelForm):
     class Meta:
         model=Programmes
         fields=['name','faculty']
+        widgets = {'locality':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Popular Place like Restaurant, Religious Site, etc.'}),
+         'city':forms.TextInput(attrs={'class':'form-control', 'placeholder':'City'}),
+          'state':forms.TextInput(attrs={'class':'form-control', 'placeholder':'State or Province'})}
 
 class AddStages(forms.ModelForm):
     class Meta:
