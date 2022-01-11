@@ -508,7 +508,8 @@ def ListProgrammes(request):
 		"queryset": queryset,
 	}
 	if request.method == 'POST':
-		queryset = Programmes.objects.filter(unit_name__icontains=form['unit_name'].value())
+		queryset = Programmes.objects.filter(name__icontains=form['name'].value(),
+                                        faculty__icontains=form['faculty'].value())
 	context = {
 	"form": form,
 	"title": title,
