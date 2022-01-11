@@ -169,16 +169,8 @@ class ProgrammeSearchForm(forms.ModelForm):
         widgets = {'unit_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Search Programme Name'}),
         'faculty':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: School Of Computing & Informatics'})}
 
-class ProgrammeSearchForm(forms.ModelForm):
-    class Meta:
-        model=Programmes
-        fields=['name', 'faculty']
-        widgets = {'unit_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Search Programme Name'}),
-        'faculty':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: School Of Computing & Informatics'})}
-
 class FacultySearchForm(forms.ModelForm):
     class Meta:
         model=Faculty
         fields=['school']
-        widgets = {'unit_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Search Programme Name'}),
-        'faculty':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: School Of Computing & Informatics'})}
+        widgets = {'school':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: School Of Computing & Informatics'})}
