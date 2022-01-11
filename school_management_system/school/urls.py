@@ -1,6 +1,8 @@
 from django.urls import path
 from .import views
 
+app_name='school'
+
 urlpatterns = [
     path('add-address/', views.AddAddress, name='add-address'),
     path('edit-address/<str:pk>', views.UpdateAddress, name='edit-address'),
