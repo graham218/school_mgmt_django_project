@@ -9,7 +9,7 @@ from django.views import View
 import csv
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator  # for Class Based Views
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, request
 
 
 # Create your views here.
@@ -481,17 +481,36 @@ def Listlectures(request):
 	return render(request, "school/list-lecturers.html", context)
 
 @login_required
-def Listlectures(request):
-	title = 'List of All Lectures'
-	form = LecturerSearchForm(request.POST or None)
-	queryset = Lectures.objects.all()
+def ListUnits(request):
+	title = 'List of All Units'
+	form = UnitSearchForm(request.POST or None)
+	queryset = Units.objects.all()
 	context = {
 		"title": title,
 		"queryset": queryset,
 	}
+	if request.method == 'POST':
+		queryset = Lectures.objects.filter(lec_no__icontains=form['lec_no'].value(),
+										full_name__icontains=form['full_name'].value(),
+                                        national_ID_number__icontains=form['national_ID_number'].value()
+										)
+	
 	context = {
 	"form": form,
 	"title": title,
 	"queryset": queryset,
 	}
 	return render(request, "school/list-lecturers.html", context)
+
+@login_required
+def ListFaculty(request):
+	title = 'List of All Units Offered'
+	form = UnitSearchForm(request.POST or None)
+	queryset = Units.objects.all()
+
+	context = {
+	"form": form,
+	"title": title,
+	"queryset": queryset,
+	}
+	return render(request, "school/list-units.html", context)
