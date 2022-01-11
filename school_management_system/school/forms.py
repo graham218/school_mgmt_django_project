@@ -77,7 +77,7 @@ class AddStudentsForm(forms.ModelForm):
         'birth_cert_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Birth Certificate Number'}),
         'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Phone Number'}),
         'stage': forms.RadioSelect(attrs={'id': 'value'}),
-        'profile_photo': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Full Name'}),
+        'profile_photo': forms.ImageField(attrs={'class': 'form-control'}),
         'postal_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, PO BOX 123 Busia, Kenya'}),
         'school_email': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter School Email'}),
         'school_email_password': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'School Email Password'}),
