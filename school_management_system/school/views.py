@@ -244,7 +244,7 @@ def EditProgramme(request, pk):
 
 def AddStage(request):
     title = "Add New Stage"
-    button = "Add New Stage"
+    button = "Add Stage"
     form = AddStagesForm(request.POST or None)
     if request.method == "POST":
         form = AddStagesForm(request.POST or None)
@@ -253,13 +253,15 @@ def AddStage(request):
             form.save()
             # return HttpResponseRedirect("/")
     context = {
-        "title": title
+        "title": title,
+        "button": button
     }
     return render(request, 'school/create-edit-stages.html', context)
 
 
 def EditStage(request, pk):
     title = "Edit Stage"
+    button = "Edit Stage"
     form = AddStagesForm(request.POST or None, id=pk)
     if request.method == "POST":
         form = AddStagesForm(request.POST or None, id=pk)
@@ -268,7 +270,8 @@ def EditStage(request, pk):
             form.save()
             # return HttpResponseRedirect("/")
     context = {
-        "title": title
+        "title": title,
+        "button": button
     }
     return render(request, 'school/create-edit-stages.html', context)
 
