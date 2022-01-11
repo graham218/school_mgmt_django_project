@@ -93,6 +93,20 @@ class AddLectureForm(forms.ModelForm):
      'DOB','postal_address', 'school_email', 'school_email_password',
      'total_salary_billed', 'total_salary_paid', 'balance']
 
+        widgets={'lec_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Lecture Number'}),
+            'full_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Full Name'}),
+            'nationality': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, Kenyan, Ugandan, Somalian'}),
+            'gender': forms.RadioSelect(attrs={'id': 'value'}),
+            'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter National Id Number'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Phone Number'}),
+            'profile_photo': forms.ImageField(attrs={'class': 'form-control'}),
+            'postal_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, PO BOX 123 Busia, Kenya'}),
+            'school_email': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter School Email'}),
+            'school_email_password': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'School Email Password'}),
+            'total_salary_billed': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Total Salary Billed'}),
+            'total_salary_paid': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Total Salary Paid'}),
+            'balance': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Salary Balance'})}
+
 class AddFacultyForm(forms.ModelForm):
     class Meta:
         model=Faculty
