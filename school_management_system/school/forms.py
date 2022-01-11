@@ -77,7 +77,7 @@ class AddStudentsForm(forms.ModelForm):
         'birth_cert_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Birth Certificate Number'}),
         'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Phone Number'}),
         'stage': forms.RadioSelect(attrs={'id': 'value'}),
-        'profile_photo': forms.ImageField(attrs={'class': 'form-control'}),
+        'profile_photo': forms.ImageField(label_suffix="Profile Picture"),
         'postal_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, PO BOX 123 Busia, Kenya'}),
         'school_email': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter School Email'}),
         'school_email_password': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'School Email Password'}),
@@ -99,7 +99,7 @@ class AddLectureForm(forms.ModelForm):
             'gender': forms.RadioSelect(attrs={'id': 'value'}),
             'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter National Id Number'}),
             'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Phone Number'}),
-            'profile_photo': forms.ImageField(attrs={'class': 'form-control'}),
+            'profile_photo': forms.ImageField(label_suffix="Profile Picture"),
             'postal_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, PO BOX 123 Busia, Kenya'}),
             'school_email': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter School Email'}),
             'school_email_password': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'School Email Password'}),
@@ -118,7 +118,7 @@ class AddProgrammesForm(forms.ModelForm):
         model=Programmes
         fields=['name','faculty']
         widgets = {'name':forms.TextInput(attrs={'class':'form-control', 'placeholder':'eg: Bachelor Of Science Information & Communication Technology'}),
-         'faculty':forms.Select(attrs={'id':'value'})}
+         'faculty':forms.RadioSelect(attrs={'id':'value'})}
 
 class AddStagesForm(forms.ModelForm):
     class Meta:
