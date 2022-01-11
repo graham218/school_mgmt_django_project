@@ -112,6 +112,18 @@ def EditStudents(request, pk):
     }
     return render(request, 'school/create-edit-students.html', context)
 
+def DeleteStudent(request, pk):
+    queryset = Students.objects.get(id=pk)
+    title="Delete Student"
+    if request.method=="POST":
+        queryset.delete()
+        messages.success(request,"Student Deleted Successfully")
+        #return HttpResponseRedirect()
+    context={
+        "title": title
+    }
+    return render(request, "school/delete_items.html", context)
+
 
 def AddLecturer(request):
     title = "Add New Lecturer"
@@ -129,6 +141,17 @@ def AddLecturer(request):
     }
     return render(request, 'school/create-edit-lecturers.html', context)
 
+def DeleteLecturer(request, pk):
+    queryset = Lectures.objects.get(id=pk)
+    title="Delete Lecturer"
+    if request.method=="POST":
+        queryset.delete()
+        messages.success(request,"Lecturer Deleted Successfully")
+        #return HttpResponseRedirect()
+    context={
+        "title": title
+    }
+    return render(request, "school/delete_items.html", context)
 
 def EditLecturer(request, pk):
     title = "Edit Lecturer"
@@ -180,6 +203,18 @@ def EditFaculty(request, pk):
     }
     return render(request, 'school/create-edit-faculty.html', context)
 
+def DeleteFaculty(request, pk):
+    queryset = Faculty.objects.get(id=pk)
+    title="Delete Faculty"
+    if request.method=="POST":
+        queryset.delete()
+        messages.success(request,"Faculty Deleted Successfully")
+        #return HttpResponseRedirect()
+    context={
+        "title": title
+    }
+    return render(request, "school/delete_items.html", context)
+
 
 def AddGender(request):
     title = "Add New Gender"
@@ -214,6 +249,17 @@ def EditGender(request, pk):
     }
     return render(request, 'school/create-edit-gender.html', context)
 
+def DeleteGender(request, pk):
+    queryset = Gender.objects.get(id=pk)
+    title="Delete Gender"
+    if request.method=="POST":
+        queryset.delete()
+        messages.success(request,"Gender Deleted Successfully")
+        #return HttpResponseRedirect()
+    context={
+        "title": title
+    }
+    return render(request, "school/delete_items.html", context)
 
 def AddProgramme(request):
     title = "Add New Programme"
