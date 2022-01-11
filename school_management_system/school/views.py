@@ -516,3 +516,21 @@ def ListProgrammes(request):
 	"queryset": queryset,
 	}
 	return render(request, "school/list-programmes.html", context)
+
+@login_required
+def ListFaculty(request):
+	title = 'List of Faculties In The University'
+	form = FacultySearchForm(request.POST or None)
+	queryset = Faculty.objects.all()
+	context = {
+		"title": title,
+		"queryset": queryset,
+	}
+	if request.method == 'POST':
+		queryset = Faculty.objects.filter(school__icontains=form['school'].value())
+	context = {
+	"form": form,
+	"title": title,
+	"queryset": queryset,
+	}
+	return render(request, "school/list-faculty.html", context)
