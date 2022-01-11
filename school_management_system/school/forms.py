@@ -157,16 +157,28 @@ class LecturerSearchForm(forms.ModelForm):
         'national_ID_number':forms.TextInput(attrs={'class':'form-control','placeholder':'Search With national ID'})}
 
 class UnitSearchForm(forms.ModelForm):
-    export_to_CSV = forms.BooleanField()
     class Meta:
         model=Units
         fields=['unit_name']
         widgets = {'unit_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Search Unit With Name'})}
 
 class ProgrammeSearchForm(forms.ModelForm):
-    export_to_CSV = forms.BooleanField()
+     class Meta:
+        model=Programmes
+        fields=['name', 'faculty']
+        widgets = {'unit_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Search Programme Name'}),
+        'faculty':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: School Of Computing & Informatics'})}
+
+class ProgrammeSearchForm(forms.ModelForm):
     class Meta:
         model=Programmes
         fields=['name', 'faculty']
+        widgets = {'unit_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Search Programme Name'}),
+        'faculty':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: School Of Computing & Informatics'})}
+
+class FacultySearchForm(forms.ModelForm):
+    class Meta:
+        model=Faculty
+        fields=['school']
         widgets = {'unit_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Search Programme Name'}),
         'faculty':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: School Of Computing & Informatics'})}
