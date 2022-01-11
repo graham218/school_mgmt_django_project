@@ -74,7 +74,13 @@ class AddStudentsForm(forms.ModelForm):
         'nationality': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, Kenyan, Ugandan, Somalian'}),
         'gender': forms.RadioSelect(attrs={'id': 'value'}),
         'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter National Id Number'}),
-        'birth_cert_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Birth Certificate Number'})}
+        'birth_cert_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Birth Certificate Number'}),
+        'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Phone Number'}),
+        'stage': forms.RadioSelect(attrs={'id': 'value'}),
+        'profile_photo': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Full Name'}),
+        'postal_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, PO BOX 123 Busia, Kenya'}),
+        'school_email': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter School Email'}),
+        'school_email_password': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'School Email Password'})}
 
 class AddLectureForm(forms.ModelForm):
     class Meta:
