@@ -425,12 +425,18 @@ def ListStudents(request):
 										)
 		if form['export_to_CSV'].value() == True:
 			response = HttpResponse(content_type='text/csv')
-			response['Content-Disposition'] = 'attachment; filename="List of stock.csv"'
+			response['Content-Disposition'] = 'attachment; filename="List of Students.csv"'
 			writer = csv.writer(response)
-			writer.writerow(['CATEGORY', 'ITEM NAME', 'QUANTITY'])
+			writer.writerow(['USER', 'ADMISSION MUMBER', 'FULL NAME', 'NATIONALITY',
+            'GENDER','N.ID NUMBER','BIRTH CERT NO','PHONE NO','DOB','DATE OF ADMISSION',
+            'PROGRAMME','STAGE','POSTAL ADDRESS','FEE BALANCE'])
 			instance = queryset
-			for stock in instance:
-				writer.writerow([stock.category, stock.item_name, stock.quantity])
+			for students in instance:
+				writer.writerow([students.user, students.admission_no, students.full_name,
+                students.nationality, students.gender, students.national_ID_number,
+                students.birth_cert_no, students.phone_number, students.DOB,
+                students.date_of_admission, students.programme, students.stage,
+                students.postal_address, students.balance])
 			return response
 	
 	context = {
