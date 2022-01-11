@@ -490,17 +490,13 @@ def ListUnits(request):
 		"queryset": queryset,
 	}
 	if request.method == 'POST':
-		queryset = Lectures.objects.filter(lec_no__icontains=form['lec_no'].value(),
-										full_name__icontains=form['full_name'].value(),
-                                        national_ID_number__icontains=form['national_ID_number'].value()
-										)
-	
+		queryset = Units.objects.filter(unit_name__icontains=form['unit_name'].value())
 	context = {
 	"form": form,
 	"title": title,
 	"queryset": queryset,
 	}
-	return render(request, "school/list-lecturers.html", context)
+	return render(request, "school/list-units.html", context)
 
 @login_required
 def ListFaculty(request):
