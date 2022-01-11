@@ -2,6 +2,8 @@ from django.urls import path
 from .import views
 
 urlpatterns = [
+    path('add-address/', views.AddAddress, name='add-address'),
+    path('edit-address/<str:pk>', views.UpdateAddress, name='edit-address'),
     path('add-students/', views.AddStudents, name='add-students'),
     path('edit-students/<str:pk>', views.EditStudents, name='edit-students'),
     path('add-lecturer/', views.AddLecturer, name='add-lecturer'),

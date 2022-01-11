@@ -36,6 +36,39 @@ class RegistrationView(View):
             form.save()
         return render(request, 'account/register.html', {'form': form})
 
+def AddAddress(request):
+    title="Add Address"
+    form=AddressForm(request.POST or None)
+    if request.method=="POST":
+        form=AddressForm(request.POST or None)
+        if form.is_valid():
+            messages.success(request, "Profile Updated Successfully")
+            form.save()
+            #return HttpResponseRedirect("/")
+    context={
+        "title":title
+    }
+    return render(request, 'account/profile.html', context)
+
+def UpdateAddress(request, pk):
+    title="Update Address"
+    form=AddressForm(request.POST or None, id=pk)
+    if request.method=="POST":
+        form=AddressForm(request.POST or None, id=pk)
+        if form.is_valid():
+            messages.success(request, "Address Updated Successfully")
+            form.save()
+            #return HttpResponseRedirect("/")
+    context={
+        "title":title
+    }
+    return render(request, 'account/profile.html', context)
+
+def DeleteAddress(request, pk):
+    queryset=Address.objects.get(user=request.user, id=pk)
+    queryset.delete()
+    
+
 def AddStudents(request):
     title="Add New Students"
     form=AddStudentsForm(request.POST or None)
