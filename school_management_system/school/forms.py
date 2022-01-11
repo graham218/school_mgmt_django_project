@@ -137,3 +137,11 @@ class AddUnitsForm(forms.ModelForm):
         model=Units
         fields=['unit_name']
         widgets = {'unit_name':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: Calculus, Probability & Statistics, Descrete Structures'})}
+
+class StudentSearchForm(forms.ModelForm):
+    class Meta:
+        model=Students
+        fields=['admission_no', 'full_name', 'programme']
+        widgets = {'admission_no':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: CIM/00176/019'}),
+        'admission_no':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: CIM/00176/019'}),
+        'admission_no':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: CIM/00176/019'})}
