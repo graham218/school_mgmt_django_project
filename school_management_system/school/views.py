@@ -445,3 +445,40 @@ def ListStudents(request):
 	"queryset": queryset,
 	}
 	return render(request, "school/list-students.html", context)
+
+@login_required
+def Listlectures(request):
+	title = 'List of All Lectures'
+	form = LecturerSearchForm(request.POST or None)
+	queryset = Lectures.objects.all()
+	context = {
+		"title": title,
+		"queryset": queryset,
+	}
+	if request.method == 'POST':
+		queryset = Lectures.objects.filter(admission_no__icontains=form['admission_no'].value(),
+										full_name__icontains=form['full_name'].value(),
+                                        programme__icontains=form['programme'].value()
+										)
+		if form['export_to_CSV'].value() == True:
+			response = HttpResponse(content_type='text/csv')
+			response['Content-Disposition'] = 'attachment; filename="List of Students.csv"'
+			writer = csv.writer(response)
+			writer.writerow(['USER', 'ADMISSION MUMBER', 'FULL NAME', 'NATIONALITY',
+            'GENDER','N.ID NUMBER','BIRTH CERT NO','PHONE NO','DOB','DATE OF ADMISSION',
+            'PROGRAMME','STAGE','POSTAL ADDRESS','FEE BALANCE'])
+			instance = queryset
+			for lecturer in instance:
+				writer.writerow([lecturer.user, lecturer.admission_no, lecturer.full_name,
+                lecturer.nationality, lecturer.gender, lecturer.national_ID_number,
+                lecturer.birth_cert_no, lecturer.phone_number, lecturer.DOB,
+                lecturer.date_of_admission, lecturer.programme, lecturer.stage,
+                lecturer.postal_address, lecturer.balance])
+			return response
+	
+	context = {
+	"form": form,
+	"title": title,
+	"queryset": queryset,
+	}
+	return render(request, "school/list-lecturers.html", context)
