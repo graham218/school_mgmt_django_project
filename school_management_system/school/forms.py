@@ -1,4 +1,5 @@
 from django.contrib.auth import password_validation
+from django.forms import fields
 from .models import *
 from django import forms
 from django.contrib.auth.models import User
@@ -57,3 +58,46 @@ class PasswordResetForm(PasswordResetForm):
 class SetPasswordForm(SetPasswordForm):
     new_password1 = forms.CharField(label=_("New Password"), strip=False, widget=forms.PasswordInput(attrs={'autocomplete':'new-password', 'class':'form-control'}), help_text=password_validation.password_validators_help_text_html())
     new_password2 = forms.CharField(label=_("Confirm Password"), strip=False, widget=forms.PasswordInput(attrs={'autocomplete':'new-password','class':'form-control'}))
+
+
+class AddStudentsForm(forms.ModelForm):
+    class Meta:
+        model=Students
+        fields=['user', 'admission_no', 'full_name', 'nationality',
+     'gender', 'national_ID_number', 'birth_cert_no', 'phone_number',
+     'DOB', 'date_of_admission', 'date_of_graduation', 'programme',
+     'stage','profile_photo', 'postal_address', 'school_email', 'school_email_password',
+     'total_fees_billed', 'total_fees_paid', 'balance']
+
+class AddLectureForm(forms.ModelForm):
+    class Meta:
+        model=Lectures
+        fields=['user', 'lec_no', 'full_name', 'nationality',
+     'gender', 'national_ID_number', 'phone_number',
+     'DOB','postal_address', 'school_email', 'school_email_password',
+     'total_salary_billed', 'total_salary_paid', 'balance']
+
+class AddFacultyForm(forms.ModelForm):
+    class Meta:
+        model=Faculty
+        fields=['school']
+
+class AddProgrammes(forms.ModelForm):
+    class Meta:
+        model=Programmes
+        fields=['name','faculty']
+
+class AddStages(forms.ModelForm):
+    class Meta:
+        model=Stages
+        fields=['year']
+
+class AddGender(forms.ModelForm):
+    class Meta:
+        model=Gender
+        fields=['gender']
+
+class AddUnits(forms.ModelForm):
+    class Meta:
+        model=Units
+        fields=['unit_name']
