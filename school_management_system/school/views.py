@@ -2,7 +2,7 @@ import django
 from django.contrib.auth.models import User
 from school.models import *
 from django.shortcuts import redirect, render, get_object_or_404
-from .forms import AddFacultyForm, AddLectureForm, AddStudentsForm, RegistrationForm, AddressForm
+from .forms import AddFacultyForm, AddGenderForm, AddLectureForm, AddStudentsForm, RegistrationForm, AddressForm
 from django.contrib import messages
 from django.views import View
 import decimal
@@ -64,8 +64,8 @@ def EditStudents(request, pk):
     }
     return render(request, 'school/create-edit-students.html', context)
 
-def AddLecture(request):
-    title="Add New Lectures"
+def AddLecturer(request):
+    title="Add New Lecturer"
     form=AddLectureForm(request.POST or None)
     if request.method=="POST":
         form=AddLectureForm(request.POST or None)
@@ -76,10 +76,10 @@ def AddLecture(request):
     context={
         "title":title
     }
-    return render(request, 'school/create-edit-lectures.html', context)
+    return render(request, 'school/create-edit-lecturers.html', context)
 
-def EditLecture(request, pk):
-    title="Edit Lecture"
+def EditLecturer(request, pk):
+    title="Edit Lecturer"
     form=AddLectureForm(request.POST or None, id=pk)
     if request.method=="POST":
         form=AddLectureForm(request.POST or None, id=pk)
@@ -90,7 +90,7 @@ def EditLecture(request, pk):
     context={
         "title":title
     }
-    return render(request, 'school/create-edit-lectures.html', context)
+    return render(request, 'school/create-edit-lecturers.html', context)
 
 def AddFaculty(request):
     title="Add New Faculty"
@@ -104,18 +104,74 @@ def AddFaculty(request):
     context={
         "title":title
     }
-    return render(request, 'school/create-edit-lectures.html', context)
+    return render(request, 'school/create-edit-faculty.html', context)
 
-def EditLecture(request, pk):
-    title="Edit Lecture"
-    form=AddLectureForm(request.POST or None, id=pk)
+def EditFaculty(request, pk):
+    title="Edit Faculty"
+    form=AddFacultyForm(request.POST or None, id=pk)
     if request.method=="POST":
-        form=AddLectureForm(request.POST or None, id=pk)
+        form=AddFacultyForm(request.POST or None, id=pk)
         if form.is_valid():
-            messages.success(request, "Lecture Updated Successfully")
+            messages.success(request, "Faculty Updated Successfully")
             form.save()
             #return HttpResponseRedirect("/")
     context={
         "title":title
     }
-    return render(request, 'school/create-edit-lectures.html', context)
+    return render(request, 'school/create-edit-faculty.html', context)
+
+def AddGender(request):
+    title="Add New Gender"
+    form=AddGenderForm(request.POST or None)
+    if request.method=="POST":
+        form=AddGenderForm(request.POST or None)
+        if form.is_valid():
+            messages.success(request, "New Gender Added Successfully")
+            form.save()
+            #return HttpResponseRedirect("/")
+    context={
+        "title":title
+    }
+    return render(request, 'school/create-edit-gender.html', context)
+
+def EditGender(request, pk):
+    title="Edit Gender"
+    form=AddGenderForm(request.POST or None, id=pk)
+    if request.method=="POST":
+        form=AddGenderForm(request.POST or None, id=pk)
+        if form.is_valid():
+            messages.success(request, "Gender Updated Successfully")
+            form.save()
+            #return HttpResponseRedirect("/")
+    context={
+        "title":title
+    }
+    return render(request, 'school/create-edit-gender.html', context)
+
+def AddGender(request):
+    title="Add New Gender"
+    form=AddGenderForm(request.POST or None)
+    if request.method=="POST":
+        form=AddGenderForm(request.POST or None)
+        if form.is_valid():
+            messages.success(request, "New Gender Added Successfully")
+            form.save()
+            #return HttpResponseRedirect("/")
+    context={
+        "title":title
+    }
+    return render(request, 'school/create-edit-gender.html', context)
+
+def EditGender(request, pk):
+    title="Edit Gender"
+    form=AddGenderForm(request.POST or None, id=pk)
+    if request.method=="POST":
+        form=AddGenderForm(request.POST or None, id=pk)
+        if form.is_valid():
+            messages.success(request, "Gender Updated Successfully")
+            form.save()
+            #return HttpResponseRedirect("/")
+    context={
+        "title":title
+    }
+    return render(request, 'school/create-edit-gender.html', context)

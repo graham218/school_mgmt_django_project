@@ -113,26 +113,26 @@ class AddFacultyForm(forms.ModelForm):
         fields=['school']
         widgets = {'school':forms.TextInput(attrs={'class':'form-control', 'placeholder':'eg: School Of Computing & Informatics'})}
 
-class AddProgrammes(forms.ModelForm):
+class AddProgrammesForm(forms.ModelForm):
     class Meta:
         model=Programmes
         fields=['name','faculty']
         widgets = {'name':forms.TextInput(attrs={'class':'form-control', 'placeholder':'eg: Bachelor Of Science Information & Communication Technology'}),
          'faculty':forms.Select(attrs={'id':'value'})}
 
-class AddStages(forms.ModelForm):
+class AddStagesForm(forms.ModelForm):
     class Meta:
         model=Stages
         fields=['year']
         widgets = {'year':forms.TextInput(attrs={'class':'form-control','placeholder':'Year Of Study, eg: Year 1 Semester 2'})}
 
-class AddGender(forms.ModelForm):
+class AddGenderForm(forms.ModelForm):
     class Meta:
         model=Gender
         fields=['gender']
         widgets = {'gender':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: Male. Female, Other'})}
 
-class AddUnits(forms.ModelForm):
+class AddUnitsForm(forms.ModelForm):
     class Meta:
         model=Units
         fields=['unit_name']
