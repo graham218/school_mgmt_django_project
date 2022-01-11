@@ -36,7 +36,7 @@ class RegistrationView(View):
             form.save()
         return render(request, 'account/register.html', {'form': form})
 
-
+@login_required
 def AddAddress(request):
     title = "Add Address"
     form = AddressForm(request.POST or None)
@@ -51,7 +51,7 @@ def AddAddress(request):
     }
     return render(request, 'account/profile.html', context)
 
-
+@login_required
 def UpdateAddress(request, pk):
     title = "Update Address"
     form = AddressForm(request.POST or None, id=pk)
@@ -66,7 +66,7 @@ def UpdateAddress(request, pk):
     }
     return render(request, 'account/profile.html', context)
 
-
+@login_required
 def DeleteAddress(request, pk):
     queryset = Address.objects.get(id=pk)
     title="Delete Address"
@@ -79,6 +79,7 @@ def DeleteAddress(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
+@login_required
 def AddStudents(request):
     title = "Add New Students"
     button="Add Student"
@@ -95,7 +96,7 @@ def AddStudents(request):
     }
     return render(request, 'school/create-edit-students.html', context)
 
-
+@login_required
 def EditStudents(request, pk):
     title = "Edit Student"
     button = "Edit Student"
@@ -112,6 +113,7 @@ def EditStudents(request, pk):
     }
     return render(request, 'school/create-edit-students.html', context)
 
+@login_required
 def DeleteStudent(request, pk):
     queryset = Students.objects.get(id=pk)
     title="Delete Student"
@@ -124,7 +126,7 @@ def DeleteStudent(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
-
+@login_required
 def AddLecturer(request):
     title = "Add New Lecturer"
     button="Add Lecture"
@@ -141,6 +143,7 @@ def AddLecturer(request):
     }
     return render(request, 'school/create-edit-lecturers.html', context)
 
+@login_required
 def DeleteLecturer(request, pk):
     queryset = Lectures.objects.get(id=pk)
     title="Delete Lecturer"
@@ -153,6 +156,7 @@ def DeleteLecturer(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
+@login_required
 def EditLecturer(request, pk):
     title = "Edit Lecturer"
     button = "Edit Lecturer"
@@ -169,7 +173,7 @@ def EditLecturer(request, pk):
     }
     return render(request, 'school/create-edit-lecturers.html', context)
 
-
+@login_required
 def AddFaculty(request):
     title = "Add New Faculty"
     button="Add Faculty"
@@ -186,7 +190,7 @@ def AddFaculty(request):
     }
     return render(request, 'school/create-edit-faculty.html', context)
 
-
+@login_required
 def EditFaculty(request, pk):
     title = "Edit Faculty"
     button="Edit Faculty"
@@ -203,6 +207,7 @@ def EditFaculty(request, pk):
     }
     return render(request, 'school/create-edit-faculty.html', context)
 
+@login_required
 def DeleteFaculty(request, pk):
     queryset = Faculty.objects.get(id=pk)
     title="Delete Faculty"
@@ -215,7 +220,7 @@ def DeleteFaculty(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
-
+@login_required
 def AddGender(request):
     title = "Add New Gender"
     button="Add Gender"
@@ -232,7 +237,7 @@ def AddGender(request):
     }
     return render(request, 'school/create-edit-gender.html', context)
 
-
+@login_required
 def EditGender(request, pk):
     title = "Edit Gender"
     button = "Edit Gender"
@@ -249,6 +254,7 @@ def EditGender(request, pk):
     }
     return render(request, 'school/create-edit-gender.html', context)
 
+@login_required
 def DeleteGender(request, pk):
     queryset = Gender.objects.get(id=pk)
     title="Delete Gender"
@@ -261,6 +267,7 @@ def DeleteGender(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
+@login_required
 def AddProgramme(request):
     title = "Add New Programme"
     button = "Add Programme"
@@ -277,7 +284,7 @@ def AddProgramme(request):
     }
     return render(request, 'school/create-edit-programmes.html', context)
 
-
+@login_required
 def EditProgramme(request, pk):
     title = "Edit Programme"
     button="Edit Programme"
@@ -294,6 +301,7 @@ def EditProgramme(request, pk):
     }
     return render(request, 'school/create-edit-programmes.html', context)
 
+@login_required
 def DeleteProgramme(request, pk):
     queryset = Programmes.objects.get(id=pk)
     title="Delete Programme"
@@ -306,6 +314,7 @@ def DeleteProgramme(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
+@login_required
 def AddStage(request):
     title = "Add New Stage"
     button = "Add Stage"
@@ -322,7 +331,7 @@ def AddStage(request):
     }
     return render(request, 'school/create-edit-stages.html', context)
 
-
+@login_required
 def EditStage(request, pk):
     title = "Edit Stage"
     button = "Edit Stage"
@@ -339,6 +348,7 @@ def EditStage(request, pk):
     }
     return render(request, 'school/create-edit-stages.html', context)
 
+@login_required
 def DeleteStage(request, pk):
     queryset = Stages.objects.get(id=pk)
     title="Delete Stage"
@@ -351,6 +361,7 @@ def DeleteStage(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
+@login_required
 def AddUnit(request):
     title = "Add New Unit"
     button = "Add Unit"
@@ -367,7 +378,7 @@ def AddUnit(request):
     }
     return render(request, 'school/create-edit-units.html', context)
 
-
+@login_required
 def EditUnit(request, pk):
     title = "Edit Unit"
     button = "Edit Unit"
@@ -384,6 +395,7 @@ def EditUnit(request, pk):
     }
     return render(request, 'school/create-edit-units.html', context)
 
+@login_required
 def DeleteUnit(request, pk):
     queryset = Units.objects.get(id=pk)
     title="Delete Unit"
