@@ -456,9 +456,9 @@ def Listlectures(request):
 		"queryset": queryset,
 	}
 	if request.method == 'POST':
-		queryset = Lectures.objects.filter(admission_no__icontains=form['admission_no'].value(),
+		queryset = Lectures.objects.filter(lec_no__icontains=form['lec_no'].value(),
 										full_name__icontains=form['full_name'].value(),
-                                        programme__icontains=form['programme'].value()
+                                        national_ID_number__icontains=form['national_ID_number'].value()
 										)
 		if form['export_to_CSV'].value() == True:
 			response = HttpResponse(content_type='text/csv')
