@@ -145,3 +145,17 @@ class StudentSearchForm(forms.ModelForm):
         widgets = {'admission_no':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: CIM/00176/019'}),
         'full_name':forms.TextInput(attrs={'class':'form-control','placeholder':'First-Middle-Last Names'}),
         'programme':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: Barchelor Of Science Information & Communication Technology'})}
+
+class LecturerSearchForm(forms.ModelForm):
+    class Meta:
+        model=Lectures
+        fields=['lec_no', 'full_name', 'national_ID_number']
+        widgets = {'lec_no':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter Lec NO'}),
+        'full_name':forms.TextInput(attrs={'class':'form-control','placeholder':'First-Middle-Last Names'}),
+        'national_ID_number':forms.TextInput(attrs={'class':'form-control','placeholder':'Search With national ID'})}
+
+class UnitSearchForm(forms.ModelForm):
+    class Meta:
+        model=Units
+        fields=['unit_name']
+        widgets = {'unit_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Search Unit With Name'})}
