@@ -499,14 +499,19 @@ def ListUnits(request):
 	return render(request, "school/list-units.html", context)
 
 @login_required
-def ListFaculty(request):
-	title = 'List of All Units Offered'
-	form = UnitSearchForm(request.POST or None)
-	queryset = Units.objects.all()
-
+def ListProgrammes(request):
+	title = 'List of All Proggrammes Offered'
+	form = ProgrammeSearchForm(request.POST or None)
+	queryset = Programmes.objects.all()
+	context = {
+		"title": title,
+		"queryset": queryset,
+	}
+	if request.method == 'POST':
+		queryset = Programmes.objects.filter(unit_name__icontains=form['unit_name'].value())
 	context = {
 	"form": form,
 	"title": title,
 	"queryset": queryset,
 	}
-	return render(request, "school/list-units.html", context)
+	return render(request, "school/list-programmes.html", context)
