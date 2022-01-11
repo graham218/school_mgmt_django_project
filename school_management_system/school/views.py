@@ -34,3 +34,5 @@ class RegistrationView(View):
             messages.success(request, "Congratulations! Registration Successful!")
             form.save()
         return render(request, 'account/register.html', {'form': form})
+
+
