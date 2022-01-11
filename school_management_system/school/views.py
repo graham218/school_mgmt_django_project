@@ -2,7 +2,7 @@ import django
 from django.contrib.auth.models import User
 from school.models import *
 from django.shortcuts import redirect, render, get_object_or_404
-from .forms import AddFacultyForm, AddGenderForm, AddLectureForm, AddStudentsForm, RegistrationForm, AddressForm
+from .forms import AddFacultyForm, AddGenderForm, AddLectureForm, AddProgrammesForm, AddStagesForm, AddStudentsForm, AddUnitsForm, RegistrationForm, AddressForm
 from django.contrib import messages
 from django.views import View
 import decimal
@@ -148,30 +148,86 @@ def EditGender(request, pk):
     }
     return render(request, 'school/create-edit-gender.html', context)
 
-def AddGender(request):
-    title="Add New Gender"
-    form=AddGenderForm(request.POST or None)
+def AddProgramme(request):
+    title="Add New Programme"
+    form=AddProgrammesForm(request.POST or None)
     if request.method=="POST":
-        form=AddGenderForm(request.POST or None)
+        form=AddProgrammesForm(request.POST or None)
         if form.is_valid():
-            messages.success(request, "New Gender Added Successfully")
+            messages.success(request, "New Programme Added Successfully")
             form.save()
             #return HttpResponseRedirect("/")
     context={
         "title":title
     }
-    return render(request, 'school/create-edit-gender.html', context)
+    return render(request, 'school/create-edit-programmes.html', context)
 
-def EditGender(request, pk):
-    title="Edit Gender"
-    form=AddGenderForm(request.POST or None, id=pk)
+def EditProgramme(request, pk):
+    title="Edit Programme"
+    form=AddProgrammesForm(request.POST or None, id=pk)
     if request.method=="POST":
-        form=AddGenderForm(request.POST or None, id=pk)
+        form=AddProgrammesForm(request.POST or None, id=pk)
         if form.is_valid():
-            messages.success(request, "Gender Updated Successfully")
+            messages.success(request, "Programme Updated Successfully")
             form.save()
             #return HttpResponseRedirect("/")
     context={
         "title":title
     }
-    return render(request, 'school/create-edit-gender.html', context)
+    return render(request, 'school/create-edit-programmes.html', context)
+
+def AddStage(request):
+    title="Add New Stage"
+    form=AddStagesForm(request.POST or None)
+    if request.method=="POST":
+        form=AddStagesForm(request.POST or None)
+        if form.is_valid():
+            messages.success(request, "New Stage Added Successfully")
+            form.save()
+            #return HttpResponseRedirect("/")
+    context={
+        "title":title
+    }
+    return render(request, 'school/create-edit-stages.html', context)
+
+def EditStage(request, pk):
+    title="Edit Stage"
+    form=AddStagesForm(request.POST or None, id=pk)
+    if request.method=="POST":
+        form=AddStagesForm(request.POST or None, id=pk)
+        if form.is_valid():
+            messages.success(request, "Stage Updated Successfully")
+            form.save()
+            #return HttpResponseRedirect("/")
+    context={
+        "title":title
+    }
+    return render(request, 'school/create-edit-stages.html', context)
+
+def AddUnit(request):
+    title="Add New Unit"
+    form=AddUnitsForm(request.POST or None)
+    if request.method=="POST":
+        form=AddUnitsForm(request.POST or None)
+        if form.is_valid():
+            messages.success(request, "New Unit Added Successfully")
+            form.save()
+            #return HttpResponseRedirect("/")
+    context={
+        "title":title
+    }
+    return render(request, 'school/create-edit-units.html', context)
+
+def EditUnit(request, pk):
+    title="Edit Unit"
+    form=AddUnitsForm(request.POST or None, id=pk)
+    if request.method=="POST":
+        form=AddUnitsForm(request.POST or None, id=pk)
+        if form.is_valid():
+            messages.success(request, "Unit Updated Successfully")
+            form.save()
+            #return HttpResponseRedirect("/")
+    context={
+        "title":title
+    }
+    return render(request, 'school/create-edit-units.html', context)
