@@ -74,6 +74,7 @@ def DeleteAddress(request, pk):
 
 def AddStudents(request):
     title = "Add New Students"
+    button="Add Student"
     form = AddStudentsForm(request.POST or None)
     if request.method == "POST":
         form = AddStudentsForm(request.POST or None)
@@ -82,13 +83,15 @@ def AddStudents(request):
             form.save()
             # return HttpResponseRedirect("/")
     context = {
-        "title": title
+        "title": title,
+        "button": button
     }
     return render(request, 'school/create-edit-students.html', context)
 
 
 def EditStudents(request, pk):
     title = "Edit Student"
+    button = "Edit Student"
     form = AddStudentsForm(request.POST or None, id=pk)
     if request.method == "POST":
         form = AddStudentsForm(request.POST or None, id=pk)
@@ -97,13 +100,15 @@ def EditStudents(request, pk):
             form.save()
             # return HttpResponseRedirect("/")
     context = {
-        "title": title
+        "title": title,
+        "button": button
     }
     return render(request, 'school/create-edit-students.html', context)
 
 
 def AddLecturer(request):
     title = "Add New Lecturer"
+    button="Add Lecture"
     form = AddLectureForm(request.POST or None)
     if request.method == "POST":
         form = AddLectureForm(request.POST or None)
@@ -112,13 +117,15 @@ def AddLecturer(request):
             form.save()
             # return HttpResponseRedirect("/")
     context = {
-        "title": title
+        "title": title,
+        "button": button
     }
     return render(request, 'school/create-edit-lecturers.html', context)
 
 
 def EditLecturer(request, pk):
     title = "Edit Lecturer"
+    button = "Edit Lecturer"
     form = AddLectureForm(request.POST or None, id=pk)
     if request.method == "POST":
         form = AddLectureForm(request.POST or None, id=pk)
@@ -127,13 +134,15 @@ def EditLecturer(request, pk):
             form.save()
             # return HttpResponseRedirect("/")
     context = {
-        "title": title
+        "title": title,
+        "button": button
     }
     return render(request, 'school/create-edit-lecturers.html', context)
 
 
 def AddFaculty(request):
     title = "Add New Faculty"
+    button="Add Faculty"
     form = AddFacultyForm(request.POST or None)
     if request.method == "POST":
         form = AddFacultyForm(request.POST or None)
@@ -142,13 +151,15 @@ def AddFaculty(request):
             form.save()
             # return HttpResponseRedirect("/")
     context = {
-        "title": title
+        "title": title,
+        "button": button
     }
     return render(request, 'school/create-edit-faculty.html', context)
 
 
 def EditFaculty(request, pk):
     title = "Edit Faculty"
+    button="Edit Faculty"
     form = AddFacultyForm(request.POST or None, id=pk)
     if request.method == "POST":
         form = AddFacultyForm(request.POST or None, id=pk)
@@ -157,13 +168,15 @@ def EditFaculty(request, pk):
             form.save()
             # return HttpResponseRedirect("/")
     context = {
-        "title": title
+        "title": title,
+        "button": button
     }
     return render(request, 'school/create-edit-faculty.html', context)
 
 
 def AddGender(request):
     title = "Add New Gender"
+    button="Add Gender"
     form = AddGenderForm(request.POST or None)
     if request.method == "POST":
         form = AddGenderForm(request.POST or None)
@@ -172,13 +185,15 @@ def AddGender(request):
             form.save()
             # return HttpResponseRedirect("/")
     context = {
-        "title": title
+        "title": title,
+        "button": button
     }
     return render(request, 'school/create-edit-gender.html', context)
 
 
 def EditGender(request, pk):
     title = "Edit Gender"
+    button = "Edit Gender"
     form = AddGenderForm(request.POST or None, id=pk)
     if request.method == "POST":
         form = AddGenderForm(request.POST or None, id=pk)
@@ -187,13 +202,15 @@ def EditGender(request, pk):
             form.save()
             # return HttpResponseRedirect("/")
     context = {
-        "title": title
+        "title": title,
+        "button": button
     }
     return render(request, 'school/create-edit-gender.html', context)
 
 
 def AddProgramme(request):
     title = "Add New Programme"
+    button = "Add Programme"
     form = AddProgrammesForm(request.POST or None)
     if request.method == "POST":
         form = AddProgrammesForm(request.POST or None)
@@ -202,13 +219,15 @@ def AddProgramme(request):
             form.save()
             # return HttpResponseRedirect("/")
     context = {
-        "title": title
+        "title": title,
+        "button": button
     }
     return render(request, 'school/create-edit-programmes.html', context)
 
 
 def EditProgramme(request, pk):
     title = "Edit Programme"
+    button="Edit Programme"
     form = AddProgrammesForm(request.POST or None, id=pk)
     if request.method == "POST":
         form = AddProgrammesForm(request.POST or None, id=pk)
@@ -217,13 +236,15 @@ def EditProgramme(request, pk):
             form.save()
             # return HttpResponseRedirect("/")
     context = {
-        "title": title
+        "title": title,
+        "button": button
     }
     return render(request, 'school/create-edit-programmes.html', context)
 
 
 def AddStage(request):
     title = "Add New Stage"
+    button = "Add New Stage"
     form = AddStagesForm(request.POST or None)
     if request.method == "POST":
         form = AddStagesForm(request.POST or None)
