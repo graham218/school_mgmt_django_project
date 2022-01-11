@@ -2,12 +2,13 @@ import django
 from django.contrib.auth.models import User
 from school.models import *
 from django.shortcuts import redirect, render, get_object_or_404
-from .forms import RegistrationForm, AddressForm
+from .forms import AddStudentsForm, RegistrationForm, AddressForm
 from django.contrib import messages
 from django.views import View
 import decimal
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator # for Class Based Views
+from django.http import HttpResponse, HttpResponseRedirect
 
 
 
@@ -35,4 +36,15 @@ class RegistrationView(View):
             form.save()
         return render(request, 'account/register.html', {'form': form})
 
-
+def AddStudents(request):
+    title="Add New Students"
+    form=AddStudentsForm(request.POST or None)
+    if request.method=="POST":
+        if form.is_valid():
+            messages.success(request, "New Student Added Successfully")
+            form.save()
+            #return HttpResponseRedirect("/")
+    context={
+        "title":title
+    }
+    return render(request, 'school/create-edit-students.html', context)
