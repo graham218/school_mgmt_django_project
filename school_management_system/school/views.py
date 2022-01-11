@@ -278,6 +278,7 @@ def EditStage(request, pk):
 
 def AddUnit(request):
     title = "Add New Unit"
+    button = "Add Unit"
     form = AddUnitsForm(request.POST or None)
     if request.method == "POST":
         form = AddUnitsForm(request.POST or None)
@@ -286,13 +287,15 @@ def AddUnit(request):
             form.save()
             # return HttpResponseRedirect("/")
     context = {
-        "title": title
+        "title": title,
+        "button": button
     }
     return render(request, 'school/create-edit-units.html', context)
 
 
 def EditUnit(request, pk):
     title = "Edit Unit"
+    button = "Edit Unit"
     form = AddUnitsForm(request.POST or None, id=pk)
     if request.method == "POST":
         form = AddUnitsForm(request.POST or None, id=pk)
@@ -301,6 +304,7 @@ def EditUnit(request, pk):
             form.save()
             # return HttpResponseRedirect("/")
     context = {
-        "title": title
+        "title": title,
+        "button": button
     }
     return render(request, 'school/create-edit-units.html', context)
