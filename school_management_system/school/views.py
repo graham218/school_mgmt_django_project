@@ -294,6 +294,17 @@ def EditProgramme(request, pk):
     }
     return render(request, 'school/create-edit-programmes.html', context)
 
+def DeleteProgramme(request, pk):
+    queryset = Programmes.objects.get(id=pk)
+    title="Delete Programme"
+    if request.method=="POST":
+        queryset.delete()
+        messages.success(request,"Programme Deleted Successfully")
+        #return HttpResponseRedirect()
+    context={
+        "title": title
+    }
+    return render(request, "school/delete_items.html", context)
 
 def AddStage(request):
     title = "Add New Stage"
@@ -328,6 +339,17 @@ def EditStage(request, pk):
     }
     return render(request, 'school/create-edit-stages.html', context)
 
+def DeleteStage(request, pk):
+    queryset = Stages.objects.get(id=pk)
+    title="Delete Stage"
+    if request.method=="POST":
+        queryset.delete()
+        messages.success(request,"Stage Deleted Successfully")
+        #return HttpResponseRedirect()
+    context={
+        "title": title
+    }
+    return render(request, "school/delete_items.html", context)
 
 def AddUnit(request):
     title = "Add New Unit"
@@ -361,3 +383,15 @@ def EditUnit(request, pk):
         "button": button
     }
     return render(request, 'school/create-edit-units.html', context)
+
+def DeleteUnit(request, pk):
+    queryset = Units.objects.get(id=pk)
+    title="Delete Unit"
+    if request.method=="POST":
+        queryset.delete()
+        messages.success(request,"Unit Deleted Successfully")
+        #return HttpResponseRedirect()
+    context={
+        "title": title
+    }
+    return render(request, "school/delete_items.html", context)
