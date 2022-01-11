@@ -1,6 +1,7 @@
 import django
 from django.contrib.auth.models import User
 from school.models import *
+from .forms import *
 from django.shortcuts import redirect, render, get_object_or_404
 from .forms import AddFacultyForm, AddGenderForm, AddLectureForm, AddProgrammesForm, AddStagesForm, AddStudentsForm, AddUnitsForm, RegistrationForm, AddressForm
 from django.contrib import messages
@@ -411,14 +412,14 @@ def DeleteUnit(request, pk):
 @login_required
 def ListStudents(request):
 	title = 'List of All Students'
-	form = StockSearchForm(request.POST or None)
+	form = StudentSearchForm(request.POST or None)
 	queryset = Students.objects.all()
 	context = {
 		"title": title,
 		"queryset": queryset,
 	}
 	if request.method == 'POST':
-		queryset = Stock.objects.filter(category__icontains=form['category'].value(),
+		queryset = Students.objects.filter(category__icontains=form['category'].value(),
 										item_name__icontains=form['item_name'].value()
 										)
 		if form['export_to_CSV'].value() == True:
@@ -436,4 +437,4 @@ def ListStudents(request):
 	"title": title,
 	"queryset": queryset,
 	}
-	return render(request, "list_item.html", context)
+	return render(request, "school/list-students.html", context)

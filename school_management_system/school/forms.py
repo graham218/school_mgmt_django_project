@@ -143,5 +143,5 @@ class StudentSearchForm(forms.ModelForm):
         model=Students
         fields=['admission_no', 'full_name', 'programme']
         widgets = {'admission_no':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: CIM/00176/019'}),
-        'admission_no':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: CIM/00176/019'}),
-        'admission_no':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: CIM/00176/019'})}
+        'full_name':forms.TextInput(attrs={'class':'form-control','placeholder':'First-Middle-Last Names'}),
+        'programme':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: Barchelor Of Science Information & Communication Technology'})}
