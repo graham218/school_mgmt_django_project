@@ -464,16 +464,13 @@ def Listlectures(request):
 			response = HttpResponse(content_type='text/csv')
 			response['Content-Disposition'] = 'attachment; filename="List of Students.csv"'
 			writer = csv.writer(response)
-			writer.writerow(['USER', 'ADMISSION MUMBER', 'FULL NAME', 'NATIONALITY',
-            'GENDER','N.ID NUMBER','BIRTH CERT NO','PHONE NO','DOB','DATE OF ADMISSION',
-            'PROGRAMME','STAGE','POSTAL ADDRESS','FEE BALANCE'])
+			writer.writerow(['USER', 'LEC MUMBER', 'FULL NAME', 'NATIONALITY',
+            'GENDER','N.ID NUMBER','PHONE NO','DOB','POSTAL ADDRESS','SALARY BALANCE'])
 			instance = queryset
 			for lecturer in instance:
-				writer.writerow([lecturer.user, lecturer.admission_no, lecturer.full_name,
+				writer.writerow([lecturer.user, lecturer.lec_no, lecturer.full_name,
                 lecturer.nationality, lecturer.gender, lecturer.national_ID_number,
-                lecturer.birth_cert_no, lecturer.phone_number, lecturer.DOB,
-                lecturer.date_of_admission, lecturer.programme, lecturer.stage,
-                lecturer.postal_address, lecturer.balance])
+                lecturer.phone_number, lecturer.DOB,lecturer.postal_address, lecturer.balance])
 			return response
 	
 	context = {
