@@ -63,16 +63,23 @@ class SetPasswordForm(SetPasswordForm):
 class AddStudentsForm(forms.ModelForm):
     class Meta:
         model=Students
-        fields=['user', 'admission_no', 'full_name', 'nationality',
+        fields=['admission_no', 'full_name', 'nationality',
      'gender', 'national_ID_number', 'birth_cert_no', 'phone_number',
      'DOB', 'date_of_admission', 'date_of_graduation', 'programme',
      'stage','profile_photo', 'postal_address', 'school_email', 'school_email_password',
      'total_fees_billed', 'total_fees_paid', 'balance']
 
+    widgets = {'admission_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Admission Number'}),
+        'full_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Full Name'}),
+        'nationality': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, Kenyan, Ugandan, Somalian'}),
+        'gender': forms.RadioSelect(attrs={'id': 'value'}),
+        'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter National Id Number'}),
+        'birth_cert_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Birth Certificate Number'})}
+
 class AddLectureForm(forms.ModelForm):
     class Meta:
         model=Lectures
-        fields=['user', 'lec_no', 'full_name', 'nationality',
+        fields=['lec_no', 'full_name', 'nationality',
      'gender', 'national_ID_number', 'phone_number',
      'DOB','postal_address', 'school_email', 'school_email_password',
      'total_salary_billed', 'total_salary_paid', 'balance']
