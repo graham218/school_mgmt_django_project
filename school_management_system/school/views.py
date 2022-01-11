@@ -45,7 +45,7 @@ def AddAddress(request):
         if form.is_valid():
             messages.success(request, "Profile Updated Successfully")
             form.save()
-            # return HttpResponseRedirect("/")
+            return HttpResponseRedirect("/")
     context = {
         "title": title
     }
@@ -68,9 +68,16 @@ def UpdateAddress(request, pk):
 
 
 def DeleteAddress(request, pk):
-    queryset = Address.objects.get(user=request.user, id=pk)
-    queryset.delete()
-
+    queryset = Address.objects.get(id=pk)
+    title="Delete Address"
+    if request.method=="POST":
+        queryset.delete()
+        messages.success(request,"Address Deleted Successfully")
+        #return HttpResponseRedirect()
+    context={
+        "title": title
+    }
+    return render(request, "school/delete_items.html", context)
 
 def AddStudents(request):
     title = "Add New Students"
