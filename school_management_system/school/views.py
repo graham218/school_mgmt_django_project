@@ -419,8 +419,9 @@ def ListStudents(request):
 		"queryset": queryset,
 	}
 	if request.method == 'POST':
-		queryset = Students.objects.filter(category__icontains=form['category'].value(),
-										item_name__icontains=form['item_name'].value()
+		queryset = Students.objects.filter(admission_no__icontains=form['admission_no'].value(),
+										full_name__icontains=form['full_name'].value(),
+                                        programme__icontains=form['programme'].value()
 										)
 		if form['export_to_CSV'].value() == True:
 			response = HttpResponse(content_type='text/csv')
