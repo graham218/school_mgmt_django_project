@@ -80,7 +80,10 @@ class AddStudentsForm(forms.ModelForm):
         'profile_photo': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Full Name'}),
         'postal_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, PO BOX 123 Busia, Kenya'}),
         'school_email': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter School Email'}),
-        'school_email_password': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'School Email Password'})}
+        'school_email_password': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'School Email Password'}),
+        'total_fees_billed': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Total Fee Billed'}),
+        'total_fees_paid': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Total Fee Paid'}),
+        'balance': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Fee Balance'})}
 
 class AddLectureForm(forms.ModelForm):
     class Meta:
