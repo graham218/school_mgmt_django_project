@@ -124,13 +124,16 @@ class AddStages(forms.ModelForm):
     class Meta:
         model=Stages
         fields=['year']
+        widgets = {'year':forms.TextInput(attrs={'class':'form-control','placeholder':'Year Of Study, eg: Year 1 Semester 2'})}
 
 class AddGender(forms.ModelForm):
     class Meta:
         model=Gender
         fields=['gender']
+        widgets = {'gender':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: Male. Female, Other'})}
 
 class AddUnits(forms.ModelForm):
     class Meta:
         model=Units
         fields=['unit_name']
+        widgets = {'unit_name':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: Calculus, Probability & Statistics, Descrete Structures'})}
