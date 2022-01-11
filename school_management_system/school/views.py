@@ -40,7 +40,7 @@ def AddStudents(request):
     title="Add New Students"
     form=AddStudentsForm(request.POST or None)
     if request.method=="POST":
-        form=AddStudentsForm(request.POST or None, id=pk)
+        form=AddStudentsForm(request.POST or None)
         if form.is_valid():
             messages.success(request, "New Student Added Successfully")
             form.save()
