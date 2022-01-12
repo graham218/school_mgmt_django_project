@@ -182,9 +182,9 @@ def EditFaculty(request, pk):
     title = "Edit Faculty"
     button="Edit Faculty"
     queryset=Faculty.objects.get(id=pk)
-    form = AddFacultyForm(request.POST or None, id=pk)
+    form = AddFacultyForm(request.POST or None, instance=queryset)
     if request.method == "POST":
-        form = AddFacultyForm(request.POST or None, id=pk)
+        form = AddFacultyForm(request.POST or None, instance=queryset)
         if form.is_valid():
             messages.success(request, "Faculty Updated Successfully")
             form.save()
@@ -213,12 +213,10 @@ def AddGender(request):
     title = "Add New Gender"
     button="Add Gender"
     form = AddGenderForm(request.POST or None)
-    if request.method == "POST":
-        form = AddGenderForm(request.POST or None)
-        if form.is_valid():
-            messages.success(request, "New Gender Added Successfully")
-            form.save()
-            # return HttpResponseRedirect("/")
+    if form.is_valid():
+        messages.success(request, "New Gender Added Successfully")
+        form.save()
+        # return HttpResponseRedirect("/")
     context = {
         "title": title,
         "button": button
@@ -229,9 +227,10 @@ def AddGender(request):
 def EditGender(request, pk):
     title = "Edit Gender"
     button = "Edit Gender"
-    form = AddGenderForm(request.POST or None, id=pk)
+    queryset=Gender.objects.get(id=pk)
+    form = AddGenderForm(request.POST or None, instance=queryset)
     if request.method == "POST":
-        form = AddGenderForm(request.POST or None, id=pk)
+        form = AddGenderForm(request.POST or None, instance=queryset)
         if form.is_valid():
             messages.success(request, "Gender Updated Successfully")
             form.save()
@@ -260,12 +259,10 @@ def AddProgramme(request):
     title = "Add New Programme"
     button = "Add Programme"
     form = AddProgrammesForm(request.POST or None)
-    if request.method == "POST":
-        form = AddProgrammesForm(request.POST or None)
-        if form.is_valid():
-            messages.success(request, "New Programme Added Successfully")
-            form.save()
-            # return HttpResponseRedirect("/")
+    if form.is_valid():
+        messages.success(request, "New Programme Added Successfully")
+        form.save()
+        # return HttpResponseRedirect("/")
     context = {
         "title": title,
         "button": button
@@ -276,9 +273,10 @@ def AddProgramme(request):
 def EditProgramme(request, pk):
     title = "Edit Programme"
     button="Edit Programme"
-    form = AddProgrammesForm(request.POST or None, id=pk)
+    queryset=Programmes.objects.get(id=pk)
+    form = AddProgrammesForm(request.POST or None, instance=queryset)
     if request.method == "POST":
-        form = AddProgrammesForm(request.POST or None, id=pk)
+        form = AddProgrammesForm(request.POST or None, instance=queryset)
         if form.is_valid():
             messages.success(request, "Programme Updated Successfully")
             form.save()
@@ -307,12 +305,10 @@ def AddStage(request):
     title = "Add New Stage"
     button = "Add Stage"
     form = AddStagesForm(request.POST or None)
-    if request.method == "POST":
-        form = AddStagesForm(request.POST or None)
-        if form.is_valid():
-            messages.success(request, "New Stage Added Successfully")
-            form.save()
-            # return HttpResponseRedirect("/")
+    if form.is_valid():
+        messages.success(request, "New Stage Added Successfully")
+        form.save()
+        # return HttpResponseRedirect("/")
     context = {
         "title": title,
         "button": button
@@ -323,9 +319,10 @@ def AddStage(request):
 def EditStage(request, pk):
     title = "Edit Stage"
     button = "Edit Stage"
-    form = AddStagesForm(request.POST or None, id=pk)
+    queryset=Stages.objects.get(id=pk)
+    form = AddStagesForm(request.POST or None, instance=queryset)
     if request.method == "POST":
-        form = AddStagesForm(request.POST or None, id=pk)
+        form = AddStagesForm(request.POST or None, instance=queryset)
         if form.is_valid():
             messages.success(request, "Stage Updated Successfully")
             form.save()
@@ -354,12 +351,10 @@ def AddUnit(request):
     title = "Add New Unit"
     button = "Add Unit"
     form = AddUnitsForm(request.POST or None)
-    if request.method == "POST":
-        form = AddUnitsForm(request.POST or None)
-        if form.is_valid():
-            messages.success(request, "New Unit Added Successfully")
-            form.save()
-            # return HttpResponseRedirect("/")
+    if form.is_valid():
+        messages.success(request, "New Unit Added Successfully")
+        form.save()
+        # return HttpResponseRedirect("/")
     context = {
         "title": title,
         "button": button
@@ -370,9 +365,10 @@ def AddUnit(request):
 def EditUnit(request, pk):
     title = "Edit Unit"
     button = "Edit Unit"
-    form = AddUnitsForm(request.POST or None, id=pk)
+    queryset=Units.objects.get(id=pk)
+    form = AddUnitsForm(request.POST or None, instance=queryset)
     if request.method == "POST":
-        form = AddUnitsForm(request.POST or None, id=pk)
+        form = AddUnitsForm(request.POST or None, instance=queryset)
         if form.is_valid():
             messages.success(request, "Unit Updated Successfully")
             form.save()
