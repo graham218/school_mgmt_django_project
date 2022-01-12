@@ -246,7 +246,7 @@ def EditGender(request, pk):
         if form.is_valid():
             messages.success(request, "Gender Updated Successfully")
             form.save()
-            # return HttpResponseRedirect("/")
+            return HttpResponseRedirect("school/list-gender")
     context = {
         "title": title,
         "button": button,
