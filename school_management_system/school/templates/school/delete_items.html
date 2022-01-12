@@ -13,8 +13,8 @@
           <h6 class="font-weight-light">Do you want to {{title}}?</h6>
           <form class="pt-3" method="post" action="">
               {% csrf_token %}
-              <button>
-              </button>
+              <button type="submit" class="btn btn-danger">Yes</button>
+              <a href="{% url '/' %}" class="btn btn-success">No</a>
           </form>
         </div>
       </div>
