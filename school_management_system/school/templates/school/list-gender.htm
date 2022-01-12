@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{title}}</h4>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th> </th>
+                  <th> Status </th>
+                  <th> Last Update </th>
+                  <th> Tracking ID </th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr>
+                  <td>
+                    <img src="/static/dash/assets/images/faces/face1.jpg" class="me-2" alt="image"> David Grey
+                  </td>
+                  <td> Fund is not recieved </td>
+                  <td>
+                    <label class="badge badge-gradient-success">DONE</label>
+                  </td>
+                  <td> Dec 5, 2017 </td>
+                  <td> WD-12345 </td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}
