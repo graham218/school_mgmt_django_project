@@ -17,19 +17,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="py-1">
-                <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
-              </td>
-              <td> Herman Beck </td>
-              <td>
-                <div class="progress">
-                  <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </td>
-              <td> $ 77.99 </td>
-              <td> May 15, 2015 </td>
-            </tr>
+              {% for instance in queryset %}
+                <tr>
+                <td class="py-1">{{forloop.counter}}</td>
+                <td>{{instance.school}}</td>
+                <td>{{instance.date_created}}</td>
+                <td>{{instance.date_updated}}</td>
+                <td><a>Update</a></td>
+                <td><a>Delete</a></td>
+                </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
