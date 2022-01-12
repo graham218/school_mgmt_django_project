@@ -92,7 +92,7 @@ def EditStudents(request, pk):
     queryset=Students.objects.get(id=pk)
     form = AddStudentsForm(request.POST or None, instance=queryset)
     if request.method == "POST":
-        form = AddStudentsForm(request.POST or None, id=pk)
+        form = AddStudentsForm(request.POST or None, instance=queryset)
         if form.is_valid():
             messages.success(request, "Student Updated Successfully")
             form.save()
@@ -121,12 +121,10 @@ def AddLecturer(request):
     title = "Add New Lecturer"
     button="Add Lecture"
     form = AddLectureForm(request.POST or None)
-    if request.method == "POST":
-        form = AddLectureForm(request.POST or None)
-        if form.is_valid():
-            messages.success(request, "New Lecture Added Successfully")
-            form.save()
-            # return HttpResponseRedirect("/")
+    if form.is_valid():
+        messages.success(request, "New Lecture Added Successfully")
+        form.save()
+        # return HttpResponseRedirect("/")
     context = {
         "title": title,
         "button": button
@@ -150,9 +148,10 @@ def DeleteLecturer(request, pk):
 def EditLecturer(request, pk):
     title = "Edit Lecturer"
     button = "Edit Lecturer"
-    form = AddLectureForm(request.POST or None, id=pk)
+    queryset=Lectures.objects.get(id=pk)
+    form = AddLectureForm(request.POST or None, instance=queryset)
     if request.method == "POST":
-        form = AddLectureForm(request.POST or None, id=pk)
+        form = AddLectureForm(request.POST or None, instance=queryset)
         if form.is_valid():
             messages.success(request, "Lecture Updated Successfully")
             form.save()
@@ -168,12 +167,10 @@ def AddFaculty(request):
     title = "Add New Faculty"
     button="Add Faculty"
     form = AddFacultyForm(request.POST or None)
-    if request.method == "POST":
-        form = AddFacultyForm(request.POST or None)
-        if form.is_valid():
-            messages.success(request, "New Faculty Added Successfully")
-            form.save()
-            # return HttpResponseRedirect("/")
+    if form.is_valid():
+        messages.success(request, "New Faculty Added Successfully")
+        form.save()
+        # return HttpResponseRedirect("/")
     context = {
         "title": title,
         "button": button
@@ -184,6 +181,7 @@ def AddFaculty(request):
 def EditFaculty(request, pk):
     title = "Edit Faculty"
     button="Edit Faculty"
+    queryset=Faculty.objects.get(id=pk)
     form = AddFacultyForm(request.POST or None, id=pk)
     if request.method == "POST":
         form = AddFacultyForm(request.POST or None, id=pk)
