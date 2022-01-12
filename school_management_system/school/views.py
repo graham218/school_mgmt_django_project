@@ -180,10 +180,11 @@ def AddFaculty(request):
     if form.is_valid():
         messages.success(request, "New Faculty Added Successfully")
         form.save()
-        # return HttpResponseRedirect("/")
+        return redirect('/school/list-faculty')
     context = {
         "title": title,
-        "button": button
+        "button": button,
+        "form": form
     }
     return render(request, 'school/create-edit-faculty.html', context)
 
@@ -198,7 +199,7 @@ def EditFaculty(request, pk):
         if form.is_valid():
             messages.success(request, "Faculty Updated Successfully")
             form.save()
-            # return HttpResponseRedirect("/")
+            return redirect('/school/list-faculty')
     context = {
         "title": title,
         "button": button,
