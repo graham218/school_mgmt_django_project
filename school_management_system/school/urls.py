@@ -25,6 +25,7 @@ urlpatterns = [
     path('add-gender/', views.AddGender, name='add-gender'),
     path('edit-gender/<str:pk>', views.EditGender, name='edit-gender'),
     path('delete-gender/<str:pk>', views.DeleteGender, name='delete-gender'),
+    path('list-gender/', views.ListGender, name='list-gender'),
 
     path('add-programme/', views.AddProgramme, name='add-programme'),
     path('edit-programme/<str:pk>', views.EditProgramme, name='edit-programme'),
