@@ -21,6 +21,7 @@ urlpatterns = [
     path('add-faculty/', views.AddFaculty, name='add-faculty'),
     path('edit-faculty/<str:pk>', views.EditFaculty, name='edit-faculty'),
     path('delete-faculty/<str:pk>', views.DeleteFaculty, name='delete-faculty'),
+    path('list-faculty/', views.ListFaculty, name='list-faculty'),
 
     path('add-gender/', views.AddGender, name='add-gender'),
     path('edit-gender/<str:pk>', views.EditGender, name='edit-gender'),

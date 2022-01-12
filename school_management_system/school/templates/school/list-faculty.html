@@ -24,8 +24,8 @@
                 <td>{{instance.school}}</td>
                 <td>{{instance.date_created}}</td>
                 <td>{{instance.date_updated}}</td>
-                <td><a class="mdi mdi-stack-overflow" href="">Update</a></td>
-                <td><a class="mdi mdi-delete-forever" href="">Delete</a></td>
+                <td><a class="mdi mdi-stack-overflow" href="{% url 'school:edit-faculty' instance.id%}">Update</a></td>
+                <td><a class="mdi mdi-delete-forever" href="{% url 'school:delete-faculty' instance.id%}">Delete</a></td>
             </tr>
             {% endfor %}
           </tbody>
