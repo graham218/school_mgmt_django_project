@@ -1,15 +1,9 @@
-import django
-from django.contrib.auth.models import User
-from school.models import *
+from django.shortcuts import redirect, render
 from .forms import *
-from django.shortcuts import redirect, render, get_object_or_404
-from .forms import AddFacultyForm, AddGenderForm, AddLectureForm, AddProgrammesForm, AddStagesForm, AddStudentsForm, AddUnitsForm, RegistrationForm, AddressForm
 from django.contrib import messages
 from django.views import View
 import csv
 from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator  # for Class Based Views
-from django.http import HttpResponse, HttpResponseRedirect, request
 
 
 # Create your views here.
@@ -73,7 +67,7 @@ def DeleteAddress(request, pk):
     if request.method=="POST":
         queryset.delete()
         messages.success(request,"Address Deleted Successfully")
-        #return redirect()
+        return redirect()
     context={
         "title": title
     }
@@ -84,12 +78,10 @@ def AddStudents(request):
     title = "Add New Students"
     button="Add Student"
     form = AddStudentsForm(request.POST or None)
-    if request.method == "POST":
-        form = AddStudentsForm(request.POST or None)
-        if form.is_valid():
-            messages.success(request, "New Student Added Successfully")
-            form.save()
-            # return HttpResponseRedirect("/")
+    if form.is_valid():
+        form.save()
+        messages.success(request, "New Student Added Successfully")
+        return redirect("/")
     context = {
         "title": title,
         "button": button
