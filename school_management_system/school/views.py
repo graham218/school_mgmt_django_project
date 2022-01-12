@@ -534,3 +534,14 @@ def ListFaculty(request):
 	"queryset": queryset,
 	}
 	return render(request, "school/list-faculty.html", context)
+
+@login_required
+def ShowAddress(request):
+	title = 'My Address'
+	queryset = Address().objects.filter(user=request.user)
+	context = {
+	"form": form,
+	"title": title,
+	"queryset": queryset,
+	}
+	return render(request, "school/list-faculty.html", context)
