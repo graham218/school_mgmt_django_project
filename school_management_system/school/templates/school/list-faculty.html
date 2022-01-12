@@ -9,23 +9,24 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th> User </th>
-              <th> First name </th>
-              <th> Progress </th>
-              <th> Amount </th>
-              <th> Deadline </th>
+              <th> COUNTER </th>
+              <th> FACULTY NAME </th>
+              <th> DATE CREATED </th>
+              <th> DATE UPDATED </th>
+              <th> UPDATE </th>
+              <th> DELETE </th>
             </tr>
           </thead>
           <tbody>
-              {% for instance in queryset %}
-                <tr>
+            {% for instance in queryset %}
+            <tr>
                 <td class="py-1">{{forloop.counter}}</td>
                 <td>{{instance.school}}</td>
                 <td>{{instance.date_created}}</td>
                 <td>{{instance.date_updated}}</td>
                 <td><a>Update</a></td>
                 <td><a>Delete</a></td>
-                </tr>
+            </tr>
             {% endfor %}
           </tbody>
         </table>
