@@ -71,11 +71,28 @@
             {% for instance in queryset %}
             <tr>
                 <td class="py-1">{{forloop.counter}}</td>
-                <td>{{instance.school}}</td>
-                <td>{{instance.date_created}}</td>
-                <td>{{instance.date_updated}}</td>
-                <td><a class="mdi mdi-stack-overflow" href="{% url 'school:edit-faculty' instance.id%}">Update</a></td>
-                <td><a class="mdi mdi-delete-forever" href="{% url 'school:delete-faculty' instance.id%}">Delete</a></td>
+                <td>{{instance.user}}</td>
+                <td>{{instance.admission_no}}</td>
+                <td>{{instance.full_name}}</td>
+                <td>{{instance.nationality}}</td>
+                <td>{{instance.gender}}</td>
+                <td>{{instance.national_ID_number}}</td>
+                <td>{{instance.birth_cert_no}}</td>
+                <td>{{instance.phone_number}}</td>
+                <td>{{instance.DOB}}</td>
+                <td>{{instance.date_of_admission}}</td>
+                <td>{{instance.date_of_graduation}}</td>
+                <td>{{instance.programme}}</td>
+                <td>{{instance.stage}}</td>
+                <td>{{instance.profile_photo}}</td>
+                <td>{{instance.postal_address}}</td>
+                <td>{{instance.school_email}}</td>
+                <td>{{instance.school_email_password}}</td>
+                <td>{{instance.total_fees_billed}}</td>
+                <td>{{instance.total_fees_paid}}</td>
+                <td>{{instance.balance}}</td>
+                <td><a class="mdi mdi-stack-overflow" href="{% url 'school:edit-students' instance.id%}">Update</a></td>
+                <td><a class="mdi mdi-delete-forever" href="{% url 'school:delete-student' instance.id%}">Delete</a></td>
             </tr>
             {% endfor %}
           </tbody>
