@@ -31,6 +31,7 @@ def RegistrationView(request):
 @login_required
 def AddAddress(request):
     title = "Add Address"
+    button="Add Address"
     form = AddressForm(request.POST)
     if form.is_valid():
         form.save()
@@ -38,13 +39,15 @@ def AddAddress(request):
         return redirect("/")
     context = {
         "title": title,
-        "form": form
+        "form": form,
+        "button": button
     }
     return render(request, 'school/create-edit-address.html', context)
 
 @login_required
 def UpdateAddress(request, pk):
     title = "Update Address"
+    button = "Update Address"
     queryset=Address.objects.get(id=pk)
     form = AddressForm(request.POST or None, instance=queryset)
     if request.method == "POST":
@@ -55,7 +58,8 @@ def UpdateAddress(request, pk):
             return redirect("/")
     context = {
         "title": title,
-        "form": form
+        "form": form,
+        "button": button
     }
     return render(request, 'school/create-edit-address.html', context)
 
@@ -83,7 +87,8 @@ def AddStudents(request):
         return redirect("/")
     context = {
         "title": title,
-        "button": button
+        "button": button,
+        "form": form
     }
     return render(request, 'school/create-edit-students.html', context)
 
@@ -101,7 +106,8 @@ def EditStudents(request, pk):
             # return HttpResponseRedirect("/")
     context = {
         "title": title,
-        "button": button
+        "button": button,
+        "form": form
     }
     return render(request, 'school/create-edit-students.html', context)
 
@@ -129,7 +135,8 @@ def AddLecturer(request):
         # return HttpResponseRedirect("/")
     context = {
         "title": title,
-        "button": button
+        "button": button,
+        "form": form
     }
     return render(request, 'school/create-edit-lecturers.html', context)
 
@@ -160,7 +167,8 @@ def EditLecturer(request, pk):
             # return HttpResponseRedirect("/")
     context = {
         "title": title,
-        "button": button
+        "button": button,
+        "form": form
     }
     return render(request, 'school/create-edit-lecturers.html', context)
 
@@ -193,7 +201,8 @@ def EditFaculty(request, pk):
             # return HttpResponseRedirect("/")
     context = {
         "title": title,
-        "button": button
+        "button": button,
+        "form": form
     }
     return render(request, 'school/create-edit-faculty.html', context)
 
@@ -221,7 +230,8 @@ def AddGender(request):
         # return HttpResponseRedirect("/")
     context = {
         "title": title,
-        "button": button
+        "button": button,
+        "form": form
     }
     return render(request, 'school/create-edit-gender.html', context)
 
@@ -239,7 +249,8 @@ def EditGender(request, pk):
             # return HttpResponseRedirect("/")
     context = {
         "title": title,
-        "button": button
+        "button": button,
+        "form": form
     }
     return render(request, 'school/create-edit-gender.html', context)
 
@@ -267,7 +278,8 @@ def AddProgramme(request):
         # return HttpResponseRedirect("/")
     context = {
         "title": title,
-        "button": button
+        "button": button,
+        "form": form
     }
     return render(request, 'school/create-edit-programmes.html', context)
 
@@ -285,7 +297,8 @@ def EditProgramme(request, pk):
             # return HttpResponseRedirect("/")
     context = {
         "title": title,
-        "button": button
+        "button": button,
+        "form": form
     }
     return render(request, 'school/create-edit-programmes.html', context)
 
@@ -313,7 +326,8 @@ def AddStage(request):
         # return HttpResponseRedirect("/")
     context = {
         "title": title,
-        "button": button
+        "button": button,
+        "form": form
     }
     return render(request, 'school/create-edit-stages.html', context)
 
@@ -331,7 +345,8 @@ def EditStage(request, pk):
             # return HttpResponseRedirect("/")
     context = {
         "title": title,
-        "button": button
+        "button": button,
+        "form": form
     }
     return render(request, 'school/create-edit-stages.html', context)
 
@@ -359,7 +374,8 @@ def AddUnit(request):
         # return HttpResponseRedirect("/")
     context = {
         "title": title,
-        "button": button
+        "button": button,
+        "form": form
     }
     return render(request, 'school/create-edit-units.html', context)
 
@@ -377,7 +393,8 @@ def EditUnit(request, pk):
             # return HttpResponseRedirect("/")
     context = {
         "title": title,
-        "button": button
+        "button": button,
+        "form": form
     }
     return render(request, 'school/create-edit-units.html', context)
 
