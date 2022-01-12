@@ -544,4 +544,4 @@ def ShowAddress(request):
 	"title": title,
 	"queryset": queryset,
 	}
-	return render(request, "school/list-faculty.html", context)
+	return render(request, "school/my-address.html", context)
