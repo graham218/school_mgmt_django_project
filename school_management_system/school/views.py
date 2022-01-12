@@ -538,6 +538,16 @@ def ListFaculty(request):
 	return render(request, "school/list-faculty.html", context)
 
 @login_required
+def ListGender(request):
+	title = 'List of All gender'
+	queryset = Faculty.objects.all()
+	context = {
+	"title": title,
+	"queryset": queryset,
+	}
+	return render(request, "school/list-gender.html", context)
+
+@login_required
 def ShowAddress(request):
 	title = 'My Address'
 	queryset = Address().objects.filter(user=request.user)
