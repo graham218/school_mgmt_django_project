@@ -37,7 +37,8 @@ def AddAddress(request):
         messages.success(request, "Address Updated Successfully")
         return redirect("/")
     context = {
-        "title": title
+        "title": title,
+        "form": form
     }
     return render(request, 'school/create-edit-address.html', context)
 
@@ -53,7 +54,8 @@ def UpdateAddress(request, pk):
             messages.success(request, "Address Updated Successfully")
             return redirect("/")
     context = {
-        "title": title
+        "title": title,
+        "form": form
     }
     return render(request, 'school/create-edit-address.html', context)
 
