@@ -261,7 +261,7 @@ def DeleteGender(request, pk):
     if request.method=="POST":
         queryset.delete()
         messages.success(request,"Gender Deleted Successfully")
-        #return HttpResponseRedirect()
+        return redirect('/school/list-gender')
     context={
         "title": title
     }
