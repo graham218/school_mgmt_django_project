@@ -20,18 +20,18 @@ def home(request):
 # Authentication Starts Here
 
 
-def RegistrationView(self, request):
+def RegistrationView(request):
     form = RegistrationForm(request.POST)
     if form.is_valid():
         messages.success(
-            request, "Congratulations! Registration Successful!")
+        request, "Congratulations! Registration Successful!")
         form.save()
     return render(request, 'account/register.html', {'form': form})
 
 @login_required
 def AddAddress(request):
     title = "Add Address"
-    form = AddressForm(request.POST or None)
+    form = AddressForm(request.POST)
     if form.is_valid():
         form.save()
         messages.success(request, "Address Updated Successfully")
