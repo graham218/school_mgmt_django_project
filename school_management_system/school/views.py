@@ -41,12 +41,10 @@ class RegistrationView(View):
 def AddAddress(request):
     title = "Add Address"
     form = AddressForm(request.POST or None)
-    if request.method == "POST":
-        form = AddressForm(request.POST or None)
-        if form.is_valid():
-            messages.success(request, "Address Updated Successfully")
-            form.save()
-            return HttpResponseRedirect("/")
+    if form.is_valid():
+        messages.success(request, "Address Updated Successfully")
+        form.save()
+        return HttpResponseRedirect("/")
     context = {
         "title": title
     }
@@ -55,12 +53,13 @@ def AddAddress(request):
 @login_required
 def UpdateAddress(request, pk):
     title = "Update Address"
-    form = AddressForm(request.POST or None, id=pk)
+    queryset=Address.objects.get(id=pk)
+    form = AddressForm(request.POST or None, instance=queryset)
     if request.method == "POST":
         form = AddressForm(request.POST or None, id=pk)
         if form.is_valid():
-            messages.success(request, "Address Updated Successfully")
             form.save()
+            messages.success(request, "Address Updated Successfully")
             return HttpResponseRedirect("/")
     context = {
         "title": title
@@ -101,7 +100,8 @@ def AddStudents(request):
 def EditStudents(request, pk):
     title = "Edit Student"
     button = "Edit Student"
-    form = AddStudentsForm(request.POST or None, id=pk)
+    queryset=Students.objects.get(id=pk)
+    form = AddStudentsForm(request.POST or None, instance=queryset)
     if request.method == "POST":
         form = AddStudentsForm(request.POST or None, id=pk)
         if form.is_valid():
