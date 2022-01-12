@@ -39,19 +39,45 @@
               <!--Crud Icons Start Hear-->
               <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                  <span class="menu-title">Basic UI Elements</span>
+                  <span class="menu-title">Students</span>
                   <i class="menu-arrow"></i>
                   <i class="mdi mdi-crosshairs-gps menu-icon"></i>
                 </a>
                 <div class="collapse" id="ui-basic">
                   <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{% static 'dash/pages/ui-features/buttons.html' %}">Buttons</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{% static 'dash/pages/ui-features/typography.html' %}">Typography</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{% url '' %}">Create Student</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{% url '' %}">View Students</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Lecturers</span>
+                  <i class="menu-arrow"></i>
+                  <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                </a>
+                <div class="collapse" id="ui-basic">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{% url '' %}">Create Lecture</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{% url '' %}">View Lectures</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Units</span>
+                  <i class="menu-arrow"></i>
+                  <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                </a>
+                <div class="collapse" id="ui-basic">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{% url '' %}">Add Units</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{% url '' %}">View Units</a></li>
                   </ul>
                 </div>
               </li>
               <!--Crud Icons end here-->
-              
+
               <li class="nav-item">
                 <a class="nav-link" href="{% static 'dash/pages/icons/mdi.html' %}">
                   <span class="menu-title">Icons</span>
