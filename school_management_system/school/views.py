@@ -44,13 +44,13 @@ def AddAddress(request):
     if request.method == "POST":
         form = AddressForm(request.POST or None)
         if form.is_valid():
-            messages.success(request, "Profile Updated Successfully")
+            messages.success(request, "Address Updated Successfully")
             form.save()
             return HttpResponseRedirect("/")
     context = {
         "title": title
     }
-    return render(request, 'account/profile.html', context)
+    return render(request, 'school/create-edit-address.html', context)
 
 @login_required
 def UpdateAddress(request, pk):
@@ -61,11 +61,11 @@ def UpdateAddress(request, pk):
         if form.is_valid():
             messages.success(request, "Address Updated Successfully")
             form.save()
-            # return HttpResponseRedirect("/")
+            return HttpResponseRedirect("/")
     context = {
         "title": title
     }
-    return render(request, 'account/profile.html', context)
+    return render(request, 'school/create-edit-address.html', context)
 
 @login_required
 def DeleteAddress(request, pk):
