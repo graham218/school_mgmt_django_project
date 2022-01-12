@@ -28,6 +28,7 @@ urlpatterns = [
 
     path('add-programme/', views.AddProgramme, name='add-programme'),
     path('edit-programme/<str:pk>', views.EditProgramme, name='edit-programme'),
+    path('delete-programme/<str:pk>', views.DeleteProgramme, name='delete-programme'),
 
     path('add-stage/', views.AddStage, name='add-stage'),
     path('edit-stage/<str:pk>', views.EditStage, name='edit-stage'),
