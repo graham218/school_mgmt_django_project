@@ -29,7 +29,7 @@ urlpatterns = [
     path('school/', include('school.urls')),
 
     # URL for Authentication
-    path('accounts/register/', views.RegistrationView.as_view(), name="register"),
+    path('accounts/register/', views.RegistrationView, name="register"),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='account/login.html', authentication_form=LoginForm), name="login"),
     path('accounts/profile/', views.home, name="profile"),
     #path('accounts/add-address/', views.AddressView.as_view(), name="add-address"),
