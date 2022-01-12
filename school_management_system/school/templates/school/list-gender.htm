@@ -17,15 +17,17 @@
                 </tr>
               </thead>
               <tbody>
-                {% for  %}
-                <tr>
-                  <td> Fund is not recieved </td>
-                  <td>
-                    <label class="badge badge-gradient-success">DONE</label>
-                  </td>
-                  <td> Dec 5, 2017 </td>
-                  <td> WD-12345 </td>
-                </tr>
+                {% for instance in queryset %}
+                    <tr>
+                        <td> Fund is not recieved </td>
+                        <td>
+                            <label class="badge badge-gradient-success">DONE</label>
+                        </td>
+                        <td> Dec 5, 2017 </td>
+                        <td> WD-12345 </td>
+                    </tr>
+                {% endfor %}
+                
                 
               </tbody>
             </table>

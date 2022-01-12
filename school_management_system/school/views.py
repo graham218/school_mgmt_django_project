@@ -540,7 +540,7 @@ def ListFaculty(request):
 @login_required
 def ListGender(request):
 	title = 'List of All gender'
-	queryset = Faculty.objects.all()
+	queryset = Gender.objects.all()
 	context = {
 	"title": title,
 	"queryset": queryset,
