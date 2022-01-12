@@ -4,8 +4,6 @@ from .import views
 app_name='school'
 
 urlpatterns = [
-    path('test/', views.RegistrationView, name='register'),
-
     path('add-address/', views.AddAddress, name='add-address'),
     path('edit-address/<str:pk>', views.UpdateAddress, name='edit-address'),
     path('delete-address/<str:pk>', views.DeleteAddress, name='delete-address'),
