@@ -42,9 +42,9 @@ def AddAddress(request):
     title = "Add Address"
     form = AddressForm(request.POST or None)
     if form.is_valid():
-        messages.success(request, "Address Updated Successfully")
         form.save()
-        return HttpResponseRedirect("/")
+        messages.success(request, "Address Updated Successfully")
+        return redirect("/")
     context = {
         "title": title
     }
@@ -60,7 +60,7 @@ def UpdateAddress(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Address Updated Successfully")
-            return HttpResponseRedirect("/")
+            return redirect("/")
     context = {
         "title": title
     }
@@ -73,7 +73,7 @@ def DeleteAddress(request, pk):
     if request.method=="POST":
         queryset.delete()
         messages.success(request,"Address Deleted Successfully")
-        #return HttpResponseRedirect()
+        #return redirect()
     context={
         "title": title
     }
