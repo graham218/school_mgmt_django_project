@@ -42,4 +42,5 @@ urlpatterns = [
     path('add-unit/', views.AddUnit, name='add-unit'),
     path('edit-unit/<str:pk>', views.EditUnit, name='edit-unit'),
     path('delete-unit/<str:pk>', views.DeleteUnit, name='delete-unit'),
+    path('list-unit/', views.ListUnits, name='list-unit'),
 ]
