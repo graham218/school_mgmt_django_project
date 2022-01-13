@@ -111,7 +111,7 @@ def AddStudents(request):
         total_fees_billed=total_fees_billed, total_fees_paid=total_fees_paid, balance=balance)
         reg.save()
         messages.success(request, "New Student Added Successfully")
-        return redirect("/school/add-students")
+        return redirect("/school/list-students")
     context = {
         "title": title,
         "button": button,
@@ -130,7 +130,7 @@ def EditStudents(request, pk):
         if form.is_valid():
             messages.success(request, "Student Updated Successfully")
             form.save()
-            return redirect("/school/add-students")
+            return redirect("/school/list-students")
     context = {
         "title": title,
         "button": button,
