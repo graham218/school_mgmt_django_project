@@ -86,7 +86,7 @@ def AddStudents(request):
         admission_no = form.cleaned_data['admission_no']
         full_name = form.cleaned_data['full_name']
         nationality = form.cleaned_data['nationality']
-        gender = form.cleaned_data['gender']
+        stud_gender = form.cleaned_data['stud_gender']
         national_ID_number = form.cleaned_data['national_ID_number']
         birth_cert_no = form.cleaned_data['birth_cert_no']
         phone_number = form.cleaned_data['phone_number']
@@ -161,7 +161,7 @@ def AddLecturer(request):
         lec_no = form.cleaned_data['lec_no']
         full_name = form.cleaned_data['full_name']
         nationality = form.cleaned_data['nationality']
-        gender = form.cleaned_data['gender']
+        lec_gender = form.cleaned_data['lec_gender']
         national_ID_number = form.cleaned_data['national_ID_number']
         phone_number = form.cleaned_data['phone_number']
         DOB = form.cleaned_data['DOB']
@@ -483,7 +483,7 @@ def ListStudents(request):
 			instance = queryset
 			for students in instance:
 				writer.writerow([students.user, students.admission_no, students.full_name,
-                students.nationality, students.gender, students.national_ID_number,
+                students.nationality, students.stud_gender, students.national_ID_number,
                 students.birth_cert_no, students.phone_number, students.DOB,
                 students.date_of_admission, students.programme, students.stage,
                 students.postal_address, students.balance])
@@ -519,7 +519,7 @@ def Listlectures(request):
 			instance = queryset
 			for lecturer in instance:
 				writer.writerow([lecturer.user, lecturer.lec_no, lecturer.full_name,
-                lecturer.nationality, lecturer.gender, lecturer.national_ID_number,
+                lecturer.nationality, lecturer.lec_gender, lecturer.national_ID_number,
                 lecturer.phone_number, lecturer.DOB,lecturer.postal_address, lecturer.balance])
 			return response
 	

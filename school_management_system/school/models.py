@@ -34,7 +34,7 @@ class Stages(models.Model):
 
 class Gender(models.Model):
     gender=models.CharField(max_length=255, blank=True, null=True)
-    def __str_(self):
+    def __str__(self):
         return self.gender
 
 class Students(models.Model):
@@ -42,7 +42,7 @@ class Students(models.Model):
     admission_no=models.CharField(max_length=255, blank=True)
     full_name=models.CharField(max_length=255, blank=False)
     nationality=models.CharField(max_length=255, blank=True)
-    gender=models.ForeignKey(Gender, on_delete=models.CASCADE)
+    stud_gender=models.ForeignKey(Gender, on_delete=models.CASCADE)
     national_ID_number=models.CharField(max_length=255, blank=True)
     birth_cert_no=models.CharField(max_length=255, blank=True)
     phone_number=models.CharField(max_length=255, blank=True)
@@ -73,7 +73,7 @@ class Lectures(models.Model):
     lec_no=models.CharField(max_length=255, blank=True)
     full_name=models.CharField(max_length=255, blank=False)
     nationality=models.CharField(max_length=255, blank=True)
-    gender=models.ForeignKey(Gender, on_delete=models.CASCADE)
+    lec_gender=models.ForeignKey(Gender, on_delete=models.CASCADE)
     national_ID_number=models.CharField(max_length=255, blank=True)
     phone_number=models.CharField(max_length=255, blank=True)
     DOB=models.DateField(auto_now=False, auto_now_add=False)
