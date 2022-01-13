@@ -5,7 +5,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm, PasswordResetForm, SetPasswordForm
 from django.utils.translation import gettext, gettext_lazy as _
-
+from django.forms.widgets import DateInput
 
 
 #class RegistrationForm(UserCreationForm):
@@ -71,11 +71,15 @@ class AddStudentsForm(forms.ModelForm):
         widgets = {'admission_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Admission Number'}),
             'full_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Full Name'}),
             'nationality': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, Kenyan, Ugandan, Somalian'}),
-            'gender': forms.Select(),
+            'gender': forms.RadioSelect(attrs={'id': 'value'}),
             'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter National Id Number'}),
             'birth_cert_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Birth Certificate Number'}),
             'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Phone Number'}),
             'stage': forms.RadioSelect(attrs={'id': 'value'}),
+            'DOB': DateInput(attrs={'type': 'date'}),
+            'date_of_admission': DateInput(attrs={'type': 'date'}),
+            'date_of_graduation': DateInput(attrs={'type': 'date'}),
+            'programme': forms.Select(attrs={'class': 'form-control', 'id': 'value'}),
             #'profile_photo': forms.ImageField(label_suffix="Profile Picture"),
             'postal_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, PO BOX 123 Busia, Kenya'}),
             'school_email': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter School Email'}),
@@ -98,6 +102,7 @@ class AddLectureForm(forms.ModelForm):
             'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter National Id Number'}),
             'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Phone Number'}),
             #'profile_photo': forms.ImageField(label_suffix="Profile Picture"),
+            'DOB': DateInput(attrs={'type': 'date'}),
             'postal_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, PO BOX 123 Busia, Kenya'}),
             'school_email': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter School Email'}),
             'school_email_password': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'School Email Password'}),
