@@ -24,7 +24,7 @@
                             </div>
                         {% endfor %}
                         <div class="mt-3">
-                          <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" type="submit">Search Faculty</button>
+                          <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" type="submit">Search Programmes</button>
                         </div>
                         
                       </fieldset>
@@ -46,9 +46,8 @@
             <thead>
               <tr>
                 <th> COUNTER </th>
-                <th> FACULTY NAME </th>
-                <th> DATE CREATED </th>
-                <th> DATE UPDATED </th>
+                <th> PROGRAMME NAME </th>
+                <th> FACULTY </th>
                 <th> UPDATE </th>
                 <th> DELETE </th>
               </tr>
@@ -57,11 +56,10 @@
               {% for instance in queryset %}
               <tr>
                   <td class="py-1">{{forloop.counter}}</td>
-                  <td>{{instance.school}}</td>
-                  <td>{{instance.date_created}}</td>
-                  <td>{{instance.date_updated}}</td>
-                  <td><a class="mdi mdi-stack-overflow" href="{% url 'school:edit-faculty' instance.id%}">Update</a></td>
-                  <td><a class="mdi mdi-delete-forever" href="{% url 'school:delete-faculty' instance.id%}">Delete</a></td>
+                  <td>{{instance.name}}</td>
+                  <td>{{instance.faculty}}</td>
+                  <td><a class="mdi mdi-stack-overflow" href="{% url 'school:edit-programme' instance.id%}">Update</a></td>
+                  <td><a class="mdi mdi-delete-forever" href="{% url 'school:delete-programme' instance.id%}">Delete</a></td>
               </tr>
               {% endfor %}
             </tbody>
