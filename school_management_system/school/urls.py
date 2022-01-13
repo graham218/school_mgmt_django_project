@@ -37,7 +37,7 @@ urlpatterns = [
     path('add-stage/', views.AddStage, name='add-stage'),
     path('edit-stage/<str:pk>', views.EditStage, name='edit-stage'),
     path('delete-stage/<str:pk>', views.DeleteStage, name='delete-stage'),
-    path('list-stage/', views.ListStages, name='list-stage'),
+    path('list-stage/', views.ListStage, name='list-stage'),
 
     path('add-unit/', views.AddUnit, name='add-unit'),
     path('edit-unit/<str:pk>', views.EditUnit, name='edit-unit'),

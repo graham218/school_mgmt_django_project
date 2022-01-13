@@ -549,9 +549,9 @@ def ListGender(request):
 	return render(request, "school/list-gender.html", context)
 
 @login_required
-def ListStages(request):
+def ListStage(request):
 	title = 'List of All Stages'
-	queryset = Stages().objects.all()
+	queryset = Stages.objects.all()
 	context = {
 	"title": title,
 	"queryset": queryset,
