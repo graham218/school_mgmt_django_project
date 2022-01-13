@@ -92,7 +92,6 @@ def AddStudents(request):
         phone_number = form.cleaned_data['phone_number']
         stage = form.cleaned_data['stage']
         profile_photo = form.cleaned_data['profile_photo']
-        admission_no = form.cleaned_data['admission_no']
         postal_address = form.cleaned_data['postal_address']
         school_email = form.cleaned_data['school_email']
         school_email_password = form.cleaned_data['school_email_password']
@@ -100,7 +99,10 @@ def AddStudents(request):
         total_fees_paid = form.cleaned_data['total_fees_paid']
         balance = form.cleaned_data['balance']
         reg = Students(user=user, admission_no=admission_no, full_name=full_name, 
-        nationality=nationality, )
+        nationality=nationality, gender=gender, national_ID_number=national_ID_number,
+        birth_cert_no=birth_cert_no, phone_number=phone_number, stage=stage, profile_photo=profile_photo,
+        postal_address=postal_address, school_email=school_email, school_email_password=school_email_password,
+        total_fees_billed=total_fees_billed, total_fees_paid=total_fees_paid, balance=balance)
         reg.save()
         messages.success(request, "New Student Added Successfully")
         return redirect("/school/add-students")
