@@ -121,7 +121,7 @@ class AddProgrammesForm(forms.ModelForm):
         model=Programmes
         fields=['name','faculty']
         widgets = {'name':forms.TextInput(attrs={'class':'form-control', 'placeholder':'eg: Bachelor Of Science Information & Communication Technology'}),
-         'faculty':forms.RadioSelect(attrs={'id':'value'})}
+         'faculty':forms.Select(attrs={'class':'form-control'})}
 
 class AddStagesForm(forms.ModelForm):
     class Meta:
