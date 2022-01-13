@@ -1,12 +1,12 @@
 {% if messages %}
     {% for message in messages %}
-        <div class="toast align-items-center text-white bg-success border-0 {% if message.tags %}{{ message.tags }}{% endif %}" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-              <div class="toast-body">
-                {{message}}
-              </div>
-              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-          </div>
+        <div class="container mt-5 alert alert-{% if message.tags %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        
     {% endfor %}
 {% endif %}
