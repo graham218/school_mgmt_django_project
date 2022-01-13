@@ -46,25 +46,20 @@
             <tr>
               <th> COUNTER </th>
               <th> USER NAME </th>
-              <th> ADMISSION NO </th>
+              <th> LEC NO </th>
               <th> FULL NAME </th>
               <th> NATIONALITY </th>
               <th> GENDER </th>
               <th> NATIONAL ID </th>
-              <th> BIRTH CERT NO </th>
               <th> PHONE NO </th>
               <th> DOB </th>
-              <th> DATE OF ADMISSION </th>
-              <th> GRADUATION DATE </th>
-              <th> PROGRAMME </th>
-              <th> STAGE </th>
               <th> PROFILE PHOTO </th>
               <th> POSTAL ADDRESS </th>
               <th> SCHOOL EMAIL </th>
               <th> EMAIL PASSWORD </th>
-              <th> FEE BILLED </th>
-              <th> FFE PAID </th>
-              <th> FEE BALANCE </th>
+              <th> BILLED SALARY </th>
+              <th> SALARY PAID </th>
+              <th> SALARY BALANCE </th>
             </tr>
           </thead>
           <tbody>
@@ -72,27 +67,22 @@
             <tr>
                 <td class="py-1">{{forloop.counter}}</td>
                 <td>{{instance.user}}</td>
-                <td>{{instance.admission_no}}</td>
+                <td>{{instance.lec_no}}</td>
                 <td>{{instance.full_name}}</td>
                 <td>{{instance.nationality}}</td>
                 <td>{{instance.gender}}</td>
                 <td>{{instance.national_ID_number}}</td>
-                <td>{{instance.birth_cert_no}}</td>
                 <td>{{instance.phone_number}}</td>
                 <td>{{instance.DOB}}</td>
-                <td>{{instance.date_of_admission}}</td>
-                <td>{{instance.date_of_graduation}}</td>
-                <td>{{instance.programme}}</td>
-                <td>{{instance.stage}}</td>
                 <td><img src="/{{ BASIC_DIR }}/{{instance.profile_photo}}" width="120"/></td>
                 <td>{{instance.postal_address}}</td>
                 <td>{{instance.school_email}}</td>
                 <td>{{instance.school_email_password}}</td>
-                <td>{{instance.total_fees_billed}}</td>
-                <td>{{instance.total_fees_paid}}</td>
+                <td>{{instance.total_salary_billed}}</td>
+                <td>{{instance.total_salary_paid}}</td>
                 <td>{{instance.balance}}</td>
-                <td><a class="mdi mdi-stack-overflow" href="{% url 'school:edit-students' instance.id%}">Update</a></td>
-                <td><a class="mdi mdi-delete-forever" href="{% url 'school:delete-student' instance.id%}">Delete</a></td>
+                <td><a class="mdi mdi-stack-overflow" href="{% url 'school:edit-lecturer' instance.id%}">Update</a></td>
+                <td><a class="mdi mdi-delete-forever" href="{% url 'school:delete-lecturer' instance.id%}">Delete</a></td>
             </tr>
             {% endfor %}
           </tbody>
