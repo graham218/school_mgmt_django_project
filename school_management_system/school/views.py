@@ -145,7 +145,7 @@ def DeleteStudent(request, pk):
     if request.method=="POST":
         queryset.delete()
         messages.success(request,"Student Deleted Successfully")
-        return redirect("/school/add-students")
+        return redirect("/school/list-students")
     context={
         "title": title
     }
@@ -157,9 +157,29 @@ def AddLecturer(request):
     button="Add Lecture"
     form = AddLectureForm(request.POST or None)
     if form.is_valid():
+        user=request.user
+        lec_no = form.cleaned_data['lec_no']
+        full_name = form.cleaned_data['full_name']
+        nationality = form.cleaned_data['nationality']
+        gender = form.cleaned_data['gender']
+        national_ID_number = form.cleaned_data['national_ID_number']
+        phone_number = form.cleaned_data['phone_number']
+        DOB = form.cleaned_data['DOB']
+        profile_photo = form.cleaned_data['profile_photo']
+        postal_address = form.cleaned_data['postal_address']
+        school_email = form.cleaned_data['school_email']
+        school_email_password = form.cleaned_data['school_email_password']
+        total_salary_billed = form.cleaned_data['total_salary_billed']
+        total_salary_paid = form.cleaned_data['total_salary_paid']
+        balance = form.cleaned_data['balance']
+        reg = Lectures(user=user, lec_no=lec_no, full_name=full_name, 
+        nationality=nationality, gender=gender, national_ID_number=national_ID_number,
+        phone_number=phone_number, DOB=DOB, profile_photo=profile_photo,
+        postal_address=postal_address, school_email=school_email, school_email_password=school_email_password,
+        total_salary_billed=total_salary_billed, total_salary_paid=total_salary_paid, balance=balance)
+        reg.save()
         messages.success(request, "New Lecture Added Successfully")
-        form.save()
-        return redirect("/school/add-lecture")
+        return redirect("/school/list-lecturer")
     context = {
         "title": title,
         "button": button,
@@ -174,7 +194,7 @@ def DeleteLecturer(request, pk):
     if request.method=="POST":
         queryset.delete()
         messages.success(request,"Lecturer Deleted Successfully")
-        return redirect("/school/add-lecture")
+        return redirect("/school/list-lecturer")
     context={
         "title": title
     }
@@ -191,7 +211,7 @@ def EditLecturer(request, pk):
         if form.is_valid():
             messages.success(request, "Lecture Updated Successfully")
             form.save()
-            return redirect("/school/add-lecture")
+            return redirect("/school/list-lecturer")
     context = {
         "title": title,
         "button": button,
