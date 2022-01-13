@@ -83,26 +83,22 @@ def AddStudents(request):
     form = AddStudentsForm(request.POST or None)
     if form.is_valid():
         user=request.user
-        fields=['admission_no', 'full_name', 'nationality',
-     'gender', 'national_ID_number', 'birth_cert_no', 'phone_number',
-     'DOB', 'date_of_admission', 'date_of_graduation', 'programme',
-     'stage','profile_photo', 'postal_address', 'school_email', 'school_email_password',
-     'total_fees_billed', 'total_fees_paid', 'balance']
         admission_no = form.cleaned_data['admission_no']
         full_name = form.cleaned_data['full_name']
         nationality = form.cleaned_data['nationality']
         gender = form.cleaned_data['gender']
         national_ID_number = form.cleaned_data['national_ID_number']
         birth_cert_no = form.cleaned_data['birth_cert_no']
+        phone_number = form.cleaned_data['phone_number']
+        stage = form.cleaned_data['stage']
+        profile_photo = form.cleaned_data['profile_photo']
         admission_no = form.cleaned_data['admission_no']
-        full_name = form.cleaned_data['full_name']
-        nationality = form.cleaned_data['nationality']
-        admission_no = form.cleaned_data['admission_no']
-        full_name = form.cleaned_data['full_name']
-        nationality = form.cleaned_data['nationality']
-        admission_no = form.cleaned_data['admission_no']
-        full_name = form.cleaned_data['full_name']
-        nationality = form.cleaned_data['nationality']
+        postal_address = form.cleaned_data['postal_address']
+        school_email = form.cleaned_data['school_email']
+        school_email_password = form.cleaned_data['school_email_password']
+        total_fees_billed = form.cleaned_data['total_fees_billed']
+        total_fees_paid = form.cleaned_data['total_fees_paid']
+        balance = form.cleaned_data['balance']
         reg = Students(user=user, admission_no=admission_no, full_name=full_name, 
         nationality=nationality, )
         reg.save()
