@@ -84,7 +84,7 @@ def AddStudents(request):
     if form.is_valid():
         form.save()
         messages.success(request, "New Student Added Successfully")
-        return redirect("/")
+        return redirect("/school/add-students")
     context = {
         "title": title,
         "button": button,
@@ -103,7 +103,7 @@ def EditStudents(request, pk):
         if form.is_valid():
             messages.success(request, "Student Updated Successfully")
             form.save()
-            # return HttpResponseRedirect("/")
+            return redirect("/school/add-students")
     context = {
         "title": title,
         "button": button,
@@ -118,7 +118,7 @@ def DeleteStudent(request, pk):
     if request.method=="POST":
         queryset.delete()
         messages.success(request,"Student Deleted Successfully")
-        #return HttpResponseRedirect()
+        return redirect("/school/add-students")
     context={
         "title": title
     }
@@ -132,7 +132,7 @@ def AddLecturer(request):
     if form.is_valid():
         messages.success(request, "New Lecture Added Successfully")
         form.save()
-        # return HttpResponseRedirect("/")
+        return redirect("/school/add-lecture")
     context = {
         "title": title,
         "button": button,
@@ -147,7 +147,7 @@ def DeleteLecturer(request, pk):
     if request.method=="POST":
         queryset.delete()
         messages.success(request,"Lecturer Deleted Successfully")
-        #return HttpResponseRedirect()
+        return redirect("/school/add-lecture")
     context={
         "title": title
     }
@@ -164,7 +164,7 @@ def EditLecturer(request, pk):
         if form.is_valid():
             messages.success(request, "Lecture Updated Successfully")
             form.save()
-            # return HttpResponseRedirect("/")
+            return redirect("/school/add-lecture")
     context = {
         "title": title,
         "button": button,
