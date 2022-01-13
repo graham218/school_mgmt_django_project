@@ -90,6 +90,10 @@ def AddStudents(request):
         national_ID_number = form.cleaned_data['national_ID_number']
         birth_cert_no = form.cleaned_data['birth_cert_no']
         phone_number = form.cleaned_data['phone_number']
+        DOB = form.cleaned_data['DOB']
+        date_of_admission = form.cleaned_data['date_of_admission']
+        date_of_graduation = form.cleaned_data['date_of_graduation']
+        programme = form.cleaned_data['programme']
         stage = form.cleaned_data['stage']
         profile_photo = form.cleaned_data['profile_photo']
         postal_address = form.cleaned_data['postal_address']
@@ -100,7 +104,9 @@ def AddStudents(request):
         balance = form.cleaned_data['balance']
         reg = Students(user=user, admission_no=admission_no, full_name=full_name, 
         nationality=nationality, gender=gender, national_ID_number=national_ID_number,
-        birth_cert_no=birth_cert_no, phone_number=phone_number, stage=stage, profile_photo=profile_photo,
+        birth_cert_no=birth_cert_no, phone_number=phone_number, DOB=DOB,
+        date_of_admission=date_of_admission, stage=stage, date_of_graduation=date_of_graduation,
+        programme=programme, profile_photo=profile_photo,
         postal_address=postal_address, school_email=school_email, school_email_password=school_email_password,
         total_fees_billed=total_fees_billed, total_fees_paid=total_fees_paid, balance=balance)
         reg.save()
