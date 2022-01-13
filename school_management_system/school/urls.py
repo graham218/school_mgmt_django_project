@@ -17,6 +17,7 @@ urlpatterns = [
     path('add-lecturer/', views.AddLecturer, name='add-lecturer'),
     path('edit-lecturer/<str:pk>', views.EditLecturer, name='edit-lecturer'),
     path('delete-lecturer/<str:pk>', views.DeleteLecturer, name='delete-lecturer'),
+    path('list-lecturer/', views.Listlectures, name='list-lecturer'),
     
 
     path('add-faculty/', views.AddFaculty, name='add-faculty'),
