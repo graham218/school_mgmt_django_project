@@ -214,7 +214,7 @@ def DeleteFaculty(request, pk):
     if request.method=="POST":
         queryset.delete()
         messages.success(request,"Faculty Deleted Successfully")
-        #return HttpResponseRedirect()
+        return redirect('/school/list-faculty')
     context={
         "title": title
     }
@@ -276,7 +276,7 @@ def AddProgramme(request):
     if form.is_valid():
         messages.success(request, "New Programme Added Successfully")
         form.save()
-        # return HttpResponseRedirect("/")
+        return redirect('/school/list-programme')
     context = {
         "title": title,
         "button": button,
@@ -295,7 +295,7 @@ def EditProgramme(request, pk):
         if form.is_valid():
             messages.success(request, "Programme Updated Successfully")
             form.save()
-            # return HttpResponseRedirect("/")
+            return redirect('/school/list-programme')
     context = {
         "title": title,
         "button": button,
@@ -310,7 +310,7 @@ def DeleteProgramme(request, pk):
     if request.method=="POST":
         queryset.delete()
         messages.success(request,"Programme Deleted Successfully")
-        #return HttpResponseRedirect()
+        return redirect('/school/list-programme')
     context={
         "title": title
     }
@@ -324,7 +324,7 @@ def AddStage(request):
     if form.is_valid():
         messages.success(request, "New Stage Added Successfully")
         form.save()
-        # return HttpResponseRedirect("/")
+        return redirect('/school/list-stage')
     context = {
         "title": title,
         "button": button,
@@ -343,7 +343,7 @@ def EditStage(request, pk):
         if form.is_valid():
             messages.success(request, "Stage Updated Successfully")
             form.save()
-            # return HttpResponseRedirect("/")
+            return redirect('/school/list-stage')
     context = {
         "title": title,
         "button": button,
@@ -358,7 +358,7 @@ def DeleteStage(request, pk):
     if request.method=="POST":
         queryset.delete()
         messages.success(request,"Stage Deleted Successfully")
-        #return HttpResponseRedirect()
+        return redirect('/school/list-stage')
     context={
         "title": title
     }
@@ -372,7 +372,7 @@ def AddUnit(request):
     if form.is_valid():
         messages.success(request, "New Unit Added Successfully")
         form.save()
-        # return HttpResponseRedirect("/")
+        return redirect('/school/list-unit')
     context = {
         "title": title,
         "button": button,
@@ -391,7 +391,7 @@ def EditUnit(request, pk):
         if form.is_valid():
             messages.success(request, "Unit Updated Successfully")
             form.save()
-            # return HttpResponseRedirect("/")
+            return redirect('/school/list-unit')
     context = {
         "title": title,
         "button": button,
@@ -406,7 +406,7 @@ def DeleteUnit(request, pk):
     if request.method=="POST":
         queryset.delete()
         messages.success(request,"Unit Deleted Successfully")
-        #return HttpResponseRedirect()
+        return redirect('/school/list-unit')
     context={
         "title": title
     }
