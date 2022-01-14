@@ -124,9 +124,9 @@ def EditStudents(request, pk):
     title = "Edit Student"
     button = "Edit Student"
     queryset=Students.objects.get(id=pk)
-    form = AddStudentsForm(reqest.FILES,request.POST or None, instance=queryset)
+    form = AddStudentsForm(request.FILES,request.POST or None, instance=queryset)
     if request.method == "POST":
-        form = AddStudentsForm(reqest.FILES,request.POST or None, instance=queryset)
+        form = AddStudentsForm(request.FILES,request.POST or None, instance=queryset)
         if form.is_valid():
             messages.success(request, "Student Updated Successfully")
             form.save()
@@ -155,7 +155,7 @@ def DeleteStudent(request, pk):
 def AddLecturer(request):
     title = "Add New Lecturer"
     button="Add Lecture"
-    form = AddLectureForm(request.POST or None, reqest.FILES)
+    form = AddLectureForm(request.POST or None, request.FILES)
     if form.is_valid():
         user=request.user
         lec_no = form.cleaned_data['lec_no']
@@ -165,7 +165,7 @@ def AddLecturer(request):
         national_ID_number = form.cleaned_data['national_ID_number']
         phone_number = form.cleaned_data['phone_number']
         DOB = form.cleaned_data['DOB']
-        profile_photo = request.FILES.getlist('profile_photo')
+        profile_photo = form.cleaned_data['profile_photo']
         postal_address = form.cleaned_data['postal_address']
         school_email = form.cleaned_data['school_email']
         school_email_password = form.cleaned_data['school_email_password']
@@ -205,9 +205,9 @@ def EditLecturer(request, pk):
     title = "Edit Lecturer"
     button = "Edit Lecturer"
     queryset=Lectures.objects.get(id=pk)
-    form = AddLectureForm(reqest.FILES,request.POST or None, instance=queryset)
+    form = AddLectureForm(request.FILES,request.POST or None, instance=queryset)
     if request.method == "POST":
-        form = AddLectureForm(request.POST or None, instance=queryset)
+        form = AddLectureForm(request.FILES,request.POST or None, instance=queryset)
         if form.is_valid():
             messages.success(request, "Lecture Updated Successfully")
             form.save()
