@@ -66,10 +66,10 @@
           <div class="card">
             <div class="card-body">
               <table class="table table-striped">
-                <tr><th>Programme:</th></tr>
-                <tr><th>Username:</th></tr>
-                <tr><th>Email:</th></tr>
-                <tr><th>Name:</th></tr>
+                <tr><th>Programme:</th><td>Information and Communication Technology</td></tr>
+                <tr><th>Username:</th><td>{{request.user}}</td></tr>
+                <tr><th>Email:</th><td>{{request.user.email}}</td></tr>
+                <tr><th>Name:</th><td>{{request.user.get_full_name}}</td></tr>
               </table>
             </div>
           </div>
