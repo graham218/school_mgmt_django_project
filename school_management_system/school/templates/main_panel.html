@@ -17,67 +17,82 @@
       </div>
       {% if my_queryset %}
       {% for instance in my_queryset %}
-      <div class="row">
-        <div class="col-md-4 stretch-card grid-margin">
-          <div class="card bg-gradient-danger card-img-holder text-white">
-            <div class="card-body">
-              <img src="{% static 'dash/assets/images/dashboard/circle.svg' %}" class="card-img-absolute" alt="circle-image" />
-              <h4 class="font-weight-normal mb-3">Total Fee Billed <i class="mdi mdi-chart-line mdi-24px float-right"></i>
-              </h4>
-              <h2 class="mb-5">Ksh {{instance.total_fees_billed}}</h2>
+        <div class="row">
+          <div class="col-md-4 stretch-card grid-margin">
+            <div class="card bg-gradient-danger card-img-holder text-white">
+              <div class="card-body">
+                <img src="{% static 'dash/assets/images/dashboard/circle.svg' %}" class="card-img-absolute" alt="circle-image" />
+                <h4 class="font-weight-normal mb-3">Total Fee Billed <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">Ksh {{instance.total_fees_billed}}</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 stretch-card grid-margin">
+            <div class="card bg-gradient-info card-img-holder text-white">
+              <div class="card-body">
+                <img src="{% static 'dash/assets/images/dashboard/circle.svg' %}" class="card-img-absolute" alt="circle-image" />
+                <h4 class="font-weight-normal mb-3">Total Fee Paid <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">Ksh {{instance.total_fees_paid}}</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 stretch-card grid-margin">
+            <div class="card bg-gradient-success card-img-holder text-white">
+              <div class="card-body">
+                <img src="{% static 'dash/assets/images/dashboard/circle.svg' %}" class="card-img-absolute" alt="circle-image" />
+                <h4 class="font-weight-normal mb-3">Fee Balance <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">Ksh {{instance.balance}}</h2>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4 stretch-card grid-margin">
-          <div class="card bg-gradient-info card-img-holder text-white">
-            <div class="card-body">
-              <img src="{% static 'dash/assets/images/dashboard/circle.svg' %}" class="card-img-absolute" alt="circle-image" />
-              <h4 class="font-weight-normal mb-3">Total Fee Paid <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
-              </h4>
-              <h2 class="mb-5">Ksh {{instance.total_fees_paid}}</h2>
+        <div class="row">
+          <div class="col-md-4 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="clearfix">
+                  <h4 class="card-title" style="text-align: center;">Profile Photo</h4>
+                  <div>
+                    <img src="{{instance.profile_photo.url}}" alt="profile" style="border-radius: 50%;" width="200" height="200">
+                    <span class="login-status online"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 grid-margin stretch-card table-responsive">
+            <div class="card">
+              <div class="card-body">
+                <table class="table table-striped">
+                  <tbody>
+                    <tr><th>Programme:</th><td>{{instance.programme}}</td></tr>
+                    <tr><th>Username:</th><td>{{request.user}}</td></tr>
+                    <tr><th>Email:</th><td>{{request.user.email}}</td></tr>
+                    <tr><th>Name:</th><td>{{request.user.get_full_name}}</td></tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4 stretch-card grid-margin">
-          <div class="card bg-gradient-success card-img-holder text-white">
-            <div class="card-body">
-              <img src="{% static 'dash/assets/images/dashboard/circle.svg' %}" class="card-img-absolute" alt="circle-image" />
-              <h4 class="font-weight-normal mb-3">Fee Balance <i class="mdi mdi-diamond mdi-24px float-right"></i>
-              </h4>
-              <h2 class="mb-5">Ksh {{instance.balance}}</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <div class="clearfix">
-                <h4 class="card-title" style="text-align: center;">Profile Photo</h4>
-                <div>
-                  <img src="{{instance.profile_photo.url}}" alt="profile" style="border-radius: 50%;" width="200" height="200">
-                  <span class="login-status online"></span>
+
+        <div class="row">
+          <div class="col-12 grid-margin">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">My Profile</h4>
+                <a type="button" class="btn btn-gradient-success btn-icon-text btn-rounded"> Edit <i class="mdi mdi-file-check btn-icon-append"></i>
+                </a>
+                <div class="table-responsive">
+                  
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-8 grid-margin stretch-card table-responsive">
-          <div class="card">
-            <div class="card-body">
-              <table class="table table-striped">
-                <tbody>
-                  <tr><th>Programme:</th><td>{{instance.programme}}</td></tr>
-                  <tr><th>Username:</th><td>{{request.user}}</td></tr>
-                  <tr><th>Email:</th><td>{{request.user.email}}</td></tr>
-                  <tr><th>Name:</th><td>{{request.user.get_full_name}}</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
       {% endfor %}
       {% endif %}
       
@@ -86,8 +101,8 @@
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">My Profile</h4>
-              <button type="button" class="btn btn-gradient-success btn-icon-text btn-rounded"> Edit <i class="mdi mdi-file-check btn-icon-append"></i>
-              </button>
+              <a type="button" class="btn btn-gradient-success btn-icon-text btn-rounded"> Edit <i class="mdi mdi-file-check btn-icon-append"></i>
+              </a>
               <div class="table-responsive">
                 
               </div>
