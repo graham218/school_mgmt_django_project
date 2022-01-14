@@ -13,7 +13,7 @@ def home(request):
     title = "Home"
     title1="Student's Profile"
     title2="Lecturer's Profile"
-    my_queryset=Students.objects.get(user=request.user)
+    my_queryset=Students.objects.filter(user=request.user)
     #lec_queryset=Lectures.objects.get(user=request.user)
     context = {
         "title": title,
