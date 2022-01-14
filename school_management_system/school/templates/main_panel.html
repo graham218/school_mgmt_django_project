@@ -55,7 +55,7 @@
               <div class="card-body">
                 <div class="clearfix">
                   <h4 class="card-title" style="text-align: center;">Profile Photo</h4>
-                  <div>
+                  <div style="text-align: center;">
                     <img src="{{instance.profile_photo.url}}" alt="profile" style="border-radius: 50%;" width="200" height="200">
                     <span class="login-status online"></span>
                   </div>
@@ -63,9 +63,10 @@
               </div>
             </div>
           </div>
-          <div class="col-md-8 grid-margin stretch-card table-responsive">
+          <div class="col-md-8 grid-margin">
             <div class="card">
               <div class="card-body">
+               <div class="table-responsive">
                 <table class="table table-striped">
                   <tbody>
                     <tr><th>Programme:</th><td>{{instance.programme}}</td></tr>
@@ -74,6 +75,7 @@
                     <tr><th>Name:</th><td>{{request.user.get_full_name}}</td></tr>
                   </tbody>
                 </table>
+               </div>
               </div>
             </div>
           </div>
