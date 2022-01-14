@@ -30,10 +30,10 @@ urlpatterns = [
     path('api/v1/', include('mpesa_api.urls')),
 
     #paypal urls
-    url(r'^paypal/', include('paypal.standard.ipn.urls')),
-    url(r'^payment_process/$', api_views.payment_process, name='payment_process' ),
-    url(r'^payment_done/$', TemplateView.as_view(template_name= "pets/payment_done.html"), name='payment_done'),
-    url(r'^payment_canceled/$', TemplateView.as_view(template_name= "pets/payment_canceled.html"), name='payment_canceled'),
+    url('paypal/', include('paypal.standard.ipn.urls')),
+    url('payment_process/', api_views.payment_process, name='payment_process' ),
+    url('payment_done/', TemplateView.as_view(template_name= "pets/payment_done.html"), name='payment_done'),
+    url('payment_canceled/', TemplateView.as_view(template_name= "pets/payment_canceled.html"), name='payment_canceled'),
 
     # URL for Authentication
     path('accounts/register/', views.RegistrationView, name="register"),
