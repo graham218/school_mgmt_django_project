@@ -1,5 +1,5 @@
 from django.urls import path
-from .import views
+from .import views, my_views
 
 app_name='school'
 
@@ -43,4 +43,6 @@ urlpatterns = [
     path('edit-unit/<str:pk>', views.EditUnit, name='edit-unit'),
     path('delete-unit/<str:pk>', views.DeleteUnit, name='delete-unit'),
     path('list-unit/', views.ListUnits, name='list-unit'),
+
+    
 ]

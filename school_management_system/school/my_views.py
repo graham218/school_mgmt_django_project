@@ -13,6 +13,7 @@ def UserProfile(request):
     lec_queryset=Lectures.objects.get(user=request.user)
     context={
         "title": title,
+        "title2": title2,
         "my_queryset": my_queryset,
         "lec_queryset": lec_queryset
     }
