@@ -83,7 +83,8 @@
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">My Profile</h4>
-                <a type="button" class="btn btn-gradient-success btn-icon-text btn-rounded"> Edit <i class="mdi mdi-file-check btn-icon-append"></i>
+                <a type="button" class="btn btn-gradient-success btn-icon-text btn-rounded" href="{% url 'school:edit-students' instance.id%}"> Edit 
+                  <i class="mdi mdi-file-check btn-icon-append"></i>
                 </a><br>
                 <br>
                 <div class="table-responsive">
