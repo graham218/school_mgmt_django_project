@@ -80,7 +80,7 @@ def DeleteAddress(request, pk):
 def AddStudents(request):
     title = "Add New Students"
     button="Add Student"
-    form = AddStudentsForm(request.POST or None)
+    form = AddStudentsForm(request.POST or None, request.FILES)
     if form.is_valid():
         user=request.user
         admission_no = form.cleaned_data['admission_no']
@@ -95,7 +95,7 @@ def AddStudents(request):
         date_of_graduation = form.cleaned_data['date_of_graduation']
         programme = form.cleaned_data['programme']
         stage = form.cleaned_data['stage']
-        profile_photo = request.FILES.getlist('profile_photo')
+        profile_photo = form.cleaned_data['profile_photo']
         postal_address = form.cleaned_data['postal_address']
         school_email = form.cleaned_data['school_email']
         school_email_password = form.cleaned_data['school_email_password']
@@ -124,9 +124,9 @@ def EditStudents(request, pk):
     title = "Edit Student"
     button = "Edit Student"
     queryset=Students.objects.get(id=pk)
-    form = AddStudentsForm(request.POST or None, instance=queryset)
+    form = AddStudentsForm(reqest.FILES,request.POST or None, instance=queryset)
     if request.method == "POST":
-        form = AddStudentsForm(request.POST or None, instance=queryset)
+        form = AddStudentsForm(reqest.FILES,request.POST or None, instance=queryset)
         if form.is_valid():
             messages.success(request, "Student Updated Successfully")
             form.save()
@@ -155,7 +155,7 @@ def DeleteStudent(request, pk):
 def AddLecturer(request):
     title = "Add New Lecturer"
     button="Add Lecture"
-    form = AddLectureForm(request.POST or None)
+    form = AddLectureForm(request.POST or None, reqest.FILES)
     if form.is_valid():
         user=request.user
         lec_no = form.cleaned_data['lec_no']
@@ -205,7 +205,7 @@ def EditLecturer(request, pk):
     title = "Edit Lecturer"
     button = "Edit Lecturer"
     queryset=Lectures.objects.get(id=pk)
-    form = AddLectureForm(request.POST or None, instance=queryset)
+    form = AddLectureForm(reqest.FILES,request.POST or None, instance=queryset)
     if request.method == "POST":
         form = AddLectureForm(request.POST or None, instance=queryset)
         if form.is_valid():
