@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'school',
-    'mpesa'
+    'mpesa',
+    'mpesa_api'
 ]
 
 MIDDLEWARE = [
