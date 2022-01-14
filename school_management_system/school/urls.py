@@ -44,5 +44,5 @@ urlpatterns = [
     path('delete-unit/<str:pk>', views.DeleteUnit, name='delete-unit'),
     path('list-unit/', views.ListUnits, name='list-unit'),
 
-    path('edit-student-profile/', my_views.EditStudentsProfile, name='edit-student-profile'),
+    path('edit-student-profile/<str:pk>', my_views.EditStudentsProfile, name='edit-student-profile'),
 ]

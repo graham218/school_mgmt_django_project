@@ -147,25 +147,6 @@ def EditStudents(request, pk):
     return render(request, 'school/create-edit-students.html', context)
 
 @login_required
-def EditStudentsProfile(request, pk):
-    title = "Edit Profile"
-    button = "Edit Profile"
-    queryset=Students.objects.get(id=pk)
-    form = AddStudentsForm(request.POST or None, instance=queryset)
-    if request.method == "POST":
-        form = AddStudentsForm(request.POST or None, instance=queryset)
-        if form.is_valid():
-            messages.success(request, "Student Updated Successfully")
-            form.save()
-            return redirect("/")
-    context = {
-        "title": title,
-        "button": button,
-        "form": form
-    }
-    return render(request, 'school/create-edit-students.html', context)
-
-@login_required
 def DeleteStudent(request, pk):
     queryset = Students.objects.get(id=pk)
     title="Delete Student"
