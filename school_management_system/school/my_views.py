@@ -6,15 +6,21 @@ import csv
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-def UserProfile(request):
-    title="Student's Profile"
-    title2="Lecturer's Profile"
-    my_queryset=Students.objects.get(user=request.user)
-    lec_queryset=Lectures.objects.get(user=request.user)
-    context={
+@login_required
+def EditStudentsProfile(request, pk):
+    title = "Edit Profile"
+    button = "Edit Profile"
+    queryset=Students.objects.get(id=pk)
+    form = AddStudentsForm(request.POST or None, instance=queryset)
+    if request.method == "POST":
+        form = AddStudentsForm(request.POST or None, instance=queryset)
+        if form.is_valid():
+            messages.success(request, "Student Updated Successfully")
+            form.save()
+            return redirect("/")
+    context = {
         "title": title,
-        "title2": title2,
-        "my_queryset": my_queryset,
-        "lec_queryset": lec_queryset
+        "button": button,
+        "form": form
     }
-    return render(request, "navbar.html", context)
+    return render(request, 'school/create-edit-students.html', context)

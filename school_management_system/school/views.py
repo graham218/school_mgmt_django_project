@@ -132,9 +132,9 @@ def EditStudents(request, pk):
     title = "Edit Student"
     button = "Edit Student"
     queryset=Students.objects.get(id=pk)
-    form = AddStudentsForm(request.FILES,request.POST or None, instance=queryset)
+    form = AddStudentsForm(request.POST or None, instance=queryset)
     if request.method == "POST":
-        form = AddStudentsForm(request.FILES,request.POST or None, instance=queryset)
+        form = AddStudentsForm(request.POST or None, instance=queryset)
         if form.is_valid():
             messages.success(request, "Student Updated Successfully")
             form.save()
