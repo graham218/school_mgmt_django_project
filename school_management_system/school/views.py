@@ -95,7 +95,7 @@ def AddStudents(request):
         date_of_graduation = form.cleaned_data['date_of_graduation']
         programme = form.cleaned_data['programme']
         stage = form.cleaned_data['stage']
-        profile_photo = form.cleaned_data['profile_photo']
+        profile_photo = request.FILES.getlist('profile_photo')
         postal_address = form.cleaned_data['postal_address']
         school_email = form.cleaned_data['school_email']
         school_email_password = form.cleaned_data['school_email_password']
@@ -165,7 +165,7 @@ def AddLecturer(request):
         national_ID_number = form.cleaned_data['national_ID_number']
         phone_number = form.cleaned_data['phone_number']
         DOB = form.cleaned_data['DOB']
-        profile_photo = form.cleaned_data['profile_photo']
+        profile_photo = request.FILES.getlist('profile_photo')
         postal_address = form.cleaned_data['postal_address']
         school_email = form.cleaned_data['school_email']
         school_email_password = form.cleaned_data['school_email_password']
