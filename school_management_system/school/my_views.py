@@ -11,9 +11,9 @@ def EditStudentsProfile(request, pk):
     title = "Edit Profile"
     button = "Edit Profile"
     queryset=Students.objects.get(id=pk)
-    form = AddStudentsForm(request.POST or None, instance=queryset)
+    form = EditStudentsForm(request.POST or None, instance=queryset)
     if request.method == "POST":
-        form = AddStudentsForm(request.POST or None, instance=queryset)
+        form = EditStudentsForm(request.POST or None, instance=queryset)
         if form.is_valid():
             messages.success(request, "Student Updated Successfully")
             form.save()
