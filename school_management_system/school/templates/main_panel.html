@@ -87,7 +87,8 @@
                 <h4 class="card-title">My Profile</h4>
                 <a type="button" class="btn btn-gradient-success btn-icon-text btn-rounded" href="{% url 'school:edit-student-profile' instance.id%}"> Edit 
                   <i class="mdi mdi-file-check btn-icon-append"></i>
-                </a><br>
+                </a>
+                <br>
                 <br>
                 <div class="table-responsive">
                   <table class="table table-striped">
@@ -110,6 +111,25 @@
                       <tr><th>School Email Password:</th><td>{{instance.school_email_password}}</td></tr>
                     </tbody>
                   </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 grid-margin">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Pay School Fees</h4>
+                <a type="button" class="btn btn-gradient-success btn-icon-text btn-rounded"> Pay With Mpesa <i class="mdi mdi-sim"></i>
+                </a><br><br>
+                <a type="button" class="btn btn-gradient-warning btn-icon-text btn-rounded"> Pay With Paypal  <i class="mdi mdi-paypal"></i>
+                </a><br><br>
+                <a type="button" class="btn btn-gradient-dark btn-icon-text btn-rounded"> Pay With Stripe <i class="mdi mdi-telegram"></i>
+                </a>
+                <div class="table-responsive">
+                  
                 </div>
               </div>
             </div>
