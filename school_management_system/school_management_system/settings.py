@@ -132,3 +132,5 @@ MEDIA_ROOT = BASE_DIR / 'static/images'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+PAYPAL_RECEIVER_EMAIL = 'XXXXX'
+PAYPAL_TEST = True
