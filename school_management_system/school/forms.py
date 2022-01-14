@@ -93,15 +93,14 @@ class EditStudentsForm(forms.ModelForm):
         model=Students
         fields=['nationality', 'national_ID_number', 'birth_cert_no', 'phone_number','DOB', 
         'date_of_admission', 'date_of_graduation','stage','profile_photo', 'postal_address']
-        widgets = {'admission_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Admission Number'}),
-            'full_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Full Name'}),
-            'nationality': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, Kenyan, Ugandan, Somalian'}),
+        widgets = {'nationality': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, Kenyan, Ugandan, Somalian'}),
             'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter National Id Number'}),
             'birth_cert_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Birth Certificate Number'}),
             'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Phone Number'}),
             'DOB': DateInput(attrs={'type': 'date'}),
             'date_of_admission': DateInput(attrs={'type': 'date'}),
             'date_of_graduation': DateInput(attrs={'type': 'date'}),
+            'stage': forms.Select(attrs={'id': 'value', 'class': 'form-control'}),
             'postal_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, PO BOX 123 Busia, Kenya'})}
 
 class AddLectureForm(forms.ModelForm):
