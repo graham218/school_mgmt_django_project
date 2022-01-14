@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'school',
     'mpesa',
-    'mpesa_api'
+    'mpesa_api',
+    'paypal.standard.ipn',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,4 @@ MEDIA_ROOT = BASE_DIR / 'static/images'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
