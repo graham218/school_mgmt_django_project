@@ -11,8 +11,16 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def home(request):
     title = "Home"
+    title1="Student's Profile"
+    title2="Lecturer's Profile"
+    my_queryset=Students.objects.get(user=request.user)
+    lec_queryset=Lectures.objects.get(user=request.user)
     context = {
-        "title": title
+        "title": title,
+        "title1": title1,
+        "title2": title2,
+        "my_queryset": my_queryset,
+        "lec_queryset": lec_queryset
     }
     return render(request, "index.html", context)
 
