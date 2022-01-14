@@ -103,7 +103,7 @@ def AddStudents(request):
         total_fees_paid = form.cleaned_data['total_fees_paid']
         balance = form.cleaned_data['balance']
         reg = Students(user=user, admission_no=admission_no, full_name=full_name, 
-        nationality=nationality, gender=gender, national_ID_number=national_ID_number,
+        nationality=nationality, stud_gender=stud_gender, national_ID_number=national_ID_number,
         birth_cert_no=birth_cert_no, phone_number=phone_number, DOB=DOB,
         date_of_admission=date_of_admission, stage=stage, date_of_graduation=date_of_graduation,
         programme=programme, profile_photo=profile_photo,
@@ -173,7 +173,7 @@ def AddLecturer(request):
         total_salary_paid = form.cleaned_data['total_salary_paid']
         balance = form.cleaned_data['balance']
         reg = Lectures(user=user, lec_no=lec_no, full_name=full_name, 
-        nationality=nationality, gender=gender, national_ID_number=national_ID_number,
+        nationality=nationality, lec_gender=lec_gender, national_ID_number=national_ID_number,
         phone_number=phone_number, DOB=DOB, profile_photo=profile_photo,
         postal_address=postal_address, school_email=school_email, school_email_password=school_email_password,
         total_salary_billed=total_salary_billed, total_salary_paid=total_salary_paid, balance=balance)
