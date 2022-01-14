@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('school/', include('school.urls')),
+    path('api/v1/', include('mpesa_api.urls')),
 
     # URL for Authentication
     path('accounts/register/', views.RegistrationView, name="register"),
