@@ -31,7 +31,12 @@
       <div class="container-fluid page-body-wrapper">
         {% include 'side_bar.html' %}
         <!-- partial -->
-        {% include 'main_panel.html' %}
+
+        {% if request.user.is_staff %}
+          {% include 'main_panel2.html' %}
+        {% else %}
+          {% include 'main_panel.html' %}
+        {% endif %}
       </div>
       <!-- page-body-wrapper ends -->
     </div>
