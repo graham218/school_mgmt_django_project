@@ -48,6 +48,7 @@ def EditLecturerProfile(request, pk):
     }
     return render(request, 'school/create-edit-lecturers.html', context)
 
+#paypal payment view
 def payment_process(request):
     host = request.get_host()
     paypal_dict = {
