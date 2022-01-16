@@ -22,9 +22,9 @@
             <div class="card bg-gradient-danger card-img-holder text-white">
               <div class="card-body">
                 <img src="{% static 'dash/assets/images/dashboard/circle.svg' %}" class="card-img-absolute" alt="circle-image" />
-                <h4 class="font-weight-normal mb-3">Total Fee Billed <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                <h4 class="font-weight-normal mb-3">Total Salary Billed <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                 </h4>
-                <h2 class="mb-5">Ksh {{instance.total_fees_billed}}</h2>
+                <h2 class="mb-5">Ksh {{instance.total_salary_billed}}</h2>
               </div>
             </div>
           </div>
@@ -32,9 +32,9 @@
             <div class="card bg-gradient-info card-img-holder text-white">
               <div class="card-body">
                 <img src="{% static 'dash/assets/images/dashboard/circle.svg' %}" class="card-img-absolute" alt="circle-image" />
-                <h4 class="font-weight-normal mb-3">Total Fee Paid <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                <h4 class="font-weight-normal mb-3">Total Salary Paid <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                 </h4>
-                <h2 class="mb-5">Ksh {{instance.total_fees_paid}}</h2>
+                <h2 class="mb-5">Ksh {{instance.total_salary_paid}}</h2>
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@
             <div class="card bg-gradient-success card-img-holder text-white">
               <div class="card-body">
                 <img src="{% static 'dash/assets/images/dashboard/circle.svg' %}" class="card-img-absolute" alt="circle-image" />
-                <h4 class="font-weight-normal mb-3">Fee Balance <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                <h4 class="font-weight-normal mb-3">Salary Balance <i class="mdi mdi-diamond mdi-24px float-right"></i>
                 </h4>
                 <h2 class="mb-5">Ksh {{instance.balance}}</h2>
               </div>
@@ -69,7 +69,7 @@
                <div class="table-responsive">
                 <table class="table table-striped">
                   <tbody>
-                    <tr><th>Programme:</th><td>{{instance.programme}}</td></tr>
+                    <tr><th>Lec Number:</th><td>{{instance.lec_no}}</td></tr>
                     <tr><th>Username:</th><td>{{request.user}}</td></tr>
                     <tr><th>Email:</th><td>{{request.user.email}}</td></tr>
                     <tr><th>Name:</th><td>{{request.user.get_full_name}}</td></tr>
@@ -93,18 +93,13 @@
                 <div class="table-responsive">
                   <table class="table table-striped">
                     <tbody>
-                      <tr><th>Admission Number:</th><td>{{instance.admission_no}}</td></tr>
+                      <tr><th>Lecturer's Number:</th><td>{{instance.admission_no}}</td></tr>
                       <tr><th>Full Name:</th><td>{{instance.full_name}}</td></tr>
                       <tr><th>Nationality:</th><td>{{instance.nationality}}</td></tr>
                       <tr><th>Gender:</th><td>{{instance.stud_gender}}</td></tr>
                       <tr><th>National ID Number:</th><td>{{instance.national_ID_number}}</td></tr>
-                      <tr><th>Birth Cert NO:</th><td>{{instance.birth_cert_no}}</td></tr>
                       <tr><th>Phone NO:</th><td>{{instance.phone_number}}</td></tr>
                       <tr><th>Date Of Birth:</th><td>{{instance.DOB}}</td></tr>
-                      <tr><th>Date Of Admission:</th><td>{{instance.date_of_admission}}</td></tr>
-                      <tr><th>Graduation Date:</th><td>{{instance.date_of_graduation}}</td></tr>
-                      <tr><th>My Course:</th><td>{{instance.programme}}</td></tr>
-                      <tr><th>Stage/Class:</th><td>{{instance.stage}}</td></tr>
                       <tr><th>Profile Photo:</th><td><img src="{{instance.profile_photo.url}}" alt="profile_photo"/></td></tr>
                       <tr><th>Home Address:</th><td>{{instance.postal_address}}</td></tr>
                       <tr><th>School Email:</th><td>{{instance.school_email}}</td></tr>

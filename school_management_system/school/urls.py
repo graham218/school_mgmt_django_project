@@ -45,4 +45,5 @@ urlpatterns = [
     path('list-unit/', views.ListUnits, name='list-unit'),
 
     path('edit-student-profile/<str:pk>', my_views.EditStudentsProfile, name='edit-student-profile'),
+    path('edit-lecturer-profile/<str:pk>', my_views.EditLecturerProfile, name='edit-lecturer-profile'),
 ]
