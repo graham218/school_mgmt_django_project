@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col-md-12">
+        <div class="form-modal">
+            <div class="container h-100">
+                <div class="row align-items-center h-100" >
+                    <div class="mx-auto">
+                        <div class="" id="modal-form">
+                            <h2>Register</h2>
+                            <form method="POST" class="mx-auto" action="{% url 'register' %} ">
+                                {% csrf_token %}
+
+                                {% for field in form %}
+                                    <div class="form-group">
+                                        {{ field }}
+                                        {% if field.help_text %}
+                                        <small class="form-text text-muted">{{ field.help_text|safe }}</small>
+                                        {% endif %}
+                                        <small class="form-text">{{ field.errors }}</small>
+                                    </div>
+                                {% endfor %}
+
+                                {{ form.non_field_errors }}
+
+                                <div class="g-recaptcha" data-sitekey="<your-site-key>"></div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
