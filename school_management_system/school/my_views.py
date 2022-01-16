@@ -29,6 +29,25 @@ def EditStudentsProfile(request, pk):
     }
     return render(request, 'school/create-edit-students.html', context)
 
+@login_required
+def EditLecturerProfile(request, pk):
+    title = "Edit Profile"
+    button = "Edit Profile"
+    queryset=Lectures.objects.get(id=pk)
+    form = EditLectureForm(request.POST or None, instance=queryset)
+    if request.method == "POST":
+        form = EditLectureForm(request.POST or None, instance=queryset)
+        if form.is_valid():
+            messages.success(request, "Lecturer Updated Successfully")
+            form.save()
+            return redirect("/")
+    context = {
+        "title": title,
+        "button": button,
+        "form": form
+    }
+    return render(request, 'school/create-edit-lecturers.html', context)
+
 def payment_process(request):
     host = request.get_host()
     paypal_dict = {
