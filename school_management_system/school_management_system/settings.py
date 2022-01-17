@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'school',
     'mpesa_api',
-    'paypal.standard.ipn',
+    #'paypal.standard.ipn',
 ]
 
 MIDDLEWARE = [
