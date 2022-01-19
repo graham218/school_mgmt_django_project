@@ -40,6 +40,7 @@ def password_reset_request(request):
 						send_mail(subject, email, 'admin@example.com' , [user.email], fail_silently=False)
 					except BadHeaderError:
 						return HttpResponse('Invalid header found.')
+                    #messages.success(request, 'A message with reset password instructions has been sent to your inbox.')
 					return redirect ("accounts/password-reset/done/")
 	form = PasswordResetForm()
 	return render(request=request, template_name="account/password_reset.html", context={"form":form})
