@@ -39,8 +39,8 @@ class Gender(models.Model):
 
 class Students(models.Model):
     user=models.ForeignKey(User, max_length=255, on_delete=models.CASCADE)
-    admission_no=models.CharField(max_length=255, blank=False)
-    full_name=models.CharField(max_length=255, blank=False)
+    admission_no=models.CharField(max_length=255, blank=True, null=True)
+    full_name=models.CharField(max_length=255, blank=True, null=True)
     nationality=models.CharField(max_length=255, blank=True, null=True)
     stud_gender=models.ForeignKey(Gender, on_delete=models.CASCADE, blank=False)
     national_ID_number=models.CharField(max_length=255, blank=True, null=True)
@@ -70,11 +70,11 @@ class Units(models.Model):
 
 class Lectures(models.Model):
     user=models.ForeignKey(User, max_length=255, on_delete=models.CASCADE)
-    lec_no=models.CharField(max_length=255, blank=True)
-    full_name=models.CharField(max_length=255, blank=False)
+    lec_no=models.CharField(max_length=255, blank=True, null=True)
+    full_name=models.CharField(max_length=255, blank=False, null=True)
     nationality=models.CharField(max_length=255, blank=True)
     lec_gender=models.ForeignKey(Gender, on_delete=models.CASCADE)
-    national_ID_number=models.CharField(max_length=255, blank=True)
+    national_ID_number=models.CharField(max_length=255, blank=True, null=True)
     phone_number=models.CharField(max_length=255, blank=True)
     DOB=models.DateField(auto_now=False, auto_now_add=False)
     profile_photo=models.ImageField(upload_to="lecturer_pic/", blank=True )
