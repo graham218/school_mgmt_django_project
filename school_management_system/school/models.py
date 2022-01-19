@@ -49,7 +49,7 @@ class Students(models.Model):
     DOB=models.DateField()
     date_of_admission=models.DateField(blank=True, null=True)
     date_of_graduation=models.DateField(blank=True, null=True)
-    programme=models.ForeignKey(Programmes, on_delete=models.CASCADE, max_length=255, blank=False)
+    programme=models.ForeignKey(Programmes, on_delete=models.CASCADE, max_length=255, blank=True)
     stage=models.ForeignKey(Stages, on_delete=models.CASCADE, blank=False, null=True)
     profile_photo=models.ImageField(upload_to="students_pic/", blank=False, null=True)
     postal_address=models.CharField(max_length=255, blank=True, null=True)

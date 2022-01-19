@@ -166,7 +166,7 @@ class StudentSearchForm(forms.ModelForm):
         fields=['admission_no', 'full_name', 'programme']
         widgets = {'admission_no':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: CIM/00176/019'}),
         'full_name':forms.TextInput(attrs={'class':'form-control','placeholder':'First-Middle-Last Names'}),
-        'programme':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: Barchelor Of Science Information & Communication Technology'})}
+        'programme':forms.Select(attrs={'class':'form-control','placeholder':'eg: Barchelor Of Science Information & Communication Technology'})}
 
 class LecturerSearchForm(forms.ModelForm):
     export_to_CSV = forms.BooleanField(required=False)

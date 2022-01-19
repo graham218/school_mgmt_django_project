@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'school',
     'mpesa_api',
     #'paypal.standard.ipn',
+    'django_countries',
 ]
 
 MIDDLEWARE = [
