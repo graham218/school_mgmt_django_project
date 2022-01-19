@@ -71,7 +71,7 @@ class Units(models.Model):
 class Lectures(models.Model):
     user=models.ForeignKey(User, max_length=255, on_delete=models.CASCADE)
     lec_no=models.CharField(max_length=255, blank=True, null=True)
-    full_name=models.CharField(max_length=255, blank=False, null=True)
+    full_name=models.CharField(max_length=255, blank=True, null=True)
     nationality=models.CharField(max_length=255, blank=True)
     lec_gender=models.ForeignKey(Gender, on_delete=models.CASCADE)
     national_ID_number=models.CharField(max_length=255, blank=True, null=True)

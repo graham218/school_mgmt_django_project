@@ -169,7 +169,7 @@ class AddUnitsForm(forms.ModelForm):
         widgets = {'unit_name':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: Calculus, Probability & Statistics, Descrete Structures'})}
 
 class StudentSearchForm(forms.ModelForm):
-    export_to_CSV = forms.BooleanField()
+    export_to_CSV = forms.BooleanField(blank=True, null=True)
     class Meta:
         model=Students
         fields=['admission_no', 'full_name', 'programme']
@@ -178,7 +178,7 @@ class StudentSearchForm(forms.ModelForm):
         'programme':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: Barchelor Of Science Information & Communication Technology'})}
 
 class LecturerSearchForm(forms.ModelForm):
-    export_to_CSV = forms.BooleanField()
+    export_to_CSV = forms.BooleanField(blank=True, null=True)
     class Meta:
         model=Lectures
         fields=['lec_no', 'full_name', 'national_ID_number']
