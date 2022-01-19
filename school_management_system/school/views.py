@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 #
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
-from django.contrib.auth.forms import PasswordResetForm
+#from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
 from django.db.models.query_utils import Q
@@ -41,8 +41,8 @@ def password_reset_request(request):
 					except BadHeaderError:
 						return HttpResponse('Invalid header found.')
 					return redirect ("accounts/password-reset/done/")
-	password_reset_form = PasswordResetForm()
-	return render(request=request, template_name="registration/password_reset.html", context={"password_reset_form":password_reset_form})
+	form = PasswordResetForm()
+	return render(request=request, template_name="account/password_reset.html", context={"form":form})
 
 # Create your views here.
 @login_required
