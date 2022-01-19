@@ -32,8 +32,9 @@ def RegistrationView(request):
     form = RegistrationForm(request.POST)
     if form.is_valid():
         messages.success(
-        request, "Congratulations! Registration Successful!")
+        request, "Congratulations! Registration Successful, you can now log in!")
         form.save()
+        return redirect('/accounts/register/')
     return render(request, 'account/register.html', {'form': form})
 
 @login_required
