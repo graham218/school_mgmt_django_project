@@ -37,6 +37,12 @@
                 <a class="dropdown-item" href="">
                   <i class="mdi mdi-account-circle me-2 text-primary"></i> My Profile </a>
                 <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'password-reset' %}">
+                  <i class="mdi mdi-logout me-2 text-primary"></i> Reset Password </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'password-change' %}">
+                  <i class="mdi mdi-logout me-2 text-primary"></i> Change Password </a>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{% url 'logout' %}">
                   <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
               </div>
