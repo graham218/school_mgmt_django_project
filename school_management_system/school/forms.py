@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm, PasswordResetForm, SetPasswordForm
 from django.utils.translation import gettext, gettext_lazy as _
 from django.forms.widgets import DateInput
+from django_countries.fields import CountryField
 
 
 class RegistrationForm(UserCreationForm):
@@ -61,7 +62,7 @@ class AddStudentsForm(forms.ModelForm):
      'total_fees_billed', 'total_fees_paid', 'balance']
         widgets = {'admission_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Admission Number'}),
             'full_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Full Name'}),
-            'nationality': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg, Kenyan, Ugandan, Somalian'}),
+            'nationality': forms.CountryField(attrs={'class': 'form-control', 'placeholder':'eg, Kenyan, Ugandan, Somalian'}),
             'stud_gender': forms.RadioSelect(attrs={'id': 'value'}),
             'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter National Id Number'}),
             'birth_cert_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Birth Certificate Number'}),
