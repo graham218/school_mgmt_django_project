@@ -194,7 +194,23 @@ class marks_yr7(models.Model):
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
 
-class fee_payement(models.Model):
+class fee_payment(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
-    
+    amount_paid=models.CharField(max_length=255, blank=True, null=True)
+    payment_method=models.CharField(max_length=255, blank=True, null=True)
+    date_paid = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class FeeReceipt(model.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage=models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
+    exams = models.CharField(max_length=255, blank=True, null=True)
+    co_ocurricular_activities = models.CharField(max_length=255, blank=True, null=True)
+    hostel_charges = models.CharField(max_length=255, blank=True, null=True)
+    library_charges = models.CharField(max_length=255, blank=True, null=True)
+    internet_charges = models.CharField(max_length=255, blank=True, null=True)
+    electricity_charges = models.CharField(max_length=255, blank=True, null=True)
+    food_charges = models.CharField(max_length=255, blank=True, null=True)
