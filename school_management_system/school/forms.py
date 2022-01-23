@@ -253,9 +253,13 @@ class MarksSearch(forms.ModelForm):
     export_to_CSV=forms.BooleanField(required=False)
     class Meta:
         model=marks_yr1
-        fields = ['stage', 'unit_or_subject_name']
+        fields = ['stage', 'unit_or_subject_name','user','full_name']
         widgets = {'stage': forms.Select(
             attrs={'class': 'form-control', 'placeholder': 'Search By Stage'}),
             'unit_or_subject_name': forms.Select(
-            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Name'})}
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Name'}),
+            'user': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Username'}),
+            'full_name': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Full Name'})}
          
