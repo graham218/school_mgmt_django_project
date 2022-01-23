@@ -95,6 +95,7 @@ def unit_registration(request):
 @login_required
 def unregister_unit(request, pk):
     queryset = marks_yr1.objects.get(id=pk)
+    queryset2=marks_yr1.objects.filter(user=request.user)
     title = "Unregister Unit"
     button="Unregister Unit"
     if request.method == "POST":
@@ -103,7 +104,8 @@ def unregister_unit(request, pk):
         return redirect("/school/unit_registration/")
     context = {
         "title": title,
-        "button": button
+        "button": button,
+        "queryset2": queryset2
     }
     return render(request, "school/delete_items.html", context)
 
