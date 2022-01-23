@@ -118,14 +118,14 @@ def insert_marks(request, pk):
 
 def list_registered_units(request):
     title = 'List of Registered Students'
-    form = LecturerSearchForm(request.POST or None)
-    queryset = Lectures.objects.all()
+    form = MarksSearch(request.POST or None)
+    queryset = marks_yr1.objects.all()
     context = {
         "title": title,
         "queryset": queryset,
     }
     if request.method == 'POST':
-        queryset = Lectures.objects.filter(lec_no__icontains=form['lec_no'].value(),
+        queryset = marks_yr1.objects.filter(lec_no__icontains=form['lec_no'].value(),
                                            full_name__icontains=form['full_name'].value(
         ),
             national_ID_number__icontains=form['national_ID_number'].value(
@@ -133,7 +133,7 @@ def list_registered_units(request):
         )
         if form['export_to_CSV'].value() == True:
             response = HttpResponse(content_type='text/csv')
-            response['Content-Disposition'] = 'attachment; filename="List of Students.csv"'
+            response['Content-Disposition'] = 'attachment; filename="List of Registered Students.csv"'
             writer = csv.writer(response)
             writer.writerow(['USER', 'LEC MUMBER', 'FULL NAME', 'NATIONALITY',
                              'GENDER', 'N.ID NUMBER', 'PHONE NO', 'DOB', 'POSTAL ADDRESS', 'SALARY BALANCE'])

@@ -256,4 +256,5 @@ class MarksSearch(forms.ModelForm):
         widgets = {'stage': forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'Search By Stage'}),
             'unit_or_subject_name': forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Name'})}          
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Name'})}
+         
