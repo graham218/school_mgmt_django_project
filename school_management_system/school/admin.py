@@ -123,6 +123,7 @@ class fee_payment_admin(admin.ModelAdmin):
                     'payment_method', 'date_paid', 'date_paid']
     list_per_page = 10
 
+
 class FeeReceiptAdmin(admin.ModelAdmin):
     list_display = ['user', 'full_name', 'stage',
                     'exams', 'co_ocurricular_activities', 'hostel_charges', 'library_charges',
@@ -130,18 +131,35 @@ class FeeReceiptAdmin(admin.ModelAdmin):
                     'water_charges', 'date_updated']
     list_per_page = 10
 
+
 class SpecialExamAdmin(admin.ModelAdmin):
     list_display = ['user', 'full_name', 'stage',
-                    'unit_name', 'marks', 'grade', 'comments', 'date_paid','date_updated']
+                    'unit_name', 'marks', 'grade', 'comments', 'date_paid', 'date_updated']
     list_per_page = 10
+
 
 class LecturerUnitsAdmin(admin.ModelAdmin):
-    list_display = ['user', 'full_name','unit_name', 'level_of_understanding', 'created_at']
+    list_display = ['user', 'full_name', 'unit_name',
+                    'level_of_understanding', 'created_at']
     list_per_page = 10
 
+
 class NoticeBoardAdmin(admin.ModelAdmin):
-    list_display = ['user', 'full_name','unit_name', 'level_of_understanding', 'created_at']
+    list_display = ['written_by', 'full_name', 'notice', 'signature']
     list_per_page = 10
+
+
+class VotingAdmin(admin.ModelAdmin):
+    list_display = ['full_name', 'stage', 'course', 'seat',
+                    'votes', 'position', 'status', 'created_at', 'updated_at']
+    list_per_page = 10
+
+
+class SuggestionBoxAdmin(admin.ModelAdmin):
+    list_display = ['written_by', 'full_name', 'suggestion', 'check',
+                    'status', 'created_at', 'updated_at']
+    list_per_page = 10
+
 
 admin.site.register(Address, AddressAdmin)
 admin.site.register(Faculty, FacultyAdmin)
@@ -158,3 +176,10 @@ admin.site.register(marks_yr4, MarksAdmin4)
 admin.site.register(marks_yr5, MarksAdmin5)
 admin.site.register(marks_yr6, MarksAdmin6)
 admin.site.register(marks_yr7, MarksAdmin7)
+admin.site.register(fee_payment, fee_payment_admin)
+admin.site.register(FeeReceipt, FeeReceiptAdmin)
+admin.site.register(SpecialExam, SpecialExamAdmin)
+admin.site.register(LecturerUnits, LecturerUnitsAdmin)
+admin.site.register(NoticeBoard, NoticeBoardAdmin)
+admin.site.register(Voting, VotingAdmin)
+admin.site.register(SuggestionBox, SuggestionBoxAdmin)
