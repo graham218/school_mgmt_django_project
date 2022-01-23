@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import *
 from .models import *
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 import csv
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -83,7 +83,7 @@ def unit_registration(request):
         instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
         instance.save()
         messages.success(request, "Unit Registered Successfully")
-        return redirect("/school/unit_registration/")
+        return HttpResponseRedirect("/school/unit_registration/")
     context = {
         "title": title,
         "form": form,
@@ -101,8 +101,8 @@ def unregister_unit(request, pk):
     button="Unregister Unit"
     if request.method == "POST":
         queryset.delete()
-        messages.success(request, "Unit Unregistered Successfully")
-        return redirect("/school/unit_registration/")
+        messages.error(request, "Unit Unregistered Successfully")
+        return HttpResponseRedirect("/school/list_registered_units")
     context = {
         "title": title,
         "button": button,
@@ -126,7 +126,7 @@ def insert_marks(request, pk):
         "button": button,
         "form": form
     }
-    return render(request, "units/unit_registration.html", context)
+    return render(request, "units/update_marks.html", context)
 
 
 def list_registered_units(request):

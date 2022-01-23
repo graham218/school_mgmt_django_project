@@ -120,8 +120,8 @@ class Lectures(models.Model):
 class marks_yr1(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
-    stage = models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
-    unit_or_subject_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, default="", blank=True)
+    stage = models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=False)
+    unit_or_subject_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=False)
     marks = models.CharField(max_length=255, blank=True, null=True)
     grade = models.CharField(max_length=255, blank=True, null=True)
     date_created = models.DateTimeField(

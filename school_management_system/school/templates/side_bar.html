@@ -28,19 +28,30 @@
               <!--Crud Icons Start Hear-->
               <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#academics" aria-expanded="false" aria-controls="ui-basic">
-                  <span class="menu-title">Academics</span>
+                  <span class="menu-title">Academics Stud</span>
                   <i class="menu-arrow"></i>
                   <i class="mdi mdi-crosshairs-gps menu-icon"></i>
                 </a>
                 <div class="collapse" id="academics">
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{% url 'school:unit_registration' %}">Register Units</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{% url 'school:list_registered_units' %}">Registerd Students</a></li>
                   </ul>
                 </div>
               </li>
               <!--Crud Icons end here-->
               {% else %}
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#academics1" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Academics Lec</span>
+                  <i class="menu-arrow"></i>
+                  <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                </a>
+                <div class="collapse" id="academics1">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'school:list_registered_units' %}">Registerd Students</a></li>
+                  </ul>
+                </div>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#students" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Students</span>
