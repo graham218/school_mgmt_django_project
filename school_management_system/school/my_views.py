@@ -72,6 +72,7 @@ def payment_process(request):
 @login_required
 def unit_registration(request):
     title = "Unit Registration"
+    button="Register Unit"
     form = UnitRegistrationForm(request.POST or None)
     if form.is_valid():
         user = request.user,
@@ -85,7 +86,8 @@ def unit_registration(request):
         return redirect("/")
     context = {
         "title": title,
-        "form": form
+        "form": form,
+        "button": button
     }
     return render(request, "units/unit_registration.html", context)
 
@@ -94,12 +96,14 @@ def unit_registration(request):
 def unregister_unit(request, pk):
     queryset = marks_yr1.objects.get(id=pk)
     title = "Unregister Unit"
+    button="Unregister Unit"
     if request.method == "POST":
         queryset.delete()
         messages.success(request, "Unit Unregistered Successfully")
         return redirect("/")
     context = {
-        "title": title
+        "title": title,
+        "button": button
     }
     return render(request, "school/delete_items.html", context)
 
@@ -108,6 +112,7 @@ def unregister_unit(request, pk):
 def insert_marks(request, pk):
     queryset = marks_yr1.objects.get(id=pk)
     title = "Enter Unit Marks And Grades"
+    button="Add Marks"
     form = MarksForm(request.POST or None, instance=queryset)
     if request.method == "POST":
         form = MarksForm(request.POST or None, instance=queryset)
@@ -115,6 +120,7 @@ def insert_marks(request, pk):
         return redirect("/")
     context = {
         "title": title,
+        "button": button,
         "form": form
     }
     return render(request, "units/unit_registration.html", context)
