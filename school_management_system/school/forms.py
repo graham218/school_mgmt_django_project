@@ -234,3 +234,7 @@ class FacultySearchForm(forms.ModelForm):
 class UnitRegistrationForm(forms.ModelForm):
     class Meta:
         fields = ['stage', 'unit_or_subject_name']
+        widgets = {'stage': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Choose your year of study'}),
+            'unit_or_subject_name': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Select Unit or Subject to register'})}
