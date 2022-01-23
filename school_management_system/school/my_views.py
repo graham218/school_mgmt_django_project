@@ -117,7 +117,7 @@ def insert_marks(request, pk):
     if request.method == "POST":
         form = MarksForm(request.POST or None, instance=queryset)
         form.save()
-        return redirect("/")
+        return redirect("school/list_registered_units/")
     context = {
         "title": title,
         "button": button,
