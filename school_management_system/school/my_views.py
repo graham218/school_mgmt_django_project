@@ -83,7 +83,7 @@ def unit_registration(request):
                         unit_or_subject_name=unit_or_subject_name)
         reg.save()
         messages.success(request, "Unit Registered Successfully")
-        return redirect("/")
+        return redirect("/school/unit_registration/")
     context = {
         "title": title,
         "form": form,
@@ -100,7 +100,7 @@ def unregister_unit(request, pk):
     if request.method == "POST":
         queryset.delete()
         messages.success(request, "Unit Unregistered Successfully")
-        return redirect("/")
+        return redirect("/school/unit_registration/")
     context = {
         "title": title,
         "button": button
@@ -117,7 +117,7 @@ def insert_marks(request, pk):
     if request.method == "POST":
         form = MarksForm(request.POST or None, instance=queryset)
         form.save()
-        return redirect("school/list_registered_units/")
+        return redirect("/school/list_registered_units/")
     context = {
         "title": title,
         "button": button,
