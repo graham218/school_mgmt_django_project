@@ -196,3 +196,8 @@ class FacultySearchForm(forms.ModelForm):
         model=Faculty
         fields=['school']
         widgets = {'school':forms.TextInput(attrs={'class':'form-control','placeholder':'eg: School Of Computing & Informatics'})}
+
+
+class UnitRegistrationForm(forms.ModelForm):
+    class Meta:
+        fields=[]
