@@ -130,6 +130,19 @@ class FeeReceiptAdmin(admin.ModelAdmin):
                     'water_charges', 'date_updated']
     list_per_page = 10
 
+class SpecialExamAdmin(admin.ModelAdmin):
+    list_display = ['user', 'full_name', 'stage',
+                    'unit_name', 'marks', 'grade', 'comments', 'date_paid','date_updated']
+    list_per_page = 10
+
+class LecturerUnitsAdmin(admin.ModelAdmin):
+    list_display = ['user', 'full_name','unit_name', 'level_of_understanding', 'created_at']
+    list_per_page = 10
+
+class NoticeBoardAdmin(admin.ModelAdmin):
+    list_display = ['user', 'full_name','unit_name', 'level_of_understanding', 'created_at']
+    list_per_page = 10
+
 admin.site.register(Address, AddressAdmin)
 admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(Programmes, ProgrammesAdmin)
