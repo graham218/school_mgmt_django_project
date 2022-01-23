@@ -256,3 +256,11 @@ class Voting(models.Model):
     created_at = models.DateTimeField(
         null=True, blank=True, auto_now_add=True)
     updated_at = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class SuggestionBox(models.Model):
+    written_by = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    suggestion = models.CharField(max_length=5000, blank=True, null=True)
+    created_at = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    updated_at = models.DateTimeField(null=True, blank=True, auto_now=True)
