@@ -87,4 +87,7 @@ class Lectures(models.Model):
 
 class marks_yr1(models.Model):
     user=models.ForeignKey(User, max_length=255, on_delete=models.CASCADE)
+    first_name=models.CharField(max_length=255, blank=True, null=True)
+    last_name=models.CharField(max_length=255, blank=True, null=True)
+    unit_subject=models.CharField(max_length=255, blank=True, null=True)
     
