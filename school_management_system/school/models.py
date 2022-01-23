@@ -84,3 +84,7 @@ class Lectures(models.Model):
     total_salary_billed=models.DecimalField(max_digits=10, decimal_places=2)
     total_salary_paid=models.DecimalField(max_digits=10, decimal_places=2)
     balance=models.DecimalField(max_digits=10, decimal_places=2)
+
+class marks_yr1(models.Model):
+    user=models.ForeignKey(User, max_length=255, on_delete=models.CASCADE)
+    
