@@ -139,7 +139,7 @@ class SpecialExamAdmin(admin.ModelAdmin):
 
 
 class LecturerUnitsAdmin(admin.ModelAdmin):
-    list_display = ['user', 'full_name', 'unit_name',
+    list_display = ['full_name', 'unit_name',
                     'level_of_understanding', 'created_at']
     list_per_page = 10
 
