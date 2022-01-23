@@ -235,6 +235,7 @@ class LecturerUnits(models.Model):
     full_name = models.ForeignKey(Lectures, max_length=255, on_delete=models.CASCADE, blank=True)
     username=models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
     unit_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=True)
-    marks = models.CharField(max_length=255, blank=True, null=True)
-    grade = models.CharField(max_length=255, blank=True, null=True)
-    comments = models.CharField(max_length=255, blank=True, null=True)
+    level_of_understanding = models.CharField(max_length=255, blank=True, null=True)
+    created_at = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    updated_at = models.DateTimeField(null=True, blank=True, auto_now=True)
