@@ -203,7 +203,7 @@ class fee_payment(models.Model):
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
 
-class FeeReceipt(model.Model):
+class FeeReceipt(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
     stage=models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
@@ -214,3 +214,18 @@ class FeeReceipt(model.Model):
     internet_charges = models.CharField(max_length=255, blank=True, null=True)
     electricity_charges = models.CharField(max_length=255, blank=True, null=True)
     food_charges = models.CharField(max_length=255, blank=True, null=True)
+    furniture_charges = models.CharField(max_length=255, blank=True, null=True)
+    water_charges = models.CharField(max_length=255, blank=True, null=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class SpecialExam(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage=models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
+    unit_name = models.CharField(max_length=255, blank=True, null=True)
+    marks = models.CharField(max_length=255, blank=True, null=True)
+    grade = models.CharField(max_length=255, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
+    date_paid = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
