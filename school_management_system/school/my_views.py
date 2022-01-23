@@ -70,6 +70,7 @@ def payment_process(request):
 
 
 def unit_registration(request):
+    title="Unit Registration"
     form = UnitRegistrationForm(request.POST or None)
     if form.is_valid():
         user = request.user,
@@ -80,4 +81,7 @@ def unit_registration(request):
                         unit_or_subject_name=unit_or_subject_name)
         reg.save()
         messages.success(request, "Unit Registered Successfully")
-        return redirect("/")                
+        return redirect("/")
+    context={
+        
+    }                    
