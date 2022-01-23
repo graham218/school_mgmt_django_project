@@ -238,3 +238,4 @@ class LecturerUnits(models.Model):
     created_at = models.DateTimeField(
         null=True, blank=True, auto_now_add=True)
     updated_at = models.DateTimeField(null=True, blank=True, auto_now=True)
+
