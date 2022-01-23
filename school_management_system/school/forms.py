@@ -245,6 +245,6 @@ class MarksForm(forms.ModelForm):
         model=marks_yr1
         fields = ['marks', 'grade']
         widgets = {'marks': forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': 'Choose your year of study'}),
+            attrs={'class': 'form-control', 'placeholder': 'Enter Unit Marks'}),
             'grade': forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': 'Select Unit or Subject to register'})}
+            attrs={'class': 'form-control', 'placeholder': 'Enter Unit Grade'})}

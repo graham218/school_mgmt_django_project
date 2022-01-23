@@ -86,7 +86,7 @@ def unit_registration(request):
         "title": title,
         "form": form
     }
-    return render(request, "units/unit_registration.html")                    
+    return render(request, "units/unit_registration.html", context)                    
 
 @login_required
 def unregister_unit(request, pk):
@@ -100,3 +100,17 @@ def unregister_unit(request, pk):
         "title": title
     }
     return render(request, "school/delete_items.html", context)
+
+def insert_marks(request, pk):
+    queryset = marks_yr1.objects.get(id=pk)
+    title = "Enter Unit Marks And Grades"
+    form=MarksForm(request.POST or None, instance=queryset)
+    if request.method=="POST":
+        form=MarksForm(request.POST or None, instance=queryset)
+        form.save()
+        return redirect("/")
+    context={
+        "title": title,
+        "form": form
+    }
+    return render(request, "")
