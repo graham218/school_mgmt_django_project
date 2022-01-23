@@ -62,7 +62,7 @@ class LectureAdmin(admin.ModelAdmin):
     search_fields = ['user', 'full_name', 'lec_no']
 
 
-class Marks(admin.ModelAdmin):
+class MarksAdmin(admin.ModelAdmin):
     list_display = ['user', 'full_name',
                     'stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
     list_per_page = 10
@@ -78,3 +78,4 @@ admin.site.register(Gender, GenderAdmin)
 admin.site.register(Students, StudentsAdmin)
 admin.site.register(Units, UnitsAdmin)
 admin.site.register(Lectures, LectureAdmin)
+admin.site.register(marks_yr1, MarksAdmin)
