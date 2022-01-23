@@ -83,5 +83,7 @@ def unit_registration(request):
         messages.success(request, "Unit Registered Successfully")
         return redirect("/")
     context={
-        
-    }                    
+        "title": title,
+        "form": form
+    }
+    return render(request, "")                    
