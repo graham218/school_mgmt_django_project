@@ -63,10 +63,11 @@ class LectureAdmin(admin.ModelAdmin):
 
 
 class Marks(admin.ModelAdmin):
-    list_display = ['user', 'first_name', 'last_name',
-                    'stage', 'unit_or_subject_name', 'marks', 'grade']
+    list_display = ['user', 'full_name',
+                    'stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
     list_per_page = 10
-    search_fields = []
+    search_fields = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+    list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
 
 
 admin.site.register(Address, AddressAdmin)

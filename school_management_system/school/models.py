@@ -119,8 +119,7 @@ class Lectures(models.Model):
 
 class marks_yr1(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=255, blank=True, null=True)
-    last_name = models.CharField(max_length=255, blank=True, null=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
     stage = models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE)
     unit_or_subject_name = models.CharField(
         max_length=255, blank=True, null=True)
@@ -131,5 +130,5 @@ class marks_yr1(models.Model):
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
 
     def __str__(self):
-        return self.first_name+' '+str(self.last_name)+' '+str(self.stage)+' '
+        return self.full_name+' '+str(self.last_name)+' '+str(self.stage)+' '
         +str(self.unit_or_subject_name)+' '+str(self.marks)+' '+str(self.grade)
