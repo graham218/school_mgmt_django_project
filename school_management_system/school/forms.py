@@ -233,5 +233,4 @@ class FacultySearchForm(forms.ModelForm):
 
 class UnitRegistrationForm(forms.ModelForm):
     class Meta:
-        fields = ['user', 'full_name',
-                  'stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
+        fields = ['stage', 'unit_or_subject_name']
