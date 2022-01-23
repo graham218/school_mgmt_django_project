@@ -52,6 +52,11 @@ class LectureAdmin(admin.ModelAdmin):
     list_per_page = 10
     search_fields = ['user', 'full_name', 'lec_no']
 
+class Marks(admin.ModelAdmin):
+    list_display = []
+    list_per_page = 10
+    search_fields = []
+
 admin.site.register(Address, AddressAdmin)
 admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(Programmes, ProgrammesAdmin)
