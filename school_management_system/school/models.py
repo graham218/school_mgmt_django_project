@@ -58,6 +58,9 @@ class Students(models.Model):
     total_fees_billed=models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     total_fees_paid=models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     balance=models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    def __str__(self):
+        return self.full_name
+
 
 class Units(models.Model):
     unit_name=models.CharField(max_length=255, blank=True, null=True)
@@ -96,3 +99,9 @@ class marks_yr1(models.Model):
     unit_or_subject_name=models.CharField(max_length=255, blank=True, null=True)
     marks=models.CharField(max_length=255, blank=True, null=True)
     grade=models.CharField(max_length=255, blank=True, null=True)
+    date_created=models.DateTimeField(null=True, blank=True, auto_now_add=True)
+    date_updated=models.DateTimeField(null=True, blank=True, auto_now=True)
+
+    def __str__(self):
+        return self.first_name+' '+str(self.last_name)+' '+str(self.stage)+' '
+        +str(self.unit_or_subject_name)+' '+str(self.marks)+' '+str(self.grade)
