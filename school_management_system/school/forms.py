@@ -235,9 +235,9 @@ class UnitRegistrationForm(forms.ModelForm):
     class Meta:
         model=marks_yr1
         fields = ['stage', 'unit_or_subject_name']
-        widgets = {'stage': forms.TextInput(
+        widgets = {'stage': forms.Select(
             attrs={'class': 'form-control', 'placeholder': 'Choose your year of study'}),
-            'unit_or_subject_name': forms.TextInput(
+            'unit_or_subject_name': forms.Select(
             attrs={'class': 'form-control', 'placeholder': 'Select Unit or Subject to register'})}
 
 class MarksForm(forms.ModelForm):
@@ -250,11 +250,12 @@ class MarksForm(forms.ModelForm):
             attrs={'class': 'form-control', 'placeholder': 'Enter Unit Grade'})}
 
 class MarksSearch(forms.ModelForm):
+    export_to_CSV=forms.BooleanField(required=False)
     class Meta:
         model=marks_yr1
         fields = ['stage', 'unit_or_subject_name']
-        widgets = {'stage': forms.TextInput(
+        widgets = {'stage': forms.Select(
             attrs={'class': 'form-control', 'placeholder': 'Search By Stage'}),
-            'unit_or_subject_name': forms.TextInput(
+            'unit_or_subject_name': forms.Select(
             attrs={'class': 'form-control', 'placeholder': 'Search By Unit Name'})}
          

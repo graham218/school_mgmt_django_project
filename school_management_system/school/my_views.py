@@ -68,9 +68,10 @@ def payment_process(request):
     form = PayPalPaymentsForm(initial=paypal_dict)
     return render(request, 'pets/payment_process.html', {'form': form})
 
+
 @login_required
 def unit_registration(request):
-    title="Unit Registration"
+    title = "Unit Registration"
     form = UnitRegistrationForm(request.POST or None)
     if form.is_valid():
         user = request.user,
@@ -82,11 +83,12 @@ def unit_registration(request):
         reg.save()
         messages.success(request, "Unit Registered Successfully")
         return redirect("/")
-    context={
+    context = {
         "title": title,
         "form": form
     }
-    return render(request, "units/unit_registration.html", context)                    
+    return render(request, "units/unit_registration.html", context)
+
 
 @login_required
 def unregister_unit(request, pk):
@@ -101,20 +103,22 @@ def unregister_unit(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
+
 @login_required
 def insert_marks(request, pk):
     queryset = marks_yr1.objects.get(id=pk)
     title = "Enter Unit Marks And Grades"
-    form=MarksForm(request.POST or None, instance=queryset)
-    if request.method=="POST":
-        form=MarksForm(request.POST or None, instance=queryset)
+    form = MarksForm(request.POST or None, instance=queryset)
+    if request.method == "POST":
+        form = MarksForm(request.POST or None, instance=queryset)
         form.save()
         return redirect("/")
-    context={
+    context = {
         "title": title,
         "form": form
     }
     return render(request, "units/unit_registration.html", context)
+
 
 def list_registered_units(request):
     title = 'List of Registered Students'
@@ -125,19 +129,19 @@ def list_registered_units(request):
         "queryset": queryset,
     }
     if request.method == 'POST':
-        queryset = marks_yr1.objects.filter(stage=form['lec_no'].value(),user=form['user'].value(),
-                                           unit_or_subject_name=form['full_name'].value())
+        queryset = marks_yr1.objects.filter(stage=form['stage'].value(), user=form['user'].value(),
+                                            unit_or_subject_name=form['unit_or_subject_name'].value(), full_name__icontains=form['full_name'])
         if form['export_to_CSV'].value() == True:
             response = HttpResponse(content_type='text/csv')
             response['Content-Disposition'] = 'attachment; filename="List of Registered Students.csv"'
             writer = csv.writer(response)
-            writer.writerow(['USER', 'LEC MUMBER', 'FULL NAME', 'NATIONALITY',
-                             'GENDER', 'N.ID NUMBER', 'PHONE NO', 'DOB', 'POSTAL ADDRESS', 'SALARY BALANCE'])
+            writer.writerow(['USER', 'STUDENT NAME', 'STAGE', 'UNIT NAME',
+                            'MARKS', 'GRADE', 'DATE REAGISTERED', 'DATE UPDATED'])
             instance = queryset
-            for lecturer in instance:
-                writer.writerow([lecturer.user, lecturer.lec_no, lecturer.full_name,
-                                 lecturer.nationality, lecturer.lec_gender, lecturer.national_ID_number,
-                                 lecturer.phone_number, lecturer.DOB, lecturer.postal_address, lecturer.balance])
+            for student in instance:
+                writer.writerow([student.user, student.full_name, student.stage,
+                                 student.unit_or_subject_name, student.marks, student.grade,
+                                 student.date_created, student.date_updated])
             return response
 
     context = {
