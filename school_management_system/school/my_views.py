@@ -101,6 +101,7 @@ def unregister_unit(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
+@login_required
 def insert_marks(request, pk):
     queryset = marks_yr1.objects.get(id=pk)
     title = "Enter Unit Marks And Grades"
@@ -113,4 +114,39 @@ def insert_marks(request, pk):
         "title": title,
         "form": form
     }
-    return render(request, "")
+    return render(request, "units/unit_registration.html", context)
+
+def list_registered_units(request):
+    title = 'List of Registered Students'
+    form = LecturerSearchForm(request.POST or None)
+    queryset = Lectures.objects.all()
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    if request.method == 'POST':
+        queryset = Lectures.objects.filter(lec_no__icontains=form['lec_no'].value(),
+                                           full_name__icontains=form['full_name'].value(
+        ),
+            national_ID_number__icontains=form['national_ID_number'].value(
+        )
+        )
+        if form['export_to_CSV'].value() == True:
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = 'attachment; filename="List of Students.csv"'
+            writer = csv.writer(response)
+            writer.writerow(['USER', 'LEC MUMBER', 'FULL NAME', 'NATIONALITY',
+                             'GENDER', 'N.ID NUMBER', 'PHONE NO', 'DOB', 'POSTAL ADDRESS', 'SALARY BALANCE'])
+            instance = queryset
+            for lecturer in instance:
+                writer.writerow([lecturer.user, lecturer.lec_no, lecturer.full_name,
+                                 lecturer.nationality, lecturer.lec_gender, lecturer.national_ID_number,
+                                 lecturer.phone_number, lecturer.DOB, lecturer.postal_address, lecturer.balance])
+            return response
+
+    context = {
+        "form": form,
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "units/list_registered_units.html", context)

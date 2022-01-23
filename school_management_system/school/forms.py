@@ -248,3 +248,12 @@ class MarksForm(forms.ModelForm):
             attrs={'class': 'form-control', 'placeholder': 'Enter Unit Marks'}),
             'grade': forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'Enter Unit Grade'})}
+
+class MarksSearch(forms.ModelForm):
+    class Meta:
+        model=marks_yr1
+        fields = ['stage', 'unit_or_subject_name']
+        widgets = {'stage': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Stage'}),
+            'unit_or_subject_name': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Name'})}          
