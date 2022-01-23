@@ -125,12 +125,8 @@ def list_registered_units(request):
         "queryset": queryset,
     }
     if request.method == 'POST':
-        queryset = marks_yr1.objects.filter(lec_no__icontains=form['lec_no'].value(),
-                                           full_name__icontains=form['full_name'].value(
-        ),
-            national_ID_number__icontains=form['national_ID_number'].value(
-        )
-        )
+        queryset = marks_yr1.objects.filter(stage=form['lec_no'].value(),user=form['user'].value(),
+                                           unit_or_subject_name=form['full_name'].value())
         if form['export_to_CSV'].value() == True:
             response = HttpResponse(content_type='text/csv')
             response['Content-Disposition'] = 'attachment; filename="List of Registered Students.csv"'
