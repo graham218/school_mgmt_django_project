@@ -229,3 +229,12 @@ class SpecialExam(models.Model):
     date_paid = models.DateTimeField(
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class LecturerUnits(models.Model):
+    added_by = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.ForeignKey(Lectures, max_length=255, on_delete=models.CASCADE, blank=True)
+    username=models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    unit_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=True)
+    marks = models.CharField(max_length=255, blank=True, null=True)
+    grade = models.CharField(max_length=255, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
