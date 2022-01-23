@@ -135,7 +135,7 @@ def list_registered_units(request):
             response = HttpResponse(content_type='text/csv')
             response['Content-Disposition'] = 'attachment; filename="List of Registered Students.csv"'
             writer = csv.writer(response)
-            writer.writerow(['USER', 'STUDENT NAME', 'STAGE', 'UNIT NAME',
+            writer.writerow(['USERNAME', 'STUDENT NAME', 'STAGE', 'UNIT NAME',
                             'MARKS', 'GRADE', 'DATE REAGISTERED', 'DATE UPDATED'])
             instance = queryset
             for student in instance:
