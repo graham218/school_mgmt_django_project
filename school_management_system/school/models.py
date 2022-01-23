@@ -85,11 +85,14 @@ class Lectures(models.Model):
     total_salary_paid=models.DecimalField(max_digits=10, decimal_places=2)
     balance=models.DecimalField(max_digits=10, decimal_places=2)
 
+    def __str__(self):
+        return self.full_name
+
 class marks_yr1(models.Model):
     user=models.ForeignKey(User, max_length=255, on_delete=models.CASCADE)
     first_name=models.CharField(max_length=255, blank=True, null=True)
     last_name=models.CharField(max_length=255, blank=True, null=True)
     stage=models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE)
-    unit_subject=models.CharField(max_length=255, blank=True, null=True)
+    unit_or_subject_name=models.CharField(max_length=255, blank=True, null=True)
     marks=models.CharField(max_length=255, blank=True, null=True)
     grade=models.CharField(max_length=255, blank=True, null=True)
