@@ -91,7 +91,15 @@ class AddStudentsForm(forms.ModelForm):
                    'total_fees_billed': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Total Fee Billed'}),
                    'total_fees_paid': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Total Fee Paid'}),
                    'balance': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Fee Balance'})}
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['stage'].queryset = Stages.objects.none()
 
+        if 'stage' in self.data:
+            self.fields['stage'].queryset = Stages.objects.all()
+
+        elif self.instance.pk:
+            self.fields['stage'].queryset = Stages.objects.all().filter(pk=self.instance.stage.pk)
 
 class EditStudentsForm(forms.ModelForm):
     class Meta:
