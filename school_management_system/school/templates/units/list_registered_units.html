@@ -60,8 +60,14 @@
               {% for instance in queryset %}
               <tr>
                   <td class="py-1">{{forloop.counter}}</td>
-                  <td>{{instance.name}}</td>
-                  <td>{{instance.faculty}}</td>
+                  <td>{{instance.user}}</td>
+                  <td>{{instance.full_name}}</td>
+                  <td>{{instance.stage}}</td>
+                  <td>{{instance.unit_or_subject_name}}</td>
+                  <td>{{instance.marks}}</td>
+                  <td>{{instance.grade}}</td>
+                  <td>{{instance.date_created}}</td>
+                  <td>{{instance.date_updated}}</td>
                   <td><a class="mdi mdi-stack-overflow" href="{% url 'school:edit-programme' instance.id%}">Update</a></td>
               </tr>
               {% endfor %}
