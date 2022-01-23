@@ -79,7 +79,7 @@ class AddStudentsForm(forms.ModelForm):
                    'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter National Id Number'}),
                    'birth_cert_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Birth Certificate Number'}),
                    'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Phone Number'}),
-                   #'stage': forms.Select(attrs={'id': 'id_stage', 'class': 'form-control'}),
+                   # 'stage': forms.Select(attrs={'id': 'id_stage', 'class': 'form-control'}),
                    'DOB': DateInput(attrs={'type': 'date'}),
                    'date_of_admission': DateInput(attrs={'type': 'date'}),
                    'date_of_graduation': DateInput(attrs={'type': 'date'}),
@@ -91,6 +91,7 @@ class AddStudentsForm(forms.ModelForm):
                    'total_fees_billed': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Total Fee Billed'}),
                    'total_fees_paid': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Total Fee Paid'}),
                    'balance': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Fee Balance'})}
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['stage'].queryset = Stages.objects.none()
@@ -99,7 +100,9 @@ class AddStudentsForm(forms.ModelForm):
             self.fields['stage'].queryset = Stages.objects.all()
 
         elif self.instance.pk:
-            self.fields['stage'].queryset = Stages.objects.all().filter(pk=self.instance.stage.pk)
+            self.fields['stage'].queryset = Stages.objects.all().filter(
+                pk=self.instance.stage.pk)
+
 
 class EditStudentsForm(forms.ModelForm):
     class Meta:
@@ -241,27 +244,30 @@ class FacultySearchForm(forms.ModelForm):
 
 class UnitRegistrationForm(forms.ModelForm):
     class Meta:
-        model=marks_yr1
+        model = marks_yr1
         fields = ['stage', 'unit_or_subject_name']
         widgets = {'stage': forms.Select(
             attrs={'class': 'form-control', 'placeholder': 'Choose your year of study'}),
             'unit_or_subject_name': forms.Select(
             attrs={'class': 'form-control', 'placeholder': 'Select Unit or Subject to register'})}
 
+
 class MarksForm(forms.ModelForm):
     class Meta:
-        model=marks_yr1
+        model = marks_yr1
         fields = ['marks', 'grade']
         widgets = {'marks': forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'Enter Unit Marks'}),
             'grade': forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'Enter Unit Grade'})}
 
+
 class MarksSearch(forms.ModelForm):
-    export_to_CSV=forms.BooleanField(required=False)
+    export_to_CSV = forms.BooleanField(required=False)
+
     class Meta:
-        model=marks_yr1
-        fields = ['stage', 'unit_or_subject_name','user','full_name']
+        model = marks_yr1
+        fields = ['stage', 'unit_or_subject_name', 'user', 'full_name']
         widgets = {'stage': forms.Select(
             attrs={'class': 'form-control', 'placeholder': 'Search By Stage'}),
             'unit_or_subject_name': forms.Select(
@@ -270,4 +276,3 @@ class MarksSearch(forms.ModelForm):
             attrs={'class': 'form-control', 'placeholder': 'Search By Username'}),
             'full_name': forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'Search By Unit Full Name'})}
-         

@@ -139,7 +139,7 @@ def AddStudents(request):
     if request.is_ajax():
         year = request.GET.get('year')
         stage = Stages.objects.all().filter(year__icontains=year)
-        return JsonResponse(list(languages.values()), safe=False)
+        return JsonResponse(list(stage.values()), safe=False)
     if form.is_valid():
         user = request.user
         admission_no = form.cleaned_data['admission_no']

@@ -23,18 +23,6 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                  <span class="menu-title">Basic UI Elements</span>
-                  <i class="menu-arrow"></i>
-                  <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-                </a>
-                <div class="collapse" id="ui-basic">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{% static 'dash/pages/ui-features/buttons.html' %}">Buttons</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{% static 'dash/pages/ui-features/typography.html' %}">Typography</a></li>
-                  </ul>
-                </div>
-              </li>
 
               {% if request.user.is_superuser %}
               <!--Crud Icons Start Hear-->
@@ -126,6 +114,19 @@
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{% url 'school:add-programme' %}">Add Programmes</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{% url 'school:list-programme' %}">View Programmes</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#academics" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Academics</span>
+                  <i class="menu-arrow"></i>
+                  <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                </a>
+                <div class="collapse" id="academics">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'school:unit_registration' %}">Register Units</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'school:list_registered_units' %}">Registerd Students</a></li>
                   </ul>
                 </div>
               </li>

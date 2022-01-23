@@ -75,13 +75,12 @@ def unit_registration(request):
     button="Register Unit"
     form = UnitRegistrationForm(request.POST or None)
     if form.is_valid():
-        user = request.user,
-        full_name = 'graham',
-        stage = form.cleaned_data['stage'],
-        unit_or_subject_name = form.cleaned_data['unit_or_subject_name'],
-        reg = marks_yr1(user=user, full_name=full_name, stage=stage,
-                        unit_or_subject_name=unit_or_subject_name)
-        reg.save()
+        instance=form.save(commit=False)
+        instance.user=request.user
+        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
+        instance.stage=form.cleaned_data['stage']
+        instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
+        instance.save()
         messages.success(request, "Unit Registered Successfully")
         return redirect("/school/unit_registration/")
     context = {
