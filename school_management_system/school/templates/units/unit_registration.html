@@ -6,6 +6,7 @@
       <div class="col-lg-6 mx-auto">
         <div class="auth-form-light text-left p-5">
           <h4>{{title}}</h4>
+          {% include 'messages.html' %}
           <h6 class="font-weight-light">Fill In The Required Fields</h6>
           <form class="pt-3" method="post" action="">
               {% csrf_token %}
@@ -42,10 +43,13 @@
               {% for instance in queryset2 %}
                 <table class="table table-stripe">
                   <tr>
-                    <th>Counter</th><td></td>
+                    <th>Counter</th><td>{{forloop.counter}}</td>
                   </tr>
                   <tr>
-                    <th>Unit Name</th><td></td>
+                    <th>Unit Name</th>{{instance.stage}}<td></td>
+                  </tr>
+                  <tr>
+                    <th>Unit Name</th>{{instance.unit_or_subject_name}}<td></td>
                   </tr>
                 </table>
               {% endfor %}
