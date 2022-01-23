@@ -10,11 +10,12 @@ from django.conf import settings
 from django.urls import reverse
 from paypal.standard.forms import PayPalPaymentsForm
 
+
 @login_required
 def EditStudentsProfile(request, pk):
     title = "Edit Profile"
     button = "Edit Profile"
-    queryset=Students.objects.get(id=pk)
+    queryset = Students.objects.get(id=pk)
     form = EditStudentsForm(request.POST or None, instance=queryset)
     if request.method == "POST":
         form = EditStudentsForm(request.POST or None, instance=queryset)
@@ -29,11 +30,12 @@ def EditStudentsProfile(request, pk):
     }
     return render(request, 'school/create-edit-students.html', context)
 
+
 @login_required
 def EditLecturerProfile(request, pk):
     title = "Edit Profile"
     button = "Edit Profile"
-    queryset=Lectures.objects.get(id=pk)
+    queryset = Lectures.objects.get(id=pk)
     form = EditLectureForm(request.POST or None, instance=queryset)
     if request.method == "POST":
         form = EditLectureForm(request.POST or None, instance=queryset)
@@ -48,7 +50,9 @@ def EditLecturerProfile(request, pk):
     }
     return render(request, 'school/create-edit-lecturers.html', context)
 
-#paypal payment view
+# paypal payment view
+
+
 def payment_process(request):
     host = request.get_host()
     paypal_dict = {
@@ -64,11 +68,16 @@ def payment_process(request):
     form = PayPalPaymentsForm(initial=paypal_dict)
     return render(request, 'pets/payment_process.html', {'form': form})
 
+
 def unit_registration(request):
-    form=UnitRegistrationForm(request.POST or None)
+    form = UnitRegistrationForm(request.POST or None)
     if form.is_valid():
-        user=request.user,
-        full_name=request.user.get_fullname,
-        stage=form.cleaned_data['full_name'],
-        unit_or_subject_name=form.cleaned_data['unit_or_subject_name'],
-        reg=marks_yr1()
+        user = request.user,
+        full_name = request.user.get_fullname,
+        stage = form.cleaned_data['full_name'],
+        unit_or_subject_name = form.cleaned_data['unit_or_subject_name'],
+        reg = marks_yr1(user=user, full_name=full_name, stage=stage,
+                        unit_or_subject_name=unit_or_subject_name)
+        reg.save()
+        messages.success(request, "Unit Registered Successfully")
+        return redirect("/")                
