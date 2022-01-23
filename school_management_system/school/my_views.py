@@ -68,7 +68,7 @@ def payment_process(request):
     form = PayPalPaymentsForm(initial=paypal_dict)
     return render(request, 'pets/payment_process.html', {'form': form})
 
-
+@login_required
 def unit_registration(request):
     title="Unit Registration"
     form = UnitRegistrationForm(request.POST or None)
@@ -86,4 +86,17 @@ def unit_registration(request):
         "title": title,
         "form": form
     }
-    return render(request, "")                    
+    return render(request, "units/unit_registration.html")                    
+
+@login_required
+def unregister_unit(request, pk):
+    queryset = marks_yr1.objects.get(id=pk)
+    title = "Unregister Unit"
+    if request.method == "POST":
+        queryset.delete()
+        messages.success(request, "Unit Unregistered Successfully")
+        return redirect("/")
+    context = {
+        "title": title
+    }
+    return render(request, "school/delete_items.html", context)

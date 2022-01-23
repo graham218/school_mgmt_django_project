@@ -124,7 +124,7 @@ def DeleteAddress(request, pk):
     if request.method == "POST":
         queryset.delete()
         messages.success(request, "Address Deleted Successfully")
-        return redirect()
+        return redirect("/")
     context = {
         "title": title
     }
