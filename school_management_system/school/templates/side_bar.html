@@ -24,7 +24,7 @@
               </li>
               <li class="nav-item">
 
-              {% if request.user.is_staff %}
+              {% if request.user.is_superuser %}
               <!--Crud Icons Start Hear-->
               <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#academics" aria-expanded="false" aria-controls="ui-basic">
@@ -40,8 +40,6 @@
                 </div>
               </li>
               <!--Crud Icons end here-->
-              {% elif request.user.is_superuser %}
-
               {% else %}
               <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#students" aria-expanded="false" aria-controls="ui-basic">

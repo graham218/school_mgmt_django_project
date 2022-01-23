@@ -40,19 +40,20 @@
         <div class="card">
           <div class="card-body">
             <div class="table-responsive fixed-table-body">
-              {% for instance in queryset2 %}
                 <table class="table table-stripe">
                   <tr>
-                    <th>Counter</th><td>{{forloop.counter}}</td>
+                    <th>Counter</th>
+                    <th>Stage</th>
+                    <th>Unit Name</th>
                   </tr>
+              {% for instance in queryset2 %}
                   <tr>
-                    <th>Unit Name</th>{{instance.stage}}<td></td>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{instance.stage}}</td>
+                    <td>{{instance.unit_or_subject_name}}</td>
                   </tr>
-                  <tr>
-                    <th>Unit Name</th>{{instance.unit_or_subject_name}}<td></td>
-                  </tr>
-                </table>
               {% endfor %}
+                </table>
             </div>
           </div>
         </div>
