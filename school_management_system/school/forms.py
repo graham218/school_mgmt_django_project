@@ -79,7 +79,7 @@ class AddStudentsForm(forms.ModelForm):
                    'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter National Id Number'}),
                    'birth_cert_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Birth Certificate Number'}),
                    'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Phone Number'}),
-                   'stage': forms.Select(attrs={'id': 'id_stage', 'class': 'form-control'}),
+                   #'stage': forms.Select(attrs={'id': 'id_stage', 'class': 'form-control'}),
                    'DOB': DateInput(attrs={'type': 'date'}),
                    'date_of_admission': DateInput(attrs={'type': 'date'}),
                    'date_of_graduation': DateInput(attrs={'type': 'date'}),
