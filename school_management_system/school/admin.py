@@ -68,6 +68,41 @@ class MarksAdmin(admin.ModelAdmin):
     search_fields = ['user', 'full_name', 'unit_or_subject_name', 'stage']
     list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
 
+class MarksAdmin2(admin.ModelAdmin):
+    list_display = ['user', 'full_name','stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
+    list_per_page = 10
+    search_fields = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+    list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+
+class MarksAdmin3(admin.ModelAdmin):
+    list_display = ['user', 'full_name','stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
+    list_per_page = 10
+    search_fields = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+    list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+
+class MarksAdmin4(admin.ModelAdmin):
+    list_display = ['user', 'full_name','stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
+    list_per_page = 10
+    search_fields = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+    list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+
+class MarksAdmin5(admin.ModelAdmin):
+    list_display = ['user', 'full_name','stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
+    list_per_page = 10
+    search_fields = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+    list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+
+class MarksAdmin6(admin.ModelAdmin):
+    list_display = ['user', 'full_name','stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
+    list_per_page = 10
+    search_fields = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+    list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+
+class MarksAdmin7(admin.ModelAdmin):
+    list_display = ['user', 'full_name','stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
+    list_per_page = 10
+    search_fields = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+    list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
 
 admin.site.register(Address, AddressAdmin)
 admin.site.register(Faculty, FacultyAdmin)
