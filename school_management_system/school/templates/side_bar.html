@@ -25,7 +25,7 @@
               <li class="nav-item">
 
               {% if request.user.is_superuser %}
-              <!--Crud Icons Start Hear-->
+              <!--Students' Actions Start Hear-->
               <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#academics" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Academics Stud</span>
@@ -34,11 +34,33 @@
                 </a>
                 <div class="collapse" id="academics">
                   <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="">Register Semester</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{% url 'school:unit_registration' %}">Register Units</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="">Print Exam Card</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="">View Transcripts</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="">Print Transcripts</a></li>
                   </ul>
                 </div>
               </li>
-              <!--Crud Icons end here-->
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#financials" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Financials</span>
+                  <i class="menu-arrow"></i>
+                  <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                </a>
+                <div class="collapse" id="financials">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="">Print Receipts</a></li>
+                  </ul>
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="">Pay School Fees</a></li>
+                  </ul>
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="">Pay for Retakes/Resits/Sups</a></li>
+                  </ul>
+                </div>
+              </li>
+              <!--Students' Actions end here-->
               {% else %}
               <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#academics1" aria-expanded="false" aria-controls="ui-basic">

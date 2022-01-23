@@ -127,3 +127,74 @@ class marks_yr1(models.Model):
     date_created = models.DateTimeField(
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class marks_yr2(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage = models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=False)
+    unit_or_subject_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=False)
+    marks = models.CharField(max_length=255, blank=True, null=True)
+    grade = models.CharField(max_length=255, blank=True, null=True)
+    date_created = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class marks_yr3(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage = models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=False)
+    unit_or_subject_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=False)
+    marks = models.CharField(max_length=255, blank=True, null=True)
+    grade = models.CharField(max_length=255, blank=True, null=True)
+    date_created = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class marks_yr4(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage = models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=False)
+    unit_or_subject_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=False)
+    marks = models.CharField(max_length=255, blank=True, null=True)
+    grade = models.CharField(max_length=255, blank=True, null=True)
+    date_created = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class marks_yr5(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage = models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=False)
+    unit_or_subject_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=False)
+    marks = models.CharField(max_length=255, blank=True, null=True)
+    grade = models.CharField(max_length=255, blank=True, null=True)
+    date_created = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class marks_yr6(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage = models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=False)
+    unit_or_subject_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=False)
+    marks = models.CharField(max_length=255, blank=True, null=True)
+    grade = models.CharField(max_length=255, blank=True, null=True)
+    date_created = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class marks_yr7(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage = models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=False)
+    unit_or_subject_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=False)
+    marks = models.CharField(max_length=255, blank=True, null=True)
+    grade = models.CharField(max_length=255, blank=True, null=True)
+    date_created = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class fee_payement(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    
