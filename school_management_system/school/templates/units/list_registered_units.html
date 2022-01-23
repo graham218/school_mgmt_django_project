@@ -70,8 +70,8 @@
                   <td>{{instance.grade}}</td>
                   <td>{{instance.date_created}}</td>
                   <td>{{instance.date_updated}}</td>
-                  <td><a class="mdi mdi-stack-overflow" href="{% url 'school:edit-programme' instance.id%}">Update Marks</a></td>
-                  <td><a class="mdi mdi-delete-forever" href="{% url 'school:delete-lecturer' instance.id%}">Delete Student</a></td>
+                  <td><a class="mdi mdi-stack-overflow" href="{% url 'school:unregister_unit' instance.id%}">Update Marks</a></td>
+                  <td><a class="mdi mdi-delete-forever" href="{% url 'school:unregister_unit' instance.id%}">Delete REG</a></td>
               </tr>
               {% endfor %}
             </tbody>
