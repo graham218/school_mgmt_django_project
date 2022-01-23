@@ -63,46 +63,72 @@ class LectureAdmin(admin.ModelAdmin):
 
 
 class MarksAdmin(admin.ModelAdmin):
-    list_display = ['user', 'full_name','stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
+    list_display = ['user', 'full_name', 'stage', 'unit_or_subject_name',
+                    'marks', 'grade', 'date_created', 'date_updated']
     list_per_page = 10
     search_fields = ['user', 'full_name', 'unit_or_subject_name', 'stage']
     list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+
 
 class MarksAdmin2(admin.ModelAdmin):
-    list_display = ['user', 'full_name','stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
+    list_display = ['user', 'full_name', 'stage', 'unit_or_subject_name',
+                    'marks', 'grade', 'date_created', 'date_updated']
     list_per_page = 10
     search_fields = ['user', 'full_name', 'unit_or_subject_name', 'stage']
     list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+
 
 class MarksAdmin3(admin.ModelAdmin):
-    list_display = ['user', 'full_name','stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
+    list_display = ['user', 'full_name', 'stage', 'unit_or_subject_name',
+                    'marks', 'grade', 'date_created', 'date_updated']
     list_per_page = 10
     search_fields = ['user', 'full_name', 'unit_or_subject_name', 'stage']
     list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+
 
 class MarksAdmin4(admin.ModelAdmin):
-    list_display = ['user', 'full_name','stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
+    list_display = ['user', 'full_name', 'stage', 'unit_or_subject_name',
+                    'marks', 'grade', 'date_created', 'date_updated']
     list_per_page = 10
     search_fields = ['user', 'full_name', 'unit_or_subject_name', 'stage']
     list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+
 
 class MarksAdmin5(admin.ModelAdmin):
-    list_display = ['user', 'full_name','stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
+    list_display = ['user', 'full_name', 'stage', 'unit_or_subject_name',
+                    'marks', 'grade', 'date_created', 'date_updated']
     list_per_page = 10
     search_fields = ['user', 'full_name', 'unit_or_subject_name', 'stage']
     list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+
 
 class MarksAdmin6(admin.ModelAdmin):
-    list_display = ['user', 'full_name','stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
+    list_display = ['user', 'full_name', 'stage', 'unit_or_subject_name',
+                    'marks', 'grade', 'date_created', 'date_updated']
     list_per_page = 10
     search_fields = ['user', 'full_name', 'unit_or_subject_name', 'stage']
     list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
 
+
 class MarksAdmin7(admin.ModelAdmin):
-    list_display = ['user', 'full_name','stage', 'unit_or_subject_name', 'marks', 'grade', 'date_created', 'date_updated']
+    list_display = ['user', 'full_name', 'stage', 'unit_or_subject_name',
+                    'marks', 'grade', 'date_created', 'date_updated']
     list_per_page = 10
     search_fields = ['user', 'full_name', 'unit_or_subject_name', 'stage']
     list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
+
+
+class fee_payment_admin(admin.ModelAdmin):
+    list_display = ['user', 'full_name', 'amount_paid',
+                    'payment_method', 'date_paid', 'date_paid']
+    list_per_page = 10
+
+class FeeReceiptAdmin(admin.ModelAdmin):
+    list_display = ['user', 'full_name', 'stage',
+                    'exams', 'co_ocurricular_activities', 'hostel_charges', 'library_charges',
+                    'internet_charges', 'electricity_charges', 'food_charges', 'furniture_charges',
+                    'water_charges', 'date_updated']
+    list_per_page = 10
 
 admin.site.register(Address, AddressAdmin)
 admin.site.register(Faculty, FacultyAdmin)
