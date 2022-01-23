@@ -89,6 +89,7 @@ class marks_yr1(models.Model):
     user=models.ForeignKey(User, max_length=255, on_delete=models.CASCADE)
     first_name=models.CharField(max_length=255, blank=True, null=True)
     last_name=models.CharField(max_length=255, blank=True, null=True)
+    stage=models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE)
     unit_subject=models.CharField(max_length=255, blank=True, null=True)
     marks=models.CharField(max_length=255, blank=True, null=True)
     grade=models.CharField(max_length=255, blank=True, null=True)
