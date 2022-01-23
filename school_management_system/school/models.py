@@ -244,3 +244,15 @@ class NoticeBoard(models.Model):
     full_name = models.CharField(max_length=255, blank=True, null=True)
     notice = models.CharField(max_length=5000, blank=True, null=True)
     signature = models.CharField(max_length=255, blank=True, null=True)
+
+class Voting(models.Model):
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage = models.CharField(max_length=5000, blank=True, null=True)
+    course = models.CharField(max_length=255, blank=True, null=True)
+    seat = models.CharField(max_length=255, blank=True, null=True)
+    votes = models.CharField(max_length=5000, blank=True, null=True)
+    position = models.CharField(max_length=255, blank=True, null=True)
+    status = models.CharField(max_length=255, blank=True, null=True)
+    created_at = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    updated_at = models.DateTimeField(null=True, blank=True, auto_now=True)
