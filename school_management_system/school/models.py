@@ -239,3 +239,8 @@ class LecturerUnits(models.Model):
         null=True, blank=True, auto_now_add=True)
     updated_at = models.DateTimeField(null=True, blank=True, auto_now=True)
 
+class NoticeBoard(models.Model):
+    written_by = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    notice = models.CharField(max_length=5000, blank=True, null=True)
+    signature = models.CharField(max_length=255, blank=True, null=True)
