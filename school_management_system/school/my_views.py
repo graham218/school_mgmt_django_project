@@ -65,4 +65,10 @@ def payment_process(request):
     return render(request, 'pets/payment_process.html', {'form': form})
 
 def unit_registration(request):
-    
+    form=UnitRegistrationForm(request.POST or None)
+    if form.is_valid():
+        user=request.user,
+        full_name=request.user.get_fullname,
+        stage=form.cleaned_data['full_name'],
+        unit_or_subject_name=form.cleaned_data['unit_or_subject_name'],
+        reg=marks_yr1()
