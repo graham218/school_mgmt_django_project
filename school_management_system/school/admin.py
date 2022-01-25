@@ -144,7 +144,8 @@ class LecturerUnitsAdmin(admin.ModelAdmin):
     list_display = ['full_name', 'unit_name',
                     'level_of_understanding', 'created_at']
     list_per_page = 10
-
+    search_fields = ['full_name', 'unit_name']
+    list_filter = ['full_name', 'unit_name']
 
 class NoticeBoardAdmin(admin.ModelAdmin):
     list_display = ['written_by', 'full_name', 'notice', 'signature']
