@@ -9,7 +9,7 @@ urlpatterns = [
     path('delete-address/<str:pk>', views.DeleteAddress, name='delete-address'),
     path('show-address/', views.ShowAddress, name='show-address'),
 
-    path('add-students/', views.AddStudents, name='add-students'),
+    path('add-students/', views.AddStudents, name='add_students'),
     path('edit-students/<str:pk>', views.EditStudents, name='edit-students'),
     path('delete-student/<str:pk>', views.DeleteStudent, name='delete-student'),
     path('list-students/', views.ListStudents, name='list-students'),

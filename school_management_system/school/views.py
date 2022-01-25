@@ -135,11 +135,12 @@ def DeleteAddress(request, pk):
 def AddStudents(request):
     title = "Add New Students"
     button = "Add Student"
+    instance=Students.objects.first()
     form = AddStudentsForm(request.POST or None, request.FILES)
     if request.is_ajax():
-        year = request.GET.get('year')
-        stage = Stages.objects.all().filter(year__icontains=year)
-        return JsonResponse(list(stage.values()), safe=False)
+        term = request.GET.get('term')
+        my_stages = Stages.objects.filter(year__icontains=term)
+        return JsonResponse(list(my_stages.values()), safe=False)
     if form.is_valid():
         user = request.user
         admission_no = form.cleaned_data['admission_no']
