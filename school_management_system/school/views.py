@@ -137,10 +137,10 @@ def AddStudents(request):
     button = "Add Student"
     instance=Students.objects.first()
     form = AddStudentsForm(request.POST or None, request.FILES)
-    if request.is_ajax():
-        term = request.GET.get('term')
-        my_stages = Stages.objects.filter(year__icontains=term)
-        return JsonResponse(list(my_stages.values()), safe=False)
+    # if request.is_ajax():
+    #     term = request.GET.get('term')
+    #     my_stages = Stages.objects.filter(year__icontains=term)
+    #     return JsonResponse(list(my_stages.values()), safe=False)
     if form.is_valid():
         user = request.user
         admission_no = form.cleaned_data['admission_no']

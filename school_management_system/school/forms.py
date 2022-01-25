@@ -83,7 +83,7 @@ class AddStudentsForm(forms.ModelForm):
                    'DOB': DateInput(attrs={'type': 'date'}),
                    'date_of_admission': DateInput(attrs={'type': 'date'}),
                    'date_of_graduation': DateInput(attrs={'type': 'date'}),
-                   'programme': forms.Select(attrs={'class': 'form-control', 'id': 'value'}),
+                   'programme': forms.Select(attrs={'id': 'id_programme','class': 'form-control'}),
                    # 'profile_photo': forms.ImageField(label_suffix="Profile Picture"),
                    'postal_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eg, PO BOX 123 Busia, Kenya'}),
                    'school_email': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter School Email'}),
@@ -91,16 +91,16 @@ class AddStudentsForm(forms.ModelForm):
                    'total_fees_billed': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Total Fee Billed'}),
                    'total_fees_paid': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Total Fee Paid'}),
                    'balance': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Fee Balance'})}
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['stage'].queryset = Stages.objects.none()
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.fields['stage'].queryset = Stages.objects.none()
 
-        if 'stage' in self.data:
-            self.fields['stage'].queryset = Stages.objects.all()
+    #     if 'stage' in self.data:
+    #         self.fields['stage'].queryset = Stages.objects.all()
 
-        elif self.instance.pk:
-            self.fields['stage'].queryset = Stages.objects.all().filter(
-                pk=self.instance.stage.pk)
+    #     elif self.instance.pk:
+    #         self.fields['stage'].queryset = Stages.objects.all().filter(
+    #             pk=self.instance.stage.pk)
 
 
 class EditStudentsForm(forms.ModelForm):
