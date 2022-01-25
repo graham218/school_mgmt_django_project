@@ -130,13 +130,15 @@ class FeeReceiptAdmin(admin.ModelAdmin):
                     'internet_charges', 'electricity_charges', 'food_charges', 'furniture_charges',
                     'water_charges', 'date_updated']
     list_per_page = 10
-
+    search_fields=['user', 'full_name', 'stage']
+    list_filter=['user', 'full_name', 'stage']
 
 class SpecialExamAdmin(admin.ModelAdmin):
     list_display = ['user', 'full_name', 'stage',
                     'unit_name', 'marks', 'grade', 'comments', 'date_paid', 'date_updated']
     list_per_page = 10
-
+    search_fields=['user', 'full_name', 'stage']
+    list_filter=['user', 'full_name', 'stage']
 
 class LecturerUnitsAdmin(admin.ModelAdmin):
     list_display = ['full_name', 'unit_name',
@@ -147,19 +149,21 @@ class LecturerUnitsAdmin(admin.ModelAdmin):
 class NoticeBoardAdmin(admin.ModelAdmin):
     list_display = ['written_by', 'full_name', 'notice', 'signature']
     list_per_page = 10
-
-
+    search_fields = ['written_by', 'full_name', 'notice', 'signature']
+    list_filter = ['written_by', 'full_name', 'notice', 'signature']
 class VotingAdmin(admin.ModelAdmin):
     list_display = ['full_name', 'stage', 'course', 'seat',
                     'votes', 'position', 'status', 'created_at', 'updated_at']
     list_per_page = 10
-
+    search_fields = ['full_name', 'stage', 'course', 'seat']
+    list_filter = ['full_name', 'stage', 'course', 'seat']
 
 class SuggestionBoxAdmin(admin.ModelAdmin):
     list_display = ['written_by', 'full_name', 'suggestion', 'check',
                     'status', 'created_at', 'updated_at']
     list_per_page = 10
-
+    search_fields = ['written_by', 'full_name', 'suggestion', 'check']
+    list_filter = ['written_by', 'full_name', 'suggestion', 'check']
 
 admin.site.register(Address, AddressAdmin)
 admin.site.register(Faculty, FacultyAdmin)
