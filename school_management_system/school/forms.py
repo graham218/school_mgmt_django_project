@@ -278,6 +278,33 @@ class MarksForm3(forms.ModelForm):
             'grade': forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'Enter Unit Grade'})}
 
+class MarksForm4(forms.ModelForm):
+    class Meta:
+        model = marks_yr4
+        fields = ['marks', 'grade']
+        widgets = {'marks': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter Unit Marks'}),
+            'grade': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter Unit Grade'})}
+
+class MarksForm5(forms.ModelForm):
+    class Meta:
+        model = marks_yr5
+        fields = ['marks', 'grade']
+        widgets = {'marks': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter Unit Marks'}),
+            'grade': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter Unit Grade'})}
+
+class MarksForm6(forms.ModelForm):
+    class Meta:
+        model = marks_yr6
+        fields = ['marks', 'grade']
+        widgets = {'marks': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter Unit Marks'}),
+            'grade': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter Unit Grade'})}
+
 class MarksSearch(forms.ModelForm):
     export_to_CSV = forms.BooleanField(required=False)
 
