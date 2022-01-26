@@ -226,7 +226,7 @@ class SpecialExam(models.Model):
     marks = models.CharField(max_length=255, blank=True, null=True)
     grade = models.CharField(max_length=255, blank=True, null=True)
     comments = models.CharField(max_length=255, blank=True, null=True)
-    date_paid = models.DateTimeField(
+    date_registered = models.DateTimeField(
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
 
