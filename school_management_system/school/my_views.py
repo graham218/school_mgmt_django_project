@@ -166,8 +166,8 @@ def list_registered_units(request):
 def unit_registration2(request):
     title = "Unit Registration Year 2"
     button="Register Unit"
-    form = UnitRegistrationForm(request.POST or None)
-    queryset2=marks_yr1.objects.filter(user=request.user)
+    form = UnitRegistrationForm2(request.POST or None)
+    queryset2=marks_yr2.objects.filter(user=request.user)
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
@@ -187,10 +187,10 @@ def unit_registration2(request):
 
 
 @login_required
-def unregister_unit(request, pk):
-    queryset = marks_yr1.objects.get(id=pk)
-    queryset2=marks_yr1.objects.filter(user=request.user)
-    title = "Unregister Unit"
+def unregister_unit2(request, pk):
+    queryset = marks_yr2.objects.get(id=pk)
+    queryset2=marks_yr2.objects.filter(user=request.user)
+    title = "Unregister Semester @ Units"
     button="Unregister Unit"
     if request.method == "POST":
         queryset.delete()
@@ -205,13 +205,13 @@ def unregister_unit(request, pk):
 
 
 @login_required
-def insert_marks(request, pk):
+def insert_marks2(request, pk):
     queryset = marks_yr1.objects.get(id=pk)
-    title = "Enter Unit Marks And Grades"
+    title = "Enter Unit Marks And Grades of Year 2"
     button="Add Marks"
-    form = MarksForm(request.POST or None, instance=queryset)
+    form = MarksForm2(request.POST or None, instance=queryset)
     if request.method == "POST":
-        form = MarksForm(request.POST or None, instance=queryset)
+        form = MarksForm2(request.POST or None, instance=queryset)
         form.save()
         return redirect("/school/list_registered_units/")
     context = {
@@ -222,16 +222,16 @@ def insert_marks(request, pk):
     return render(request, "units/update_marks.html", context)
 
 
-def list_registered_units(request):
-    title = 'List of Registered Students'
-    form = MarksSearch(request.POST or None)
-    queryset = marks_yr1.objects.all()
+def list_registered_units2(request):
+    title = 'List of Registered Students Semester 2'
+    form = MarksSearch2(request.POST or None)
+    queryset = marks_yr2.objects.all()
     context = {
         "title": title,
         "queryset": queryset,
     }
     if request.method == 'POST':
-        queryset = marks_yr1.objects.filter(stage=form['stage'].value(), user=form['user'].value(),
+        queryset = marks_yr2.objects.filter(stage=form['stage'].value(), user=form['user'].value(),
                                             unit_or_subject_name=form['unit_or_subject_name'].value(), full_name__icontains=form['full_name'])
         if form['export_to_CSV'].value() == True:
             response = HttpResponse(content_type='text/csv')
@@ -252,3 +252,4 @@ def list_registered_units(request):
         "queryset": queryset,
     }
     return render(request, "units/list_registered_units.html", context)
+#====================================================================================================
