@@ -305,11 +305,110 @@ class MarksForm6(forms.ModelForm):
             'grade': forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'Enter Unit Grade'})}
 
+class MarksForm7(forms.ModelForm):
+    class Meta:
+        model = marks_yr7
+        fields = ['marks', 'grade']
+        widgets = {'marks': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter Unit Marks'}),
+            'grade': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter Unit Grade'})}
+
 class MarksSearch(forms.ModelForm):
     export_to_CSV = forms.BooleanField(required=False)
 
     class Meta:
         model = marks_yr1
+        fields = ['stage', 'unit_or_subject_name', 'user', 'full_name']
+        widgets = {'stage': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Stage'}),
+            'unit_or_subject_name': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Name'}),
+            'user': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Username'}),
+            'full_name': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Full Name'})}
+
+class MarksSearch2(forms.ModelForm):
+    export_to_CSV = forms.BooleanField(required=False)
+
+    class Meta:
+        model = marks_yr2
+        fields = ['stage', 'unit_or_subject_name', 'user', 'full_name']
+        widgets = {'stage': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Stage'}),
+            'unit_or_subject_name': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Name'}),
+            'user': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Username'}),
+            'full_name': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Full Name'})}
+
+class MarksSearch3(forms.ModelForm):
+    export_to_CSV = forms.BooleanField(required=False)
+
+    class Meta:
+        model = marks_yr3
+        fields = ['stage', 'unit_or_subject_name', 'user', 'full_name']
+        widgets = {'stage': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Stage'}),
+            'unit_or_subject_name': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Name'}),
+            'user': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Username'}),
+            'full_name': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Full Name'})}
+
+class MarksSearch4(forms.ModelForm):
+    export_to_CSV = forms.BooleanField(required=False)
+
+    class Meta:
+        model = marks_yr4
+        fields = ['stage', 'unit_or_subject_name', 'user', 'full_name']
+        widgets = {'stage': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Stage'}),
+            'unit_or_subject_name': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Name'}),
+            'user': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Username'}),
+            'full_name': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Full Name'})}
+
+class MarksSearch5(forms.ModelForm):
+    export_to_CSV = forms.BooleanField(required=False)
+
+    class Meta:
+        model = marks_yr5
+        fields = ['stage', 'unit_or_subject_name', 'user', 'full_name']
+        widgets = {'stage': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Stage'}),
+            'unit_or_subject_name': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Name'}),
+            'user': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Username'}),
+            'full_name': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Full Name'})}
+
+class MarksSearch6(forms.ModelForm):
+    export_to_CSV = forms.BooleanField(required=False)
+
+    class Meta:
+        model = marks_yr6
+        fields = ['stage', 'unit_or_subject_name', 'user', 'full_name']
+        widgets = {'stage': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Stage'}),
+            'unit_or_subject_name': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Name'}),
+            'user': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Username'}),
+            'full_name': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Search By Unit Full Name'})}
+
+class MarksSearch7(forms.ModelForm):
+    export_to_CSV = forms.BooleanField(required=False)
+
+    class Meta:
+        model = marks_yr7
         fields = ['stage', 'unit_or_subject_name', 'user', 'full_name']
         widgets = {'stage': forms.Select(
             attrs={'class': 'form-control', 'placeholder': 'Search By Stage'}),
