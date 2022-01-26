@@ -240,7 +240,7 @@ class FacultySearchForm(forms.ModelForm):
         widgets = {'school': forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'eg: School Of Computing & Informatics'})}
 
-
+#==============================================================================================
 class UnitRegistrationForm(forms.ModelForm):
     class Meta:
         model = marks_yr1
@@ -303,7 +303,7 @@ class UnitRegistrationForm7(forms.ModelForm):
             attrs={'class': 'form-control', 'placeholder': 'Choose your year of study'}),
             'unit_or_subject_name': forms.Select(
             attrs={'class': 'form-control', 'placeholder': 'Select Unit or Subject to register'})}
-
+#===============================================================================================
 class MarksForm(forms.ModelForm):
     class Meta:
         model = marks_yr1
@@ -471,3 +471,4 @@ class MarksSearch7(forms.ModelForm):
             attrs={'class': 'form-control', 'placeholder': 'Search By Username'}),
             'full_name': forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'Search By Unit Full Name'})}
+#==========================================================================================
