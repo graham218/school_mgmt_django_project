@@ -250,6 +250,59 @@ class UnitRegistrationForm(forms.ModelForm):
             'unit_or_subject_name': forms.Select(
             attrs={'class': 'form-control', 'placeholder': 'Select Unit or Subject to register'})}
 
+class UnitRegistrationForm2(forms.ModelForm):
+    class Meta:
+        model = marks_yr2
+        fields = ['stage', 'unit_or_subject_name']
+        widgets = {'stage': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Choose your year of study'}),
+            'unit_or_subject_name': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Select Unit or Subject to register'})}
+
+class UnitRegistrationForm3(forms.ModelForm):
+    class Meta:
+        model = marks_yr3
+        fields = ['stage', 'unit_or_subject_name']
+        widgets = {'stage': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Choose your year of study'}),
+            'unit_or_subject_name': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Select Unit or Subject to register'})}
+
+class UnitRegistrationForm4(forms.ModelForm):
+    class Meta:
+        model = marks_yr4
+        fields = ['stage', 'unit_or_subject_name']
+        widgets = {'stage': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Choose your year of study'}),
+            'unit_or_subject_name': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Select Unit or Subject to register'})}
+
+class UnitRegistrationForm5(forms.ModelForm):
+    class Meta:
+        model = marks_yr5
+        fields = ['stage', 'unit_or_subject_name']
+        widgets = {'stage': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Choose your year of study'}),
+            'unit_or_subject_name': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Select Unit or Subject to register'})}
+
+class UnitRegistrationForm6(forms.ModelForm):
+    class Meta:
+        model = marks_yr6
+        fields = ['stage', 'unit_or_subject_name']
+        widgets = {'stage': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Choose your year of study'}),
+            'unit_or_subject_name': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Select Unit or Subject to register'})}
+
+class UnitRegistrationForm7(forms.ModelForm):
+    class Meta:
+        model = marks_yr7
+        fields = ['stage', 'unit_or_subject_name']
+        widgets = {'stage': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Choose your year of study'}),
+            'unit_or_subject_name': forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'Select Unit or Subject to register'})}
 
 class MarksForm(forms.ModelForm):
     class Meta:

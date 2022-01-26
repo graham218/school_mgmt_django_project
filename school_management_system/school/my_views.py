@@ -72,7 +72,99 @@ def payment_process(request):
 
 @login_required
 def unit_registration(request):
-    title = "Unit Registration"
+    title = "Unit Registration Year 1"
+    button="Register Unit"
+    form = UnitRegistrationForm(request.POST or None)
+    queryset2=marks_yr1.objects.filter(user=request.user)
+    if form.is_valid():
+        instance=form.save(commit=False)
+        instance.user=request.user
+        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
+        instance.stage=form.cleaned_data['stage']
+        instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
+        instance.save()
+        messages.success(request, "Unit Registered Successfully")
+        return HttpResponseRedirect("/school/unit_registration/")
+    context = {
+        "title": title,
+        "form": form,
+        "button": button,
+        "queryset2": queryset2
+    }
+    return render(request, "units/unit_registration.html", context)
+
+
+@login_required
+def unregister_unit(request, pk):
+    queryset = marks_yr1.objects.get(id=pk)
+    queryset2=marks_yr1.objects.filter(user=request.user)
+    title = "Unregister Unit"
+    button="Unregister Unit"
+    if request.method == "POST":
+        queryset.delete()
+        messages.error(request, "Unit Unregistered Successfully")
+        return HttpResponseRedirect("/school/list_registered_units")
+    context = {
+        "title": title,
+        "button": button,
+        "queryset2": queryset2
+    }
+    return render(request, "school/delete_items.html", context)
+
+
+@login_required
+def insert_marks(request, pk):
+    queryset = marks_yr1.objects.get(id=pk)
+    title = "Enter Unit Marks And Grades"
+    button="Add Marks"
+    form = MarksForm(request.POST or None, instance=queryset)
+    if request.method == "POST":
+        form = MarksForm(request.POST or None, instance=queryset)
+        form.save()
+        return redirect("/school/list_registered_units/")
+    context = {
+        "title": title,
+        "button": button,
+        "form": form
+    }
+    return render(request, "units/update_marks.html", context)
+
+
+def list_registered_units(request):
+    title = 'List of Registered Students'
+    form = MarksSearch(request.POST or None)
+    queryset = marks_yr1.objects.all()
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    if request.method == 'POST':
+        queryset = marks_yr1.objects.filter(stage=form['stage'].value(), user=form['user'].value(),
+                                            unit_or_subject_name=form['unit_or_subject_name'].value(), full_name__icontains=form['full_name'])
+        if form['export_to_CSV'].value() == True:
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = 'attachment; filename="List of Registered Students.csv"'
+            writer = csv.writer(response)
+            writer.writerow(['USERNAME', 'STUDENT NAME', 'STAGE', 'UNIT NAME',
+                            'MARKS', 'GRADE', 'DATE REAGISTERED', 'DATE UPDATED'])
+            instance = queryset
+            for student in instance:
+                writer.writerow([student.user, student.full_name, student.stage,
+                                 student.unit_or_subject_name, student.marks, student.grade,
+                                 student.date_created, student.date_updated])
+            return response
+
+    context = {
+        "form": form,
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "units/list_registered_units.html", context)
+
+#==============================================================================================
+@login_required
+def unit_registration2(request):
+    title = "Unit Registration Year 2"
     button="Register Unit"
     form = UnitRegistrationForm(request.POST or None)
     queryset2=marks_yr1.objects.filter(user=request.user)
