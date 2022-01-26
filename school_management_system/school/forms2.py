@@ -7,3 +7,4 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, User
 from django.utils.translation import gettext, gettext_lazy as _
 from django.forms.widgets import DateInput
 from django_countries.fields import CountryField
+
