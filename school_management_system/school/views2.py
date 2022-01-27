@@ -87,3 +87,26 @@ def SpecialExamList(request):
         "queryset": queryset,
     }
     return render(request, "next/special_exams_list.html", context)
+
+@login_required
+def special_exams(request):
+    title = "Register For Special Exams"
+    button="Register Unit"
+    form = SpecialExamRegisterForm(request.POST or None)
+    queryset2=SpecialExam.objects.filter(user=request.user)
+    if form.is_valid():
+        instance=form.save(commit=False)
+        instance.user=request.user
+        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
+        instance.stage=form.cleaned_data['stage']
+        instance.unit_name=form.cleaned_data['unit_name']
+        instance.save()
+        messages.success(request, "Unit Registered Successfully")
+        return HttpResponseRedirect("/")
+    context = {
+        "title": title,
+        "form": form,
+        "button": button,
+        "queryset2": queryset2
+    }
+    return render(request, "next/special_exams.html", context)
