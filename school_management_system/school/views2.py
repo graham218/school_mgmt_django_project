@@ -226,7 +226,7 @@ def seats_delete(request, pk):
         "button": button,
         "queryset": queryset
     }
-    return render(request, "next/seats.html", context)
+    return render(request, "school/delete_items.html", context)
 
 #==========================================================================================
 #Notice Board
@@ -256,3 +256,19 @@ def add_notice(request):
     }
     return render(request, "next/add_notice.html", context)
 
+@login_required
+def delete_notice(request, pk):
+    title = "Delete Notice"
+    button="Delete Notice"
+    queryset2=NoticeBoard.objects.get(id=pk)
+    if request.method=="POST":
+        queryset2.delete()
+        messages.error(request, "Notice Deleted From Board")
+        return HttpResponseRedirect("/")
+    context = {
+        "title": title,
+        "form": form,
+        "button": button,
+        "queryset": queryset
+    }
+    return render(request, "next/seats.html", context)
