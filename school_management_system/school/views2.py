@@ -309,3 +309,21 @@ def register_polititian(request):
         "button": button
     }
     return render(request, "next/register_polititian.html", context)
+
+@login_required
+def edit_polititian(request, pk):
+    title = "Edit Politician"
+    button="Register"
+    queryset=Voting.objects.get(id=pk)
+    form = VotingForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        messages.success(request, "Polititian Register SUccessfully")
+        return HttpResponseRedirect("/")
+    context = {
+        "title": title,
+        "form": form,
+        "form2": form2,
+        "button": button
+    }
+    return render(request, "next/register_polititian.html", context)
