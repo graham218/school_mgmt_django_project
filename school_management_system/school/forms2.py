@@ -71,4 +71,10 @@ class SuggestionBoxForm(forms.ModelForm):
         fields=['full_name','suggestion']
         widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
         'stage': forms.Select(attrs={'class': 'form-control'}),
-        'suggestion': forms.TextInput(attrs={'class': 'form-control'}),}
+        'suggestion': forms.TextInput(attrs={'class': 'form-control'})}
+
+class SeatsForm(forms.ModelForm):
+    class Meta:
+        model=Seats
+        fields=['seat']
+        widgets={'seat': forms.TextInput(attrs={'class': 'form-control'})}
