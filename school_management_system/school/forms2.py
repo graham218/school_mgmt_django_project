@@ -43,13 +43,10 @@ class SpecialExamRegisterForm(forms.ModelForm):
 class SpecialExamMarksForm(forms.ModelForm):
     class Meta:
         model=SpecialExam
-        fields=['full_name','stage','unit_name','marks','grade',
-        'comments']
-        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
-        'stage': forms.Select(attrs={'class': 'form-control'}),
-        'unit_name': forms.Select(attrs={'class': 'form-control'}),
-        'marks': forms.NumberInput(attrs={'class': 'form-control'}),
-        'grade': forms.TextInput(attrs={'class': 'form-control'})}
+        fields=['marks','grade', 'comments']
+        widgets={'marks': forms.NumberInput(attrs={'class': 'form-control'}),
+        'grade': forms.TextInput(attrs={'class': 'form-control'}),
+        'comments': forms.TextInput(attrs={'class': 'form-control'})}
 
 class SpecialExamSearchForm(forms.ModelForm):
     class Meta:
