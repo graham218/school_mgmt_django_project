@@ -72,7 +72,4 @@ class SuggestionBoxForm(forms.ModelForm):
         widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
         'stage': forms.Select(attrs={'class': 'form-control'}),
         'course': forms.Select(attrs={'class': 'form-control'}),
-        'seat': forms.Select(attrs={'class': 'form-control'}),
-        'votes': forms.TextInput(attrs={'class': 'form-control'}),
-        'position': forms.NumberInput(attrs={'class': 'form-control'}),
-        'status': forms.TextInput(attrs={'class': 'form-control'})}
+        'seat': forms.Select(attrs={'class': 'form-control'})}
