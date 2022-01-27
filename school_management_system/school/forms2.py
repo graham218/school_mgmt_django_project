@@ -26,6 +26,12 @@ class FeeReceiptForm(forms.ModelForm):
         'furniture_charges': forms.NumberInput(attrs={'class': 'form-control'}),
         'water_charges': forms.NumberInput(attrs={'class': 'form-control'})}
 
+class FeeReceiptSearchForm(forms.ModelForm):
+    class Meta:
+        model=FeeReceipt
+        fields=['full_name']
+        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'})}
+
 class SpecialExamForm(forms.ModelForm):
     class Meta:
         model=SpecialExam
