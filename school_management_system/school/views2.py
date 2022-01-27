@@ -271,4 +271,5 @@ def delete_notice(request, pk):
         "button": button,
         "queryset": queryset
     }
-    return render(request, "next/seats.html", context)
+    return render(request, "school/delete_items.html", context)
+#=================================================================================================
