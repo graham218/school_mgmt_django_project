@@ -43,6 +43,12 @@ class SpecialExamForm(forms.ModelForm):
         'marks': forms.NumberInput(attrs={'class': 'form-control'}),
         'grade': forms.TextInput(attrs={'class': 'form-control'})}
 
+class SpecialExamSearchForm(forms.ModelForm):
+    class Meta:
+        model=SpecialExam
+        fields=['full_name']
+        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'})}
+
 class LecturerUnitsForm(forms.ModelForm):
     class Meta:
         model=LecturerUnits
