@@ -211,6 +211,23 @@ def seats_edit(request, pk):
     }
     return render(request, "next/seats.html", context)
 
+@login_required
+def seats_delete(request, pk):
+    title = "Delete Seat"
+    button="Delete Seat"
+    queryset2=Seats.objects.get(id=pk)
+    if request.method=="POST":
+        queryset2.delete()
+        messages.error(request, "Seat/Position Deleted From Database")
+        return HttpResponseRedirect("/")
+    context = {
+        "title": title,
+        "form": form,
+        "button": button,
+        "queryset": queryset
+    }
+    return render(request, "next/seats.html", context)
+
 #==========================================================================================
 #Notice Board
 @login_required
@@ -219,7 +236,7 @@ def add_notice(request):
     button="Add Notice"
     form = NoticeBoardForm(request.POST or None)
     form2 = NoticeBoardSearchForm(request.POST or None)
-    queryset2=LecturerUnits.objects.filter(user=request.user)
+    queryset2=NoticeBoard.objects.filter(user=request.user)
     if form.is_valid():
         instance=form.save(commit=False)
         instance.written_by=request.user
@@ -238,3 +255,4 @@ def add_notice(request):
         "queryset2": queryset2
     }
     return render(request, "next/add_notice.html", context)
+
