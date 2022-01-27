@@ -362,3 +362,81 @@ def list_politicians(request):
         "queryset": queryset,
     }
     return render(request, "next/list_polititians.html", context)
+
+#=============================================================================================
+#Suggestions
+@login_required
+def register_polititian(request):
+    title = "Register Politician"
+    button="Register"
+    form = VotingForm(request.POST or None)
+    if form.is_valid():
+        instance=form.save(commit=False)
+        instance.written_by=request.user
+        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
+        instance.stage=form.cleaned_data['stage']
+        instance.notice=form.cleaned_data['notice']
+        instance.signature=form.cleaned_data['signature']
+        instance.save()
+        messages.success(request, "Polititian Registerd SUccessfully")
+        return HttpResponseRedirect("/")
+    context = {
+        "title": title,
+        "form": form,
+        "form2": form2,
+        "button": button
+    }
+    return render(request, "next/register_polititian.html", context)
+
+@login_required
+def edit_polititian(request, pk):
+    title = "Edit Politician"
+    button="Register"
+    queryset=Voting.objects.get(id=pk)
+    form = VotingForm(request.POST or None, instance=queryset)
+    if request.method=="POST":
+        form = VotingForm(request.POST or None, instance=queryset)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Polititian Updated Successfully")
+            return HttpResponseRedirect("/")
+    context = {
+        "title": title,
+        "form": form,
+        "button": button
+    }
+    return render(request, "next/register_polititian.html", context)
+
+@login_required
+def delete_polititian(request, pk):
+    title = "Delete Politician"
+    button="Delete"
+    queryset=Voting.objects.get(id=pk)
+    if request.method=="POST":
+        queryset.delete()
+        messages.error(request, "Polititian Deleted from Database")
+        return HttpResponseRedirect("/")
+    context = {
+        "title": title,
+        "form": form,
+        "button": button
+    }
+    return render(request, "school/delete_items.html", context)
+
+def list_politicians(request):
+    title = "List Of All Polititians"
+    form = VotingSearchForm(request.POST or None)
+    queryset = Voting.objects.all()
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    if request.method == 'POST':
+        queryset = Voting.objects.filter(full_name__icontains=form['full_name'].value(),
+        seat=form['seat'].value())
+    context = {
+        "form": form,
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "next/list_polititians.html", context)
