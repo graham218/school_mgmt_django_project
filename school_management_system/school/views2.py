@@ -334,13 +334,10 @@ def delete_polititian(request, pk):
     title = "Delete Politician"
     button="Delete"
     queryset=Voting.objects.get(id=pk)
-    form = VotingForm(request.POST or None, instance=queryset)
     if request.method=="POST":
-        form = VotingForm(request.POST or None, instance=queryset)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Polititian Deleted from Database")
-            return HttpResponseRedirect("/")
+        queryset.delete()
+        messages.success(request, "Polititian Deleted from Database")
+        return HttpResponseRedirect("/")
     context = {
         "title": title,
         "form": form,
