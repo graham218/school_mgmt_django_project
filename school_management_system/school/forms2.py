@@ -15,8 +15,13 @@ class FeeReceiptForm(forms.ModelForm):
         'library_charges','internet_charges','electricity_charges','food_charges','furniture_charges',
         'water_charges']
         widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
-        'stage': forms.Select(attrs={'class': 'form-control'}),'exams': forms.NumberInput(attrs={'class': 'form-control'}),
+        'stage': forms.Select(attrs={'class': 'form-control'}),
+        'exams': forms.NumberInput(attrs={'class': 'form-control'}),
         'co_ocurricular_activities': forms.NumberInput(attrs={'class': 'form-control'}),
         'hostel_charges': forms.NumberInput(attrs={'class': 'form-control'}),
-        'hostel_charges': forms.NumberInput(attrs={'class': 'form-control'}),
-        'hostel_charges': forms.NumberInput(attrs={'class': 'form-control'}),}
+        'library_charges': forms.NumberInput(attrs={'class': 'form-control'}),
+        'internet_charges': forms.NumberInput(attrs={'class': 'form-control'}),
+        'electricity_charges': forms.NumberInput(attrs={'class': 'form-control'}),
+        'food_charges': forms.NumberInput(attrs={'class': 'form-control'}),
+        'furniture_charges': forms.NumberInput(attrs={'class': 'form-control'}),
+        'water_charges': forms.NumberInput(attrs={'class': 'form-control'})}
