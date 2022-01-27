@@ -210,3 +210,30 @@ def seats_edit(request, pk):
         "queryset": queryset
     }
     return render(request, "next/seats.html", context)
+
+#==========================================================================================
+#Notice Board
+@login_required
+def lecturer_units(request):
+    title = "Register For Special Exams"
+    button="Register Unit"
+    form = LecturerUnitsForm(request.POST or None)
+    form2 = LecturerUnitsSearchForm(request.POST or None)
+    queryset2=LecturerUnits.objects.filter(user=request.user)
+    if form.is_valid():
+        instance=form.save(commit=False)
+        instance.user=request.user
+        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
+        instance.unit_name=form.cleaned_data['unit_name']
+        instance.level_of_understanding=form.cleaned_data['level_of_understanding']
+        instance.save()
+        messages.success(request, "Unit Registered Successfully")
+        return HttpResponseRedirect("/")
+    context = {
+        "title": title,
+        "form": form,
+        "form2": form2,
+        "button": button,
+        "queryset2": queryset2
+    }
+    return render(request, "next/lecturer_units.html", context)
