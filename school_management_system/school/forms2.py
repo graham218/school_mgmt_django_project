@@ -14,5 +14,9 @@ class FeeReceiptForm(forms.ModelForm):
         fields=['full_name','stage','exams','co_ocurricular_activities','hostel_charges',
         'library_charges','internet_charges','electricity_charges','food_charges','furniture_charges',
         'water_charges']
-        widgets={'stage': forms.Select(
-            attrs={'class': 'form-control', 'placeholder': 'Search By Stage'})}
+        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
+        'stage': forms.Select(attrs={'class': 'form-control'}),'exams': forms.NumberInput(attrs={'class': 'form-control'}),
+        'co_ocurricular_activities': forms.NumberInput(attrs={'class': 'form-control'}),
+        'hostel_charges': forms.NumberInput(attrs={'class': 'form-control'}),
+        'hostel_charges': forms.NumberInput(attrs={'class': 'form-control'}),
+        'hostel_charges': forms.NumberInput(attrs={'class': 'form-control'}),}
