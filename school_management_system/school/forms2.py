@@ -33,6 +33,16 @@ class SpecialExamForm(forms.ModelForm):
         'comments']
         widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
         'stage': forms.Select(attrs={'class': 'form-control'}),
-        'unit_name': forms.TextInput(attrs={'class': 'form-control'}),
+        'unit_name': forms.Select(attrs={'class': 'form-control'}),
         'marks': forms.NumberInput(attrs={'class': 'form-control'}),
-        'grade': forms.NumberInput(attrs={'class': 'form-control'}),}
+        'grade': forms.TextInput(attrs={'class': 'form-control'})}
+
+class LecturerUnitsForm(forms.ModelForm):
+    class Meta:
+        model=LecturerUnits
+        fields=['full_name','unit_name','level_of_understanding']
+        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
+        'stage': forms.Select(attrs={'class': 'form-control'}),
+        'unit_name': forms.Select(attrs={'class': 'form-control'}),
+        'level_of_understanding': forms.Textarea(attrs={'class': 'form-control'}),
+        'grade': forms.TextInput(attrs={'class': 'form-control'})}
