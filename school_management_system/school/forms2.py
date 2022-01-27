@@ -59,6 +59,12 @@ class LecturerUnitsForm(forms.ModelForm):
         'level_of_understanding': forms.Textarea(attrs={'class': 'form-control'}),
         'grade': forms.TextInput(attrs={'class': 'form-control'})}
 
+class LecturerUnitsSearchForm(forms.ModelForm):
+    class Meta:
+        model=LecturerUnits
+        fields=['full_name']
+        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'})}
+
 class NoticeBoardForm(forms.ModelForm):
     class Meta:
         model=NoticeBoard
