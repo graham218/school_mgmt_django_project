@@ -58,11 +58,12 @@ def special_exams_marks(request, pk):
     queryset=SpecialExam.objects.get(id=pk)
     form = SpecialExamMarksForm(request.POST or None, instance=queryset)
     queryset2=SpecialExam.objects.filter(user=request.user)
-    if form.is_valid():
+    if request.method=="POST":
         form = SpecialExamMarksForm(request.POST or None, instance=queryset)
-        form.save()
-        messages.success(request, "Marks Added Successfully")
-        return HttpResponseRedirect("/")
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Marks Added Successfully")
+            return HttpResponseRedirect("/")
     context = {
         "title": title,
         "form": form,
@@ -121,11 +122,12 @@ def lecturer_units_edit(request, pk):
     form = LecturerUnitsForm(request.POST or None, instance=queryset)
     form2 = LecturerUnitsSearchForm(request.POST or None)
     queryset2=LecturerUnits.objects.filter(user=request.user)
-    if form.is_valid():
+    if request.method=="POST":
         form = LecturerUnitsForm(request.POST or None, instance=queryset)
-        form.save()
-        messages.success(request, "Unit Updated Successfully")
-        return HttpResponseRedirect("/")
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Unit Updated Successfully")
+            return HttpResponseRedirect("/")
     context = {
         "title": title,
         "form": form,
@@ -180,6 +182,27 @@ def seats(request):
         form.save()
         messages.success(request, "Seat/Position Added Successfully")
         return HttpResponseRedirect("/")
+    context = {
+        "title": title,
+        "form": form,
+        "button": button,
+        "queryset": queryset
+    }
+    return render(request, "next/seats.html", context)
+
+@login_required
+def seats_edit(request, pk):
+    title = "Edit Existing Seats/Positions For Students To Vie"
+    button="Add Seat"
+    queryset2=Seats.objects.get(id=pk)
+    form = SeatsForm(request.POST or None, instance=queryset2)
+    queryset=Seats.objects.all()
+    if request.method=="POST":
+        form = SeatsForm(request.POST or None, instance=queryset2)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Seat/Position Updated Successfully")
+            return HttpResponseRedirect("/")
     context = {
         "title": title,
         "form": form,
