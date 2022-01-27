@@ -171,7 +171,7 @@ def ListAllLecturerUnits(request):
 #=================================================================================
 #Seats
 @login_required
-def add_seats(request):
+def seats(request):
     title = "Add New Seats/Positions For Students To Vie"
     button="Add Seat"
     form = SeatsForm(request.POST or None)
@@ -183,8 +183,7 @@ def add_seats(request):
     context = {
         "title": title,
         "form": form,
-        "form2": form2,
         "button": button,
         "queryset": queryset
     }
-    return render(request, "next/lecturer_units.html", context)
+    return render(request, "next/seats.html", context)
