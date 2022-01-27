@@ -29,8 +29,8 @@ class FeeReceiptForm(forms.ModelForm):
 class FeeReceiptSearchForm(forms.ModelForm):
     class Meta:
         model=FeeReceipt
-        fields=['full_name']
-        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'})}
+        fields=['user']
+        widgets={'user': forms.Select(attrs={'class': 'form-control'})}
 
 class SpecialExamForm(forms.ModelForm):
     class Meta:
@@ -107,7 +107,7 @@ class SuggestionBoxForm(forms.ModelForm):
 class SuggestionBoxSearchForm(forms.ModelForm):
     class Meta:
         model=SuggestionBox
-        fields=['created_at']
+        fields=['full_name']
         widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'})}
 
 class SeatsForm(forms.ModelForm):
