@@ -89,6 +89,13 @@ class VotingForm(forms.ModelForm):
         'course': forms.Select(attrs={'class': 'form-control'}),
         'seat': forms.Select(attrs={'class': 'form-control'})}
 
+class VotingSearchForm(forms.ModelForm):
+    class Meta:
+        model=Voting
+        fields=['full_name','seat']
+        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
+        'seat': forms.Select(attrs={'class': 'form-control'})}
+
 class SuggestionBoxForm(forms.ModelForm):
     class Meta:
         model=SuggestionBox
