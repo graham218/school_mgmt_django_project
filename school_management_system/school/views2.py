@@ -336,7 +336,7 @@ def delete_polititian(request, pk):
     queryset=Voting.objects.get(id=pk)
     if request.method=="POST":
         queryset.delete()
-        messages.success(request, "Polititian Deleted from Database")
+        messages.error(request, "Polititian Deleted from Database")
         return HttpResponseRedirect("/")
     context = {
         "title": title,
@@ -344,3 +344,20 @@ def delete_polititian(request, pk):
         "button": button
     }
     return render(request, "school/delete_items.html", context)
+
+def list_politicians(request):
+    title = "List Of All Polititians"
+    form = VotingForm(request.POST or None)
+    queryset = Voting.objects.all()
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    if request.method == 'POST':
+        queryset = Voting.objects.filter(user=form['full_name'].value())
+    context = {
+        "form": form,
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "next/list_polititians.html", context)
