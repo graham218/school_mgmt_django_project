@@ -256,11 +256,16 @@ class NoticeBoard(models.Model):
     notice = models.CharField(max_length=5000, blank=True, null=True)
     signature = models.CharField(max_length=255, blank=True, null=True)
 
+class Seats(models.Model):
+    seat=models.CharField(max_length=255, blank=True, null=False)
+    def __str__(self):
+        return self.seat
+
 class Voting(models.Model):
     full_name = models.CharField(max_length=255, blank=True, null=True)
-    stage = models.CharField(max_length=5000, blank=True, null=True)
-    course = models.CharField(max_length=255, blank=True, null=True)
-    seat = models.CharField(max_length=255, blank=True, null=True)
+    stage = models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
+    course = models.ForeignKey(Programmes, max_length=255, on_delete=models.CASCADE, blank=True)
+    seat = models.ForeignKey(Seats, max_length=255, on_delete=models.CASCADE, blank=True)
     votes = models.CharField(max_length=5000, blank=True, null=True)
     position = models.CharField(max_length=255, blank=True, null=True)
     status = models.CharField(max_length=255, blank=True, null=True)
