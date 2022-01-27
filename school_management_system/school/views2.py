@@ -272,4 +272,21 @@ def delete_notice(request, pk):
         "queryset": queryset
     }
     return render(request, "school/delete_items.html", context)
+
+def list_notices(request):
+    title = "School Notice Board"
+    form = NoticeBoardSearchForm(request.POST or None)
+    queryset = NoticeBoard.objects.all()
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    if request.method == 'POST':
+        queryset = NoticeBoard.objects.filter(user=form['full_name'].value())
+    context = {
+        "form": form,
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "next/list_notices.html", context)
 #=================================================================================================
