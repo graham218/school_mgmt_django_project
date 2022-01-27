@@ -278,7 +278,7 @@ def list_notices(request):
         "queryset": queryset,
     }
     if request.method == 'POST':
-        queryset = NoticeBoard.objects.filter(user=form['full_name'].value())
+        queryset = NoticeBoard.objects.filter(full_name__icontains=form['full_name'].value())
     context = {
         "form": form,
         "title": title,
