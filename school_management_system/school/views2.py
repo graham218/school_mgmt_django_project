@@ -142,7 +142,7 @@ def lecturer_units_delete(request, pk):
     queryset=LecturerUnits.objects.get(id=pk)
     if request.method=="POST":
         queryset.delete()
-        messages.success(request, "Unit Updated Successfully")
+        messages.error(request, "Unit Deleted From My List")
         return HttpResponseRedirect("/")
     context = {
         "title": title,
@@ -167,3 +167,4 @@ def ListAllLecturerUnits(request):
         "queryset": queryset,
     }
     return render(request, "next/lecturer_unit_list.html", context)
+
