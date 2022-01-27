@@ -320,7 +320,7 @@ def edit_polititian(request, pk):
         form = VotingForm(request.POST or None, instance=queryset)
         if form.is_valid():
             form.save()
-            messages.success(request, "Polititian Updated SUccessfully")
+            messages.success(request, "Polititian Updated Successfully")
             return HttpResponseRedirect("/")
     context = {
         "title": title,
@@ -328,3 +328,22 @@ def edit_polititian(request, pk):
         "button": button
     }
     return render(request, "next/register_polititian.html", context)
+
+@login_required
+def delete_polititian(request, pk):
+    title = "Delete Politician"
+    button="Delete"
+    queryset=Voting.objects.get(id=pk)
+    form = VotingForm(request.POST or None, instance=queryset)
+    if request.method=="POST":
+        form = VotingForm(request.POST or None, instance=queryset)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Polititian Deleted from Database")
+            return HttpResponseRedirect("/")
+    context = {
+        "title": title,
+        "form": form,
+        "button": button
+    }
+    return render(request, "school/delete_items.html", context)
