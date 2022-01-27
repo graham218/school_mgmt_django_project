@@ -387,13 +387,13 @@ def add_suggestion(request):
     return render(request, "next/send_suggestion.html", context)
 
 @login_required
-def delete_polititian(request, pk):
-    title = "Delete Politician"
+def delete_suggestion(request, pk):
+    title = "Delete Suggestion"
     button="Delete"
-    queryset=Voting.objects.get(id=pk)
+    queryset=SuggestionBox.objects.get(id=pk)
     if request.method=="POST":
         queryset.delete()
-        messages.error(request, "Polititian Deleted from Database")
+        messages.error(request, "Suggestion Deleted from Database")
         return HttpResponseRedirect("/")
     context = {
         "title": title,
@@ -402,20 +402,20 @@ def delete_polititian(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
-def list_politicians(request):
-    title = "List Of All Polititians"
-    form = VotingSearchForm(request.POST or None)
-    queryset = Voting.objects.all()
+def list_suggestions(request):
+    title = "List Of All Suggestions"
+    form = SuggestionBoxSearchForm(request.POST or None)
+    queryset = SuggestionBox.objects.all()
     context = {
         "title": title,
         "queryset": queryset,
     }
     if request.method == 'POST':
-        queryset = Voting.objects.filter(full_name__icontains=form['full_name'].value(),
+        queryset = SuggestionBox.objects.filter(full_name__icontains=form['full_name'].value(),
         seat=form['seat'].value())
     context = {
         "form": form,
         "title": title,
         "queryset": queryset,
     }
-    return render(request, "next/list_polititians.html", context)
+    return render(request, "next/list_suggestions.html", context)
