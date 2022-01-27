@@ -46,3 +46,24 @@ class LecturerUnitsForm(forms.ModelForm):
         'unit_name': forms.Select(attrs={'class': 'form-control'}),
         'level_of_understanding': forms.Textarea(attrs={'class': 'form-control'}),
         'grade': forms.TextInput(attrs={'class': 'form-control'})}
+
+class NoticeBoardForm(forms.ModelForm):
+    class Meta:
+        model=NoticeBoard
+        fields=['full_name','notice','signature']
+        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
+        'stage': forms.Select(attrs={'class': 'form-control'}),
+        'notice': forms.Textarea(attrs={'class': 'form-control'}),
+        'signature': forms.TextInput(attrs={'class': 'form-control'})}
+
+class VotingForm(forms.ModelForm):
+    class Meta:
+        model=Voting
+        fields=['full_name','stage','course','seat','votes','position','status']
+        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
+        'stage': forms.Select(attrs={'class': 'form-control'}),
+        'course': forms.Select(attrs={'class': 'form-control'}),
+        'seat': forms.Select(attrs={'class': 'form-control'}),
+        'votes': forms.TextInput(attrs={'class': 'form-control'}),
+        'position': forms.NumberInput(attrs={'class': 'form-control'}),
+        'status': forms.TextInput(attrs={'class': 'form-control'})}
