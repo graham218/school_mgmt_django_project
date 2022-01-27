@@ -116,16 +116,12 @@ def lecturer_units_edit(request, pk):
     title = "Update Units"
     button="Update Unit"
     queryset=LecturerUnits.objects.get(id=pk)
-    form = LecturerUnitsForm(request.POST or None)
+    form = LecturerUnitsForm(request.POST or None, instance=queryset)
     queryset2=LecturerUnits.objects.filter(user=request.user)
     if form.is_valid():
-        instance=form.save(commit=False)
-        instance.user=request.user
-        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
-        instance.unit_name=form.cleaned_data['unit_name']
-        instance.level_of_understanding=form.cleaned_data['level_of_understanding']
-        instance.save()
-        messages.success(request, "Unit Registered Successfully")
+        form = LecturerUnitsForm(request.POST or None, instance=queryset)
+        form.save()
+        messages.success(request, "Unit Updated Successfully")
         return HttpResponseRedirect("/")
     context = {
         "title": title,
