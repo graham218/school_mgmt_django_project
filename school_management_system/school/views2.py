@@ -286,3 +286,29 @@ def list_notices(request):
     }
     return render(request, "next/list_notices.html", context)
 #=================================================================================================
+#Voting
+@login_required
+def register_vote(request):
+    title = "Add Notice"
+    button="Add Notice"
+    form = VotingForm(request.POST or None)
+    form2 = VotingSearchForm(request.POST or None)
+    queryset2=Voting.objects.filter(user=request.user)
+    if form.is_valid():
+        instance=form.save(commit=False)
+        instance.written_by=request.user
+        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
+        instance.stage=form.cleaned_data['stage']
+        instance.notice=form.cleaned_data['notice']
+        instance.signature=form.cleaned_data['signature']
+        instance.save()
+        messages.success(request, "Vote Added SUccessfully")
+        return HttpResponseRedirect("/")
+    context = {
+        "title": title,
+        "form": form,
+        "form2": form2,
+        "button": button,
+        "queryset2": queryset2
+    }
+    return render(request, "next/add_vote.html", context)
