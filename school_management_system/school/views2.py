@@ -214,20 +214,21 @@ def seats_edit(request, pk):
 #==========================================================================================
 #Notice Board
 @login_required
-def lecturer_units(request):
-    title = "Register For Special Exams"
-    button="Register Unit"
-    form = LecturerUnitsForm(request.POST or None)
-    form2 = LecturerUnitsSearchForm(request.POST or None)
+def add_notice(request):
+    title = "Add Notice"
+    button="Add Notice"
+    form = NoticeBoardForm(request.POST or None)
+    form2 = NoticeBoardSearchForm(request.POST or None)
     queryset2=LecturerUnits.objects.filter(user=request.user)
     if form.is_valid():
         instance=form.save(commit=False)
-        instance.user=request.user
+        instance.written_by=request.user
         instance.full_name=request.user.first_name+' '+str(request.user.last_name)
-        instance.unit_name=form.cleaned_data['unit_name']
-        instance.level_of_understanding=form.cleaned_data['level_of_understanding']
+        instance.stage=form.cleaned_data['stage']
+        instance.notice=form.cleaned_data['notice']
+        instance.signature=form.cleaned_data['signature']
         instance.save()
-        messages.success(request, "Unit Registered Successfully")
+        messages.success(request, "Notice Added Successfully on Board")
         return HttpResponseRedirect("/")
     context = {
         "title": title,
@@ -236,4 +237,4 @@ def lecturer_units(request):
         "button": button,
         "queryset2": queryset2
     }
-    return render(request, "next/lecturer_units.html", context)
+    return render(request, "next/add_notice.html", context)
