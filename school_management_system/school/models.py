@@ -216,6 +216,7 @@ class FeeReceipt(models.Model):
     food_charges = models.CharField(max_length=255, blank=True, null=True)
     furniture_charges = models.CharField(max_length=255, blank=True, null=True)
     water_charges = models.CharField(max_length=255, blank=True, null=True)
+    date_created = models.DateTimeField(null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
 
 class SpecialExam(models.Model):
