@@ -300,7 +300,7 @@ def register_polititian(request):
         instance.notice=form.cleaned_data['notice']
         instance.signature=form.cleaned_data['signature']
         instance.save()
-        messages.success(request, "Polititian Register SUccessfully")
+        messages.success(request, "Polititian Registerd SUccessfully")
         return HttpResponseRedirect("/")
     context = {
         "title": title,
@@ -315,15 +315,16 @@ def edit_polititian(request, pk):
     title = "Edit Politician"
     button="Register"
     queryset=Voting.objects.get(id=pk)
-    form = VotingForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        messages.success(request, "Polititian Register SUccessfully")
-        return HttpResponseRedirect("/")
+    form = VotingForm(request.POST or None, instance=queryset)
+    if request.method=="POST":
+        form = VotingForm(request.POST or None, instance=queryset)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Polititian Updated SUccessfully")
+            return HttpResponseRedirect("/")
     context = {
         "title": title,
         "form": form,
-        "form2": form2,
         "button": button
     }
     return render(request, "next/register_polititian.html", context)
