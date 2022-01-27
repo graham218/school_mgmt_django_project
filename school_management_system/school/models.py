@@ -263,9 +263,9 @@ class Seats(models.Model):
 
 class Voting(models.Model):
     full_name = models.CharField(max_length=255, blank=True, null=True)
-    stage = models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
-    course = models.ForeignKey(Programmes, max_length=255, on_delete=models.CASCADE, blank=True)
-    seat = models.ForeignKey(Seats, max_length=255, on_delete=models.CASCADE, blank=True)
+    stage = models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True, default="")
+    course = models.ForeignKey(Programmes, max_length=255, on_delete=models.CASCADE, blank=True, default="")
+    seat = models.ForeignKey(Seats, max_length=255, on_delete=models.CASCADE, blank=True, default="")
     votes = models.CharField(max_length=5000, blank=True, null=True)
     position = models.CharField(max_length=255, blank=True, null=True)
     status = models.CharField(max_length=255, blank=True, null=True)
