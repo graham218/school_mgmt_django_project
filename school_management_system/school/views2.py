@@ -168,3 +168,23 @@ def ListAllLecturerUnits(request):
     }
     return render(request, "next/lecturer_unit_list.html", context)
 
+#=================================================================================
+#Seats
+@login_required
+def add_seats(request):
+    title = "Add New Seats/Positions For Students To Vie"
+    button="Add Seat"
+    form = SeatsForm(request.POST or None)
+    queryset=Seats.objects.all()
+    if form.is_valid():
+        form.save()
+        messages.success(request, "Seat/Position Added Successfully")
+        return HttpResponseRedirect("/")
+    context = {
+        "title": title,
+        "form": form,
+        "form2": form2,
+        "button": button,
+        "queryset": queryset
+    }
+    return render(request, "next/lecturer_units.html", context)
