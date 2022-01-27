@@ -288,12 +288,10 @@ def list_notices(request):
 #=================================================================================================
 #Voting
 @login_required
-def register_vote(request):
-    title = "Add Notice"
-    button="Add Notice"
+def register_polititian(request):
+    title = "Register Politician"
+    button="Register"
     form = VotingForm(request.POST or None)
-    form2 = VotingSearchForm(request.POST or None)
-    queryset2=Voting.objects.filter(user=request.user)
     if form.is_valid():
         instance=form.save(commit=False)
         instance.written_by=request.user
@@ -302,13 +300,12 @@ def register_vote(request):
         instance.notice=form.cleaned_data['notice']
         instance.signature=form.cleaned_data['signature']
         instance.save()
-        messages.success(request, "Vote Added SUccessfully")
+        messages.success(request, "Polititian Register SUccessfully")
         return HttpResponseRedirect("/")
     context = {
         "title": title,
         "form": form,
         "form2": form2,
-        "button": button,
-        "queryset2": queryset2
+        "button": button
     }
-    return render(request, "next/add_vote.html", context)
+    return render(request, "next/register_polititian.html", context)
