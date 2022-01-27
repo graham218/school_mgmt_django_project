@@ -273,7 +273,7 @@ class Voting(models.Model):
     position = models.CharField(max_length=255, blank=True, null=True)
     status = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(
-        null=True, blank=True, auto_now_add=True)
+        null=True, blank=True, auto_now_add=True, editable=True)
     updated_at = models.DateTimeField(null=True, blank=True, auto_now=True)
 
 class SuggestionBox(models.Model):
@@ -283,5 +283,5 @@ class SuggestionBox(models.Model):
     check=models.BooleanField(default=False, blank=True)
     status=models.CharField(max_length=500, blank=True, null=True)
     created_at = models.DateTimeField(
-        null=True, blank=True, auto_now_add=True)
+        null=True, blank=True, auto_now_add=True, editable=True)
     updated_at = models.DateTimeField(null=True, blank=True, auto_now=True)

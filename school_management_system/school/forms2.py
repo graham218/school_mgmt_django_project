@@ -74,11 +74,11 @@ class NoticeBoardForm(forms.ModelForm):
         'notice': forms.Textarea(attrs={'class': 'form-control'}),
         'signature': forms.TextInput(attrs={'class': 'form-control'})}
 
-class NoticeBoardSearchForm(forms.ModelForm):
-    class Meta:
-        model=NoticeBoard
-        fields=['created_at']
-        widgets={'created_at': DateInput(attrs={'class': 'form-control'})}
+# class NoticeBoardSearchForm(forms.ModelForm):
+#     class Meta:
+#         model=NoticeBoard
+#         fields=['created_at']
+#         widgets={'created_at': DateInput(attrs={'class': 'form-control'})}
 
 class VotingForm(forms.ModelForm):
     class Meta:
@@ -104,11 +104,11 @@ class SuggestionBoxForm(forms.ModelForm):
         'stage': forms.Select(attrs={'class': 'form-control'}),
         'suggestion': forms.TextInput(attrs={'class': 'form-control'})}
 
-class SuggestionBoxSearchForm(forms.ModelForm):
-    class Meta:
-        model=SuggestionBox
-        fields=['created_at']
-        widgets={'created_at': DateInput(attrs={'class': 'form-control'})}
+# class SuggestionBoxSearchForm(forms.ModelForm):
+#     class Meta:
+#         model=SuggestionBox
+#         fields=['created_at']
+#         widgets={'created_at': DateInput(attrs={'class': 'form-control'})}
 
 class SeatsForm(forms.ModelForm):
     class Meta:
