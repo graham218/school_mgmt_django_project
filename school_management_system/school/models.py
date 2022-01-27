@@ -232,7 +232,7 @@ class SpecialExam(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
     stage=models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
-    unit_name = models.CharField(max_length=255, blank=True, null=True)
+    unit_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=True, default="")
     marks = models.DecimalField(
         max_digits=10, decimal_places=2, blank=True, null=True)
     grade = models.CharField(max_length=255, blank=True, null=True)
