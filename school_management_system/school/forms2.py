@@ -74,6 +74,12 @@ class NoticeBoardForm(forms.ModelForm):
         'notice': forms.Textarea(attrs={'class': 'form-control'}),
         'signature': forms.TextInput(attrs={'class': 'form-control'})}
 
+class NoticeBoardSearchForm(forms.ModelForm):
+    class Meta:
+        model=NoticeBoard
+        fields=['created_at']
+        widgets={'created_at': DateInput(attrs={'class': 'form-control'})}
+
 class VotingForm(forms.ModelForm):
     class Meta:
         model=Voting
