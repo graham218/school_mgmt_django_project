@@ -93,6 +93,7 @@ def lecturer_units(request):
     title = "Register For Special Exams"
     button="Register Unit"
     form = LecturerUnitsForm(request.POST or None)
+    form2 = LecturerUnitsSearchForm(request.POST or None)
     queryset2=LecturerUnits.objects.filter(user=request.user)
     if form.is_valid():
         instance=form.save(commit=False)
@@ -106,6 +107,7 @@ def lecturer_units(request):
     context = {
         "title": title,
         "form": form,
+        "form2": form2,
         "button": button,
         "queryset2": queryset2
     }
@@ -117,6 +119,7 @@ def lecturer_units_edit(request, pk):
     button="Update Unit"
     queryset=LecturerUnits.objects.get(id=pk)
     form = LecturerUnitsForm(request.POST or None, instance=queryset)
+    form2 = LecturerUnitsSearchForm(request.POST or None)
     queryset2=LecturerUnits.objects.filter(user=request.user)
     if form.is_valid():
         form = LecturerUnitsForm(request.POST or None, instance=queryset)
@@ -126,10 +129,27 @@ def lecturer_units_edit(request, pk):
     context = {
         "title": title,
         "form": form,
+        "form2": form2,
         "button": button,
         "queryset2": queryset2
     }
     return render(request, "next/lecturer_units.html", context)
+
+@login_required
+def lecturer_units_delete(request, pk):
+    title = "Delete Unit"
+    button="Delete Unit"
+    queryset=LecturerUnits.objects.get(id=pk)
+    if request.method=="POST":
+        queryset.delete()
+        messages.success(request, "Unit Updated Successfully")
+        return HttpResponseRedirect("/")
+    context = {
+        "title": title,
+        "button": button,
+        "queryset2": queryset2
+    }
+    return render(request, "school/delete_items.html", context)
 
 def ListAllLecturerUnits(request):
     title = "List Of All Lecturers' Units"
