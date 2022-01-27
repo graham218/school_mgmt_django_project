@@ -52,12 +52,14 @@ def special_exams(request):
     return render(request, "next/special_exams.html", context)
 
 @login_required
-def special_exams_marks(request):
+def special_exams_marks(request, pk):
     title = "Add Marks For Special Exams"
     button="Add"
-    form = SpecialExamMarksForm(request.POST or None)
+    queryset=SpecialExam.objects.get(id=pk)
+    form = SpecialExamMarksForm(request.POST or None, instance=queryset)
     queryset2=SpecialExam.objects.filter(user=request.user)
     if form.is_valid():
+        form = SpecialExamMarksForm(request.POST or None, instance=queryset)
         form.save()
         messages.success(request, "Marks Added Successfully")
         return HttpResponseRedirect("/")
