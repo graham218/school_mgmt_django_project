@@ -50,3 +50,38 @@ def special_exams(request):
         "queryset2": queryset2
     }
     return render(request, "next/special_exams.html", context)
+
+@login_required
+def special_exams_marks(request):
+    title = "Add Marks For Special Exams"
+    button="Add"
+    form = SpecialExamMarksForm(request.POST or None)
+    queryset2=SpecialExam.objects.filter(user=request.user)
+    if form.is_valid():
+        form.save()
+        messages.success(request, "Marks Added Successfully")
+        return HttpResponseRedirect("/")
+    context = {
+        "title": title,
+        "form": form,
+        "button": button,
+        "queryset2": queryset2
+    }
+    return render(request, "next/special_exams.html", context)
+
+def SpecialExamList(request):
+    title = "Special Exams Students' List"
+    form = SpecialExamSearchForm(request.POST or None)
+    queryset = SpecialExam.objects.all()
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    if request.method == 'POST':
+        queryset = SpecialExam.objects.filter(user=form['user'].value())
+    context = {
+        "form": form,
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "next/special_exams_list.html", context)
