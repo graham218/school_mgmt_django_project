@@ -39,7 +39,7 @@ def special_exams(request):
         instance.user=request.user
         instance.full_name=request.user.first_name+' '+str(request.user.last_name)
         instance.stage=form.cleaned_data['stage']
-        instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
+        instance.unit_name=form.cleaned_data['unit_name']
         instance.save()
         messages.success(request, "Unit Registered Successfully")
         return HttpResponseRedirect("/")
