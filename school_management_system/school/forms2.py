@@ -32,7 +32,15 @@ class FeeReceiptSearchForm(forms.ModelForm):
         fields=['user']
         widgets={'user': forms.Select(attrs={'class': 'form-control'})}
 
-class SpecialExamForm(forms.ModelForm):
+class SpecialExamRegisterForm(forms.ModelForm):
+    class Meta:
+        model=SpecialExam
+        fields=['full_name','stage','unit_name']
+        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
+        'stage': forms.Select(attrs={'class': 'form-control'}),
+        'unit_name': forms.Select(attrs={'class': 'form-control'})}
+
+class SpecialExamMarksForm(forms.ModelForm):
     class Meta:
         model=SpecialExam
         fields=['full_name','stage','unit_name','marks','grade',

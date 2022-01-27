@@ -21,10 +21,9 @@ def FeeReceiptList(request):
     }
     if request.method == 'POST':
         queryset = FeeReceipt.objects.filter(user=form['user'].value())
-
     context = {
         "form": form,
         "title": title,
         "queryset": queryset,
     }
-    return render(request, "units/list_registered_units.html", context)
+    return render(request, "next/fee_receipt_list.html", context)
