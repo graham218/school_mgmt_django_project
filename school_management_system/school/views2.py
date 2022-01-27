@@ -300,7 +300,7 @@ def register_polititian(request):
         instance.notice=form.cleaned_data['notice']
         instance.signature=form.cleaned_data['signature']
         instance.save()
-        messages.success(request, "Polititian Registerd SUccessfully")
+        messages.success(request, "Polititian Registerd Successfully")
         return HttpResponseRedirect("/")
     context = {
         "title": title,
@@ -366,19 +366,17 @@ def list_politicians(request):
 #=============================================================================================
 #Suggestions
 @login_required
-def register_polititian(request):
-    title = "Register Politician"
-    button="Register"
-    form = VotingForm(request.POST or None)
+def add_suggestion(request):
+    title = "Add Suggestion"
+    button="Add"
+    form = SuggestionBoxForm(request.POST or None)
     if form.is_valid():
         instance=form.save(commit=False)
         instance.written_by=request.user
         instance.full_name=request.user.first_name+' '+str(request.user.last_name)
-        instance.stage=form.cleaned_data['stage']
-        instance.notice=form.cleaned_data['notice']
-        instance.signature=form.cleaned_data['signature']
+        instance.suggestion=form.cleaned_data['suggestion']
         instance.save()
-        messages.success(request, "Polititian Registerd SUccessfully")
+        messages.success(request, "Suggestion Sent Successfully")
         return HttpResponseRedirect("/")
     context = {
         "title": title,
@@ -386,7 +384,7 @@ def register_polititian(request):
         "form2": form2,
         "button": button
     }
-    return render(request, "next/register_polititian.html", context)
+    return render(request, "next/send_suggestion.html", context)
 
 @login_required
 def edit_polititian(request, pk):
