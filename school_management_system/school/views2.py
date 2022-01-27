@@ -347,14 +347,15 @@ def delete_polititian(request, pk):
 
 def list_politicians(request):
     title = "List Of All Polititians"
-    form = VotingForm(request.POST or None)
+    form = VotingSearchForm(request.POST or None)
     queryset = Voting.objects.all()
     context = {
         "title": title,
         "queryset": queryset,
     }
     if request.method == 'POST':
-        queryset = Voting.objects.filter(user=form['full_name'].value())
+        queryset = Voting.objects.filter(full_name__icontains=form['full_name'].value(),
+        seat=form['seat'].value())
     context = {
         "form": form,
         "title": title,
