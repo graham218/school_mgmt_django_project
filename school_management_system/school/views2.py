@@ -111,6 +111,30 @@ def lecturer_units(request):
     }
     return render(request, "next/lecturer_units.html", context)
 
+@login_required
+def lecturer_units_edit(request, pk):
+    title = "Update Units"
+    button="Update Unit"
+    queryset=LecturerUnits.objects.get(id=pk)
+    form = LecturerUnitsForm(request.POST or None)
+    queryset2=LecturerUnits.objects.filter(user=request.user)
+    if form.is_valid():
+        instance=form.save(commit=False)
+        instance.user=request.user
+        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
+        instance.unit_name=form.cleaned_data['unit_name']
+        instance.level_of_understanding=form.cleaned_data['level_of_understanding']
+        instance.save()
+        messages.success(request, "Unit Registered Successfully")
+        return HttpResponseRedirect("/")
+    context = {
+        "title": title,
+        "form": form,
+        "button": button,
+        "queryset2": queryset2
+    }
+    return render(request, "next/lecturer_units.html", context)
+
 def ListAllLecturerUnits(request):
     title = "List Of All Lecturers' Units"
     form = LecturerUnitsSearchForm(request.POST or None)
