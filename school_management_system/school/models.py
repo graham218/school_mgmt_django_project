@@ -233,7 +233,8 @@ class SpecialExam(models.Model):
     full_name = models.CharField(max_length=255, blank=True, null=True)
     stage=models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
     unit_name = models.CharField(max_length=255, blank=True, null=True)
-    marks = models.CharField(max_length=255, blank=True, null=True)
+    marks = models.DecimalField(
+        max_digits=10, decimal_places=2, blank=True, null=True)
     grade = models.CharField(max_length=255, blank=True, null=True)
     comments = models.CharField(max_length=255, blank=True, null=True)
     date_registered = models.DateTimeField(

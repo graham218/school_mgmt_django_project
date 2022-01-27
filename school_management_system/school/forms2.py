@@ -25,3 +25,14 @@ class FeeReceiptForm(forms.ModelForm):
         'food_charges': forms.NumberInput(attrs={'class': 'form-control'}),
         'furniture_charges': forms.NumberInput(attrs={'class': 'form-control'}),
         'water_charges': forms.NumberInput(attrs={'class': 'form-control'})}
+
+class SpecialExamForm(forms.ModelForm):
+    class Meta:
+        model=SpecialExam
+        fields=['full_name','stage','unit_name','marks','grade',
+        'comments']
+        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
+        'stage': forms.Select(attrs={'class': 'form-control'}),
+        'unit_name': forms.TextInput(attrs={'class': 'form-control'}),
+        'marks': forms.NumberInput(attrs={'class': 'form-control'}),
+        'grade': forms.NumberInput(attrs={'class': 'form-control'}),}
