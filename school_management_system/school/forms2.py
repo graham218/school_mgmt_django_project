@@ -59,7 +59,16 @@ class NoticeBoardForm(forms.ModelForm):
 class VotingForm(forms.ModelForm):
     class Meta:
         model=Voting
-        fields=['full_name','stage','course','seat','votes','position','status']
+        fields=['full_name','stage','course','seat']
+        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
+        'stage': forms.Select(attrs={'class': 'form-control'}),
+        'course': forms.Select(attrs={'class': 'form-control'}),
+        'seat': forms.Select(attrs={'class': 'form-control'})}
+
+class SuggestionBoxForm(forms.ModelForm):
+    class Meta:
+        model=SuggestionBox
+        fields=['full_name','suggestion','seat']
         widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
         'stage': forms.Select(attrs={'class': 'form-control'}),
         'course': forms.Select(attrs={'class': 'form-control'}),
