@@ -411,8 +411,7 @@ def list_suggestions(request):
         "queryset": queryset,
     }
     if request.method == 'POST':
-        queryset = SuggestionBox.objects.filter(full_name__icontains=form['full_name'].value(),
-        seat=form['seat'].value())
+        queryset = SuggestionBox.objects.filter(full_name__icontains=form['full_name'].value())
     context = {
         "form": form,
         "title": title,
