@@ -46,10 +46,10 @@ def register_urls(request):
     headers = {"Authorization": "Bearer %s" % access_token}
     options = {"ShortCode": LipanaMpesaPassword.Business_short_code,
                "ResponseType": "Completed",
-               #"ConfirmationURL": "http://127.0.0.1:8000/api/v1/c2b/confirmation",
-               #"ValidationURL": "http://127.0.0.1:8000/api/v1/c2b/validation"}
-               "ConfirmationURL": "https://91563395.ngrok.io/api/v1/c2b/confirmation",
-               "ValidationURL": "https://91563395.ngrok.io/api/v1/c2b/validation"}
+            #    "ConfirmationURL": "http://127.0.0.1:8000/api/v1/c2b/confirmation",
+            #    "ValidationURL": "http://127.0.0.1:8000/api/v1/c2b/validation"}
+               "ConfirmationURL": "https://55b0-41-89-192-24.ngrok.io/api/v1/c2b/confirmation",
+               "ValidationURL": "https://55b0-41-89-192-24.ngrok.io/api/v1/c2b/validation"}
     response = requests.post(api_url, json=options, headers=headers)
     return HttpResponse(response.text)
 @csrf_exempt
