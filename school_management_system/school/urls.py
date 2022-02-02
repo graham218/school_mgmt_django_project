@@ -88,5 +88,5 @@ urlpatterns = [
     path('SpecialExamList/', views2.SpecialExamList, name='SpecialExamList'),
     path('lecturer_units/', views2.lecturer_units, name='lecturer_units'),
     path('lecturer_units_edit/<str:pk>', views2.lecturer_units_edit, name='lecturer_units_edit'),
-    path('SpecialExamList/', views2.SpecialExamList, name='SpecialExamList'),
+    path('lecturer_units_delete/', views2.lecturer_units_delete, name='lecturer_units_delete'),
 ]

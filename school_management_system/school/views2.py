@@ -42,7 +42,7 @@ def special_exams(request):
         instance.unit_name=form.cleaned_data['unit_name']
         instance.save()
         messages.success(request, "Unit Registered Successfully")
-        return HttpResponseRedirect("/special_exams")
+        return HttpResponseRedirect("/school/special_exams")
     context = {
         "title": title,
         "form": form,
@@ -103,7 +103,7 @@ def lecturer_units(request):
         instance.level_of_understanding=form.cleaned_data['level_of_understanding']
         instance.save()
         messages.success(request, "Unit Registered Successfully")
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/school/lecturer_units")
     context = {
         "title": title,
         "form": form,
@@ -124,7 +124,7 @@ def lecturer_units_edit(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Unit Updated Successfully")
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("/school/lecturer_units")
     context = {
         "title": title,
         "form": form,
@@ -141,7 +141,7 @@ def lecturer_units_delete(request, pk):
     if request.method=="POST":
         queryset.delete()
         messages.error(request, "Unit Deleted From My List")
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/school/lecturer_units")
     context = {
         "title": title,
         "button": button,
