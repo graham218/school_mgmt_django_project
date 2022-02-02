@@ -301,7 +301,7 @@ def register_polititian(request):
         instance.signature=form.cleaned_data['signature']
         instance.save()
         messages.success(request, "Polititian Registerd Successfully")
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/school/list_politicians")
     context = {
         "title": title,
         "form": form,
