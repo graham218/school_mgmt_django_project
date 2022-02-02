@@ -96,4 +96,8 @@ urlpatterns = [
     path('seats_delete/<str:pk>', views2.seats_delete, name='seats_delete'),
     path('add_notice/', views2.add_notice, name='add_notice'),
     path('delete_notice/<str:pk>', views2.delete_notice, name='delete_notice'),
+    path('add_notice/', views2.add_notice, name='add_notice'),
+    path('list_notices/', views2.list_notices, name='list_notices'),
+    path('add_notice/', views2.add_notice, name='add_notice'),
+    path('add_notice/', views2.add_notice, name='add_notice'),
 ]

@@ -242,7 +242,7 @@ def add_notice(request):
         instance.signature=form.cleaned_data['signature']
         instance.save()
         messages.success(request, "Notice Added Successfully on Board")
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/school/list_notices")
     context = {
         "title": title,
         "form": form,
@@ -260,7 +260,7 @@ def delete_notice(request, pk):
     if request.method=="POST":
         queryset2.delete()
         messages.error(request, "Notice Deleted From Board")
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/school/list_notices")
     context = {
         "title": title,
         "form": form,
