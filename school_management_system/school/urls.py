@@ -54,13 +54,31 @@ urlpatterns = [
 
     path('unit_registration2/', my_views.unit_registration2, name='unit_registration2'),
     path('unregister_unit2/<str:pk>', my_views.unregister_unit2, name='unregister_unit2'),
-    path('insert_marks2/<str:pk>', my_views.insert_marks, name='insert_marks'),
+    path('insert_marks2/<str:pk>', my_views.insert_marks2, name='insert_marks2'),
     path('list_registered_units2/', my_views.list_registered_units2, name='list_registered_units2'),
 
-    path('unit_registration/', my_views.unit_registration, name='unit_registration'),
-    path('unregister_unit/<str:pk>', my_views.unregister_unit, name='unregister_unit'),
+    path('unit_registration3/', my_views.unit_registration3, name='unit_registration3'),
+    path('unregister_unit3/<str:pk>', my_views.unregister_unit3, name='unregister_unit3'),
     path('insert_marks/<str:pk>', my_views.insert_marks, name='insert_marks'),
-    path('list_registered_units/', my_views.list_registered_units, name='list_registered_units'),
+    path('list_registered_units3/', my_views.list_registered_units3, name='list_registered_units3'),
 
+    path('unit_registration4/', my_views.unit_registration4, name='unit_registration4'),
+    path('unregister_unit4/<str:pk>', my_views.unregister_unit4, name='unregister_unit4'),
+    path('insert_marks4/<str:pk>', my_views.insert_marks4, name='insert_marks4'),
+    path('list_registered_units4/', my_views.list_registered_units4, name='list_registered_units4'),
 
+    path('unit_registration5/', my_views.unit_registration5, name='unit_registration5'),
+    path('unregister_unit5/<str:pk>', my_views.unregister_unit5, name='unregister_unit5'),
+    path('insert_marks5/<str:pk>', my_views.insert_marks5, name='insert_marks5'),
+    path('list_registered_units5/', my_views.list_registered_units5, name='list_registered_units5'),
+
+    path('unit_registration6/', my_views.unit_registration6, name='unit_registration6'),
+    path('unregister_unit5/<str:pk>', my_views.unregister_unit6, name='unregister_unit6'),
+    path('insert_marks6/<str:pk>', my_views.insert_marks6, name='insert_marks6'),
+    path('list_registered_units6/', my_views.list_registered_units6, name='list_registered_units6'),
+
+    path('unit_registration7/', my_views.unit_registration7, name='unit_registration7'),
+    path('unregister_unit7/<str:pk>', my_views.unregister_unit7, name='unregister_unit7'),
+    path('insert_marks7/<str:pk>', my_views.insert_marks7, name='insert_marks7'),
+    path('list_registered_units7/', my_views.list_registered_units7, name='list_registered_units7'),
 ]
