@@ -42,7 +42,7 @@ def special_exams(request):
         instance.unit_name=form.cleaned_data['unit_name']
         instance.save()
         messages.success(request, "Unit Registered Successfully")
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/special_exams")
     context = {
         "title": title,
         "form": form,
@@ -63,7 +63,7 @@ def special_exams_marks(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Marks Added Successfully")
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("/special_exams_marks")
     context = {
         "title": title,
         "form": form,

@@ -84,6 +84,6 @@ urlpatterns = [
 
     path('FeeReceiptList/', views2.FeeReceiptList, name='FeeReceiptList'),
     path('special_exams/', views2.special_exams, name='special_exams'),
-    path('FeeReceiptList/', views2.FeeReceiptList, name='FeeReceiptList'),
+    path('special_exams_marks/', views2.special_exams_marks, name='special_exams_marks'),
     path('special_exams/', views2.special_exams, name='special_exams'),
 ]
