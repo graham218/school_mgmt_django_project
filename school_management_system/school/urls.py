@@ -1,5 +1,5 @@
 from django.urls import path
-from .import views, my_views
+from .import views, my_views, views2
 
 app_name='school'
 
@@ -81,4 +81,9 @@ urlpatterns = [
     path('unregister_unit7/<str:pk>', my_views.unregister_unit7, name='unregister_unit7'),
     path('insert_marks7/<str:pk>', my_views.insert_marks7, name='insert_marks7'),
     path('list_registered_units7/', my_views.list_registered_units7, name='list_registered_units7'),
+
+    path('FeeReceiptList/', views2.FeeReceiptList, name='FeeReceiptList'),
+    path('special_exams/', views2.special_exams, name='special_exams'),
+    path('FeeReceiptList/', views2.FeeReceiptList, name='FeeReceiptList'),
+    path('special_exams/', views2.special_exams, name='special_exams'),
 ]
