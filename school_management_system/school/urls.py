@@ -94,9 +94,11 @@ urlpatterns = [
     path('seats/', views2.seats, name='seats'),
     path('seats_edit/<str:pk>', views2.seats_edit, name='seats_edit'),
     path('seats_delete/<str:pk>', views2.seats_delete, name='seats_delete'),
+
     path('add_notice/', views2.add_notice, name='add_notice'),
     path('delete_notice/<str:pk>', views2.delete_notice, name='delete_notice'),
     path('list_notices/', views2.list_notices, name='list_notices'),
+    
     path('register_polititian/', views2.register_polititian, name='register_polititian'),
     path('edit_polititian/<str:pk>', views2.edit_polititian, name='edit_polititian'),
     path('delete_polititian/<str:pk>', views2.delete_polititian, name='delete_polititian'),

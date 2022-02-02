@@ -242,7 +242,7 @@ def add_notice(request):
         instance.signature=form.cleaned_data['signature']
         instance.save()
         messages.success(request, "Notice Added Successfully on Board")
-        return HttpResponseRedirect("/school/list_notices")
+        return HttpResponseRedirect("/school/add_notice")
     context = {
         "title": title,
         "form": form,
@@ -301,7 +301,7 @@ def register_polititian(request):
         instance.signature=form.cleaned_data['signature']
         instance.save()
         messages.success(request, "Polititian Registerd Successfully")
-        return HttpResponseRedirect("/school/list_politicians")
+        return HttpResponseRedirect("/school/register_polititian")
     context = {
         "title": title,
         "form": form,
@@ -377,7 +377,7 @@ def add_suggestion(request):
         instance.suggestion=form.cleaned_data['suggestion']
         instance.save()
         messages.success(request, "Suggestion Sent Successfully")
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/school/add_suggestion")
     context = {
         "title": title,
         "form": form,
@@ -394,7 +394,7 @@ def delete_suggestion(request, pk):
     if request.method=="POST":
         queryset.delete()
         messages.error(request, "Suggestion Deleted from Database")
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/school/list_suggestions")
     context = {
         "title": title,
         "form": form,
