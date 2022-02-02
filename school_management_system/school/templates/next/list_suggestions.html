@@ -21,7 +21,7 @@
                       <h4 class="card-title float-left">{{instance.status}}</h4><br>
                       <h4 class="card-title float-left">{{instance.created_at}}</h4><br>
                       <h4 class="card-title float-left">{{instance.updated_at}}</h4><br>
-                      <a href="{% url 'school:delete_notice' instance.id %}" class="mdi mdi-delete-forever">Delete</a>
+                      <a href="{% url 'school:delete_suggestion' instance.id %}" class="mdi mdi-delete-forever">Delete</a>
                       <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right"></div>
                     </div>
                     <h4 class="card-title float-left">{{instance.suggestion}}</h4>
