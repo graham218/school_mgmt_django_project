@@ -54,7 +54,7 @@ def special_exams(request):
 @login_required
 def special_exams_marks(request, pk):
     title = "Add Marks For Special Exams"
-    button="Add"
+    button="Add Marks"
     queryset=SpecialExam.objects.get(id=pk)
     form = SpecialExamMarksForm(request.POST or None, instance=queryset)
     #queryset2=SpecialExam.objects.filter(user=request.user)
@@ -63,7 +63,7 @@ def special_exams_marks(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Marks Added Successfully")
-            return HttpResponseRedirect("/special_exams_marks")
+            return HttpResponseRedirect("/school/SpecialExamList")
     context = {
         "title": title,
         "form": form,
