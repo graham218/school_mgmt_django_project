@@ -8,26 +8,23 @@
           {% include 'messages.html' %}
           <h4 class="card-title">{{title}}</h4>
           <div class="table-responsive">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Counter</th>
-                  <th>Gender</th>
-                  <th>Update</th>
-                  <th>Delete</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for instance in queryset %}
-                    <tr>
-                        <td>{{forloop.counter}}</td>
-                        <td>{{instance.gender}}</td>
-                        <td><a href="{% url 'school:edit-gender' instance.id%}" class="mdi mdi-stack-overflow">Update</a><td>
-                        <td><a href="{% url 'school:delete-gender' instance.id%}" class="mdi mdi-delete-forever">Delete</a><td>
-                    </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+            {% for instance in queryset %}
+            <div class="row">
+              <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="clearfix">
+                      <h4 class="card-title float-left">{{forloop.counter}}</h4>
+                      <h4 class="card-title float-left">{{instance.written_by}}</h4>
+                      <h4 class="card-title float-left">{{instance.full_name}}</h4>
+                      <a href="{% url 'school:delete_notice' instance.id %}" class="mdi mdi-delete-forever">Delete</a>
+                      <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right"></div>
+                    </div>
+                    <h4 class="card-title float-left">{{instance.notice}}</h4>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
           </div>
         </div>
       </div>
