@@ -91,8 +91,8 @@ def SpecialExamList(request):
 
 @login_required
 def lecturer_units(request):
-    title = "Register For Special Exams"
-    button="Register Unit"
+    title = "Add Units"
+    button="Add Unit"
     form = LecturerUnitsForm(request.POST or None)
     queryset2=LecturerUnits.objects.filter(user=request.user)
     if form.is_valid():

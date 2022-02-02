@@ -84,9 +84,9 @@ urlpatterns = [
 
     path('FeeReceiptList/', views2.FeeReceiptList, name='FeeReceiptList'),
     path('special_exams/', views2.special_exams, name='special_exams'),
-    path('special_exams_marks/', views2.special_exams_marks, name='special_exams_marks'),
+    path('special_exams_marks/<str:pk>', views2.special_exams_marks, name='special_exams_marks'),
     path('SpecialExamList/', views2.SpecialExamList, name='SpecialExamList'),
-    path('SpecialExamList/', views2.SpecialExamList, name='SpecialExamList'),
-    path('SpecialExamList/', views2.SpecialExamList, name='SpecialExamList'),
+    path('lecturer_units/', views2.lecturer_units, name='lecturer_units'),
+    path('lecturer_units_edit/<str:pk>', views2.lecturer_units_edit, name='lecturer_units_edit'),
     path('SpecialExamList/', views2.SpecialExamList, name='SpecialExamList'),
 ]
