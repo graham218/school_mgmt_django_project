@@ -101,4 +101,8 @@ urlpatterns = [
     path('edit_polititian/<str:pk>', views2.edit_polititian, name='edit_polititian'),
     path('delete_polititian/<str:pk>', views2.delete_polititian, name='delete_polititian'),
     path('list_politicians/', views2.list_politicians, name='list_politicians'),
+
+    path('add_suggestion/', views2.add_suggestion, name='add_suggestion'),
+    path('delete_suggestion/<str:pk>', views2.delete_suggestion, name='delete_suggestion'),
+    path('list_suggestions/', views2.list_suggestions, name='list_suggestions'),
 ]

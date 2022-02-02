@@ -321,7 +321,7 @@ def edit_polititian(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Polititian Updated Successfully")
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("/school/list_politicians")
     context = {
         "title": title,
         "form": form,
@@ -337,7 +337,7 @@ def delete_polititian(request, pk):
     if request.method=="POST":
         queryset.delete()
         messages.error(request, "Polititian Deleted from Database")
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/school/list_politicians")
     context = {
         "title": title,
         "form": form,
