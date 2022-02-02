@@ -17,6 +17,7 @@
                       <h4 class="card-title float-left">{{forloop.counter}}</h4>
                       <h4 class="card-title float-left">{{instance.written_by}}</h4>
                       <h4 class="card-title float-left">{{instance.full_name}}</h4>
+                      <a href="{% url 'school:delete_notice' instance.id %}" class="mdi mdi-delete-forever">Delete</a>
                       <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right"></div>
                     </div>
                     <h4 class="card-title float-left">{{instance.notice}}</h4>
