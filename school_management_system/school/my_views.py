@@ -84,7 +84,7 @@ def unit_registration(request):
         instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
         instance.save()
         messages.success(request, "Unit Registered Successfully")
-        return HttpResponseRedirect("/school/unit_registration/")
+        return HttpResponseRedirect("/units/unit_registration/")
     context = {
         "title": title,
         "form": form,
@@ -103,7 +103,7 @@ def unregister_unit(request, pk):
     if request.method == "POST":
         queryset.delete()
         messages.error(request, "Unit Unregistered Successfully")
-        return HttpResponseRedirect("/school/list_registered_units")
+        return HttpResponseRedirect("/units/list_registered_units")
     context = {
         "title": title,
         "button": button,
@@ -121,7 +121,7 @@ def insert_marks(request, pk):
     if request.method == "POST":
         form = MarksForm(request.POST or None, instance=queryset)
         form.save()
-        return redirect("/school/list_registered_units/")
+        return redirect("/units/list_registered_units/")
     context = {
         "title": title,
         "button": button,
