@@ -182,7 +182,7 @@ def seats(request):
         "form": form,
         "button": button,
     }
-    return render(request, "next/seats.html", context)
+    return render(request, "next/add-edit-seats.html", context)
 
 @login_required
 def seats_edit(request, pk):
@@ -201,7 +201,7 @@ def seats_edit(request, pk):
         "form": form,
         "button": button,
     }
-    return render(request, "next/seats.html", context)
+    return render(request, "next/add-edit-seats.html", context)
 
 @login_required
 def seats_delete(request, pk):
