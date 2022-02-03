@@ -485,7 +485,7 @@ def unregister_unit5(request, pk):
 
 
 @login_required
-def insert_marks4(request, pk):
+def insert_marks5(request, pk):
     queryset = marks_yr5.objects.get(id=pk)
     title = "Enter Unit Marks And Grades of Year 5"
     button="Add Marks"
