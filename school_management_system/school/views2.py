@@ -176,7 +176,7 @@ def seats(request):
     if form.is_valid():
         form.save()
         messages.success(request, "Seat/Position Added Successfully")
-        return HttpResponseRedirect("/school/seats")
+        return HttpResponseRedirect("/school/list_seats")
     context = {
         "title": title,
         "form": form,
@@ -195,7 +195,7 @@ def seats_edit(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Seat/Position Updated Successfully")
-            return HttpResponseRedirect("/school/seats")
+            return HttpResponseRedirect("/school/list_seats")
     context = {
         "title": title,
         "form": form,
@@ -211,7 +211,7 @@ def seats_delete(request, pk):
     if request.method=="POST":
         queryset2.delete()
         messages.error(request, "Seat/Position Deleted From Database")
-        return HttpResponseRedirect("/school/seats")
+        return HttpResponseRedirect("/school/list_seats")
     context = {
         "title": title,
         "form": form,

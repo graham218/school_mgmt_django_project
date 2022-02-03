@@ -92,6 +92,7 @@ urlpatterns = [
     path('ListAllLecturerUnits/', views2.ListAllLecturerUnits, name='ListAllLecturerUnits'),
 
     path('seats/', views2.seats, name='seats'),
+    path('list_seats/', views2.list_seats, name='list_seats'),
     path('seats_edit/<str:pk>', views2.seats_edit, name='seats_edit'),
     path('seats_delete/<str:pk>', views2.seats_delete, name='seats_delete'),
 
