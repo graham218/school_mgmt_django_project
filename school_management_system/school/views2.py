@@ -222,19 +222,18 @@ def seats_delete(request, pk):
 
 def list_seats(request):
     title = "List Of All Positions/Seats"
-    #form = VotingSearchForm(request.POST or None)
+    form = SeatsSearchForm(request.POST or None)
     queryset = Seats.objects.all()
     context = {
         "title": title,
-        #"queryset": queryset,
+        "queryset": queryset,
     }
-    # if request.method == 'POST':
-    #     queryset = Seats.objects.filter(full_name__icontains=form['full_name'].value(),
-    #     seat=form['seat'].value())
+    if request.method == 'POST':
+        queryset = Seats.objects.filter(seat__icontains=form['seat'].value())
     context = {
         "form": form,
         "title": title,
-        #"queryset": queryset,
+        "queryset": queryset,
     }
     return render(request, "next/list_seats.html", context)
 #==========================================================================================
