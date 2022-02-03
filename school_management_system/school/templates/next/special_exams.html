@@ -49,8 +49,15 @@
               {% for instance in queryset2 %}
                   <tr>
                     <td>{{forloop.counter}}</td>
+                    <td>{{instance.user}}</td>
+                    <td>{{instance.full_name}}</td>
                     <td>{{instance.stage}}</td>
-                    <td>{{instance.unit_or_subject_name}}</td>
+                    <td>{{instance.unit_name}}</td>
+                    <td>{{instance.marks}}</td>
+                    <td>{{instance.grade}}</td>
+                    <td>{{instance.comments}}</td>
+                    <td>{{instance.date_registered}}</td>
+                    <td>{{instance.date_updated}}</td>
                   </tr>
               {% endfor %}
                 </table>

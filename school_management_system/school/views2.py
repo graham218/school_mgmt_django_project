@@ -57,7 +57,7 @@ def special_exams_marks(request, pk):
     button="Add Marks"
     queryset=SpecialExam.objects.get(id=pk)
     form = SpecialExamMarksForm(request.POST or None, instance=queryset)
-    #queryset2=SpecialExam.objects.filter(user=request.user)
+    queryset2=SpecialExam.objects.filter(user=request.user)
     if request.method=="POST":
         form = SpecialExamMarksForm(request.POST or None, instance=queryset)
         if form.is_valid():
@@ -68,7 +68,7 @@ def special_exams_marks(request, pk):
         "title": title,
         "form": form,
         "button": button,
-        #"queryset2": queryset2
+        "queryset2": queryset2
     }
     return render(request, "next/special_exams.html", context)
 
