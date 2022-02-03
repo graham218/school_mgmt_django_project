@@ -21,7 +21,15 @@
                 {% for instance in queryset %}
                     <tr>
                         <td>{{forloop.counter}}</td>
-                        <td>{{instance.gender}}</td>
+                        <td>{{instance.user}}</td>
+                        <td>{{instance.full_name}}</td>
+                        <td>{{instance.stage}}</td>
+                        <td>{{instance.unit_name}}</td>
+                        <td>{{instance.marks}}</td>
+                        <td>{{instance.grade}}</td>
+                        <td>{{instance.comments}}</td>
+                        <td>{{instance.date_registered}}</td>
+                        <td>{{instance.date_updated}}</td>
                         <td><a href="{% url 'school:edit-gender' instance.id%}" class="mdi mdi-stack-overflow">Update</a><td>
                         <td><a href="{% url 'school:delete-gender' instance.id%}" class="mdi mdi-delete-forever">Delete</a><td>
                     </tr>
