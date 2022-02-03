@@ -120,3 +120,9 @@ class SeatsForm(forms.ModelForm):
         model=Seats
         fields=['seat']
         widgets={'seat': forms.TextInput(attrs={'class': 'form-control'})}
+
+class SeatsSearchForm(forms.ModelForm):
+    class Meta:
+        model=Seats
+        fields=['seat']
+        widgets={'seat': forms.TextInput(attrs={'class': 'form-control'})}
