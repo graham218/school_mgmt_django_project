@@ -173,7 +173,6 @@ def seats(request):
     title = "Add New Seats/Positions For Students To Vie"
     button="Add Seat"
     form = SeatsForm(request.POST or None)
-    queryset=Seats.objects.all()
     if form.is_valid():
         form.save()
         messages.success(request, "Seat/Position Added Successfully")
@@ -182,7 +181,6 @@ def seats(request):
         "title": title,
         "form": form,
         "button": button,
-        "queryset": queryset
     }
     return render(request, "next/seats.html", context)
 
@@ -190,11 +188,10 @@ def seats(request):
 def seats_edit(request, pk):
     title = "Edit Existing Seats/Positions For Students To Vie"
     button="Add Seat"
-    queryset2=Seats.objects.get(id=pk)
-    form = SeatsForm(request.POST or None, instance=queryset2)
-    queryset=Seats.objects.all()
+    queryset=Seats.objects.get(id=pk)
+    form = SeatsForm(request.POST or None, instance=queryset)
     if request.method=="POST":
-        form = SeatsForm(request.POST or None, instance=queryset2)
+        form = SeatsForm(request.POST or None, instance=queryset)
         if form.is_valid():
             form.save()
             messages.success(request, "Seat/Position Updated Successfully")
@@ -203,7 +200,6 @@ def seats_edit(request, pk):
         "title": title,
         "form": form,
         "button": button,
-        "queryset": queryset
     }
     return render(request, "next/seats.html", context)
 
@@ -224,6 +220,23 @@ def seats_delete(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
+def list_seats(request):
+    title = "List Of All Positions/Seats"
+    #form = VotingSearchForm(request.POST or None)
+    queryset = Seats.objects.all()
+    context = {
+        "title": title,
+        #"queryset": queryset,
+    }
+    # if request.method == 'POST':
+    #     queryset = Seats.objects.filter(full_name__icontains=form['full_name'].value(),
+    #     seat=form['seat'].value())
+    context = {
+        "form": form,
+        "title": title,
+        #"queryset": queryset,
+    }
+    return render(request, "next/list_seats.html", context)
 #==========================================================================================
 #Notice Board
 @login_required
