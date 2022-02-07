@@ -355,3 +355,23 @@
   }
   // DropzoneJS Demo Code End
 </script>
+
+<!-- Summernote -->
+<script src="{% static 'plugins/summernote/summernote-bs4.min.js' %}"></script>
+<!-- CodeMirror -->
+<script src="{% static 'plugins/codemirror/codemirror.js' %}"></script>
+<script src="{% static 'plugins/codemirror/mode/css/css.js' %}"></script>
+<script src="{% static 'plugins/codemirror/mode/xml/xml.js' %}"></script>
+<script src="{% static 'plugins/codemirror/mode/htmlmixed/htmlmixed.js' %}"></script>
+<script>
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+
+    // CodeMirror
+    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+      mode: "htmlmixed",
+      theme: "monokai"
+    });
+  })
+</script>
