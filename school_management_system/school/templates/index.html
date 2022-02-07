@@ -9,22 +9,10 @@
     <!-- plugins:css -->
     <link rel="stylesheet" href="{% static 'dash/assets/vendors/mdi/css/materialdesignicons.min.css' %}">
     <link rel="stylesheet" href="{% static 'dash/assets/vendors/css/vendor.bundle.base.css' %}">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
     <link rel="stylesheet" href="{% static 'dash/assets/css/style.css' %}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{% static 'dash/assets/images/favicon.ico' %}" />
     
-    <!--Toast-->
-    <script src="{% static 'mine/jquery-3.6.0.min.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'mine/toastr.min.css' %}" media="all">
-    <script type="text/javascript" src="{% static 'mine/toastr.min.js' %}"></script> 
-
-    <link href="{% static 'select2/select2.min.css' %}" rel="stylesheet"/>
     {% include 'scripts/head.html' %}
   </head>
   <body>
@@ -59,8 +47,6 @@
     <script src="{% static 'dash/assets/js/dashboard.js' %}"></script>
     <script src="{% static 'dash/assets/js/todolist.js' %}"></script>
     <!-- End custom js for this page -->
-    <script src="{% static 'select2/my_js.js' %}"></script>
-    <script src="{% static 'select2/select2.min.js' %}"></script>
 
     {% include 'scripts/js.html' %}
   </body>
