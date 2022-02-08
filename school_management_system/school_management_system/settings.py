@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # 'mpesa_api',
     #'paypal.standard.ipn',
     'django_countries',
+    'custom_user',
 ]
 
 MIDDLEWARE = [
