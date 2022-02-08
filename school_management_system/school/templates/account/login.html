@@ -18,6 +18,7 @@
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
+      {% include 'messages.html' %}
       <form action="" method="post">
         {% csrf_token %}
         <div class="input-group mb-3">
