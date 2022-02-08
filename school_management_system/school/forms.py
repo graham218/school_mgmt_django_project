@@ -19,8 +19,9 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email',
-                  'password1', 'password2', 'is_staff', 'is_active', 'is_superuser']
+        fields = ['username','email','first_name','middle_name', 'last_name',
+                  'password1', 'password2', 'profile_photo', 'is_admin', 'is_student',
+                  'is_lecturer','is_supplier', 'is_non_staff']
         labels = {'email': 'Email'}
         widgets = {'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
                    'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
