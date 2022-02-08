@@ -9,7 +9,9 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 #from django.contrib.auth.forms import PasswordResetForm
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+User=get_user_model()
 from django.template.loader import render_to_string
 from django.db.models.query_utils import Q
 from django.utils.http import urlsafe_base64_encode
@@ -42,7 +44,7 @@ def password_reset_request(request):
                                   [user.email], fail_silently=False)
                     except BadHeaderError:
                         return HttpResponse('Invalid header found.')
-                    #messages.success(request, 'A message with reset password instructions has been sent to your inbox.')
+                    messages.success(request, 'A message with reset password instructions has been sent to your inbox.')
                     return redirect("/accounts/password-reset/done/")
     form = PasswordResetForm()
     return render(request=request, template_name="account/password_reset.html", context={"form": form})
@@ -78,57 +80,6 @@ def RegistrationView(request):
         form.save()
         return redirect('/accounts/register/')
     return render(request, 'account/register.html', {'form': form})
-
-
-@login_required
-def AddAddress(request):
-    title = "Add Address"
-    button = "Add Address"
-    form = AddressForm(request.POST)
-    if form.is_valid():
-        form.save()
-        messages.success(request, "Address Updated Successfully")
-        return redirect("/")
-    context = {
-        "title": title,
-        "form": form,
-        "button": button
-    }
-    return render(request, 'school/create-edit-address.html', context)
-
-
-@login_required
-def UpdateAddress(request, pk):
-    title = "Update Address"
-    button = "Update Address"
-    queryset = Address.objects.get(id=pk)
-    form = AddressForm(request.POST or None, instance=queryset)
-    if request.method == "POST":
-        form = AddressForm(request.POST or None, id=pk)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Address Updated Successfully")
-            return redirect("/")
-    context = {
-        "title": title,
-        "form": form,
-        "button": button
-    }
-    return render(request, 'school/create-edit-address.html', context)
-
-
-@login_required
-def DeleteAddress(request, pk):
-    queryset = Address.objects.get(id=pk)
-    title = "Delete Address"
-    if request.method == "POST":
-        queryset.delete()
-        messages.success(request, "Address Deleted Successfully")
-        return redirect("/")
-    context = {
-        "title": title
-    }
-    return render(request, "school/delete_items.html", context)
 
 
 @login_required
