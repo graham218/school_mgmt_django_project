@@ -1,4 +1,5 @@
 {% load static %}
+{% if request.user.is_authenticated %}
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -44,6 +45,7 @@
               </p>
             </a>
           </li>
+          {% if request.user.is_student %}
           <li class="nav-item">
             <a href="/" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -271,6 +273,8 @@
               </li>
             </ul>
           </li>
+          {% endif %}
+          {% if request.user.is_lecturer %}
           <li class="nav-header">Lecturers</li>
           <li class="nav-item">
             <a href="/" class="nav-link">
@@ -360,10 +364,12 @@
                 </ul>
               </li>
           </li>
+          {% endif %}
+          {% if request.user.is_admin %}
           <li class="nav-header">Admins</li>
           <li class="nav-item">
             <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 User Accounts
                 <i class="fas fa-angle-left right"></i>
@@ -396,7 +402,7 @@
           </li>
           <li class="nav-item">
             <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
+              <i class="nav-icon fas fa-graduation-cap"></i>
               <p>
                 Students
                 <i class="fas fa-angle-left right"></i>
@@ -446,7 +452,7 @@
 
           <li class="nav-item">
             <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+              <i class="nav-icon fas fa-tv"></i>
               <p>
                 Notice Board
                 <i class="fas fa-angle-left right"></i>
@@ -473,9 +479,11 @@
               </li>
             </ul>
           </li>
+          {% endif %}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
+{% endif %}
