@@ -79,7 +79,7 @@ def RegistrationView(request):
         messages.success(
             request, "Congratulations! Registration Successful, you can now log in!")
         form.save()
-        return redirect('/accounts/register/')
+        return redirect('/accounts/login/')
     return render(request, 'account/register.html', {'form': form})
 
 
