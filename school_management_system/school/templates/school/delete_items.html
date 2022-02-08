@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="content-wrapper d-flex align-items-center auth">
+    <div class="row flex-grow">
+      <div class="col-lg-8 mx-auto">
+        <div class="auth-form-light text-left p-5">
+          <div class="brand-logo">
+            <img src="{% static 'dash/assets/images/logo.svg' %}">
+          </div>
+          <h4>{{title}}</h4>
+          <h6 class="font-weight-light">Do you want to {{title}}?</h6>
+          <form class="pt-3" method="post" action="">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">Yes</button>
+              <a href="{% url 'home' %}" class="btn btn-success">No</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- content-wrapper ends -->
+{% endblock content %}
