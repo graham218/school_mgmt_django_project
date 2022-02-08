@@ -70,7 +70,7 @@ class AddStudentsForm(forms.ModelForm):
         fields = ['admission_no', 'full_name', 'nationality',
                   'stud_gender', 'national_ID_number', 'birth_cert_no', 'phone_number',
                   'DOB', 'date_of_admission', 'date_of_graduation', 'programme',
-                  'stage', 'profile_photo', 'postal_address', 'school_email', 'school_email_password',
+                  'stage', 'postal_address', 'school_email', 'school_email_password',
                   'total_fees_billed', 'total_fees_paid', 'balance']
         widgets = {'admission_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Admission Number'}),
                    'full_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Full Name'}),
@@ -107,7 +107,7 @@ class EditStudentsForm(forms.ModelForm):
     class Meta:
         model = Students
         fields = ['nationality', 'national_ID_number', 'birth_cert_no', 'phone_number', 'DOB',
-                  'date_of_admission', 'date_of_graduation', 'stage', 'profile_photo', 'postal_address']
+                  'date_of_admission', 'date_of_graduation', 'stage', 'postal_address']
         widgets = {'nationality': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eg, Kenyan, Ugandan, Somalian'}),
                    'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter National Id Number'}),
                    'birth_cert_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Birth Certificate Number'}),
@@ -123,7 +123,7 @@ class AddLectureForm(forms.ModelForm):
     class Meta:
         model = Lectures
         fields = ['lec_no', 'full_name', 'nationality',
-                  'lec_gender', 'national_ID_number', 'phone_number', 'profile_photo',
+                  'lec_gender', 'national_ID_number', 'phone_number',
                   'DOB', 'postal_address', 'school_email', 'school_email_password',
                   'total_salary_billed', 'total_salary_paid', 'balance']
         widgets = {'lec_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Lecture Number'}),
@@ -145,7 +145,7 @@ class AddLectureForm(forms.ModelForm):
 class EditLectureForm(forms.ModelForm):
     class Meta:
         model = Lectures
-        fields = ['nationality', 'national_ID_number', 'phone_number', 'profile_photo',
+        fields = ['nationality', 'national_ID_number', 'phone_number',
                   'DOB', 'postal_address']
         widgets = {'nationality': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eg, Kenyan, Ugandan, Somalian'}),
                    'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter National Id Number'}),

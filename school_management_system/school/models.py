@@ -69,8 +69,8 @@ class Students(models.Model):
         Programmes, on_delete=models.CASCADE, max_length=255, blank=True)
     stage = models.ForeignKey(
         Stages, on_delete=models.CASCADE, blank=False, null=True)
-    profile_photo = models.ImageField(
-        upload_to="students_pic/", blank=False, null=True)
+    # profile_photo = models.ImageField(
+    #     upload_to="students_pic/", blank=False, null=True)
     postal_address = models.CharField(max_length=255, blank=True, null=True)
     school_email = models.EmailField(max_length=255, blank=True, null=True)
     school_email_password = models.CharField(
@@ -106,7 +106,7 @@ class Lectures(models.Model):
         max_length=255, blank=True, null=True)
     phone_number = models.CharField(max_length=255, blank=True)
     DOB = models.DateField(auto_now=False, auto_now_add=False)
-    profile_photo = models.ImageField(upload_to="lecturer_pic/", blank=True)
+    # profile_photo = models.ImageField(upload_to="lecturer_pic/", blank=True)
     postal_address = models.CharField(max_length=255, blank=True)
     school_email = models.EmailField(max_length=255, blank=True)
     school_email_password = models.CharField(max_length=255, blank=True)
