@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>User Login</title>
+  <title>Create Account</title>
   {% include '../scripts/login-head.html' %}
 </head>
 <body class="hold-transition login-page">
@@ -26,7 +26,9 @@
           <div>
             <button type="submit" class="btn btn-primary btn-block">Create Account</button>
           </div>
+          <br>
           <p class="mb-1">
+            Already have an accout?
             <a href="{% url 'login' %}">Log In</a>
           </p>
         </div>
