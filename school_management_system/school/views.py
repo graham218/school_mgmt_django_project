@@ -1,3 +1,8 @@
+from django.utils.encoding import force_bytes
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_encode
+from django.db.models.query_utils import Q
+from django.template.loader import render_to_string
 from django.shortcuts import render, redirect
 from .forms import *
 from .models import *
@@ -11,12 +16,7 @@ from django.http import HttpResponse
 #from django.contrib.auth.forms import PasswordResetForm
 # from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
-User=get_user_model()
-from django.template.loader import render_to_string
-from django.db.models.query_utils import Q
-from django.utils.http import urlsafe_base64_encode
-from django.contrib.auth.tokens import default_token_generator
-from django.utils.encoding import force_bytes
+User = get_user_model()
 
 
 def password_reset_request(request):
@@ -44,7 +44,8 @@ def password_reset_request(request):
                                   [user.email], fail_silently=False)
                     except BadHeaderError:
                         return HttpResponse('Invalid header found.')
-                    messages.success(request, 'A message with reset password instructions has been sent to your inbox.')
+                    messages.success(
+                        request, 'A message with reset password instructions has been sent to your inbox.')
                     return redirect("/accounts/password-reset/done/")
     form = PasswordResetForm()
     return render(request=request, template_name="account/password_reset.html", context={"form": form})
@@ -86,12 +87,7 @@ def RegistrationView(request):
 def AddStudents(request):
     title = "Add New Students"
     button = "Add Student"
-    instance=Students.objects.first()
-    form = AddStudentsForm(request.POST or None, request.FILES)
-    # if request.is_ajax():
-    #     term = request.GET.get('term')
-    #     my_stages = Stages.objects.filter(year__icontains=term)
-    #     return JsonResponse(list(my_stages.values()), safe=False)
+    form = AddStudentsForm(request.POST or None)
     if form.is_valid():
         user = request.user
         admission_no = form.cleaned_data['admission_no']
@@ -106,7 +102,6 @@ def AddStudents(request):
         date_of_graduation = form.cleaned_data['date_of_graduation']
         programme = form.cleaned_data['programme']
         stage = form.cleaned_data['stage']
-        profile_photo = form.cleaned_data['profile_photo']
         postal_address = form.cleaned_data['postal_address']
         school_email = form.cleaned_data['school_email']
         school_email_password = form.cleaned_data['school_email_password']
@@ -117,7 +112,7 @@ def AddStudents(request):
                        nationality=nationality, stud_gender=stud_gender, national_ID_number=national_ID_number,
                        birth_cert_no=birth_cert_no, phone_number=phone_number, DOB=DOB,
                        date_of_admission=date_of_admission, stage=stage, date_of_graduation=date_of_graduation,
-                       programme=programme, profile_photo=profile_photo,
+                       programme=programme,
                        postal_address=postal_address, school_email=school_email, school_email_password=school_email_password,
                        total_fees_billed=total_fees_billed, total_fees_paid=total_fees_paid, balance=balance)
         reg.save()
@@ -169,7 +164,7 @@ def DeleteStudent(request, pk):
 def AddLecturer(request):
     title = "Add New Lecturer"
     button = "Add Lecture"
-    form = AddLectureForm(request.POST or None, request.FILES)
+    form = AddLectureForm(request.POST or None)
     if form.is_valid():
         user = request.user
         lec_no = form.cleaned_data['lec_no']
@@ -179,7 +174,6 @@ def AddLecturer(request):
         national_ID_number = form.cleaned_data['national_ID_number']
         phone_number = form.cleaned_data['phone_number']
         DOB = form.cleaned_data['DOB']
-        profile_photo = form.cleaned_data['profile_photo']
         postal_address = form.cleaned_data['postal_address']
         school_email = form.cleaned_data['school_email']
         school_email_password = form.cleaned_data['school_email_password']
@@ -188,8 +182,7 @@ def AddLecturer(request):
         balance = form.cleaned_data['balance']
         reg = Lectures(user=user, lec_no=lec_no, full_name=full_name,
                        nationality=nationality, lec_gender=lec_gender, national_ID_number=national_ID_number,
-                       phone_number=phone_number, DOB=DOB, profile_photo=profile_photo,
-                       postal_address=postal_address, school_email=school_email, school_email_password=school_email_password,
+                       phone_number=phone_number, DOB=DOB, postal_address=postal_address, school_email=school_email, school_email_password=school_email_password,
                        total_salary_billed=total_salary_billed, total_salary_paid=total_salary_paid, balance=balance)
         reg.save()
         messages.success(request, "New Lecture Added Successfully")
@@ -221,11 +214,9 @@ def EditLecturer(request, pk):
     title = "Edit Lecturer"
     button = "Edit Lecturer"
     queryset = Lectures.objects.get(id=pk)
-    form = AddLectureForm(
-        request.FILES, request.POST or None, instance=queryset)
+    form = AddLectureForm(request.POST or None, instance=queryset)
     if request.method == "POST":
-        form = AddLectureForm(
-            request.FILES, request.POST or None, instance=queryset)
+        form = AddLectureForm(request.POST or None, instance=queryset)
         if form.is_valid():
             messages.success(request, "Lecture Updated Successfully")
             form.save()
