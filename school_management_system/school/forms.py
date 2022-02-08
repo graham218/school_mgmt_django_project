@@ -25,6 +25,7 @@ class RegistrationForm(UserCreationForm):
         labels = {'email': 'Email'}
         widgets = {'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
                    'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
+                   'middle_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Middle Name'}),
                    'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'})}
 
 
