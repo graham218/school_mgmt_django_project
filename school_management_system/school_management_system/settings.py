@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     #'paypal.standard.ipn',
     'django_countries',
     'custom_user',
+    'crispy_forms',
 ]
 AUTH_USER_MODEL = 'custom_user.User'
 
@@ -153,3 +154,5 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 DEFAULT_FROM_EMAIL = 'testing@example.com'
+
+CRISPY_TEMPLATE_PACK = 'uni_form'
