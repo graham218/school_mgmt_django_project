@@ -1,23 +1,21 @@
-{% extends 'base.html' %}
+{% extends 'index2.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
-<div class="content-wrapper d-flex align-items-center auth">
-    <div class="row flex-grow">
-      <div class="col-lg-8 mx-auto">
-        <div class="auth-form-light text-left p-5">
-          <div class="brand-logo">
-            <img src="{% static 'dash/assets/images/logo.svg' %}">
-          </div>
-          <h4>{{title}}</h4>
-          <h6 class="font-weight-light">Do you want to {{title}}?</h6>
-          <form class="pt-3" method="post" action="">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-danger">Yes</button>
-              <a href="{% url 'home' %}" class="btn btn-success">No</a>
-          </form>
-        </div>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <h4>{{title}}</h4>
+    <h6 style="text-align: left;">Do you want to {{title}}?</h6>
+    <form action="" method="post">
+      {% csrf_token %}
+      <br>
+      <div>
+        <button type="submit" class="btn btn-danger">Yes</button>
+        <a href="{% url 'home' %}" class="btn btn-success">No</a>
       </div>
-    </div>
+    </form>
   </div>
-  <!-- content-wrapper ends -->
+  <div class="col-sm-2"></div>
+</div>
 {% endblock content %}
