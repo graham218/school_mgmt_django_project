@@ -1,36 +1,60 @@
 {% extends 'index2.html' %}
 {% load static %}
 {% block content %}
-<div class="row">
-    <div class="col-12 grid-margin">
-      <div class="card">
-        <div class="card-body">
-          {% include 'messages.html' %}
-          <h4 class="card-title">{{title}}</h4>
-          <div class="table-responsive">
-            <table class="table">
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            {% include 'messages.html' %}
+            <h3 class="card-title">{{title}}</h3>
+          </div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{% url 'school:add-faculty' %}" class="btn btn-primary">Add New Gender</a>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="gender" class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>Counter</th>
-                  <th>Gender</th>
-                  <th>Update</th>
-                  <th>Delete</th>
+                  <th>GENDER</th>
+                  <th>UPDATE</th>
+                  <th>DELETE</th>
                 </tr>
               </thead>
               <tbody>
                 {% for instance in queryset %}
-                    <tr>
-                        <td>{{forloop.counter}}</td>
-                        <td>{{instance.gender}}</td>
-                        <td><a href="{% url 'school:edit-gender' instance.id%}" class="mdi mdi-stack-overflow">Update</a><td>
-                        <td><a href="{% url 'school:delete-gender' instance.id%}" class="mdi mdi-delete-forever">Delete</a><td>
-                    </tr>
+                <tr>
+                  <td>{{forloop.counter}}</td>
+                  <td>{{instance.gender}}</td>
+                  <td><a href="{% url 'school:edit-gender' instance.id%}" class="mdi mdi-stack-overflow">Update</a>
+                  <td>
+                  <td><a href="{% url 'school:delete-gender' instance.id%}" class="mdi mdi-delete-forever">Delete</a>
+                  <td>
+                </tr>
                 {% endfor %}
               </tbody>
+              <tfoot>
+                <tr>
+                  <th>Counter</th>
+                  <th>GENDER</th>
+                  <th>UPDATE</th>
+                  <th>DELETE</th>
+                </tr>
+              </tfoot>
             </table>
           </div>
+          <!-- /.card-body -->
         </div>
+        <!-- /.card -->
       </div>
+      <!-- /.col -->
     </div>
+    <!-- /.row -->
   </div>
-  {% endblock content %}
+  <!-- /.container-fluid -->
+</section>
+{% endblock content %}
