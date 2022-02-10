@@ -1,7 +1,6 @@
 {% extends 'index2.html' %}
 {% load static %}
 {% block content %}
-{% include 'messages.html' %}
 <!-- Main content -->
 <section class="content">
   <div class="container-fluid">
@@ -9,10 +8,11 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
+            {% include 'messages.html' %}
             <h3 class="card-title">List Of All Faculties Available</h3>
           </div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="" class="btn btn-primary">Add New Faculties</a>
+            <a href="{% url 'school:add-faculty' %}" class="btn btn-primary">Add New Faculties</a>
           </div>
           <!-- /.card-header -->
           <div class="card-body">

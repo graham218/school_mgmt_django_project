@@ -20,7 +20,7 @@ class Address(models.Model):
 
 
 class Faculty(models.Model):
-    school = models.CharField(max_length=255, blank=True, null=True)
+    school = models.CharField(max_length=255, blank=False, null=True)
     date_created = models.DateTimeField(
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
