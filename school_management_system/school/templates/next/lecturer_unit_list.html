@@ -38,9 +38,9 @@
                   <td>{{instance.full_name}}</td>
                   <td>{{instance.unit_name}}</td>
                   <td>{{instance.level_of_understanding}}</td>
-                  <td><a class="mdi mdi-stack-overflow"
+                  <td><a class="fa fa-edit"
                       href="{% url 'school:lecturer_units_edit' instance.id%}">Update</a></td>
-                  <td><a class="mdi mdi-delete-forever"
+                  <td><a class="fa fa-delete"
                       href="{% url 'school:lecturer_units_delete' instance.id%}">Delete</a></td>
                 </tr>
                 {% endfor %}
