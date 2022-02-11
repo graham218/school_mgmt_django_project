@@ -401,7 +401,6 @@ def delete_suggestion(request, pk):
         return HttpResponseRedirect("/school/list_suggestions")
     context = {
         "title": title,
-        "form": form,
         "button": button
     }
     return render(request, "school/delete_items.html", context)
