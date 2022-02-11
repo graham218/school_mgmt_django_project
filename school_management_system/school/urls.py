@@ -83,7 +83,7 @@ urlpatterns = [
     path('register_special_exam/', views2.register_special_exams, name='register_special_exam'),
     path('my_special_exams/', views2.my_special_exams, name='my_special_exams'),
     path('special_exams_marks/<str:pk>', views2.special_exams_marks, name='special_exams_marks'),
-    path('special_exams_marks/<str:pk>', views2.special_exams_marks, name='special_exams_marks'),
+    path('delete_special_exams/<str:pk>', views2.delete_special_exams, name='delete_special_exams'),
     path('SpecialExamList/', views2.SpecialExamList, name='SpecialExamList'),
     
     path('lecturer_units/', views2.lecturer_units, name='lecturer_units'),

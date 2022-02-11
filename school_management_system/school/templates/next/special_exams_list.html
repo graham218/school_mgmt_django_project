@@ -27,7 +27,6 @@
                   <th>DATE REGISTERED</th>
                   <th>DATE UPDATED</th>
                   <th>UPDATE</th>
-                  <th>DELETE</th>
                 </tr>
               </thead>
               <tbody>
@@ -43,9 +42,7 @@
                   <td>{{instance.comments}}</td>
                   <td>{{instance.date_registered}}</td>
                   <td>{{instance.date_updated}}</td>
-                  <td><a href="{% url 'school:edit-gender' instance.id%}" class="mdi mdi-stack-overflow">Update</a>
-                  <td>
-                  <td><a href="{% url 'school:delete-gender' instance.id%}" class="mdi mdi-delete-forever">Delete</a>
+                  <td><a href="{% url 'school:special_exams_marks' instance.id%}" class="fa fa-edit">UPDATE</a>
                   <td>
                 </tr>
                 {% endfor %}
@@ -63,7 +60,6 @@
                   <th>DATE REGISTERED</th>
                   <th>DATE UPDATED</th>
                   <th>UPDATE</th>
-                  <th>DELETE</th>
                 </tr>
               </tfoot>
             </table>

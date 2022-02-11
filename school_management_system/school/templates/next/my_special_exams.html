@@ -29,6 +29,7 @@
                   <th>COMMENTS</th>
                   <th>DATE REGISTERED</th>
                   <th>DATE UPDATED</th>
+                  <th>DELETE</th>
                 </tr>
               </thead>
               <tbody>
@@ -44,6 +45,8 @@
                   <td>{{instance.comments}}</td>
                   <td>{{instance.date_registered}}</td>
                   <td>{{instance.date_updated}}</td>
+                  <td><a href="{% url 'school:delete_special_exams' instance.id%}" class="fa fa-edit">DELETE</a>
+                    <td>
                 </tr>
                 {% endfor %}
               </tbody>
@@ -59,6 +62,7 @@
                   <th>COMMENTS</th>
                   <th>DATE REGISTERED</th>
                   <th>DATE UPDATED</th>
+                  <th>DELETE</th>
                 </tr>
               </tfoot>
             </table>
