@@ -465,7 +465,7 @@ def my_registered_units5(request):
 def unit_registration6(request):
     title = "Unit Registration Year 6"
     button="Register Unit"
-    form = UnitRegistrationForm4(request.POST or None)
+    form = UnitRegistrationForm6(request.POST or None)
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
@@ -474,7 +474,7 @@ def unit_registration6(request):
         instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
         instance.save()
         messages.success(request, "Unit Registered Successfully")
-        return HttpResponseRedirect("/school/unit_registration/")
+        return HttpResponseRedirect("/school/my_registered_units6/")
     context = {
         "title": title,
         "form": form,
@@ -491,7 +491,7 @@ def unregister_unit6(request, pk):
     if request.method == "POST":
         queryset.delete()
         messages.error(request, "Unit Unregistered Successfully")
-        return HttpResponseRedirect("/school/list_registered_units")
+        return HttpResponseRedirect("/school/my_registered_units6")
     context = {
         "title": title,
         "button": button,
@@ -508,7 +508,7 @@ def insert_marks6(request, pk):
     if request.method == "POST":
         form = MarksForm6(request.POST or None, instance=queryset)
         form.save()
-        return redirect("/school/list_registered_units/")
+        return redirect("/school/list_registered_units6/")
     context = {
         "title": title,
         "button": button,
@@ -525,6 +525,17 @@ def list_registered_units6(request):
         "title": title,
     }
     return render(request, "units/list_registered_units.html", context)
+
+def my_registered_units6(request):
+    title = 'MY REGISTERED UNITS OF YEAR 6'
+    url="school:unit_registration6"
+    queryset = marks_yr6.objects.filter(user=request.user)
+    context = {
+        "url":url,
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "units/my_registered_units.html", context)
 #====================================================================================================
 #Unit Registration 7
 #==============================================================================================
@@ -541,7 +552,7 @@ def unit_registration7(request):
         instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
         instance.save()
         messages.success(request, "Unit Registered Successfully")
-        return HttpResponseRedirect("/school/unit_registration/")
+        return HttpResponseRedirect("/school/my_registered_units7/")
     context = {
         "title": title,
         "form": form,
@@ -558,7 +569,7 @@ def unregister_unit7(request, pk):
     if request.method == "POST":
         queryset.delete()
         messages.error(request, "Unit Unregistered Successfully")
-        return HttpResponseRedirect("/school/list_registered_units")
+        return HttpResponseRedirect("/school/my_registered_units7")
     context = {
         "title": title,
         "button": button
@@ -575,7 +586,7 @@ def insert_marks7(request, pk):
     if request.method == "POST":
         form = MarksForm7(request.POST or None, instance=queryset)
         form.save()
-        return redirect("/school/list_registered_units/")
+        return redirect("/school/list_registered_units7/")
     context = {
         "title": title,
         "button": button,
@@ -592,4 +603,15 @@ def list_registered_units7(request):
         "queryset": queryset,
     }
     return render(request, "units/list_registered_units.html", context)
+
+def my_registered_units7(request):
+    title = 'MY REGISTERED UNITS OF YEAR 7'
+    url="school:unit_registration7"
+    queryset = marks_yr7.objects.filter(user=request.user)
+    context = {
+        "url":url,
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "units/my_registered_units.html", context)
 #====================================================================================================
