@@ -16,7 +16,7 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <table id="special-exams" class="table table-bordered table-striped">
+            <table id="notices" class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th> COUNTER </th>
@@ -29,7 +29,7 @@
               <tbody>
                 {% for instance in queryset %}
                 <tr>
-                  <td class="py-1">{{forloop.counter}}</td>
+                  <td>{{forloop.counter}}</td>
                   <td>{{instance.written_by}}</td>
                   <td>{{instance.full_name}}</td>
                   <td>{{instance.NOTICE}}</td>
