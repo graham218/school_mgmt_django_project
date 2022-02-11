@@ -144,6 +144,7 @@ def my_registered_units1(request):
         "url":url,
         "title": title,
         "queryset": queryset,
+        "url2":url2
     }
     return render(request, "units/my_registered_units.html", context)
 
@@ -218,11 +219,13 @@ def list_registered_units2(request):
 def my_registered_units2(request):
     title = 'MY REGISTERED UNITS OF YEAR 2'
     url="school:unit_registration2"
+    url2="school:unregister_unit2"
     queryset = marks_yr2.objects.filter(user=request.user)
     context = {
         "url":url,
         "title": title,
         "queryset": queryset,
+        "url2":url2,
     }
     return render(request, "units/my_registered_units.html", context)
 #====================================================================================================
@@ -297,11 +300,13 @@ def list_registered_units3(request):
 def my_registered_units3(request):
     title = 'MY REGISTERED UNITS OF YEAR 3'
     url="school:unit_registration3"
+    url2="school:unregister_unit3"
     queryset = marks_yr3.objects.filter(user=request.user)
     context = {
         "url":url,
         "title": title,
         "queryset": queryset,
+        "url2":url2,
     }
     return render(request, "units/my_registered_units.html", context)
 #====================================================================================================
@@ -375,11 +380,13 @@ def list_registered_units4(request):
 def my_registered_units4(request):
     title = 'MY REGISTERED UNITS OF YEAR 4'
     url="school:unit_registration4"
+    url2="school:unregister_unit4"
     queryset = marks_yr4.objects.filter(user=request.user)
     context = {
         "url":url,
         "title": title,
         "queryset": queryset,
+        "url2":url2,
     }
     return render(request, "units/my_registered_units.html", context)
 #====================================================================================================
@@ -452,11 +459,13 @@ def list_registered_units5(request):
 def my_registered_units5(request):
     title = 'MY REGISTERED UNITS OF YEAR 5'
     url="school:unit_registration5"
+    url2="school:unregister_unit5"
     queryset = marks_yr5.objects.filter(user=request.user)
     context = {
         "url":url,
         "title": title,
         "queryset": queryset,
+        "url2":url2
     }
     return render(request, "units/my_registered_units.html", context)
 #====================================================================================================
@@ -530,11 +539,13 @@ def list_registered_units6(request):
 def my_registered_units6(request):
     title = 'MY REGISTERED UNITS OF YEAR 6'
     url="school:unit_registration6"
+    url2="school:unregister_unit6"
     queryset = marks_yr6.objects.filter(user=request.user)
     context = {
         "url":url,
         "title": title,
         "queryset": queryset,
+        "url2":url2,
     }
     return render(request, "units/my_registered_units.html", context)
 #====================================================================================================
@@ -608,11 +619,13 @@ def list_registered_units7(request):
 def my_registered_units7(request):
     title = 'MY REGISTERED UNITS OF YEAR 7'
     url="school:unit_registration7"
+    url2="school:unregister_unit7"
     queryset = marks_yr7.objects.filter(user=request.user)
     context = {
         "url":url,
         "title": title,
         "queryset": queryset,
+        "url2":url2,
     }
     return render(request, "units/my_registered_units.html", context)
 #====================================================================================================
