@@ -70,7 +70,7 @@ def special_exams_marks(request, pk):
         "button": button,
         "queryset2": queryset2
     }
-    return render(request, "next/special_exams.html", context)
+    return render(request, "next/register_special_exams.html", context)
 
 def SpecialExamList(request):
     title = "Special Exams Students' List"
@@ -155,8 +155,6 @@ def ListAllLecturerUnits(request):
         "title": title,
         "queryset": queryset,
     }
-    if request.method == 'POST':
-        queryset = LecturerUnits.objects.filter(user=form['user'].value())
     context = {
         "form": form,
         "title": title,
@@ -226,8 +224,6 @@ def list_seats(request):
         "title": title,
         "queryset": queryset,
     }
-    if request.method == 'POST':
-        queryset = Seats.objects.filter(seat__icontains=form['seat'].value())
     context = {
         "form": form,
         "title": title,
@@ -287,8 +283,6 @@ def list_notices(request):
         "title": title,
         "queryset": queryset,
     }
-    if request.method == 'POST':
-        queryset = NoticeBoard.objects.filter(full_name__icontains=form['full_name'].value())
     context = {
         "form": form,
         "title": title,
@@ -363,9 +357,6 @@ def list_politicians(request):
         "title": title,
         "queryset": queryset,
     }
-    if request.method == 'POST':
-        queryset = Voting.objects.filter(full_name__icontains=form['full_name'].value(),
-        seat=form['seat'].value())
     context = {
         "form": form,
         "title": title,
@@ -420,8 +411,6 @@ def list_suggestions(request):
         "title": title,
         "queryset": queryset,
     }
-    if request.method == 'POST':
-        queryset = SuggestionBox.objects.filter(full_name__icontains=form['full_name'].value())
     context = {
         "form": form,
         "title": title,
