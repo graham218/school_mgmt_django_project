@@ -397,14 +397,13 @@ def unit_registration5(request):
         instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
         instance.save()
         messages.success(request, "Unit Registered Successfully")
-        return HttpResponseRedirect("/school/unit_registration/")
+        return HttpResponseRedirect("/school/my_registered_units5/")
     context = {
         "title": title,
         "form": form,
         "button": button,
     }
     return render(request, "units/unit_registration.html", context)
-
 
 @login_required
 def unregister_unit5(request, pk):
@@ -414,7 +413,7 @@ def unregister_unit5(request, pk):
     if request.method == "POST":
         queryset.delete()
         messages.error(request, "Unit Unregistered Successfully")
-        return HttpResponseRedirect("/school/list_registered_units")
+        return HttpResponseRedirect("/school/my_registered_units5")
     context = {
         "title": title,
         "button": button,
@@ -431,7 +430,7 @@ def insert_marks5(request, pk):
     if request.method == "POST":
         form = MarksForm5(request.POST or None, instance=queryset)
         form.save()
-        return redirect("/school/list_registered_units/")
+        return redirect("/school/list_registered_units5/")
     context = {
         "title": title,
         "button": button,
@@ -448,6 +447,17 @@ def list_registered_units5(request):
         "title": title,
     }
     return render(request, "units/list_registered_units.html", context)
+
+def my_registered_units5(request):
+    title = 'MY REGISTERED UNITS OF YEAR 5'
+    url="school:unit_registration5"
+    queryset = marks_yr1.objects.filter(user=request.user)
+    context = {
+        "url":url,
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "units/my_registered_units.html", context)
 #====================================================================================================
 #Unit Registration 6
 #==============================================================================================
