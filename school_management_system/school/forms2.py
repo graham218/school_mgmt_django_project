@@ -26,12 +26,6 @@ class FeeReceiptForm(forms.ModelForm):
         'furniture_charges': forms.NumberInput(attrs={'class': 'form-control'}),
         'water_charges': forms.NumberInput(attrs={'class': 'form-control'})}
 
-class FeeReceiptSearchForm(forms.ModelForm):
-    class Meta:
-        model=FeeReceipt
-        fields=['user']
-        widgets={'user': forms.Select(attrs={'class': 'form-control'})}
-
 class SpecialExamRegisterForm(forms.ModelForm):
     class Meta:
         model=SpecialExam
@@ -48,12 +42,6 @@ class SpecialExamMarksForm(forms.ModelForm):
         'grade': forms.TextInput(attrs={'class': 'form-control'}),
         'comments': forms.TextInput(attrs={'class': 'form-control'})}
 
-class SpecialExamSearchForm(forms.ModelForm):
-    class Meta:
-        model=SpecialExam
-        fields=['full_name']
-        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'})}
-
 class LecturerUnitsForm(forms.ModelForm):
     class Meta:
         model=LecturerUnits
@@ -64,12 +52,6 @@ class LecturerUnitsForm(forms.ModelForm):
         'level_of_understanding': forms.Textarea(attrs={'class': 'form-control'}),
         'grade': forms.TextInput(attrs={'class': 'form-control'})}
 
-class LecturerUnitsSearchForm(forms.ModelForm):
-    class Meta:
-        model=LecturerUnits
-        fields=['full_name']
-        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'})}
-
 class NoticeBoardForm(forms.ModelForm):
     class Meta:
         model=NoticeBoard
@@ -78,12 +60,6 @@ class NoticeBoardForm(forms.ModelForm):
         'stage': forms.Select(attrs={'class': 'form-control'}),
         'notice': forms.Textarea(attrs={'class': 'form-control'}),
         'signature': forms.TextInput(attrs={'class': 'form-control'})}
-
-class NoticeBoardSearchForm(forms.ModelForm):
-    class Meta:
-        model=NoticeBoard
-        fields=['full_name']
-        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'})}
 
 class VotingForm(forms.ModelForm):
     class Meta:
@@ -94,13 +70,6 @@ class VotingForm(forms.ModelForm):
         'course': forms.Select(attrs={'class': 'form-control'}),
         'seat': forms.Select(attrs={'class': 'form-control'})}
 
-class VotingSearchForm(forms.ModelForm):
-    class Meta:
-        model=Voting
-        fields=['full_name','seat']
-        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
-        'seat': forms.Select(attrs={'class': 'form-control'})}
-
 class SuggestionBoxForm(forms.ModelForm):
     class Meta:
         model=SuggestionBox
@@ -109,20 +78,8 @@ class SuggestionBoxForm(forms.ModelForm):
         'stage': forms.Select(attrs={'class': 'form-control'}),
         'suggestion': forms.TextInput(attrs={'class': 'form-control'})}
 
-class SuggestionBoxSearchForm(forms.ModelForm):
-    class Meta:
-        model=SuggestionBox
-        fields=['full_name']
-        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'})}
-
 class SeatsForm(forms.ModelForm):
     class Meta:
         model=Seats
         fields=['seat']
-        widgets={'seat': forms.TextInput(attrs={'class': 'form-control'})}
-
-class SeatsSearchForm(forms.ModelForm):
-    class Meta:
-        model=Seats
-        fields=['seat']
-        widgets={'seat': forms.TextInput(attrs={'class': 'form-control'})}
+        widgets={'seat': forms.TextInput(attrs={'class': 'form-control'})}}
