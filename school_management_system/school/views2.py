@@ -10,7 +10,9 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.urls import reverse
 
-#=====================================================================
+# =====================================================================
+
+
 def FeeReceiptList(request):
     title = 'List All Fee Student Receipts'
     form = FeeReceiptSearchForm(request.POST or None)
@@ -28,18 +30,20 @@ def FeeReceiptList(request):
     }
     return render(request, "next/fee_receipt_list.html", context)
 
+
 @login_required
 def register_special_exams(request):
     title = "Register For Special Exams"
-    button="Register Unit"
+    button = "Register Unit"
     form = SpecialExamRegisterForm(request.POST or None)
-    queryset2=SpecialExam.objects.filter(user=request.user)
+    queryset2 = SpecialExam.objects.filter(user=request.user)
     if form.is_valid():
-        instance=form.save(commit=False)
-        instance.user=request.user
-        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
-        instance.stage=form.cleaned_data['stage']
-        instance.unit_name=form.cleaned_data['unit_name']
+        instance = form.save(commit=False)
+        instance.user = request.user
+        instance.full_name = request.user.first_name + \
+            ' '+str(request.user.last_name)
+        instance.stage = form.cleaned_data['stage']
+        instance.unit_name = form.cleaned_data['unit_name']
         instance.save()
         messages.success(request, "Unit Registered Successfully")
         return HttpResponseRedirect("/school/my_special_exams")
@@ -65,14 +69,15 @@ def my_special_exams(request):
     }
     return render(request, "next/my_special_exams.html", context)
 
+
 @login_required
 def special_exams_marks(request, pk):
     title = "Add Marks For Special Exams"
-    button="Add Marks"
-    queryset=SpecialExam.objects.get(id=pk)
+    button = "Add Marks"
+    queryset = SpecialExam.objects.get(id=pk)
     form = SpecialExamMarksForm(request.POST or None, instance=queryset)
-    queryset2=SpecialExam.objects.filter(user=request.user)
-    if request.method=="POST":
+    queryset2 = SpecialExam.objects.filter(user=request.user)
+    if request.method == "POST":
         form = SpecialExamMarksForm(request.POST or None, instance=queryset)
         if form.is_valid():
             form.save()
@@ -86,23 +91,22 @@ def special_exams_marks(request, pk):
     }
     return render(request, "next/register_special_exams.html", context)
 
+
 @login_required
-def special_exams_delete(request, pk):
+def delete_special_exams(request, pk):
     title = "Delete Special Exams"
-    button="Delete"
-    queryset=SpecialExam.objects.get(id=pk)
-    if request.method=="POST":
-        form = SpecialExamMarksForm(request.POST or None, instance=queryset)
-        if form.is_valid():
-            form.save()
-            messages.error(request, "Unit Unregistered from Special Exams")
-            return HttpResponseRedirect("/school/SpecialExamList")
+    button = "Delete"
+    queryset = SpecialExam.objects.get(id=pk)
+    if request.method == "POST":
+        queryset.delete()
+        messages.error(request, "Unit Unregistered from Special Exams")
+        return HttpResponseRedirect("/school/my_special_exams")
     context = {
         "title": title,
-        "form": form,
         "button": button,
     }
-    return render(request, "next/register_special_exams.html", context)
+    return render(request, "school/delete_items.html", context)
+
 
 def SpecialExamList(request):
     title = "Special Exams Students' List"
@@ -117,18 +121,20 @@ def SpecialExamList(request):
     }
     return render(request, "next/special_exams_list.html", context)
 
+
 @login_required
 def lecturer_units(request):
     title = "Add Units"
-    button="Add Unit"
+    button = "Add Unit"
     form = LecturerUnitsForm(request.POST or None)
-    queryset2=LecturerUnits.objects.filter(user=request.user)
+    queryset2 = LecturerUnits.objects.filter(user=request.user)
     if form.is_valid():
-        instance=form.save(commit=False)
-        instance.user=request.user
-        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
-        instance.unit_name=form.cleaned_data['unit_name']
-        instance.level_of_understanding=form.cleaned_data['level_of_understanding']
+        instance = form.save(commit=False)
+        instance.user = request.user
+        instance.full_name = request.user.first_name + \
+            ' '+str(request.user.last_name)
+        instance.unit_name = form.cleaned_data['unit_name']
+        instance.level_of_understanding = form.cleaned_data['level_of_understanding']
         instance.save()
         messages.success(request, "Unit Registered Successfully")
         return HttpResponseRedirect("/school/lecturer_units")
@@ -140,14 +146,15 @@ def lecturer_units(request):
     }
     return render(request, "next/lecturer_units.html", context)
 
+
 @login_required
 def lecturer_units_edit(request, pk):
     title = "Update Units"
-    button="Update Unit"
-    queryset=LecturerUnits.objects.get(id=pk)
+    button = "Update Unit"
+    queryset = LecturerUnits.objects.get(id=pk)
     form = LecturerUnitsForm(request.POST or None, instance=queryset)
-    queryset2=LecturerUnits.objects.filter(user=request.user)
-    if request.method=="POST":
+    queryset2 = LecturerUnits.objects.filter(user=request.user)
+    if request.method == "POST":
         form = LecturerUnitsForm(request.POST or None, instance=queryset)
         if form.is_valid():
             form.save()
@@ -161,12 +168,13 @@ def lecturer_units_edit(request, pk):
     }
     return render(request, "next/lecturer_units.html", context)
 
+
 @login_required
 def lecturer_units_delete(request, pk):
     title = "Delete Unit"
-    button="Delete Unit"
-    queryset=LecturerUnits.objects.get(id=pk)
-    if request.method=="POST":
+    button = "Delete Unit"
+    queryset = LecturerUnits.objects.get(id=pk)
+    if request.method == "POST":
         queryset.delete()
         messages.error(request, "Unit Deleted From My List")
         return HttpResponseRedirect("/school/lecturer_units")
@@ -176,6 +184,7 @@ def lecturer_units_delete(request, pk):
         "queryset2": queryset2
     }
     return render(request, "school/delete_items.html", context)
+
 
 def ListAllLecturerUnits(request):
     title = "List Of All Lecturers' Units"
@@ -192,12 +201,14 @@ def ListAllLecturerUnits(request):
     }
     return render(request, "next/lecturer_unit_list.html", context)
 
-#=================================================================================
-#Seats
+# =================================================================================
+# Seats
+
+
 @login_required
 def seats(request):
     title = "Add New Seats/Positions For Students To Vie"
-    button="Add Seat"
+    button = "Add Seat"
     form = SeatsForm(request.POST or None)
     if form.is_valid():
         form.save()
@@ -210,13 +221,14 @@ def seats(request):
     }
     return render(request, "next/add-edit-seats.html", context)
 
+
 @login_required
 def seats_edit(request, pk):
     title = "Edit Existing Seats/Positions For Students To Vie"
-    button="Add Seat"
-    queryset=Seats.objects.get(id=pk)
+    button = "Add Seat"
+    queryset = Seats.objects.get(id=pk)
     form = SeatsForm(request.POST or None, instance=queryset)
-    if request.method=="POST":
+    if request.method == "POST":
         form = SeatsForm(request.POST or None, instance=queryset)
         if form.is_valid():
             form.save()
@@ -229,12 +241,13 @@ def seats_edit(request, pk):
     }
     return render(request, "next/add-edit-seats.html", context)
 
+
 @login_required
 def seats_delete(request, pk):
     title = "Delete Seat"
-    button="Delete Seat"
-    queryset2=Seats.objects.get(id=pk)
-    if request.method=="POST":
+    button = "Delete Seat"
+    queryset2 = Seats.objects.get(id=pk)
+    if request.method == "POST":
         queryset2.delete()
         messages.error(request, "Seat/Position Deleted From Database")
         return HttpResponseRedirect("/school/list_seats")
@@ -245,6 +258,7 @@ def seats_delete(request, pk):
         "queryset": queryset
     }
     return render(request, "school/delete_items.html", context)
+
 
 def list_seats(request):
     title = "List Of All Positions/Seats"
@@ -260,22 +274,25 @@ def list_seats(request):
         "queryset": queryset,
     }
     return render(request, "next/list_seats.html", context)
-#==========================================================================================
-#Notice Board
+# ==========================================================================================
+# Notice Board
+
+
 @login_required
 def add_notice(request):
     title = "Add Notice"
-    button="Add Notice"
+    button = "Add Notice"
     form = NoticeBoardForm(request.POST or None)
     form2 = NoticeBoardSearchForm(request.POST or None)
-    queryset2=NoticeBoard.objects.filter(user=request.user)
+    queryset2 = NoticeBoard.objects.filter(user=request.user)
     if form.is_valid():
-        instance=form.save(commit=False)
-        instance.written_by=request.user
-        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
-        instance.stage=form.cleaned_data['stage']
-        instance.notice=form.cleaned_data['notice']
-        instance.signature=form.cleaned_data['signature']
+        instance = form.save(commit=False)
+        instance.written_by = request.user
+        instance.full_name = request.user.first_name + \
+            ' '+str(request.user.last_name)
+        instance.stage = form.cleaned_data['stage']
+        instance.notice = form.cleaned_data['notice']
+        instance.signature = form.cleaned_data['signature']
         instance.save()
         messages.success(request, "Notice Added Successfully on Board")
         return HttpResponseRedirect("/school/add_notice")
@@ -288,12 +305,13 @@ def add_notice(request):
     }
     return render(request, "next/add_notice.html", context)
 
+
 @login_required
 def delete_notice(request, pk):
     title = "Delete Notice"
-    button="Delete Notice"
-    queryset2=NoticeBoard.objects.get(id=pk)
-    if request.method=="POST":
+    button = "Delete Notice"
+    queryset2 = NoticeBoard.objects.get(id=pk)
+    if request.method == "POST":
         queryset2.delete()
         messages.error(request, "Notice Deleted From Board")
         return HttpResponseRedirect("/school/list_notices")
@@ -304,6 +322,7 @@ def delete_notice(request, pk):
         "queryset": queryset
     }
     return render(request, "school/delete_items.html", context)
+
 
 def list_notices(request):
     title = "School Notice Board"
@@ -319,20 +338,23 @@ def list_notices(request):
         "queryset": queryset,
     }
     return render(request, "next/list_notices.html", context)
-#=================================================================================================
-#Voting
+# =================================================================================================
+# Voting
+
+
 @login_required
 def register_polititian(request):
     title = "Register Politician"
-    button="Register"
+    button = "Register"
     form = VotingForm(request.POST or None)
     if form.is_valid():
-        instance=form.save(commit=False)
-        instance.written_by=request.user
-        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
-        instance.stage=form.cleaned_data['stage']
-        instance.notice=form.cleaned_data['notice']
-        instance.signature=form.cleaned_data['signature']
+        instance = form.save(commit=False)
+        instance.written_by = request.user
+        instance.full_name = request.user.first_name + \
+            ' '+str(request.user.last_name)
+        instance.stage = form.cleaned_data['stage']
+        instance.notice = form.cleaned_data['notice']
+        instance.signature = form.cleaned_data['signature']
         instance.save()
         messages.success(request, "Polititian Registerd Successfully")
         return HttpResponseRedirect("/school/register_polititian")
@@ -344,13 +366,14 @@ def register_polititian(request):
     }
     return render(request, "next/register_polititian.html", context)
 
+
 @login_required
 def edit_polititian(request, pk):
     title = "Edit Politician"
-    button="Register"
-    queryset=Voting.objects.get(id=pk)
+    button = "Register"
+    queryset = Voting.objects.get(id=pk)
     form = VotingForm(request.POST or None, instance=queryset)
-    if request.method=="POST":
+    if request.method == "POST":
         form = VotingForm(request.POST or None, instance=queryset)
         if form.is_valid():
             form.save()
@@ -363,12 +386,13 @@ def edit_polititian(request, pk):
     }
     return render(request, "next/register_polititian.html", context)
 
+
 @login_required
 def delete_polititian(request, pk):
     title = "Delete Politician"
-    button="Delete"
-    queryset=Voting.objects.get(id=pk)
-    if request.method=="POST":
+    button = "Delete"
+    queryset = Voting.objects.get(id=pk)
+    if request.method == "POST":
         queryset.delete()
         messages.error(request, "Polititian Deleted from Database")
         return HttpResponseRedirect("/school/list_politicians")
@@ -378,6 +402,7 @@ def delete_polititian(request, pk):
         "button": button
     }
     return render(request, "school/delete_items.html", context)
+
 
 def list_politicians(request):
     title = "List Of All Polititians"
@@ -394,18 +419,21 @@ def list_politicians(request):
     }
     return render(request, "next/list_polititians.html", context)
 
-#=============================================================================================
-#Suggestions
+# =============================================================================================
+# Suggestions
+
+
 @login_required
 def add_suggestion(request):
     title = "Add Suggestion"
-    button="Add"
+    button = "Add"
     form = SuggestionBoxForm(request.POST or None)
     if form.is_valid():
-        instance=form.save(commit=False)
-        instance.written_by=request.user
-        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
-        instance.suggestion=form.cleaned_data['suggestion']
+        instance = form.save(commit=False)
+        instance.written_by = request.user
+        instance.full_name = request.user.first_name + \
+            ' '+str(request.user.last_name)
+        instance.suggestion = form.cleaned_data['suggestion']
         instance.save()
         messages.success(request, "Suggestion Sent Successfully")
         return HttpResponseRedirect("/school/add_suggestion")
@@ -417,12 +445,13 @@ def add_suggestion(request):
     }
     return render(request, "next/send_suggestion.html", context)
 
+
 @login_required
 def delete_suggestion(request, pk):
     title = "Delete Suggestion"
-    button="Delete"
-    queryset=SuggestionBox.objects.get(id=pk)
-    if request.method=="POST":
+    button = "Delete"
+    queryset = SuggestionBox.objects.get(id=pk)
+    if request.method == "POST":
         queryset.delete()
         messages.error(request, "Suggestion Deleted from Database")
         return HttpResponseRedirect("/school/list_suggestions")
@@ -432,6 +461,7 @@ def delete_suggestion(request, pk):
         "button": button
     }
     return render(request, "school/delete_items.html", context)
+
 
 def list_suggestions(request):
     title = "List Of All Suggestions"
