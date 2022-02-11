@@ -93,7 +93,7 @@ def unit_registration(request):
 
 
 @login_required
-def unregister_unit(request, pk):
+def unregister_unit1(request, pk):
     queryset = marks_yr1.objects.get(id=pk)
     title = "Unregister Unit"
     button="Unregister Unit"
@@ -138,6 +138,7 @@ def list_registered_units1(request):
 def my_registered_units1(request):
     title = 'MY REGISTERED UNITS OF YEAR 1'
     url="school:unit_registration"
+    url2="school:unregister_unit1"
     queryset = marks_yr1.objects.filter(user=request.user)
     context = {
         "url":url,
