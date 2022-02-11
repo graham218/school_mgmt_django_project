@@ -2,10 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8">
-        <h2 style="text-align: center;">{{title}}</h2>
+<h2 style="text-align: center;">{{title}}</h2>
         <!-- Main content -->
         <section class="content">
 
@@ -27,34 +24,6 @@
                                             </ul>
                                         </div>
                                         <div class="col-5 text-center">
-                                            <img src="../../dist/img/user1-128x128.jpg" alt="user-avatar"
-                                                class="img-circle img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="text-right">
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-user"></i> View Year 1 Units
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-                            <div class="card bg-light d-flex flex-fill">
-                                <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <h2 class="lead"><b>Year One Units</b></h2>
-                                            <ul class="ml-4 mb-0 fa-ul text-muted">
-                                                <li class="small"><span class="fa-li"><i
-                                                            class="fas fa-lg fa-building"></i></span> Units: All Units
-                                                </li>
-                                                <li class="small">
-                                            </ul>
-                                        </div>
-                                        <div class="col-5 text-center">
                                             <img src="{% static 'dist/img/user1-128x128.jpg' %}" alt="user-avatar"
                                                 class="img-circle img-fluid">
                                         </div>
@@ -62,7 +31,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="{% url 'my_registered_units1' %}" class="btn btn-sm btn-primary">
+                                        <a href="{% url 'unit_registration' %}" class="btn btn-sm btn-primary">
                                             <i class="fas fa-user"></i> View Year 1 Units
                                         </a>
                                     </div>
@@ -90,7 +59,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="{% url 'my_registered_units2' %}" class="btn btn-sm btn-primary">
+                                        <a href="{% url 'school:my_registered_units2' %}" class="btn btn-sm btn-primary">
                                             <i class="fas fa-user"></i> View Year 2 Units
                                         </a>
                                     </div>
@@ -118,7 +87,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="{% url 'my_registered_units3' %}" class="btn btn-sm btn-primary">
+                                        <a href="{% url 'school:my_registered_units3' %}" class="btn btn-sm btn-primary">
                                             <i class="fas fa-user"></i> View Year 3 Units
                                         </a>
                                     </div>
@@ -146,7 +115,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="{% url 'my_registered_units4' %}" class="btn btn-sm btn-primary">
+                                        <a href="{% url 'school:my_registered_units4' %}" class="btn btn-sm btn-primary">
                                             <i class="fas fa-user"></i> View Year 4 Units
                                         </a>
                                     </div>
@@ -174,7 +143,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="{% url 'my_registered_units5' %}" class="btn btn-sm btn-primary">
+                                        <a href="{% url 'school:my_registered_units5' %}" class="btn btn-sm btn-primary">
                                             <i class="fas fa-user"></i> View Year 5 Units
                                         </a>
                                     </div>
@@ -195,7 +164,7 @@
                                             </ul>
                                         </div>
                                         <div class="col-5 text-center">
-                                            <img src="../../dist/img/user1-128x128.jpg" alt="user-avatar"
+                                            <img src="{% static 'dist/img/user1-128x128.jpg' %}" alt="user-avatar"
                                                 class="img-circle img-fluid">
                                         </div>
                                     </div>
@@ -229,7 +198,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="{% url 'my_registered_units7' %}" class="btn btn-sm btn-primary">
+                                        <a href="{% url 'school:my_registered_units7' %}" class="btn btn-sm btn-primary">
                                             <i class="fas fa-user"></i> View Year 7 Units
                                         </a>
                                     </div>
@@ -243,8 +212,4 @@
 
         </section>
         <!-- /.content -->
-
-    </div>
-    <div class="col-sm-2"></div>
-</div>
 {% endblock content %}

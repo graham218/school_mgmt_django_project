@@ -11,7 +11,7 @@ from django.urls import reverse
 
 # =====================================================================
 
-
+@login_required
 def FeeReceiptList(request):
     title = 'List All Fee Student Receipts'
     queryset = FeeReceipt.objects.all()
@@ -21,6 +21,13 @@ def FeeReceiptList(request):
     }
     return render(request, "next/fee_receipt_list.html", context)
 
+@login_required
+def unit_year_page(request):
+    title="Choose Your Year Of Study"
+    context={
+        "title":title
+    }
+    return render(request, "units/year_page.html", context)
 
 @login_required
 def register_special_exams(request):

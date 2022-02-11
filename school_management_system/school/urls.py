@@ -114,4 +114,6 @@ urlpatterns = [
     path('add_suggestion/', views2.add_suggestion, name='add_suggestion'),
     path('delete_suggestion/<str:pk>', views2.delete_suggestion, name='delete_suggestion'),
     path('list_suggestions/', views2.list_suggestions, name='list_suggestions'),
+
+    path('unit_year_page/', views2.unit_year_page, name='unit_year_page'),
 ]
