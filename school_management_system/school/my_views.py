@@ -83,7 +83,7 @@ def unit_registration(request):
         instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
         instance.save()
         messages.success(request, "Unit Registered Successfully")
-        return HttpResponseRedirect("/school/my_registered_units/")
+        return HttpResponseRedirect("/school/my_registered_units1/")
     context = {
         "title": title,
         "form": form,
