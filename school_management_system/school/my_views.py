@@ -83,7 +83,7 @@ def unit_registration(request):
         instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
         instance.save()
         messages.success(request, "Unit Registered Successfully")
-        return HttpResponseRedirect("/school/unit_registration/")
+        return HttpResponseRedirect("/school/my_registered_units/")
     context = {
         "title": title,
         "form": form,
@@ -136,15 +136,27 @@ def list_registered_units(request):
         "title": title,
         "queryset": queryset,
     }
-    if request.method == 'POST':
-        queryset = marks_yr1.objects.filter(stage=form['stage'].value(), user=form['user'].value(),
-                                            unit_or_subject_name=form['unit_or_subject_name'].value(), full_name__icontains=form['full_name'])
     context = {
         "form": form,
         "title": title,
         "queryset": queryset,
     }
     return render(request, "units/list_registered_units.html", context)
+
+def list_registered_units(request):
+    title = 'List of Registered Students'
+    form = MarksSearch(request.POST or None)
+    queryset = marks_yr1.objects.filter(user=request.user)
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    context = {
+        "form": form,
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "units/my_registered_units.html", context)
 
 #==============================================================================================
 @login_required
