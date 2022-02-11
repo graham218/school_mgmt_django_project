@@ -499,22 +499,6 @@ def ListStudents(request):
         ),
             programme=form['programme'].value()
         )
-        if form['export_to_CSV'].value() == True:
-            response = HttpResponse(content_type='text/csv')
-            response['Content-Disposition'] = 'attachment; filename="List of Students.csv"'
-            writer = csv.writer(response)
-            writer.writerow(['USER', 'ADMISSION MUMBER', 'FULL NAME', 'NATIONALITY',
-                             'GENDER', 'N.ID NUMBER', 'BIRTH CERT NO', 'PHONE NO', 'DOB', 'DATE OF ADMISSION',
-                             'PROGRAMME', 'STAGE', 'POSTAL ADDRESS', 'FEE BALANCE'])
-            instance = queryset
-            for students in instance:
-                writer.writerow([students.user, students.admission_no, students.full_name,
-                                 students.nationality, students.stud_gender, students.national_ID_number,
-                                 students.birth_cert_no, students.phone_number, students.DOB,
-                                 students.date_of_admission, students.programme, students.stage,
-                                 students.postal_address, students.balance])
-            return response
-
     context = {
         "form": form,
         "title": title,
@@ -539,19 +523,6 @@ def Listlectures(request):
             national_ID_number__icontains=form['national_ID_number'].value(
         )
         )
-        if form['export_to_CSV'].value() == True:
-            response = HttpResponse(content_type='text/csv')
-            response['Content-Disposition'] = 'attachment; filename="List of Students.csv"'
-            writer = csv.writer(response)
-            writer.writerow(['USER', 'LEC MUMBER', 'FULL NAME', 'NATIONALITY',
-                             'GENDER', 'N.ID NUMBER', 'PHONE NO', 'DOB', 'POSTAL ADDRESS', 'SALARY BALANCE'])
-            instance = queryset
-            for lecturer in instance:
-                writer.writerow([lecturer.user, lecturer.lec_no, lecturer.full_name,
-                                 lecturer.nationality, lecturer.lec_gender, lecturer.national_ID_number,
-                                 lecturer.phone_number, lecturer.DOB, lecturer.postal_address, lecturer.balance])
-            return response
-
     context = {
         "form": form,
         "title": title,
