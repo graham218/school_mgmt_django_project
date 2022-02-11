@@ -79,8 +79,9 @@ urlpatterns = [
     path('list_registered_units7/', my_views.list_registered_units7, name='list_registered_units7'),
 
     path('FeeReceiptList/', views2.FeeReceiptList, name='FeeReceiptList'),
-    # path('my_special_exams/', views2.special_exams, name='my_special_exams'),
-    path('special_exams/', views2.special_exams, name='special_exams'),
+
+    path('register_special_exam/', views2.register_special_exams, name='register_special_exam'),
+    path('my_special_exams/', views2.my_special_exams, name='my_special_exams'),
     path('special_exams_marks/<str:pk>', views2.special_exams_marks, name='special_exams_marks'),
     path('SpecialExamList/', views2.SpecialExamList, name='SpecialExamList'),
     

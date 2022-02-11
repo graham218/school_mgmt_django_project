@@ -51,6 +51,20 @@ def register_special_exams(request):
     }
     return render(request, "next/register_special_exams.html", context)
 
+
+def my_special_exams(request):
+    title = "My Registered Special Exams"
+    queryset = SpecialExam.objects.filter(user=request.user)
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "next/my_special_exams.html", context)
+
 @login_required
 def special_exams_marks(request, pk):
     title = "Add Marks For Special Exams"
@@ -74,14 +88,12 @@ def special_exams_marks(request, pk):
 
 def SpecialExamList(request):
     title = "Special Exams Students' List"
-    form = SpecialExamSearchForm(request.POST or None)
     queryset = SpecialExam.objects.all()
     context = {
         "title": title,
         "queryset": queryset,
     }
     context = {
-        "form": form,
         "title": title,
         "queryset": queryset,
     }
