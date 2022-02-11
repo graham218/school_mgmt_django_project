@@ -36,7 +36,6 @@ def register_special_exams(request):
     title = "Register For Special Exams"
     button = "Register Unit"
     form = SpecialExamRegisterForm(request.POST or None)
-    queryset2 = SpecialExam.objects.filter(user=request.user)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.user = request.user
@@ -51,7 +50,6 @@ def register_special_exams(request):
         "title": title,
         "form": form,
         "button": button,
-        "queryset2": queryset2
     }
     return render(request, "next/register_special_exams.html", context)
 
@@ -76,7 +74,6 @@ def special_exams_marks(request, pk):
     button = "Add Marks"
     queryset = SpecialExam.objects.get(id=pk)
     form = SpecialExamMarksForm(request.POST or None, instance=queryset)
-    queryset2 = SpecialExam.objects.filter(user=request.user)
     if request.method == "POST":
         form = SpecialExamMarksForm(request.POST or None, instance=queryset)
         if form.is_valid():
@@ -87,7 +84,6 @@ def special_exams_marks(request, pk):
         "title": title,
         "form": form,
         "button": button,
-        "queryset2": queryset2
     }
     return render(request, "next/register_special_exams.html", context)
 
@@ -127,7 +123,6 @@ def lecturer_units(request):
     title = "Add Units"
     button = "Add Unit"
     form = LecturerUnitsForm(request.POST or None)
-    queryset2 = LecturerUnits.objects.filter(user=request.user)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.user = request.user
@@ -142,7 +137,6 @@ def lecturer_units(request):
         "title": title,
         "form": form,
         "button": button,
-        "queryset2": queryset2
     }
     return render(request, "next/lecturer_units.html", context)
 
@@ -153,7 +147,6 @@ def lecturer_units_edit(request, pk):
     button = "Update Unit"
     queryset = LecturerUnits.objects.get(id=pk)
     form = LecturerUnitsForm(request.POST or None, instance=queryset)
-    queryset2 = LecturerUnits.objects.filter(user=request.user)
     if request.method == "POST":
         form = LecturerUnitsForm(request.POST or None, instance=queryset)
         if form.is_valid():
@@ -164,7 +157,6 @@ def lecturer_units_edit(request, pk):
         "title": title,
         "form": form,
         "button": button,
-        "queryset2": queryset2
     }
     return render(request, "next/lecturer_units.html", context)
 
@@ -181,7 +173,6 @@ def lecturer_units_delete(request, pk):
     context = {
         "title": title,
         "button": button,
-        "queryset2": queryset2
     }
     return render(request, "school/delete_items.html", context)
 
