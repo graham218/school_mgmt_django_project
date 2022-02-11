@@ -562,17 +562,8 @@ def insert_marks7(request, pk):
 
 def list_registered_units7(request):
     title = 'List of Registered Students Semester 7'
-    form = MarksSearch7(request.POST or None)
     queryset = marks_yr7.objects.all()
     context = {
-        "title": title,
-        "queryset": queryset,
-    }
-    if request.method == 'POST':
-        queryset = marks_yr7.objects.filter(stage=form['stage'].value(), user=form['user'].value(),
-                                            unit_or_subject_name=form['unit_or_subject_name'].value(), full_name__icontains=form['full_name'])
-    context = {
-        "form": form,
         "title": title,
         "queryset": queryset,
     }
