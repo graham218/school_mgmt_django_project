@@ -198,52 +198,6 @@ class AddUnitsForm(forms.ModelForm):
         widgets = {'unit_name': forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'eg: Calculus, Probability & Statistics, Descrete Structures'})}
 
-
-class StudentSearchForm(forms.ModelForm):
-    export_to_CSV = forms.BooleanField(required=False)
-
-    class Meta:
-        model = Students
-        fields = ['admission_no', 'full_name', 'programme']
-        widgets = {'admission_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eg: CIM/00176/019'}),
-                   'full_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First-Middle-Last Names'}),
-                   'programme': forms.Select(attrs={'class': 'form-control', 'placeholder': 'eg: Barchelor Of Science Information & Communication Technology'})}
-
-
-class LecturerSearchForm(forms.ModelForm):
-    export_to_CSV = forms.BooleanField(required=False)
-
-    class Meta:
-        model = Lectures
-        fields = ['lec_no', 'full_name', 'national_ID_number']
-        widgets = {'lec_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Lec NO'}),
-                   'full_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First-Middle-Last Names'}),
-                   'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Search With national ID'})}
-
-
-class UnitSearchForm(forms.ModelForm):
-    class Meta:
-        model = Units
-        fields = ['unit_name']
-        widgets = {'unit_name': forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': 'Search Unit With Name'})}
-
-
-class ProgrammeSearchForm(forms.ModelForm):
-    class Meta:
-        model = Programmes
-        fields = ['name', 'faculty']
-        widgets = {'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Search Programme Name'}),
-                   'faculty': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eg: School Of Computing & Informatics'})}
-
-
-class FacultySearchForm(forms.ModelForm):
-    class Meta:
-        model = Faculty
-        fields = ['school']
-        widgets = {'school': forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': 'eg: School Of Computing & Informatics'})}
-
 #==============================================================================================
 class UnitRegistrationForm(forms.ModelForm):
     class Meta:

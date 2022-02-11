@@ -237,16 +237,15 @@ def seats_edit(request, pk):
 def seats_delete(request, pk):
     title = "Delete Seat"
     button = "Delete Seat"
-    queryset2 = Seats.objects.get(id=pk)
+    queryset = Seats.objects.get(id=pk)
     if request.method == "POST":
-        queryset2.delete()
+        queryset.delete()
         messages.error(request, "Seat/Position Deleted From Database")
         return HttpResponseRedirect("/school/list_seats")
     context = {
         "title": title,
         "form": form,
         "button": button,
-        "queryset": queryset
     }
     return render(request, "school/delete_items.html", context)
 
@@ -274,8 +273,7 @@ def add_notice(request):
     title = "Add Notice"
     button = "Add Notice"
     form = NoticeBoardForm(request.POST or None)
-    form2 = NoticeBoardSearchForm(request.POST or None)
-    queryset2 = NoticeBoard.objects.filter(user=request.user)
+    queryset = NoticeBoard.objects.filter(user=request.user)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.written_by = request.user
@@ -292,7 +290,7 @@ def add_notice(request):
         "form": form,
         "form2": form2,
         "button": button,
-        "queryset2": queryset2
+        "queryset": queryset
     }
     return render(request, "next/add_notice.html", context)
 
@@ -301,16 +299,15 @@ def add_notice(request):
 def delete_notice(request, pk):
     title = "Delete Notice"
     button = "Delete Notice"
-    queryset2 = NoticeBoard.objects.get(id=pk)
+    queryset = NoticeBoard.objects.get(id=pk)
     if request.method == "POST":
-        queryset2.delete()
+        queryset.delete()
         messages.error(request, "Notice Deleted From Board")
         return HttpResponseRedirect("/school/list_notices")
     context = {
         "title": title,
         "form": form,
         "button": button,
-        "queryset": queryset
     }
     return render(request, "school/delete_items.html", context)
 
