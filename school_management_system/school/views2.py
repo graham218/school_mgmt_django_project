@@ -29,7 +29,7 @@ def FeeReceiptList(request):
     return render(request, "next/fee_receipt_list.html", context)
 
 @login_required
-def special_exams(request):
+def register_special_exams(request):
     title = "Register For Special Exams"
     button="Register Unit"
     form = SpecialExamRegisterForm(request.POST or None)
@@ -42,14 +42,14 @@ def special_exams(request):
         instance.unit_name=form.cleaned_data['unit_name']
         instance.save()
         messages.success(request, "Unit Registered Successfully")
-        return HttpResponseRedirect("/school/special_exams")
+        return HttpResponseRedirect("/school/my_special_exams")
     context = {
         "title": title,
         "form": form,
         "button": button,
         "queryset2": queryset2
     }
-    return render(request, "next/special_exams.html", context)
+    return render(request, "next/register_special_exams.html", context)
 
 @login_required
 def special_exams_marks(request, pk):
@@ -80,8 +80,6 @@ def SpecialExamList(request):
         "title": title,
         "queryset": queryset,
     }
-    if request.method == 'POST':
-        queryset = SpecialExam.objects.filter(user=form['user'].value())
     context = {
         "form": form,
         "title": title,
