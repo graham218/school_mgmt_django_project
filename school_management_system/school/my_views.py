@@ -462,7 +462,6 @@ def unit_registration6(request):
 @login_required
 def unregister_unit6(request, pk):
     queryset = marks_yr6.objects.get(id=pk)
-    queryset2=marks_yr6.objects.filter(user=request.user)
     title = "Unregister Semester 6 Units"
     button="Unregister Unit"
     if request.method == "POST":
@@ -472,7 +471,6 @@ def unregister_unit6(request, pk):
     context = {
         "title": title,
         "button": button,
-        "queryset2": queryset2
     }
     return render(request, "school/delete_items.html", context)
 
