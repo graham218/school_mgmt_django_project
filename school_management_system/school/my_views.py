@@ -361,17 +361,8 @@ def insert_marks4(request, pk):
 
 def list_registered_units4(request):
     title = 'List of Registered Students Semester 4'
-    form = MarksSearch4(request.POST or None)
     queryset = marks_yr4.objects.all()
     context = {
-        "title": title,
-        "queryset": queryset,
-    }
-    if request.method == 'POST':
-        queryset = marks_yr4.objects.filter(stage=form['stage'].value(), user=form['user'].value(),
-                                            unit_or_subject_name=form['unit_or_subject_name'].value(), full_name__icontains=form['full_name'])
-    context = {
-        "form": form,
         "title": title,
         "queryset": queryset,
     }
@@ -384,7 +375,6 @@ def unit_registration5(request):
     title = "Unit Registration Year 5"
     button="Register Unit"
     form = UnitRegistrationForm5(request.POST or None)
-    queryset2=marks_yr5.objects.filter(user=request.user)
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
@@ -398,7 +388,6 @@ def unit_registration5(request):
         "title": title,
         "form": form,
         "button": button,
-        "queryset2": queryset2
     }
     return render(request, "units/unit_registration.html", context)
 
@@ -406,7 +395,6 @@ def unit_registration5(request):
 @login_required
 def unregister_unit5(request, pk):
     queryset = marks_yr5.objects.get(id=pk)
-    queryset2=marks_yr5.objects.filter(user=request.user)
     title = "Unregister Semester 5 Units"
     button="Unregister Unit"
     if request.method == "POST":
@@ -416,7 +404,6 @@ def unregister_unit5(request, pk):
     context = {
         "title": title,
         "button": button,
-        "queryset2": queryset2
     }
     return render(request, "school/delete_items.html", context)
 
@@ -441,32 +428,10 @@ def insert_marks5(request, pk):
 
 def list_registered_units5(request):
     title = 'List of Registered Students Semester 5'
-    form = MarksSearch5(request.POST or None)
     queryset = marks_yr5.objects.all()
-    context = {
-        "title": title,
-        "queryset": queryset,
-    }
-    if request.method == 'POST':
-        queryset = marks_yr5.objects.filter(stage=form['stage'].value(), user=form['user'].value(),
-                                            unit_or_subject_name=form['unit_or_subject_name'].value(), full_name__icontains=form['full_name'])
-        if form['export_to_CSV'].value() == True:
-            response = HttpResponse(content_type='text/csv')
-            response['Content-Disposition'] = 'attachment; filename="List of Registered Students.csv"'
-            writer = csv.writer(response)
-            writer.writerow(['USERNAME', 'STUDENT NAME', 'STAGE', 'UNIT NAME',
-                            'MARKS', 'GRADE', 'DATE REAGISTERED', 'DATE UPDATED'])
-            instance = queryset
-            for student in instance:
-                writer.writerow([student.user, student.full_name, student.stage,
-                                 student.unit_or_subject_name, student.marks, student.grade,
-                                 student.date_created, student.date_updated])
-            return response
-
     context = {
         "form": form,
         "title": title,
-        "queryset": queryset,
     }
     return render(request, "units/list_registered_units.html", context)
 #====================================================================================================
@@ -477,7 +442,6 @@ def unit_registration6(request):
     title = "Unit Registration Year 6"
     button="Register Unit"
     form = UnitRegistrationForm4(request.POST or None)
-    queryset2=marks_yr6.objects.filter(user=request.user)
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
@@ -491,7 +455,6 @@ def unit_registration6(request):
         "title": title,
         "form": form,
         "button": button,
-        "queryset2": queryset2
     }
     return render(request, "units/unit_registration.html", context)
 
