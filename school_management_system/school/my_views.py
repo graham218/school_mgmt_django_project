@@ -495,19 +495,10 @@ def insert_marks6(request, pk):
 
 def list_registered_units6(request):
     title = 'List of Registered Students Semester 6'
-    form = MarksSearch6(request.POST or None)
     queryset = marks_yr6.objects.all()
-    context = {
-        "title": title,
-        "queryset": queryset,
-    }
-    if request.method == 'POST':
-        queryset = marks_yr6.objects.filter(stage=form['stage'].value(), user=form['user'].value(),
-                                            unit_or_subject_name=form['unit_or_subject_name'].value(), full_name__icontains=form['full_name'])
     context = {
         "form": form,
         "title": title,
-        "queryset": queryset,
     }
     return render(request, "units/list_registered_units.html", context)
 #====================================================================================================
@@ -518,7 +509,6 @@ def unit_registration7(request):
     title = "Unit Registration Year 7"
     button="Register Unit"
     form = UnitRegistrationForm7(request.POST or None)
-    queryset2=marks_yr7.objects.filter(user=request.user)
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
@@ -532,7 +522,6 @@ def unit_registration7(request):
         "title": title,
         "form": form,
         "button": button,
-        "queryset2": queryset2
     }
     return render(request, "units/unit_registration.html", context)
 
@@ -540,7 +529,6 @@ def unit_registration7(request):
 @login_required
 def unregister_unit7(request, pk):
     queryset = marks_yr7.objects.get(id=pk)
-    queryset2=marks_yr7.objects.filter(user=request.user)
     title = "Unregister Semester 7 Units"
     button="Unregister Unit"
     if request.method == "POST":
@@ -549,8 +537,7 @@ def unregister_unit7(request, pk):
         return HttpResponseRedirect("/school/list_registered_units")
     context = {
         "title": title,
-        "button": button,
-        "queryset2": queryset2
+        "button": button
     }
     return render(request, "school/delete_items.html", context)
 
