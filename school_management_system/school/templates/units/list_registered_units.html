@@ -44,7 +44,7 @@
                   <td>{{instance.grade}}</td>
                   <td>{{instance.date_created}}</td>
                   <td>{{instance.date_updated}}</td>
-                  <td><a class="mdi mdi-stack-overflow" href="{% url 'school:insert_marks' instance.id%}">Update
+                  <td><a class="fa fa-edit" href="{% url 'school:insert_marks' instance.id%}">Update
                       Marks</a></td>
                 </tr>
                 {% endfor %}
