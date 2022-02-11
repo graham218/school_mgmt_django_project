@@ -49,7 +49,7 @@
             User Profile
           </a>
           <div class="dropdown-divider"></div>
-          <a href="/" class="dropdown-item">
+          <a href="{% url 'password-change' %}" class="dropdown-item">
             <i class="fas fa-edit mr-2"></i>
             Change Password
           </a>
@@ -59,7 +59,7 @@
             Notice Board
           </a>
           <div class="dropdown-divider"></div>
-          <a href="/" class="dropdown-item dropdown-footer">
+          <a href="{% url 'logout' %}" class="dropdown-item dropdown-footer">
             <i class="fas fa-arrow-circle-right"></i>
             Logout
           </a>
