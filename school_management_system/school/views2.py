@@ -314,14 +314,8 @@ def delete_notice(request, pk):
 
 def list_notices(request):
     title = "School Notice Board"
-    form = NoticeBoardSearchForm(request.POST or None)
     queryset = NoticeBoard.objects.all()
     context = {
-        "title": title,
-        "queryset": queryset,
-    }
-    context = {
-        "form": form,
         "title": title,
         "queryset": queryset,
     }
