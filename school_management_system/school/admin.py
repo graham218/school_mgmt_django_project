@@ -13,13 +13,6 @@ class ProgrammesAdmin(admin.ModelAdmin):
     list_filter = ['name', 'faculty']
     search_fields = ['name']
 
-
-class StagesAdmin(admin.ModelAdmin):
-    list_display = ['year']
-    list_filter = ['year']
-    search_fields = ['year']
-
-
 class GenderAdmin(admin.ModelAdmin):
     list_display = ['gender']
     list_filter = ['gender']
@@ -126,7 +119,7 @@ class FeeReceiptAdmin(admin.ModelAdmin):
 
 class SpecialExamAdmin(admin.ModelAdmin):
     list_display = ['user', 'full_name', 'stage',
-                    'unit_name', 'marks', 'grade', 'comments', 'date_paid', 'date_updated']
+                    'unit_name', 'marks', 'grade', 'comments', 'date_updated']
     list_per_page = 10
     search_fields=['user', 'full_name', 'stage']
     list_filter=['user', 'full_name', 'stage']
@@ -159,9 +152,9 @@ class SuggestionBoxAdmin(admin.ModelAdmin):
 
 admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(Programmes, ProgrammesAdmin)
-admin.site.register(Stages, StagesAdmin)
+admin.site.register(Stages)
 admin.site.register(Gender, GenderAdmin)
-admin.site.register(Students, StagesAdmin)
+admin.site.register(Students, StudentsAdmin)
 admin.site.register(Units, UnitsAdmin)
 admin.site.register(Lectures, LectureAdmin)
 admin.site.register(marks_yr1, MarksAdmin)
