@@ -11,9 +11,6 @@
             {% include 'messages.html' %}
             <h3 class="card-title">{{title}}</h3>
           </div>
-          <!-- <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="{% url 'school:add-unit' %}" class="btn btn-primary">Add New Units</a>
-          </div> -->
           <!-- /.card-header -->
           <div class="card-body">
             <table id="faculty" class="table table-bordered table-striped">
@@ -49,10 +46,6 @@
                   <td>{{instance.date_updated}}</td>
                   <td><a class="mdi mdi-stack-overflow" href="{% url 'school:insert_marks' instance.id%}">Update
                       Marks</a></td>
-                      {% if request.user.is_admin %}
-                  <td><a class="mdi mdi-delete-forever" href="{% url 'school:unregister_unit' instance.id%}">Delete
-                      REG</a></td>
-                      {% endif %}
                 </tr>
                 {% endfor %}
               </tbody>
