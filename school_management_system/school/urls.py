@@ -45,7 +45,7 @@ urlpatterns = [
     path('unit_registration/', my_views.unit_registration, name='unit_registration'),
     path('unregister_unit/<str:pk>', my_views.unregister_unit, name='unregister_unit'),
     path('insert_marks/<str:pk>', my_views.insert_marks, name='insert_marks'),
-    path('list_registered_units/', my_views.list_registered_units, name='list_registered_units'),
+    path('list_registered_units1/', my_views.list_registered_units1, name='list_registered_units1'),
     path('my_registered_units1/', my_views.my_registered_units1, name='my_registered_units1'),
 
     path('unit_registration2/', my_views.unit_registration2, name='unit_registration2'),

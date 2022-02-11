@@ -95,17 +95,15 @@ def unit_registration(request):
 @login_required
 def unregister_unit(request, pk):
     queryset = marks_yr1.objects.get(id=pk)
-    queryset2=marks_yr1.objects.filter(user=request.user)
     title = "Unregister Unit"
     button="Unregister Unit"
     if request.method == "POST":
         queryset.delete()
         messages.error(request, "Unit Unregistered Successfully")
-        return HttpResponseRedirect("/school/list_registered_units")
+        return HttpResponseRedirect("/school/my_registered_units1")
     context = {
         "title": title,
         "button": button,
-        "queryset2": queryset2
     }
     return render(request, "school/delete_items.html", context)
 
@@ -119,7 +117,7 @@ def insert_marks(request, pk):
     if request.method == "POST":
         form = MarksForm(request.POST or None, instance=queryset)
         form.save()
-        return redirect("/school/list_registered_units/")
+        return redirect("/school/list_registered_units1/")
     context = {
         "title": title,
         "button": button,
@@ -127,15 +125,9 @@ def insert_marks(request, pk):
     }
     return render(request, "units/update_marks.html", context)
 
-
-def list_registered_units(request):
+def list_registered_units1(request):
     title = 'List of Registered Students'
-    form = MarksSearch(request.POST or None)
     queryset = marks_yr1.objects.all()
-    context = {
-        "title": title,
-        "queryset": queryset,
-    }
     context = {
         "form": form,
         "title": title,
