@@ -3,7 +3,6 @@ from .forms import *
 from .forms2 import *
 from .models import *
 from django.http import HttpResponse, HttpResponseRedirect
-import csv
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -15,16 +14,8 @@ from django.urls import reverse
 
 def FeeReceiptList(request):
     title = 'List All Fee Student Receipts'
-    form = FeeReceiptSearchForm(request.POST or None)
     queryset = FeeReceipt.objects.all()
     context = {
-        "title": title,
-        "queryset": queryset,
-    }
-    if request.method == 'POST':
-        queryset = FeeReceipt.objects.filter(user=form['user'].value())
-    context = {
-        "form": form,
         "title": title,
         "queryset": queryset,
     }
@@ -57,10 +48,6 @@ def register_special_exams(request):
 def my_special_exams(request):
     title = "My Registered Special Exams"
     queryset = SpecialExam.objects.filter(user=request.user)
-    context = {
-        "title": title,
-        "queryset": queryset,
-    }
     context = {
         "title": title,
         "queryset": queryset,
@@ -107,10 +94,6 @@ def delete_special_exams(request, pk):
 def SpecialExamList(request):
     title = "Special Exams Students' List"
     queryset = SpecialExam.objects.all()
-    context = {
-        "title": title,
-        "queryset": queryset,
-    }
     context = {
         "title": title,
         "queryset": queryset,
@@ -179,14 +162,8 @@ def lecturer_units_delete(request, pk):
 
 def ListAllLecturerUnits(request):
     title = "List Of All Lecturers' Units"
-    form = LecturerUnitsSearchForm(request.POST or None)
     queryset = LecturerUnits.objects.all()
     context = {
-        "title": title,
-        "queryset": queryset,
-    }
-    context = {
-        "form": form,
         "title": title,
         "queryset": queryset,
     }
@@ -252,12 +229,7 @@ def seats_delete(request, pk):
 
 def list_seats(request):
     title = "List Of All Positions/Seats"
-    form = SeatsSearchForm(request.POST or None)
     queryset = Seats.objects.all()
-    context = {
-        "title": title,
-        "queryset": queryset,
-    }
     context = {
         "form": form,
         "title": title,
@@ -273,7 +245,6 @@ def add_notice(request):
     title = "Add Notice"
     button = "Add Notice"
     form = NoticeBoardForm(request.POST or None)
-    queryset = NoticeBoard.objects.filter(user=request.user)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.written_by = request.user
@@ -288,9 +259,7 @@ def add_notice(request):
     context = {
         "title": title,
         "form": form,
-        "form2": form2,
         "button": button,
-        "queryset": queryset
     }
     return render(request, "next/add_notice.html", context)
 
@@ -343,7 +312,6 @@ def register_polititian(request):
     context = {
         "title": title,
         "form": form,
-        "form2": form2,
         "button": button
     }
     return render(request, "next/register_polititian.html", context)
@@ -388,12 +356,7 @@ def delete_polititian(request, pk):
 
 def list_politicians(request):
     title = "List Of All Polititians"
-    form = VotingSearchForm(request.POST or None)
     queryset = Voting.objects.all()
-    context = {
-        "title": title,
-        "queryset": queryset,
-    }
     context = {
         "form": form,
         "title": title,
@@ -422,7 +385,6 @@ def add_suggestion(request):
     context = {
         "title": title,
         "form": form,
-        "form2": form2,
         "button": button
     }
     return render(request, "next/send_suggestion.html", context)
@@ -447,14 +409,8 @@ def delete_suggestion(request, pk):
 
 def list_suggestions(request):
     title = "List Of All Suggestions"
-    form = SuggestionBoxSearchForm(request.POST or None)
     queryset = SuggestionBox.objects.all()
     context = {
-        "title": title,
-        "queryset": queryset,
-    }
-    context = {
-        "form": form,
         "title": title,
         "queryset": queryset,
     }
