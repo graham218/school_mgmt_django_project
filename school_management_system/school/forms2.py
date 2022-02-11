@@ -82,4 +82,4 @@ class SeatsForm(forms.ModelForm):
     class Meta:
         model=Seats
         fields=['seat']
-        widgets={'seat': forms.TextInput(attrs={'class': 'form-control'})}}
+        widgets={'seat': forms.TextInput(attrs={'class': 'form-control'})}
