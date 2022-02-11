@@ -1,0 +1,52 @@
+{% extends 'index2.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          {% include 'messages.html' %}
+          <h4 class="card-title">{{title}}</h4>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Counter</th>
+                  <th>USERNAME</th>
+                  <th>FULL NAME</th>
+                  <th>STAGE</th>
+                  <th>UNIT NAME</th>
+                  <th>MARKS</th>
+                  <th>GRADE</th>
+                  <th>COMMENTS</th>
+                  <th>DATE REGISTERED</th>
+                  <th>DATE UPDATED</th>
+                  <th>UPDATE</th>
+                  <th>DELETE</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for instance in queryset %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{instance.user}}</td>
+                        <td>{{instance.full_name}}</td>
+                        <td>{{instance.stage}}</td>
+                        <td>{{instance.unit_name}}</td>
+                        <td>{{instance.marks}}</td>
+                        <td>{{instance.grade}}</td>
+                        <td>{{instance.comments}}</td>
+                        <td>{{instance.date_registered}}</td>
+                        <td>{{instance.date_updated}}</td>
+                        <td><a href="{% url 'school:edit-gender' instance.id%}" class="mdi mdi-stack-overflow">Update</a><td>
+                        <td><a href="{% url 'school:delete-gender' instance.id%}" class="mdi mdi-delete-forever">Delete</a><td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}
