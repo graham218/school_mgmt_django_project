@@ -75,7 +75,6 @@ def unit_registration(request):
     title = "Unit Registration Year 1"
     button="Register Unit"
     form = UnitRegistrationForm(request.POST or None)
-    queryset2=marks_yr1.objects.filter(user=request.user)
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
@@ -89,7 +88,6 @@ def unit_registration(request):
         "title": title,
         "form": form,
         "button": button,
-        "queryset2": queryset2
     }
     return render(request, "units/unit_registration.html", context)
 
