@@ -86,6 +86,24 @@ def special_exams_marks(request, pk):
     }
     return render(request, "next/register_special_exams.html", context)
 
+@login_required
+def special_exams_delete(request, pk):
+    title = "Delete Special Exams"
+    button="Delete"
+    queryset=SpecialExam.objects.get(id=pk)
+    if request.method=="POST":
+        form = SpecialExamMarksForm(request.POST or None, instance=queryset)
+        if form.is_valid():
+            form.save()
+            messages.error(request, "Unit Unregistered from Special Exams")
+            return HttpResponseRedirect("/school/SpecialExamList")
+    context = {
+        "title": title,
+        "form": form,
+        "button": button,
+    }
+    return render(request, "next/register_special_exams.html", context)
+
 def SpecialExamList(request):
     title = "Special Exams Students' List"
     queryset = SpecialExam.objects.all()
