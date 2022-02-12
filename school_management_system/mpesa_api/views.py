@@ -52,6 +52,7 @@ def register_urls(request):
                "ValidationURL": "https://4e28-41-89-192-24.ngrok.io/api/v1/c2b/validation"}
     response = requests.post(api_url, json=options, headers=headers)
     return HttpResponse(response.text)
+
 @csrf_exempt
 def call_back(request):
     pass
