@@ -83,3 +83,11 @@ class SeatsForm(forms.ModelForm):
         model=Seats
         fields=['seat']
         widgets={'seat': forms.TextInput(attrs={'class': 'form-control'})}
+
+class FeePaymentForm(forms.ModelForm):
+    fee_payment_id=forms.CharField(label=_("Fee Payment ID"), max_length=254, widget=forms.TextInput(
+        attrs={'placeholder': 'ie any random number', 'class': 'form-control'}))
+    mpesa_number=forms.CharField(label=_("Fee Payment ID"), max_length=254, widget=forms.TextInput(
+        attrs={'placeholder': 'format: 254............', 'class': 'form-control'}))
+    amount=forms.DecimalField(label=_("Fee Payment ID"), max_length=254, widget=forms.NumberInput(
+        attrs={'class': 'form-control'}))
