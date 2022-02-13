@@ -187,6 +187,9 @@ class fee_payment(models.Model):
     full_name = models.CharField(max_length=255, blank=True, null=True)
     amount_paid=models.CharField(max_length=255, blank=True, null=True)
     payment_method=models.CharField(max_length=255, blank=True, null=True)
+    paid=models.BooleanField(default=False)
+    bill_reference_no=models.CharField(max_length=255, blank=True, null=True)
+    phone_number=models.CharField(max_length=255, blank=True, null=True)
     date_paid = models.DateTimeField(
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)

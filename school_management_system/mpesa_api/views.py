@@ -130,15 +130,15 @@ def confirmation(request):
 @loginRequired
 def simulate_payment(request):
     if request.is_ajax():
-        booking = get_object_or_404(Booking, id=request.POST['booking_id'])
+        paying_fee = get_object_or_404(fee_payment, id=request.POST['fee_payment_id'])
         access_token = MpesaAccessToken.validated_mpesa_access_token
         api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate"
         headers = {"Authorization": "Bearer %s" % access_token}
         request = {"ShortCode": "601481",
                    "CommandID": "CustomerPayBillOnline",
-                   "Amount": booking.amount,
-                   "Msisdn": 254708374149,
-                   "BillRefNumber": booking.account_number()
+                   "Amount": paying_fee.amount_paid,
+                   "Msisdn": paying_fee.phone_number,
+                   "BillRefNumber": paying_fee.bill_reference_no
                    }
 
         requests.post(api_url, json=request, headers=headers)
