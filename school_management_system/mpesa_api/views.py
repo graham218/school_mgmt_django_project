@@ -47,9 +47,9 @@ def lipa_na_mpesa_online(request):
             }
             response = requests.post(api_url, json=request, headers=headers)
             print(response.json())
-            return redirect('payment/fee_payment', user=request.user)
+            return redirect('/')
         else:
-            booking = get_object_or_404(Students, user=request.user)
+            # booking = get_object_or_404(Students, user=request.user)
             return render(request, 'payment/summary.html', {'paying': paying, 'alert_message': 'invalid Phone number', })
 
     return redirect('payment/fee_payment')
@@ -105,3 +105,29 @@ def confirmation(request):
     # booking = get_object_or_404(Booking, id=accountNumberToPk(acc))
     # booking.paid = True
     # booking.save()
+
+@csrf_exempt
+@loginRequired
+def simulate_payment(request):
+    if request.is_ajax():
+        booking = get_object_or_404(Booking, id=request.POST['booking_id'])
+        access_token = MpesaAccessToken.validated_mpesa_access_token
+        api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate"
+        headers = {"Authorization": "Bearer %s" % access_token}
+        request = {"ShortCode": "601481",
+                   "CommandID": "CustomerPayBillOnline",
+                   "Amount": booking.amount,
+                   "Msisdn": 254708374149,
+                   "BillRefNumber": booking.account_number()
+                   }
+
+        requests.post(api_url, json=request, headers=headers)
+        # countdown = 7
+        # while countdown > 0:
+        #     time.sleep(1)
+        #     countdown -= 1
+        if booking.paid is True:
+            return JsonResponse({'message': 'Payment was successful', 'code': 0})
+        return JsonResponse({'message': 'We could not verify your payment', 'code': 1})
+
+    raise Http404('Page not found')
