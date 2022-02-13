@@ -131,3 +131,15 @@ def simulate_payment(request):
         return JsonResponse({'message': 'We could not verify your payment', 'code': 1})
 
     raise Http404('Page not found')
+
+@csrf_exempt
+def result_view(request):
+    mpesa_body = request.body.decode('utf-8')
+    print(mpesa_body)
+    return HttpResponse(mpesa_body)
+
+
+@csrf_exempt
+def timeout_view(request):
+    mpesa_body = request.body.decode('utf-8')
+    return HttpResponse(mpesa_body)
