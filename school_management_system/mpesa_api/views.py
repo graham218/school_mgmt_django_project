@@ -54,7 +54,11 @@ def register_urls(request):
 
 @csrf_exempt
 def call_back(request):
-    pass
+    json_data = request.body.decode('utf-8')
+    loaded_data = json.loads(json_data)
+    print(loaded_data)
+    return JsonResponse(loaded_data)
+    
 @csrf_exempt
 def validation(request):
     context = {
