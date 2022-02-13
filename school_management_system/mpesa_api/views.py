@@ -112,12 +112,14 @@ def confirmation(request):
         payment.save()
     except IntegrityError:
         print("integrity error")
-    # acc = mpesa_payment['BillRefNumber']
+    acc = mpesa_payment['BillRefNumber']
     # paying_fee = get_object_or_404(fee_payment, id=accountNumberToPk(acc))
     # paying_fee.user=request.user
     # paying_fee.full_name=request.user.firstname+' '+request.user.LastName
     # paying_fee.amount_paid=mpesa_payment['TransAmount']
     # paying_fee.payment_method="Mpesa"
+    # paying_fee.paid=True
+    # paying_fee.phone_number=mpesa_payment['MSISDN']
     # paying_fee.save()
     # updating the fee balance
     # students=get_object_or_404(Students, id=accountNumberToPk(acc))
@@ -140,13 +142,12 @@ def simulate_payment(request):
                    "Msisdn": paying_fee.phone_number,
                    "BillRefNumber": paying_fee.bill_reference_no
                    }
-
         requests.post(api_url, json=request, headers=headers)
         # countdown = 7
         # while countdown > 0:
         #     time.sleep(1)
         #     countdown -= 1
-        if booking.paid is True:
+        if fee_payment.paid is True:
             return JsonResponse({'message': 'Payment was successful', 'code': 0})
         return JsonResponse({'message': 'We could not verify your payment', 'code': 1})
 
