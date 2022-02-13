@@ -8,6 +8,8 @@ from . mpesa_credentials import MpesaAccessToken, LipanaMpesaPassword
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
 from school.models import *
+from school_management_system.utils import accountNumberToPk
+from django.contrib import messages
 
 
 def getAccessToken(request):
@@ -25,7 +27,7 @@ def getAccessToken(request):
 def lipa_na_mpesa_online(request):
     paybill = LipanaMpesaPassword.Business_short_code
     if request.method == 'POST' and request.POST['mpesa_number']:
-        booking_id = request.POST['booking_id']
+        fee_payment_id = request.POST['fee_payment_id']
         mpesa_number = request.POST['mpesa_number']
         amount = request.POST['amount']
         if len(mpesa_number) == 12 and int(mpesa_number[0:3]) == 254:
@@ -47,11 +49,17 @@ def lipa_na_mpesa_online(request):
             }
             response = requests.post(api_url, json=request, headers=headers)
             print(response.json())
+            messages.success(
+                request, "Fee Payment made, waiting for confirmation from the callback url")
             return redirect('/')
         else:
             # booking = get_object_or_404(Students, user=request.user)
-            return render(request, 'payment/summary.html', {'paying': paying, 'alert_message': 'invalid Phone number', })
-
+            context = {
+                'paying': paying,
+                'alert_message': 'invalid Phone number'
+            }
+            messages.error(request, "Invalid phone number, please try again with a valid phone number")
+            return render(request, 'payment/error_page.html', context)
     return redirect('payment/fee_payment')
 
 
@@ -67,12 +75,14 @@ def register_urls(request):
     response = requests.post(api_url, json=options, headers=headers)
     return HttpResponse(response.text)
 
+
 @csrf_exempt
 def call_back(request):
     json_data = request.body.decode('utf-8')
     loaded_data = json.loads(json_data)
     print(loaded_data)
     return JsonResponse(loaded_data)
+
 
 @csrf_exempt
 def validation(request):
@@ -81,6 +91,7 @@ def validation(request):
         "ResultDesc": "Accepted"
     }
     return JsonResponse(dict(context))
+
 
 @csrf_exempt
 def confirmation(request):
@@ -105,6 +116,7 @@ def confirmation(request):
     # booking = get_object_or_404(Booking, id=accountNumberToPk(acc))
     # booking.paid = True
     # booking.save()
+
 
 @csrf_exempt
 @loginRequired
@@ -131,6 +143,7 @@ def simulate_payment(request):
         return JsonResponse({'message': 'We could not verify your payment', 'code': 1})
 
     raise Http404('Page not found')
+
 
 @csrf_exempt
 def result_view(request):
