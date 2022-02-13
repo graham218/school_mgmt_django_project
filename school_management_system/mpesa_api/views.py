@@ -7,6 +7,7 @@ import json
 from . mpesa_credentials import MpesaAccessToken, LipanaMpesaPassword
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
+from school.models import *
 
 
 def getAccessToken(request):
@@ -37,21 +38,21 @@ def lipa_na_mpesa_online(request):
                 "Timestamp": LipanaMpesaPassword.lipa_time,
                 "TransactionType": "CustomerPayBillOnline",
                 "Amount": 1,
-                "PartyA": 254708374149,
+                "PartyA": 254790613916,
                 "PartyB": 174379,
                 "PhoneNumber": int(mpesa_number),
-                "CallBackURL": "https://bookweb-app.herokuapp.com/api/c2b/callback/",
+                "CallBackURL": "https://4e28-41-89-192-24.ngrok.io/api/c2b/callback/",
                 "AccountReference": "Ref01",
                 "TransactionDesc": "Testing STK Push"
             }
             response = requests.post(api_url, json=request, headers=headers)
             print(response.json())
-            return redirect('payment', booking_id=booking_id)
+            return redirect('school/fee_payment', user=request.user)
         else:
-            booking = get_object_or_404(Booking, id=booking_id)
-            return render(request, 'app/summary.html', {'booking': booking, 'alert_message': 'invalid Phone number', })
+            booking = get_object_or_404(Students, user=request.user)
+            return render(request, 'app/summary.html', {'paying': paying, 'alert_message': 'invalid Phone number', })
 
-    return redirect('booking')
+    return redirect('school/fee_payment')
 
 
 @csrf_exempt
