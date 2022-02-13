@@ -58,7 +58,7 @@ def call_back(request):
     loaded_data = json.loads(json_data)
     print(loaded_data)
     return JsonResponse(loaded_data)
-    
+
 @csrf_exempt
 def validation(request):
     context = {
@@ -66,24 +66,27 @@ def validation(request):
         "ResultDesc": "Accepted"
     }
     return JsonResponse(dict(context))
+
 @csrf_exempt
 def confirmation(request):
-    mpesa_body =request.body.decode('utf-8')
+    mpesa_body = request.body.decode('utf-8')
     mpesa_payment = json.loads(mpesa_body)
-    payment = MpesaPayment(
-        first_name=mpesa_payment['FirstName'],
-        last_name=mpesa_payment['LastName'],
-        middle_name=mpesa_payment['MiddleName'],
-        description=mpesa_payment['TransID'],
-        phone_number=mpesa_payment['MSISDN'],
-        amount=mpesa_payment['TransAmount'],
-        reference=mpesa_payment['BillRefNumber'],
-        organization_balance=mpesa_payment['OrgAccountBalance'],
-        type=mpesa_payment['TransactionType'],
-    )
-    payment.save()
-    context = {
-        "ResultCode": 0,
-        "ResultDesc": "Accepted"
-    }
-    return JsonResponse(dict(context))
+    try:
+        payment = MpesaPayment(
+            first_name=mpesa_payment['FirstName'],
+            last_name=mpesa_payment['LastName'],
+            middle_name=mpesa_payment['MiddleName'],
+            description=mpesa_payment['TransID'],
+            phone_number=mpesa_payment['MSISDN'],
+            amount=mpesa_payment['TransAmount'],
+            reference=mpesa_payment['BillRefNumber'],
+            organization_balance=mpesa_payment['OrgAccountBalance'],
+            type=mpesa_payment['TransactionType'],
+        )
+        payment.save()
+    except IntegrityError:
+        print("integrity error")
+    # acc = mpesa_payment['BillRefNumber']
+    # booking = get_object_or_404(Booking, id=accountNumberToPk(acc))
+    # booking.paid = True
+    # booking.save()
