@@ -20,25 +20,39 @@ def getAccessToken(request):
     pass
 
 
+@loginRequired
 def lipa_na_mpesa_online(request):
-    access_token = MpesaAccessToken.validated_mpesa_access_token
-    api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
-    headers = {"Authorization": "Bearer %s" % access_token}
-    request = {
-        "BusinessShortCode": LipanaMpesaPassword.Business_short_code,
-        "Password": LipanaMpesaPassword.decode_password,
-        "Timestamp": LipanaMpesaPassword.lipa_time,
-        "TransactionType": "CustomerPayBillOnline",
-        "Amount": 1,
-        "PartyA": 254790613916,  # replace with your phone number to get stk push
-        "PartyB": LipanaMpesaPassword.Business_short_code,
-        "PhoneNumber": 254790613916,  # replace with your phone number to get stk push
-        "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
-        "AccountReference": "Bill_Graham_Django",
-        "TransactionDesc": "Testing stk push"
-    }
-    response = requests.post(api_url, json=request, headers=headers)
-    return HttpResponse('success')
+    paybill = LipanaMpesaPassword.Business_short_code
+    if request.method == 'POST' and request.POST['mpesa_number']:
+        booking_id = request.POST['booking_id']
+        mpesa_number = request.POST['mpesa_number']
+        amount = request.POST['amount']
+        if len(mpesa_number) == 12 and int(mpesa_number[0:3]) == 254:
+            access_token = MpesaAccessToken.validated_mpesa_access_token
+            api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+            headers = {"Authorization": "Bearer %s" % access_token}
+            request = {
+                "BusinessShortCode": 174379,
+                "Password": LipanaMpesaPassword.decode_password,
+                "Timestamp": LipanaMpesaPassword.lipa_time,
+                "TransactionType": "CustomerPayBillOnline",
+                "Amount": 1,
+                "PartyA": 254708374149,
+                "PartyB": 174379,
+                "PhoneNumber": int(mpesa_number),
+                "CallBackURL": "https://bookweb-app.herokuapp.com/api/c2b/callback/",
+                "AccountReference": "Ref01",
+                "TransactionDesc": "Testing STK Push"
+            }
+            response = requests.post(api_url, json=request, headers=headers)
+            print(response.json())
+            return redirect('payment', booking_id=booking_id)
+        else:
+            booking = get_object_or_404(Booking, id=booking_id)
+            return render(request, 'app/summary.html', {'booking': booking, 'alert_message': 'invalid Phone number', })
+
+    return redirect('booking')
+
 
 @csrf_exempt
 def register_urls(request):
