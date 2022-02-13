@@ -47,12 +47,12 @@ def lipa_na_mpesa_online(request):
             }
             response = requests.post(api_url, json=request, headers=headers)
             print(response.json())
-            return redirect('school/fee_payment', user=request.user)
+            return redirect('payment/fee_payment', user=request.user)
         else:
             booking = get_object_or_404(Students, user=request.user)
-            return render(request, 'app/summary.html', {'paying': paying, 'alert_message': 'invalid Phone number', })
+            return render(request, 'payment/summary.html', {'paying': paying, 'alert_message': 'invalid Phone number', })
 
-    return redirect('school/fee_payment')
+    return redirect('payment/fee_payment')
 
 
 @csrf_exempt
