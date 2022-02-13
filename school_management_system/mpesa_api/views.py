@@ -112,13 +112,18 @@ def confirmation(request):
         payment.save()
     except IntegrityError:
         print("integrity error")
-    acc = mpesa_payment['BillRefNumber']
-    paying_fee = get_object_or_404(fee_payment, id=accountNumberToPk(acc))
-    paying_fee.user=request.user
-    paying_fee.full_name=request.user.firstname+' '+request.user.LastName
-    paying_fee.amount_paid=mpesa_payment['TransAmount']
-    paying_fee.payment_method="Mpesa"
-    paying_fee.save()
+    # acc = mpesa_payment['BillRefNumber']
+    # paying_fee = get_object_or_404(fee_payment, id=accountNumberToPk(acc))
+    # paying_fee.user=request.user
+    # paying_fee.full_name=request.user.firstname+' '+request.user.LastName
+    # paying_fee.amount_paid=mpesa_payment['TransAmount']
+    # paying_fee.payment_method="Mpesa"
+    # paying_fee.save()
+    # updating the fee balance
+    # students=get_object_or_404(Students, id=accountNumberToPk(acc))
+    # students.total_fees_billed+=mpesa_payment['TransAmount']
+    # stuents.total_fees_paid+=mpesa_payment['TransAmount']
+    # students.balance-=mpesa_payment['TransAmount']
 
 
 @csrf_exempt
