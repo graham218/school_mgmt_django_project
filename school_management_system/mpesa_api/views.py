@@ -51,9 +51,9 @@ def lipa_na_mpesa_online(request):
             print(response.json())
             messages.success(
                 request, "Fee Payment made, waiting for confirmation from the callback url")
-            return redirect('/')
+            return redirect('/', fee_payment_id=fee_payment_id)
         else:
-            # booking = get_object_or_404(Students, user=request.user)
+            paying = get_object_or_404(fee_payment, id=fee_payment_id)
             context = {
                 'paying': paying,
                 'alert_message': 'invalid Phone number'
@@ -112,10 +112,13 @@ def confirmation(request):
         payment.save()
     except IntegrityError:
         print("integrity error")
-    # acc = mpesa_payment['BillRefNumber']
-    # booking = get_object_or_404(Booking, id=accountNumberToPk(acc))
-    # booking.paid = True
-    # booking.save()
+    acc = mpesa_payment['BillRefNumber']
+    paying_fee = get_object_or_404(fee_payment, id=accountNumberToPk(acc))
+    paying_fee.user=request.user
+    paying_fee.full_name=request.user.firstname+' '+request.user.LastName
+    paying_fee.amount_paid=mpesa_payment['TransAmount']
+    paying_fee.payment_method="Mpesa"
+    paying_fee.save()
 
 
 @csrf_exempt
