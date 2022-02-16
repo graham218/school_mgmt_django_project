@@ -8,40 +8,57 @@
   <title>User Login</title>
   {% include '../scripts/login-head.html' %}
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="#" class="h1">User Login</a>
-    </div>
-    <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
-      {% include 'messages.html' %}
-      <form action="" method="post">
-        {% csrf_token %}
-        <div>
-          {{form|crispy}}
+<body id="bg" class="hold-transition login-page" style="background-image: url('{% static "images/kevin-ku-w7ZyuGYNpRQ-unsplash.jpg" %}');">
+  <br><br><br>
+  <div>
+    <div class="login-box">
+      <div class="card card-outline card-primary">
+        <div class="card-header text-center">
+          <a href="#" class="h1">User Login</a>
         </div>
-        <br>
-          <div style="text-align: center;">
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
-          </div>
-          <br>
-          <p class="mb-1">
-            <a href="{% url 'password-reset' %}">I forgot my password</a>
-          </p>
-          <p class="mb-0">
-            <a href="{% url 'register' %}" class="text-center">Register a new membership</a>
-          </p>
-          <br>
+        <div class="card-body">
+          <p class="login-box-msg">Sign in to start your session</p>
+          {% include 'messages.html' %}
+          <form action="" method="post">
+            {% csrf_token %}
+            <div>
+              {{form|crispy}}
+            </div>
+            <br>
+              <div style="text-align: center;">
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+              </div>
+              <br>
+              <p class="mb-1">
+                Forgot Password?
+                <a href="{% url 'password-reset' %}">Click here to reset</a>
+              </p>
+              <p class="mb-0">
+                <a href="{% url 'register_students' %}" class="text-center">Register Students</a>
+              </p>
+              <p class="mb-0">
+                <a href="{% url 'register_lecturers' %}" class="text-center">Register Lecturers</a>
+              </p>
+              <p class="mb-0">
+                <a href="{% url 'register_suppliers' %}" class="text-center">Register Suppliers</a>
+              </p>
+              <p class="mb-0">
+                <a href="{% url 'register_nonstaff' %}" class="text-center">Register Non-staff</a>
+              </p>
+              <p class="mb-0">
+                <a href="{% url 'register_admins' %}" class="text-center">Register Admins</a>
+              </p>
+              <br>
+            </div>
+          </form>
         </div>
-      </form>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
     </div>
-    <!-- /.card-body -->
+    <!-- /.login-box -->
   </div>
-  <!-- /.card -->
-</div>
-<!-- /.login-box -->
+
 
 {% include '../scripts/login-js.html' %}
 </body>

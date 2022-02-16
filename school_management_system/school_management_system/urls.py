@@ -36,7 +36,11 @@ urlpatterns = [
     #url('payment_canceled/', TemplateView.as_view(template_name= "pets/payment_canceled.html"), name='payment_canceled'),
 
     # URL for Authentication
-    path('accounts/register/', views.RegistrationView, name="register"),
+    path('accounts/register_students/', views.CreateAccountStudentsView, name="register_students"),
+    path('accounts/register_lecturers/', views.CreateAccountLecturerView, name="register_lecturers"),
+    path('accounts/register_admins/', views.CreateAccountAdminView, name="register_admins"),
+    path('accounts/register_suppliers/', views.CreateAccountSupplierView, name="register_suppliers"),
+    path('accounts/register_nonstaff/', views.CreateAccountNonStaffView, name="register_nonstaff"),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='account/login.html', authentication_form=LoginForm), name="login"),
     path('accounts/profile/', views.home, name="profile"),
     path('accounts/logout/', auth_views.LogoutView.as_view(next_page='login'), name="logout"),

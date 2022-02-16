@@ -133,20 +133,16 @@ def list_registered_units1(request):
         "title": title,
         "queryset": queryset,
     }
-    return render(request, "units/list_registered_units.html", context)
+    return render(request, "units/list_registered_units/list_registered_units_yr1.html", context)
 
 def my_registered_units1(request):
     title = 'MY REGISTERED UNITS OF YEAR 1'
-    myurl="school:unit_registration"
-    myurl2="school:unregister_unit1"
     queryset = marks_yr1.objects.filter(user=request.user)
     context = {
-        "myurl":myurl,
         "title": title,
         "queryset": queryset,
-        "myurl2":myurl2
     }
-    return render(request, "units/my_registered_units.html", context)
+    return render(request, "units/my_registered_units/my_registered_units_yr1.html", context)
 
 #==============================================================================================
 @login_required
@@ -170,7 +166,7 @@ def unit_registration2(request):
         "button": button,
         "queryset2": queryset2
     }
-    return render(request, "units/unit_registration.html", context)
+    return render(request, "units/register_units.html", context)
 
 
 @login_required
@@ -214,20 +210,16 @@ def list_registered_units2(request):
         "title": title,
         "queryset": queryset,
     }
-    return render(request, "units/list_registered_units.html", context)
+    return render(request, "units/list_registered_units/list_registered_units_yr2.html", context)
 
 def my_registered_units2(request):
     title = 'MY REGISTERED UNITS OF YEAR 2'
-    myurl="school:unit_registration2"
-    myurl2="school:unregister_unit2"
     queryset = marks_yr2.objects.filter(user=request.user)
     context = {
-        "myurl":myurl,
         "title": title,
         "queryset": queryset,
-        "myurl2":myurl2,
     }
-    return render(request, "units/my_registered_units.html", context)
+    return render(request, "units/my_registered_units/my_registered_units_yr2.html", context)
 #====================================================================================================
 
 #Unit Registration 3
@@ -251,7 +243,7 @@ def unit_registration3(request):
         "form": form,
         "button": button,
     }
-    return render(request, "units/unit_registration.html", context)
+    return render(request, "units/register_units.html", context)
 
 
 @login_required
@@ -295,20 +287,16 @@ def list_registered_units3(request):
         "title": title,
         "queryset": queryset,
     }
-    return render(request, "units/list_registered_units.html", context)
+    return render(request, "units/list_registered_units/list_registered_units_yr3.html", context)
 
 def my_registered_units3(request):
     title = 'MY REGISTERED UNITS OF YEAR 3'
-    myurl="school:unit_registration3"
-    myurl2="school:unregister_unit3"
     queryset = marks_yr3.objects.filter(user=request.user)
     context = {
-        "myurl":myurl,
         "title": title,
         "queryset": queryset,
-        "myurl2":myurl2,
     }
-    return render(request, "units/my_registered_units.html", context)
+    return render(request, "units/my_registered_units/my_registered_units_yr3.html", context)
 #====================================================================================================
 #Unit Registration 4
 #==============================================================================================
@@ -331,7 +319,7 @@ def unit_registration4(request):
         "form": form,
         "button": button,
     }
-    return render(request, "units/unit_registration.html", context)
+    return render(request, "units/register_units.html", context)
 
 
 @login_required
@@ -375,20 +363,16 @@ def list_registered_units4(request):
         "title": title,
         "queryset": queryset,
     }
-    return render(request, "units/list_registered_units.html", context)
+    return render(request, "units/list_registered_units/list_registered_units_yr4.html", context)
 
 def my_registered_units4(request):
     title = 'MY REGISTERED UNITS OF YEAR 4'
-    myurl="school:unit_registration4"
-    myurl2="school:unregister_unit4"
     queryset = marks_yr4.objects.filter(user=request.user)
     context = {
-        "myurl":myurl,
         "title": title,
         "queryset": queryset,
-        "myurl2":myurl2,
     }
-    return render(request, "units/my_registered_units.html", context)
+    return render(request, "units/my_registered_units/my_registered_units_yr4.html", context)
 #====================================================================================================
 #Unit Registration 5
 #==============================================================================================
@@ -411,7 +395,7 @@ def unit_registration5(request):
         "form": form,
         "button": button,
     }
-    return render(request, "units/unit_registration.html", context)
+    return render(request, "units/register_units.html", context)
 
 @login_required
 def unregister_unit5(request, pk):
@@ -454,20 +438,16 @@ def list_registered_units5(request):
         "form": form,
         "title": title,
     }
-    return render(request, "units/list_registered_units.html", context)
+    return render(request, "units/list_registered_units/list_registered_units_yr5.html", context)
 
 def my_registered_units5(request):
     title = 'MY REGISTERED UNITS OF YEAR 5'
-    myurl="school:unit_registration5"
-    myurl2="school:unregister_unit5"
     queryset = marks_yr5.objects.filter(user=request.user)
     context = {
-        "myurl":myurl,
         "title": title,
         "queryset": queryset,
-        "myurl2":myurl2
     }
-    return render(request, "units/my_registered_units.html", context)
+    return render(request, "units/my_registered_units/my_registered_units_yr5.html", context)
 #====================================================================================================
 #Unit Registration 6
 #==============================================================================================
@@ -490,7 +470,7 @@ def unit_registration6(request):
         "form": form,
         "button": button,
     }
-    return render(request, "units/unit_registration.html", context)
+    return render(request, "units/register_units.html", context)
 
 
 @login_required
@@ -518,7 +498,7 @@ def insert_marks6(request, pk):
     if request.method == "POST":
         form = MarksForm6(request.POST or None, instance=queryset)
         form.save()
-        return redirect("/school/list_registered_units6/")
+        return redirect("school/list_registered_units6/")
     context = {
         "title": title,
         "button": button,
@@ -534,20 +514,16 @@ def list_registered_units6(request):
         "form": form,
         "title": title,
     }
-    return render(request, "units/list_registered_units.html", context)
+    return render(request, "units/list_registered_units/list_registered_units_yr6.html", context)
 
 def my_registered_units6(request):
     title = 'MY REGISTERED UNITS OF YEAR 6'
-    myurl="school:unit_registration6"
-    myurl2="school:unregister_unit6"
     queryset = marks_yr6.objects.filter(user=request.user)
     context = {
-        "myurl":myurl,
         "title": title,
         "queryset": queryset,
-        "myurl2":myurl2,
     }
-    return render(request, "units/my_registered_units.html", context)
+    return render(request, "units/my_registered_units/my_registered_units_yr6.html", context)
 #====================================================================================================
 #Unit Registration 7
 #==============================================================================================
@@ -570,7 +546,7 @@ def unit_registration7(request):
         "form": form,
         "button": button,
     }
-    return render(request, "units/unit_registration.html", context)
+    return render(request, "units/register_units.html", context)
 
 
 @login_required
@@ -581,7 +557,7 @@ def unregister_unit7(request, pk):
     if request.method == "POST":
         queryset.delete()
         messages.error(request, "Unit Unregistered Successfully")
-        return HttpResponseRedirect("/school/my_registered_units7")
+        return HttpResponseRedirect("/school/my_registered_units7/")
     context = {
         "title": title,
         "button": button
@@ -614,18 +590,14 @@ def list_registered_units7(request):
         "title": title,
         "queryset": queryset,
     }
-    return render(request, "units/list_registered_units.html", context)
+    return render(request, "units/list_registered_units/list_registered_units_yr7.html", context)
 
 def my_registered_units7(request):
     title = 'MY REGISTERED UNITS OF YEAR 7'
-    myurl="school:unit_registration7"
-    myurl2="school:unregister_unit7"
     queryset = marks_yr7.objects.filter(user=request.user)
     context = {
-        "myurl":myurl,
         "title": title,
         "queryset": queryset,
-        "myurl2":myurl2,
     }
-    return render(request, "units/my_registered_units.html", context)
+    return render(request, "units/my_registered_units/my_registered_units_yr7.html", context)
 #====================================================================================================

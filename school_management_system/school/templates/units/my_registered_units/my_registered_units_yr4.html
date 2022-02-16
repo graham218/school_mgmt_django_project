@@ -1,0 +1,57 @@
+{% extends 'index2.html' %}
+{% load static %}
+{% block content %}
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            {% include 'messages.html' %}
+            <h3 class="card-title">{{title}}</h3>
+          </div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{% url 'school:unit_registration4' %}" class="btn btn-primary">Add New Units</a>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="faculty" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>COUNTER</th>
+                  <th>STAGE</th>
+                  <th>UNIT NAME</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for instance in queryset2 %}
+                <tr>
+                  <td>{{forloop.counter}}</td>
+                  <td>{{instance.stage}}</td>
+                  <td>{{instance.unit_or_subject_name}}</td>
+                  <td><a class="fa fa-delete" href="{% url 'school:unregister_unit4' instance.id%}">Unregister
+                    Marks</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>COUNTER</th>
+                  <th>STAGE</th>
+                  <th>UNIT NAME</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+{% endblock content %}

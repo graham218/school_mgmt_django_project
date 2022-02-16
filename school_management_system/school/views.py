@@ -59,13 +59,13 @@ def home(request):
     title1 = "Student's Profile"
     title2 = "Lecturer's Profile"
     my_queryset = Students.objects.filter(user=request.user)
-    # lec_queryset=Lectures.objects.get(user=request.user)
+    lec_queryset=Lectures.objects.filter(user=request.user)
     context = {
         "title": title,
         "title1": title1,
         "title2": title2,
         "my_queryset": my_queryset,
-        # "lec_queryset": lec_queryset
+        "lec_queryset": lec_queryset
     }
     return render(request, "index.html", context)
 
@@ -73,8 +73,20 @@ def home(request):
 # Authentication Starts Here
 
 
-def RegistrationView(request):
-    form = RegistrationForm(request.POST)
+def CreateAccountStudentsView(request):
+    form = CreateAccountStudentsForm(request.POST)
+    if form.is_valid():
+        messages.success(
+            request, "Congratulations! Registration Successful, you can now log in!")
+        form.save()
+    # else:
+    #     messages.error(request, "An Error occured while trying to create your new account!!!")
+    #     messages.success(request, "Please check if the passwords match correctly or meet the minimum requirements")
+        return redirect('/accounts/login/')
+    return render(request, 'account/register.html', {'form': form})
+
+def CreateAccountLecturerView(request):
+    form = CreateAccountLecturerForm(request.POST)
     if form.is_valid():
         messages.success(
             request, "Congratulations! Registration Successful, you can now log in!")
@@ -82,6 +94,32 @@ def RegistrationView(request):
         return redirect('/accounts/login/')
     return render(request, 'account/register.html', {'form': form})
 
+def CreateAccountAdminView(request):
+    form = CreateAccountAdminForm(request.POST)
+    if form.is_valid():
+        messages.success(
+            request, "Congratulations! Registration Successful, you can now log in!")
+        form.save()
+        return redirect('/accounts/login/')
+    return render(request, 'account/register.html', {'form': form})
+
+def CreateAccountSupplierView(request):
+    form = CreateAccountSupplierForm(request.POST)
+    if form.is_valid():
+        messages.success(
+            request, "Congratulations! Registration Successful, you can now log in!")
+        form.save()
+        return redirect('/accounts/login/')
+    return render(request, 'account/register.html', {'form': form})
+
+def CreateAccountNonStaffView(request):
+    form = CreateAccountNonStaffForm(request.POST)
+    if form.is_valid():
+        messages.success(
+            request, "Congratulations! Registration Successful, you can now log in!")
+        form.save()
+        return redirect('/accounts/login/')
+    return render(request, 'account/register.html', {'form': form})
 
 @login_required
 def AddStudents(request):

@@ -11,7 +11,7 @@ from django.forms.widgets import DateInput
 from django_countries.fields import CountryField
 
 
-class RegistrationForm(UserCreationForm):
+class CreateAccountStudentsForm(UserCreationForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput(
         attrs={'class': 'form-control', 'placeholder': 'Password'}))
     password2 = forms.CharField(label="Confirm Password", widget=forms.PasswordInput(
@@ -22,14 +22,84 @@ class RegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username','email','first_name','middle_name', 'last_name',
-                  'password1', 'password2', 'profile_photo', 'is_admin', 'is_student',
-                  'is_lecturer','is_supplier', 'is_non_staff']
+                  'password1', 'password2', 'profile_photo', 'is_student']
         labels = {'email': 'Email'}
         widgets = {'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
                    'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
                    'middle_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Middle Name'}),
                    'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'})}
 
+class CreateAccountLecturerForm(UserCreationForm):
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'placeholder': 'Password'}))
+    password2 = forms.CharField(label="Confirm Password", widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'placeholder': 'Confirm Password'}))
+    email = forms.CharField(required=True, widget=forms.EmailInput(
+        attrs={'class': 'form-control', 'placeholder': 'Email Address'}))
+
+    class Meta:
+        model = User
+        fields = ['username','email','first_name','middle_name', 'last_name',
+                  'password1', 'password2', 'profile_photo', 'is_lecturer']
+        labels = {'email': 'Email'}
+        widgets = {'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
+                   'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
+                   'middle_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Middle Name'}),
+                   'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'})}
+
+class CreateAccountAdminForm(UserCreationForm):
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'placeholder': 'Password'}))
+    password2 = forms.CharField(label="Confirm Password", widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'placeholder': 'Confirm Password'}))
+    email = forms.CharField(required=True, widget=forms.EmailInput(
+        attrs={'class': 'form-control', 'placeholder': 'Email Address'}))
+
+    class Meta:
+        model = User
+        fields = ['username','email','first_name','middle_name', 'last_name',
+                  'password1', 'password2', 'profile_photo', 'is_admin']
+        labels = {'email': 'Email'}
+        widgets = {'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
+                   'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
+                   'middle_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Middle Name'}),
+                   'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'})}
+
+class CreateAccountSupplierForm(UserCreationForm):
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'placeholder': 'Password'}))
+    password2 = forms.CharField(label="Confirm Password", widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'placeholder': 'Confirm Password'}))
+    email = forms.CharField(required=True, widget=forms.EmailInput(
+        attrs={'class': 'form-control', 'placeholder': 'Email Address'}))
+
+    class Meta:
+        model = User
+        fields = ['username','email','first_name','middle_name', 'last_name',
+                  'password1', 'password2', 'profile_photo','is_supplier']
+        labels = {'email': 'Email'}
+        widgets = {'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
+                   'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
+                   'middle_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Middle Name'}),
+                   'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'})}
+
+class CreateAccountNonStaffForm(UserCreationForm):
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'placeholder': 'Password'}))
+    password2 = forms.CharField(label="Confirm Password", widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'placeholder': 'Confirm Password'}))
+    email = forms.CharField(required=True, widget=forms.EmailInput(
+        attrs={'class': 'form-control', 'placeholder': 'Email Address'}))
+
+    class Meta:
+        model = User
+        fields = ['username','email','first_name','middle_name', 'last_name',
+                  'password1', 'password2', 'profile_photo','is_non_staff']
+        labels = {'email': 'Email'}
+        widgets = {'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
+                   'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
+                   'middle_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Middle Name'}),
+                   'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'})}
 
 class LoginForm(AuthenticationForm):
     username = UsernameField(widget=forms.TextInput(

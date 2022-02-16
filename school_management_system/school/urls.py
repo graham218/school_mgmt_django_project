@@ -42,7 +42,7 @@ urlpatterns = [
     path('edit-student-profile/<str:pk>', my_views.EditStudentsProfile, name='edit-student-profile'),
     path('edit-lecturer-profile/<str:pk>', my_views.EditLecturerProfile, name='edit-lecturer-profile'),
 
-    path('unit_registration/', my_views.unit_registration, name='unit_registration'),
+    path('unit_registration1/', my_views.unit_registration, name='unit_registration1'),
     path('unregister_unit1/<str:pk>', my_views.unregister_unit1, name='unregister_unit1'),
     path('insert_marks/<str:pk>', my_views.insert_marks, name='insert_marks'),
     path('list_registered_units1/', my_views.list_registered_units1, name='list_registered_units1'),
