@@ -31,9 +31,7 @@
       {% if request.user.is_supplier %}
         {% include './components/main-content.html' %}
       {% endif %}
-      {% if request.user.is_non_staff %}
-        {% include './components/main-content.html' %}
-      {% endif %}
+      
     {% endif %}
   </div>
   <!-- /.content-wrapper -->
