@@ -26,12 +26,14 @@
         {% include './components/students-content.html' %}
       {% endif %}
       {% if request.user.is_lecturer %}
-        {% include './components/main-content.html' %}
+        {% include './components/lecturer-content.html' %}
       {% endif %}
       {% if request.user.is_supplier %}
-        {% include './components/main-content.html' %}
+        {% include './components/supplier-content.html' %}
       {% endif %}
-      
+      {% if request.user.is_non_staff %}
+        {% include './components/non_staff-content.html' %}
+      {% endif %}
     {% endif %}
   </div>
   <!-- /.content-wrapper -->
