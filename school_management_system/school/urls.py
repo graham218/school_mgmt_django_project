@@ -116,4 +116,11 @@ urlpatterns = [
     path('list_suggestions/', views2.list_suggestions, name='list_suggestions'),
 
     path('unit_year_page/', views2.unit_year_page, name='unit_year_page'),
+
+    # admin pages
+    path('all_users/', views.all_users, name='all_users'),
+    path('all_students/', views.all_students, name='all_students'),
+    path('all_lecturers/', views.all_lecturers, name='all_lecturers'),
+    path('all_fee_payment/', views.all_fee_payment, name='all_fee_payment'),
+    path('all_fee_receipts/', views.all_fee_receipts, name='all_fee_receipts')
 ]
