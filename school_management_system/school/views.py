@@ -84,10 +84,10 @@ def home(request):
     return render(request, "index.html", context)
 
 def all_users(request):
-    all_system_users=User.objects.all()
+    queryset=User.objects.all()
     title="All Users Registered"
     context={
-        "all_system_users":all_system_users,
+        "queryset":queryset,
         "title":title,
     }
     return render(request, "admin/all_users.html", context)
