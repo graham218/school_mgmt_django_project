@@ -56,8 +56,11 @@ def password_reset_request(request):
 @login_required
 def home(request):
     title = "Home"
-    title1 = "Student's Profile"
-    title2 = "Lecturer's Profile"
+    students_title = "Student's Dashboard"
+    lecturers_title = "Lecturer's Dashboard"
+    admin_title="System Administrator's Dashboard"
+    supplier_title="Supplier's Dashboard"
+    non_staff_title="Non-Staff Dashboard"
     my_queryset = Students.objects.filter(user=request.user)
     lec_queryset=Lectures.objects.filter(user=request.user)
     context = {
