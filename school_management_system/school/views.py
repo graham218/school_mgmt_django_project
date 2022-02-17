@@ -110,6 +110,24 @@ def all_lecturers(request):
     }
     return render(request, "admin/all_lecturers.html", context)
 
+def all_fee_payment(request):
+    fee_payment=fee_payment.objects.all()
+    title="All Fee Payment Records"
+    context={
+        "fee_payment":fee_payment,
+        "title":title,
+    }
+    return render(request, "admin/fee_payment_records.html", context)
+
+def all_fee_receipts(request):
+    fee_receipts=FeeReceipt.objects.all()
+    title="All Fee Payment Receipts Records"
+    context={
+        "fee_receipts":fee_receipts,
+        "title":title,
+    }
+    return render(request, "admin/fee_payment_receipts.html", context)
+
 # Authentication Starts Here
 
 
