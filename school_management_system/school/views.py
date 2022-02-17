@@ -61,14 +61,25 @@ def home(request):
     admin_title="System Administrator's Dashboard"
     supplier_title="Supplier's Dashboard"
     non_staff_title="Non-Staff Dashboard"
-    my_queryset = Students.objects.filter(user=request.user)
+    students_queryset = Students.objects.filter(user=request.user)
     lec_queryset=Lectures.objects.filter(user=request.user)
+    total_users=User.objects.all().count()
+    total_ghost_users=User.objects.filter(is_admin=False,is_student=False,is_lecturer=False,is_non_sfaff=False,is_supplier=False).count()
+    total_students=Students.objects.all().count()
+    total_lecturers=Lectures.objects.all().count()
     context = {
         "title": title,
-        "title1": title1,
-        "title2": title2,
-        "my_queryset": my_queryset,
-        "lec_queryset": lec_queryset
+        "students_title": students_title,
+        "lecturers_title": lecturers_title,
+        "admin_title": admin_title,
+        "supplier_title": supplier_title,
+        "non_staff_title": non_staff_title,
+        "students_queryset": students_queryset,
+        "lec_queryset": lec_queryset,
+        "total_users": total_users,
+        "total_ghost_users": total_ghost_users,
+        "total_students": total_students,
+        "total_lecturers": total_lecturers,
     }
     return render(request, "index.html", context)
 
