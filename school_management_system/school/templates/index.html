@@ -17,22 +17,23 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    {% include './components/content-header.html' %}
     {% include './components/main-content.html' %}
-    {% if request.user.is_admin %}
-      {% include './components/main-content.html' %}
-    {% endif %}
-    {% if request.user.is_student %}
-      {% include './components/main-content.html' %}
-    {% endif %}
-    {% if request.user.is_lecturer %}
-      {% include './components/main-content.html' %}
-    {% endif %}
-    {% if request.user.is_supplier %}
-      {% include './components/main-content.html' %}
-    {% endif %}
-    {% if request.user.is_non_staff %}
-      {% include './components/main-content.html' %}
+    {% if request.user.is_authenticated %}
+      {% if request.user.is_admin %}
+        {% include './components/admin-content.html' %}
+      {% endif %}
+      {% if request.user.is_student %}
+        {% include './components/students-content.html' %}
+      {% endif %}
+      {% if request.user.is_lecturer %}
+        {% include './components/main-content.html' %}
+      {% endif %}
+      {% if request.user.is_supplier %}
+        {% include './components/main-content.html' %}
+      {% endif %}
+      {% if request.user.is_non_staff %}
+        {% include './components/main-content.html' %}
+      {% endif %}
     {% endif %}
   </div>
   <!-- /.content-wrapper -->
