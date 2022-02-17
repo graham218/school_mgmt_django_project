@@ -19,7 +19,21 @@
     <!-- Content Header (Page header) -->
     {% include './components/content-header.html' %}
     {% include './components/main-content.html' %}
-    
+    {% if request.user.is_admin %}
+      {% include './components/main-content.html' %}
+    {% endif %}
+    {% if request.user.is_student %}
+      {% include './components/main-content.html' %}
+    {% endif %}
+    {% if request.user.is_lecturer %}
+      {% include './components/main-content.html' %}
+    {% endif %}
+    {% if request.user.is_supplier %}
+      {% include './components/main-content.html' %}
+    {% endif %}
+    {% if request.user.is_non_staff %}
+      {% include './components/main-content.html' %}
+    {% endif %}
   </div>
   <!-- /.content-wrapper -->
   {% include './components/footer.html' %}
