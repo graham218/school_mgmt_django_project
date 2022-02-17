@@ -53,10 +53,6 @@
                   <td>{{instance.total_salary_billed}}</td>
                   <td>{{instance.total_salary_paid}}</td>
                   <td>{{instance.balance}}</td>
-                  <td><a class="mdi mdi-stack-overflow" href="{% url 'school:edit-lecturer' instance.id%}">Update</a>
-                  </td>
-                  <td><a class="mdi mdi-delete-forever" href="{% url 'school:delete-lecturer' instance.id%}">Delete</a>
-                  </td>
                 </tr>
                 {% endfor %}
               </tbody>
