@@ -93,37 +93,37 @@ def all_users(request):
     return render(request, "admin/all_users.html", context)
 
 def all_students(request):
-    students=Students.objects.all()
+    queryset=Students.objects.all()
     title="All Students Registered"
     context={
-        "students":students,
+        "queryset":queryset,
         "title":title,
     }
     return render(request, "admin/all_students.html", context)
 
 def all_lecturers(request):
-    lecturers=Lectures.objects.all()
+    queryset=Lectures.objects.all()
     title="All Lecturers Registered"
     context={
-        "lecturers":lecturers,
+        "queryset":queryset,
         "title":title,
     }
     return render(request, "admin/all_lecturers.html", context)
 
 def all_fee_payment(request):
-    fee_payment=fee_payment.objects.all()
+    queryset=fee_payment.objects.all()
     title="All Fee Payment Records"
     context={
-        "fee_payment":fee_payment,
+        "queryset":queryset,
         "title":title,
     }
     return render(request, "admin/fee_payment_records.html", context)
 
 def all_fee_receipts(request):
-    fee_receipts=FeeReceipt.objects.all()
+    queryset=FeeReceipt.objects.all()
     title="All Fee Payment Receipts Records"
     context={
-        "fee_receipts":fee_receipts,
+        "queryset":queryset,
         "title":title,
     }
     return render(request, "admin/fee_payment_receipts.html", context)
