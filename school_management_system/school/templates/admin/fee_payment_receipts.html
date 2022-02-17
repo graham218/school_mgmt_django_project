@@ -11,28 +11,29 @@
             {% include 'messages.html' %}
             <h3 class="card-title">{{title}}</h3>
           </div>
+          <!-- <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{% url 'school:lecturer_units' %}" class="btn btn-primary">Add Receipt</a>
+          </div> -->
           <!-- /.card-header -->
           <div class="card-body">
-            <table id="fee_payment" class="table table-bordered table-striped">
+            <table id="fee-receipts" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th> COUNTER </th>
-                  <th> USER NAME </th>
-                  <th> LEC NO </th>
-                  <th> FULL NAME </th>
-                  <th> NATIONALITY </th>
-                  <th> GENDER </th>
-                  <th> NATIONAL ID </th>
-                  <th> PHONE NO </th>
-                  <th> DOB </th>
-                  <th> POSTAL ADDRESS </th>
-                  <th> SCHOOL EMAIL </th>
-                  <th> EMAIL PASSWORD </th>
-                  <th> BILLED SALARY </th>
-                  <th> SALARY PAID </th>
-                  <th> SALARY BALANCE </th>
-                  <th> UPDATE </th>
-                  <th> DELETE </th>
+                  <th>Counter</th>
+                  <th>USERNAME</th>
+                  <th>FULL NAME</th>
+                  <th>STAGE</th>
+                  <th>EXAM</th>
+                  <th>CO-OCURRICULAR</th>
+                  <th>HOSTEL</th>
+                  <th>LIBRARY</th>
+                  <th>INTERNET</th>
+                  <th>ELECTRICITY</th>
+                  <th>FOOD</th>
+                  <th>FURNITURE</th>
+                  <th>WATER</th>
+                  <th>DATE CREATED</th>
+                  <th>DATE UPDATED</th>
                 </tr>
               </thead>
               <tbody>
@@ -40,41 +41,39 @@
                 <tr>
                   <td>{{forloop.counter}}</td>
                   <td>{{instance.user}}</td>
-                  <td>{{instance.lec_no}}</td>
                   <td>{{instance.full_name}}</td>
-                  <td>{{instance.nationality}}</td>
-                  <td>{{instance.gender}}</td>
-                  <td>{{instance.national_ID_number}}</td>
-                  <td>{{instance.phone_number}}</td>
-                  <td>{{instance.DOB}}</td>
-                  <td>{{instance.postal_address}}</td>
-                  <td>{{instance.school_email}}</td>
-                  <td>{{instance.school_email_password}}</td>
-                  <td>{{instance.total_salary_billed}}</td>
-                  <td>{{instance.total_salary_paid}}</td>
-                  <td>{{instance.balance}}</td>
+                  <td>{{instance.stage}}</td>
+                  <td>{{instance.exams}}</td>
+                  <td>{{instance.co_ocurricular_activities}}</td>
+                  <td>{{instance.hostel_charges}}</td>
+                  <td>{{instance.library_charges}}</td>
+                  <td>{{instance.internet_charges}}</td>
+                  <td>{{instance.electricity_charges}}</td>
+                  <td>{{instance.food_charges}}</td>
+                  <td>{{instance.furniture_charges}}</td>
+                  <td>{{instance.water_charges}}</td>
+                  <td>{{instance.date_created}}</td>
+                  <td>{{instance.date_updated}}</td>
                 </tr>
                 {% endfor %}
               </tbody>
               <tfoot>
                 <tr>
-                  <th> COUNTER </th>
-                  <th> USER NAME </th>
-                  <th> LEC NO </th>
-                  <th> FULL NAME </th>
-                  <th> NATIONALITY </th>
-                  <th> GENDER </th>
-                  <th> NATIONAL ID </th>
-                  <th> PHONE NO </th>
-                  <th> DOB </th>
-                  <th> POSTAL ADDRESS </th>
-                  <th> SCHOOL EMAIL </th>
-                  <th> EMAIL PASSWORD </th>
-                  <th> BILLED SALARY </th>
-                  <th> SALARY PAID </th>
-                  <th> SALARY BALANCE </th>
-                  <th> UPDATE </th>
-                  <th> DELETE </th>
+                  <th>Counter</th>
+                  <th>USERNAME</th>
+                  <th>FULL NAME</th>
+                  <th>STAGE</th>
+                  <th>EXAM</th>
+                  <th>CO-OCURRICULAR</th>
+                  <th>HOSTEL</th>
+                  <th>LIBRARY</th>
+                  <th>INTERNET</th>
+                  <th>ELECTRICITY</th>
+                  <th>FOOD</th>
+                  <th>FURNITURE</th>
+                  <th>WATER</th>
+                  <th>DATE CREATED</th>
+                  <th>DATE UPDATED</th>
                 </tr>
               </tfoot>
             </table>
