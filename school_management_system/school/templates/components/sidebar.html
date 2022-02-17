@@ -368,7 +368,7 @@
           {% if request.user.is_admin %}
           <li class="nav-header">Admins</li>
           <li class="nav-item">
-            <a href="/" class="nav-link">
+            <a href="" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 User Accounts
@@ -377,7 +377,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/" class="nav-link">
+                <a href="{% url 'school:all_users' %}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Users</p>
                 </a>
@@ -385,7 +385,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/" class="nav-link">
+                <a href="{% url 'school:all_students' %}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Students' Profiles</p>
                 </a>
@@ -393,7 +393,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/" class="nav-link">
+                <a href="{% url 'school:all_lecturers' %}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Lecturers' Profiles</p>
                 </a>
@@ -418,7 +418,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/" class="nav-link">
+                <a href="{% url 'school:all_fee_payment' %}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Fee Payments</p>
                 </a>
@@ -429,6 +429,14 @@
                 <a href="/" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Retakes Payments</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'school:all_fee_receipts' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fee Payment Receipts</p>
                 </a>
               </li>
             </ul>
