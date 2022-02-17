@@ -17,7 +17,6 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    {% include './components/main-content.html' %}
     {% if request.user.is_authenticated %}
       {% if request.user.is_admin %}
         {% include './components/admin-content.html' %}
