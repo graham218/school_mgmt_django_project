@@ -11,9 +11,6 @@
             {% include 'messages.html' %}
             <h3 class="card-title">{{title}}</h3>
           </div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="{% url 'school:add-faculty' %}" class="btn btn-primary">Add New Lecturers</a>
-          </div>
           <!-- /.card-header -->
           <div class="card-body">
             <table id="lecturers" class="table table-bordered table-striped">
@@ -34,14 +31,12 @@
                   <th> BILLED SALARY </th>
                   <th> SALARY PAID </th>
                   <th> SALARY BALANCE </th>
-                  <th> UPDATE </th>
-                  <th> DELETE </th>
                 </tr>
               </thead>
               <tbody>
                 {% for instance in queryset %}
                 <tr>
-                  <td class="py-1">{{forloop.counter}}</td>
+                  <td>{{forloop.counter}}</td>
                   <td>{{instance.user}}</td>
                   <td>{{instance.lec_no}}</td>
                   <td>{{instance.full_name}}</td>
@@ -56,10 +51,6 @@
                   <td>{{instance.total_salary_billed}}</td>
                   <td>{{instance.total_salary_paid}}</td>
                   <td>{{instance.balance}}</td>
-                  <td><a class="mdi mdi-stack-overflow" href="{% url 'school:edit-lecturer' instance.id%}">Update</a>
-                  </td>
-                  <td><a class="mdi mdi-delete-forever" href="{% url 'school:delete-lecturer' instance.id%}">Delete</a>
-                  </td>
                 </tr>
                 {% endfor %}
               </tbody>
@@ -80,8 +71,6 @@
                   <th> BILLED SALARY </th>
                   <th> SALARY PAID </th>
                   <th> SALARY BALANCE </th>
-                  <th> UPDATE </th>
-                  <th> DELETE </th>
                 </tr>
               </tfoot>
             </table>
