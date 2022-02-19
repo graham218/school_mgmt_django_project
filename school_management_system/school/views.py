@@ -229,7 +229,7 @@ def EditStudents(request, pk):
         if form.is_valid():
             messages.success(request, "Student Updated Successfully")
             form.save()
-            return redirect("/school/list-students")
+            return redirect("/school/all_students")
     context = {
         "title": title,
         "button": button,
@@ -245,7 +245,7 @@ def DeleteStudent(request, pk):
     if request.method == "POST":
         queryset.delete()
         messages.success(request, "Student Deleted Successfully")
-        return redirect("/school/list-students")
+        return redirect("/school/all_students")
     context = {
         "title": title
     }
@@ -293,7 +293,7 @@ def DeleteLecturer(request, pk):
     if request.method == "POST":
         queryset.delete()
         messages.success(request, "Lecturer Deleted Successfully")
-        return redirect("/school/list-lecturer")
+        return redirect("/school/all_lecturers")
     context = {
         "title": title
     }
@@ -311,7 +311,7 @@ def EditLecturer(request, pk):
         if form.is_valid():
             messages.success(request, "Lecture Updated Successfully")
             form.save()
-            return redirect("/school/list-lecturer")
+            return redirect("/school/all_lecturers")
     context = {
         "title": title,
         "button": button,

@@ -11,9 +11,6 @@
             {% include 'messages.html' %}
             <h3 class="card-title">{{title}}</h3>
           </div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#" class="btn btn-primary">Add New Lecturers</a>
-          </div>
           <!-- /.card-header -->
           <div class="card-body">
             <table id="lecturers" class="table table-bordered table-striped">
@@ -35,7 +32,6 @@
                   <th> SALARY PAID </th>
                   <th> SALARY BALANCE </th>
                   <th> UPDATE </th>
-                  <th> DELETE </th>
                 </tr>
               </thead>
               <tbody>
@@ -58,8 +54,6 @@
                   <td>{{instance.balance}}</td>
                   <td><a class="mdi mdi-stack-overflow" href="{% url 'school:edit-lecturer' instance.id%}">Update</a>
                   </td>
-                  <td><a class="mdi mdi-delete-forever" href="{% url 'school:delete-lecturer' instance.id%}">Delete</a>
-                  </td>
                 </tr>
                 {% endfor %}
               </tbody>
@@ -81,7 +75,6 @@
                   <th> SALARY PAID </th>
                   <th> SALARY BALANCE </th>
                   <th> UPDATE </th>
-                  <th> DELETE </th>
                 </tr>
               </tfoot>
             </table>
