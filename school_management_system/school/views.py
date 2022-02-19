@@ -180,10 +180,10 @@ def CreateAccountNonStaffView(request):
     return render(request, 'account/register.html', {'form': form})
 
 @login_required
-def AddStudents(request):
-    title = "Add New Students"
-    button = "Add Student"
-    form = AddStudentsForm(request.POST or None)
+def AddStudentsProfile(request):
+    title = "Creating My New Profile To Access School services"
+    button = "Add Profile"
+    form = AddStudentsProfileForm(request.POST or None)
     if form.is_valid():
         user = request.user
         admission_no = form.cleaned_data['admission_no']
@@ -195,15 +195,12 @@ def AddStudents(request):
         phone_number = form.cleaned_data['phone_number']
         DOB = form.cleaned_data['DOB']
         date_of_admission = form.cleaned_data['date_of_admission']
-        date_of_graduation = form.cleaned_data['date_of_graduation']
         programme = form.cleaned_data['programme']
         stage = form.cleaned_data['stage']
         postal_address = form.cleaned_data['postal_address']
-        school_email = form.cleaned_data['school_email']
-        school_email_password = form.cleaned_data['school_email_password']
-        total_fees_billed = form.cleaned_data['total_fees_billed']
-        total_fees_paid = form.cleaned_data['total_fees_paid']
-        balance = form.cleaned_data['balance']
+        total_fees_billed = 0
+        total_fees_paid = 0
+        balance = 0
         reg = Students(user=user, admission_no=admission_no, full_name=full_name,
                        nationality=nationality, stud_gender=stud_gender, national_ID_number=national_ID_number,
                        birth_cert_no=birth_cert_no, phone_number=phone_number, DOB=DOB,
@@ -212,8 +209,9 @@ def AddStudents(request):
                        postal_address=postal_address, school_email=school_email, school_email_password=school_email_password,
                        total_fees_billed=total_fees_billed, total_fees_paid=total_fees_paid, balance=balance)
         reg.save()
-        messages.success(request, "New Student Added Successfully")
-        return redirect("/school/list-students")
+        messages.success(request, "Profile Added Successfully")
+        messages.success(request, "You Can Now Be Able To Access Services Offered To Students")
+        return redirect("/")
     context = {
         "title": title,
         "button": button,
