@@ -27,9 +27,6 @@
                   <th> DATE REAGISTERED </th>
                   <th> DATE UPDATED </th>
                   <th>UPDATE MARKS</th>
-                  {% if request.user.is_admin %}
-                  <th>DELETE</th>
-                  {% endif %}
                 </tr>
               </thead>
               <tbody>
@@ -61,9 +58,6 @@
                   <th> DATE REAGISTERED </th>
                   <th> DATE UPDATED </th>
                   <th>UPDATE MARKS</th>
-                  {% if request.user.is_admin %}
-                  <th>DELETE</th>
-                  {% endif %}
                 </tr>
               </tfoot>
             </table>
