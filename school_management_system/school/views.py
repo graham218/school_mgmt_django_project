@@ -625,7 +625,6 @@ def Listlectures(request):
 @login_required
 def ListUnits(request):
     title = 'List of All Units'
-    form = UnitSearchForm(request.POST or None)
     queryset = Units.objects.all()
     context = {
         "title": title,
@@ -635,7 +634,6 @@ def ListUnits(request):
         queryset = Units.objects.filter(
             unit_name__icontains=form['unit_name'].value())
     context = {
-        "form": form,
         "title": title,
         "queryset": queryset,
     }
