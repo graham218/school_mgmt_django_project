@@ -206,8 +206,7 @@ def AddStudentsProfile(request):
                        birth_cert_no=birth_cert_no, phone_number=phone_number, DOB=DOB,
                        date_of_admission=date_of_admission, stage=stage, date_of_graduation=date_of_graduation,
                        programme=programme,
-                       postal_address=postal_address, school_email=school_email, school_email_password=school_email_password,
-                       total_fees_billed=total_fees_billed, total_fees_paid=total_fees_paid, balance=balance)
+                       postal_address=postal_address,total_fees_billed=total_fees_billed, total_fees_paid=total_fees_paid, balance=balance)
         reg.save()
         messages.success(request, "Profile Added Successfully")
         messages.success(request, "You Can Now Be Able To Access Services Offered To Students")
@@ -255,10 +254,10 @@ def DeleteStudent(request, pk):
 
 
 @login_required
-def AddLecturer(request):
-    title = "Add New Lecturer"
-    button = "Add Lecture"
-    form = AddLectureForm(request.POST or None)
+def AddLecturerProfile(request):
+    title = "Creating My User Profile"
+    button = "Add Profile"
+    form = AddLectureProfileForm(request.POST or None)
     if form.is_valid():
         user = request.user
         lec_no = form.cleaned_data['lec_no']
@@ -269,18 +268,17 @@ def AddLecturer(request):
         phone_number = form.cleaned_data['phone_number']
         DOB = form.cleaned_data['DOB']
         postal_address = form.cleaned_data['postal_address']
-        school_email = form.cleaned_data['school_email']
-        school_email_password = form.cleaned_data['school_email_password']
-        total_salary_billed = form.cleaned_data['total_salary_billed']
-        total_salary_paid = form.cleaned_data['total_salary_paid']
-        balance = form.cleaned_data['balance']
+        total_salary_billed = 0
+        total_salary_paid = 0
+        balance = 0
         reg = Lectures(user=user, lec_no=lec_no, full_name=full_name,
                        nationality=nationality, lec_gender=lec_gender, national_ID_number=national_ID_number,
-                       phone_number=phone_number, DOB=DOB, postal_address=postal_address, school_email=school_email, school_email_password=school_email_password,
-                       total_salary_billed=total_salary_billed, total_salary_paid=total_salary_paid, balance=balance)
+                       phone_number=phone_number, DOB=DOB, postal_address=postal_address, total_salary_billed=total_salary_billed,
+                       total_salary_paid=total_salary_paid,balance=balance)
         reg.save()
-        messages.success(request, "New Lecture Added Successfully")
-        return redirect("/school/list-lecturer")
+        messages.success(request, "Profile Added Successfully")
+        messages.success(request, "You Can Now Be Able to access Services Offered To Lecturers")
+        return redirect("/")
     context = {
         "title": title,
         "button": button,
