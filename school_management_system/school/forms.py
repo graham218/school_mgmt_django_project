@@ -148,23 +148,32 @@ class AddStudentsForm(forms.ModelForm):
                    'date_of_admission': DateInput(attrs={'type': 'date'}),
                    'date_of_graduation': DateInput(attrs={'type': 'date'}),
                    'programme': forms.Select(attrs={'id': 'id_programme','class': 'form-control'}),
-                   # 'profile_photo': forms.ImageField(label_suffix="Profile Picture"),
                    'postal_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eg, PO BOX 123 Busia, Kenya'}),
                    'school_email': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter School Email'}),
                    'school_email_password': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'School Email Password'}),
                    'total_fees_billed': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Total Fee Billed'}),
                    'total_fees_paid': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Total Fee Paid'}),
                    'balance': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Fee Balance'})}
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.fields['stage'].queryset = Stages.objects.none()
 
-    #     if 'stage' in self.data:
-    #         self.fields['stage'].queryset = Stages.objects.all()
-
-    #     elif self.instance.pk:
-    #         self.fields['stage'].queryset = Stages.objects.all().filter(
-    #             pk=self.instance.stage.pk)
+class AddStudentsProfileForm(forms.ModelForm):
+    class Meta:
+        model = Students
+        fields = ['admission_no', 'full_name', 'nationality',
+                  'stud_gender', 'national_ID_number', 'birth_cert_no', 'phone_number',
+                  'DOB', 'date_of_admission', 'programme',
+                  'stage', 'postal_address']
+        widgets = {'admission_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Admission Number'}),
+                   'full_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Full Name'}),
+                   'nationality': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eg, Kenyan, Ugandan, Somalian'}),
+                   'stud_gender': forms.RadioSelect(attrs={'id': 'value'}),
+                   'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter National Id Number'}),
+                   'birth_cert_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Birth Certificate Number'}),
+                   'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Phone Number'}),
+                   'stage': forms.Select(attrs={'id': 'id_stage', 'class': 'form-control'}),
+                   'DOB': DateInput(attrs={'type': 'date'}),
+                   'date_of_admission': DateInput(attrs={'type': 'date'}),
+                   'programme': forms.Select(attrs={'id': 'id_programme','class': 'form-control'}),
+                   'postal_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eg, PO BOX 123 Busia, Kenya'})}
 
 
 class EditStudentsForm(forms.ModelForm):
@@ -193,10 +202,9 @@ class AddLectureForm(forms.ModelForm):
         widgets = {'lec_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Lecture Number'}),
                    'full_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Full Name'}),
                    'nationality': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eg, Kenyan, Ugandan, Somalian'}),
-                   'lec_gender': forms.RadioSelect(attrs={'id': 'value'}),
+                   'lec_gender': forms.RadioSelect(attrs={'id': 'lec_gender'}),
                    'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter National Id Number'}),
                    'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Phone Number'}),
-                   # 'profile_photo': forms.ImageField(label_suffix="Profile Picture"),
                    'DOB': DateInput(attrs={'type': 'date'}),
                    'postal_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eg, PO BOX 123 Busia, Kenya'}),
                    'school_email': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter School Email'}),
@@ -206,6 +214,21 @@ class AddLectureForm(forms.ModelForm):
                    'balance': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Salary Balance'})}
 
 
+class AddLectureProfileForm(forms.ModelForm):
+    class Meta:
+        model = Lectures
+        fields = ['lec_no', 'full_name', 'nationality',
+                  'lec_gender', 'national_ID_number', 'phone_number',
+                  'DOB', 'postal_address']
+        widgets = {'lec_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Lecture Number'}),
+                   'full_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Full Name'}),
+                   'nationality': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eg, Kenyan, Ugandan, Somalian'}),
+                   'lec_gender': forms.RadioSelect(attrs={'id': 'lec_gender'}),
+                   'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter National Id Number'}),
+                   'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Phone Number'}),
+                   'DOB': DateInput(attrs={'type': 'date'}),
+                   'postal_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eg, PO BOX 123 Busia, Kenya'})}
+
 class EditLectureForm(forms.ModelForm):
     class Meta:
         model = Lectures
@@ -214,7 +237,6 @@ class EditLectureForm(forms.ModelForm):
         widgets = {'nationality': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eg, Kenyan, Ugandan, Somalian'}),
                    'national_ID_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter National Id Number'}),
                    'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Phone Number'}),
-                   # 'profile_photo': forms.ImageField(label_suffix="Profile Picture"),
                    'DOB': DateInput(attrs={'type': 'date'}),
                    'postal_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eg, PO BOX 123 Busia, Kenya'})}
 
