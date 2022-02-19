@@ -12,7 +12,7 @@
             <h3 class="card-title">{{title}}</h3>
           </div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="{% url 'school:add-faculty' %}" class="btn btn-primary">Add New Gender</a>
+            <a href="{% url 'school:add_gender' %}" class="btn btn-primary">Add New Gender</a>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -30,9 +30,9 @@
                 <tr>
                   <td>{{forloop.counter}}</td>
                   <td>{{instance.gender}}</td>
-                  <td><a href="{% url 'school:edit-gender' instance.id%}" class="mdi mdi-stack-overflow">Update</a>
+                  <td><a href="{% url 'school:edit-gender' instance.id%}" class="fa fa-edit">Update</a>
                   <td>
-                  <td><a href="{% url 'school:delete-gender' instance.id%}" class="mdi mdi-delete-forever">Delete</a>
+                  <td><a href="{% url 'school:delete-gender' instance.id%}" class="fa fa-trash">Delete</a>
                   <td>
                 </tr>
                 {% endfor %}

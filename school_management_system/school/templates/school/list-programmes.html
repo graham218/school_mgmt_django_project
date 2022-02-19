@@ -32,9 +32,9 @@
                   <td class="py-1">{{forloop.counter}}</td>
                   <td>{{instance.name}}</td>
                   <td>{{instance.faculty}}</td>
-                  <td><a class="mdi mdi-stack-overflow" href="{% url 'school:edit-programme' instance.id%}">Update</a>
+                  <td><a class="fa fa-edtit" href="{% url 'school:edit-programme' instance.id%}">Update</a>
                   </td>
-                  <td><a class="mdi mdi-delete-forever" href="{% url 'school:delete-programme' instance.id%}">Delete</a>
+                  <td><a class="fa fa-trash" href="{% url 'school:delete-programme' instance.id%}">Delete</a>
                   </td>
                 </tr>
                 {% endfor %}

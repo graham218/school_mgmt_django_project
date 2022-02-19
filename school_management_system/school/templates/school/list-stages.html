@@ -30,9 +30,9 @@
                 <tr>
                   <td>{{forloop.counter}}</td>
                   <td>{{instance.year}}</td>
-                  <td><a href="{% url 'school:edit-stage' instance.id%}" class="mdi mdi-stack-overflow">Update</a>
+                  <td><a href="{% url 'school:edit-stage' instance.id%}" class="fa fa-edit">Update</a>
                   <td>
-                  <td><a href="{% url 'school:delete-stage' instance.id%}" class="mdi mdi-delete-forever">Delete</a>
+                  <td><a href="{% url 'school:delete-stage' instance.id%}" class="fa fa-trash">Delete</a>
                   <td>
                 </tr>
                 {% endfor %}

@@ -64,9 +64,9 @@
                   <td>{{instance.total_fees_billed}}</td>
                   <td>{{instance.total_fees_paid}}</td>
                   <td>{{instance.balance}}</td>
-                  <td><a class="mdi mdi-stack-overflow" href="{% url 'school:edit-students' instance.id%}">Update</a>
+                  <td><a class="fa fa-edtit" href="{% url 'school:edit-students' instance.id%}">Update</a>
                   </td>
-                  <td><a class="mdi mdi-delete-forever" href="{% url 'school:delete-student' instance.id%}">Delete</a>
+                  <td><a class="fa fa-trash" href="{% url 'school:delete-student' instance.id%}">Delete</a>
                   </td>
                 </tr>
                 {% endfor %}

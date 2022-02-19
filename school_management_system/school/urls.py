@@ -19,7 +19,7 @@ urlpatterns = [
     path('delete-faculty/<str:pk>', views.DeleteFaculty, name='delete-faculty'),
     path('list-faculty/', views.ListFaculty, name='list-faculty'),
 
-    path('add-gender/', views.AddGender, name='add-gender'),
+    path('add_gender/', views.AddGender, name='add_gender'),
     path('edit-gender/<str:pk>', views.EditGender, name='edit-gender'),
     path('delete-gender/<str:pk>', views.DeleteGender, name='delete-gender'),
     path('list-gender/', views.ListGender, name='list-gender'),
