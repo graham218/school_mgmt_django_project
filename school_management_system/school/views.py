@@ -204,8 +204,7 @@ def AddStudentsProfile(request):
         reg = Students(user=user, admission_no=admission_no, full_name=full_name,
                        nationality=nationality, stud_gender=stud_gender, national_ID_number=national_ID_number,
                        birth_cert_no=birth_cert_no, phone_number=phone_number, DOB=DOB,
-                       date_of_admission=date_of_admission, stage=stage, date_of_graduation=date_of_graduation,
-                       programme=programme,
+                       date_of_admission=date_of_admission, stage=stage, programme=programme,
                        postal_address=postal_address,total_fees_billed=total_fees_billed, total_fees_paid=total_fees_paid, balance=balance)
         reg.save()
         messages.success(request, "Profile Added Successfully")
