@@ -576,53 +576,6 @@ def DeleteUnit(request, pk):
 
 
 @login_required
-def ListStudents(request):
-    title = 'List of All Students'
-    form = StudentSearchForm(request.POST or None)
-    queryset = Students.objects.all()
-    context = {
-        "title": title,
-        "queryset": queryset,
-    }
-    if request.method == 'POST':
-        queryset = Students.objects.filter(admission_no__icontains=form['admission_no'].value(),
-                                           full_name__icontains=form['full_name'].value(
-        ),
-            programme=form['programme'].value()
-        )
-    context = {
-        "form": form,
-        "title": title,
-        "queryset": queryset,
-    }
-    return render(request, "school/list-students.html", context)
-
-
-@login_required
-def Listlectures(request):
-    title = 'List of All Lectures'
-    form = LecturerSearchForm(request.POST or None)
-    queryset = Lectures.objects.all()
-    context = {
-        "title": title,
-        "queryset": queryset,
-    }
-    if request.method == 'POST':
-        queryset = Lectures.objects.filter(lec_no__icontains=form['lec_no'].value(),
-                                           full_name__icontains=form['full_name'].value(
-        ),
-            national_ID_number__icontains=form['national_ID_number'].value(
-        )
-        )
-    context = {
-        "form": form,
-        "title": title,
-        "queryset": queryset,
-    }
-    return render(request, "school/list-lecturers.html", context)
-
-
-@login_required
 def ListUnits(request):
     title = 'List of All Units'
     queryset = Units.objects.all()

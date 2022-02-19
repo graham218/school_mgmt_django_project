@@ -7,12 +7,10 @@ urlpatterns = [
     path('create_student_profile/', views.AddStudentsProfile, name='create_student_profile'),
     path('edit-students/<str:pk>', views.EditStudents, name='edit-students'),
     path('delete-student/<str:pk>', views.DeleteStudent, name='delete-student'),
-    path('list-students/', views.ListStudents, name='list-students'),
 
     path('create_lecturer_profile/', views.AddLecturerProfile, name='create_lecturer_profile'),
     path('edit-lecturer/<str:pk>', views.EditLecturer, name='edit-lecturer'),
     path('delete-lecturer/<str:pk>', views.DeleteLecturer, name='delete-lecturer'),
-    path('list-lecturer/', views.Listlectures, name='list-lecturer'),
     
     path('add-faculty/', views.AddFaculty, name='add-faculty'),
     path('edit-faculty/<str:pk>', views.EditFaculty, name='edit-faculty'),
