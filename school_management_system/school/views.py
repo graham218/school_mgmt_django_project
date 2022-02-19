@@ -646,17 +646,12 @@ def ListUnits(request):
 @login_required
 def ListProgrammes(request):
     title = 'List of All Proggrammes Offered'
-    form = ProgrammeSearchForm(request.POST or None)
     queryset = Programmes.objects.all()
     context = {
         "title": title,
         "queryset": queryset,
     }
-    if request.method == 'POST':
-        queryset = Programmes.objects.filter(name__icontains=form['name'].value(),
-                                             faculty=form['faculty'].value())
     context = {
-        "form": form,
         "title": title,
         "queryset": queryset,
     }
@@ -666,7 +661,6 @@ def ListProgrammes(request):
 @login_required
 def ListFaculty(request):
     title = 'List of Faculties In The University'
-    form = FacultySearchForm(request.POST or None)
     queryset = Faculty.objects.all()
     context = {
         "title": title,
@@ -676,7 +670,6 @@ def ListFaculty(request):
         queryset = Faculty.objects.filter(
             school__icontains=form['school'].value())
     context = {
-        "form": form,
         "title": title,
         "queryset": queryset,
     }

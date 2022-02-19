@@ -14,7 +14,6 @@
           <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="{% url 'school:add-stage' %}" class="btn btn-primary">Add New Stages</a>
           </div>
-          <!-- /.card-header -->
           <div class="card-body">
             <table id="faculty" class="table table-bordered table-striped">
               <thead>
@@ -31,9 +30,9 @@
                   <td>{{forloop.counter}}</td>
                   <td>{{instance.year}}</td>
                   <td><a href="{% url 'school:edit-stage' instance.id%}" class="fa fa-edit">Update</a>
-                  <td>
+                  </td>
                   <td><a href="{% url 'school:delete-stage' instance.id%}" class="fa fa-trash">Delete</a>
-                  <td>
+                  </td>
                 </tr>
                 {% endfor %}
               </tbody>

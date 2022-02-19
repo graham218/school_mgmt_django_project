@@ -31,9 +31,9 @@
                   <td>{{forloop.counter}}</td>
                   <td>{{instance.gender}}</td>
                   <td><a href="{% url 'school:edit-gender' instance.id%}" class="fa fa-edit">Update</a>
-                  <td>
+                  </td>
                   <td><a href="{% url 'school:delete-gender' instance.id%}" class="fa fa-trash">Delete</a>
-                  <td>
+                  </td>
                 </tr>
                 {% endfor %}
               </tbody>

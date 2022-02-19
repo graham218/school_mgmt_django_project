@@ -487,6 +487,41 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="/" class="nav-link">
+              <i class="nav-icon fas fa-school"></i>
+              <p>
+                Critical Dependancies
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'school:list-gender' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Gender</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'school:list-faculty' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Faculties</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'school:list-programme' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Programmes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'school:list-stage' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Stages</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           {% endif %}
         </ul>
       </nav>
