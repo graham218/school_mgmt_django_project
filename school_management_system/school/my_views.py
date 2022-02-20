@@ -129,7 +129,6 @@ def list_registered_units1(request):
     title = 'List of Registered Students'
     queryset = marks_yr1.objects.all()
     context = {
-        "form": form,
         "title": title,
         "queryset": queryset,
     }
@@ -435,7 +434,7 @@ def list_registered_units5(request):
     title = 'List of Registered Students Semester 5'
     queryset = marks_yr5.objects.all()
     context = {
-        "form": form,
+        "queryset": queryset,
         "title": title,
     }
     return render(request, "units/list_registered_units/list_registered_units_yr5.html", context)
@@ -511,7 +510,7 @@ def list_registered_units6(request):
     title = 'List of Registered Students Semester 6'
     queryset = marks_yr6.objects.all()
     context = {
-        "form": form,
+        "queryset": queryset,
         "title": title,
     }
     return render(request, "units/list_registered_units/list_registered_units_yr6.html", context)

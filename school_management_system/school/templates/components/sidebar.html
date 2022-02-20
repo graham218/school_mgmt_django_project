@@ -2,541 +2,543 @@
 {% if request.user.is_authenticated %}
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="/" class="brand-link">
-      <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Graham School</span>
-    </a>
+  <!-- Brand Logo -->
+  <a href="/" class="brand-link">
+    <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      style="opacity: .8">
+    <span class="brand-text font-weight-light">Graham School</span>
+  </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img {% if request.user.profile_photo %}src="{{request.user.profile_photo.url}}"{% else %}src="{% static 'dist/img/user2-160x160.jpg' %}"{% endif %} class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="/" class="d-block">{{request.user.first_name}} {{request.user.last_name}}</a>
-          <a href="/" class="d-block">{{request.user.email}}</a>
-        </div>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img {% if request.user.profile_photo %}src="{{request.user.profile_photo.url}}" {% else
+          %}src="{% static 'dist/img/user2-160x160.jpg' %}" {% endif %} class="img-circle elevation-2" alt="User Image">
       </div>
-
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
+      <div class="info">
+        <a href="/" class="d-block">{{request.user.first_name}} {{request.user.last_name}}</a>
+        <a href="/" class="d-block">{{request.user.email}}</a>
       </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item menu-open">
-            <a href="/" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Home
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-          </li>
-          {% if request.user.is_student %}
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Academics
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">2</span>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{% url 'school:unit_year_page' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Register Units</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Print Exam Card</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Financials
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pay school Fees</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Print Receipts</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pay For Retakes</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Other Charges</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                Special Exams
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{% url 'school:resit_year_page' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Register Resits & Special Exams</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Print Resit & Special Exam card</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Admission
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Admission Documents</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Create Profile</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Online Classes
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Zoom Classes</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Assignments</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>E-Library</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Graduation
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pay Graduation Fee</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Complete Clearance</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Graduation Certificate</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Elections
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Register Politicians</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Register Voters</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Cast My Vote</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Notice Board
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Public Notices</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Upcoming Events</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Critical Notices</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          {% endif %}
-          {% if request.user.is_lecturer %}
-          <li class="nav-header">Lecturers</li>
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Academics
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{% url 'school:ListAllLecturerUnits' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>My Units</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Financials
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>My Salary</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/profile.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Print Receipts</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Financial Complaints</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-envelope"></i>
-              <p>
-                Registration
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Documents</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
-              <p>
-                Student Marks
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{% url 'school:unit_year_page_marks' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Examination Marks
-                  </p>
-                </a>
-                </ul>
-              </li>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{% url 'school:resit_year_page_marks' %}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>
-                      Resit/Retake Marks
-                    </p>
-                  </a>
-                  </ul>
-                </li>
-          </li>
-          {% endif %}
-          {% if request.user.is_admin %}
-          <li class="nav-header">Admins</li>
-          <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                User Accounts
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{% url 'school:all_users' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Manage Users</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{% url 'school:all_students' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Manage Students' Profiles</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{% url 'school:all_lecturers' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Manage Lecturers' Profiles</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-graduation-cap"></i>
-              <p>
-                Students
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Exams</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{% url 'school:all_fee_payment' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fee Payments</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Retakes Payments</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{% url 'school:all_fee_receipts' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fee Payment Receipts</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Year & Semester Registration</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Graduation</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-tv"></i>
-              <p>
-                Notice Board
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Public Notices</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Upcoming Events</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Critical Notices</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="nav-icon fas fa-school"></i>
-              <p>
-                Critical Dependancies
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{% url 'school:list-gender' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Gender</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{% url 'school:list-faculty' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Faculties</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{% url 'school:list-programme' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Programmes</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{% url 'school:list-stage' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Stages</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{% url 'school:list-unit' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Units</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          {% endif %}
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
-  </aside>
+
+    <!-- SidebarSearch Form -->
+    <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item menu-open">
+          <a href="/" class="nav-link active">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Home
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+        </li>
+        {% if request.user.is_student %}
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Academics
+              <i class="fas fa-angle-left right"></i>
+              <span class="badge badge-info right">2</span>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'school:unit_year_page' %}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Register Units</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Print Exam Card</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <p>
+              Financials
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Pay school Fees</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Print Receipts</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Pay For Retakes</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Other Charges</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <i class="nav-icon fas fa-tree"></i>
+            <p>
+              Special Exams
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'school:resit_year_page' %}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Register Resits & Special Exams</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Print Resit & Special Exam card</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <i class="nav-icon fas fa-edit"></i>
+            <p>
+              Admission
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Admission Documents</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Create Profile</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <i class="nav-icon fas fa-table"></i>
+            <p>
+              Online Classes
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Zoom Classes</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Assignments</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>E-Library</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <i class="nav-icon fas fa-table"></i>
+            <p>
+              Graduation
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Pay Graduation Fee</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Complete Clearance</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Graduation Certificate</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <i class="nav-icon fas fa-table"></i>
+            <p>
+              Elections
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Register Politicians</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Register Voters</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Cast My Vote</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <i class="nav-icon fas fa-table"></i>
+            <p>
+              Notice Board
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Public Notices</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Upcoming Events</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Critical Notices</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        {% endif %}
+        {% if request.user.is_lecturer %}
+        <li class="nav-header">Lecturers</li>
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+              Academics
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'school:ListAllLecturerUnits' %}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>My Units</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+              Financials
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>My Salary</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="pages/examples/profile.html" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Print Receipts</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Financial Complaints</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <i class="nav-icon fas fa-envelope"></i>
+            <p>
+              Registration
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add Profile</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Documents</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <i class="nav-icon far fa-edit"></i>
+            <p>
+              Student Marks
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'school:unit_year_page_marks' %}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Examination Marks
+                </p>
+              </a>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'school:resit_year_page_marks' %}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Resit/Retake Marks
+                </p>
+              </a>
+          </ul>
+        </li>
+      </ul>
+      </li>
+      {% endif %}
+      {% if request.user.is_admin %}
+      <li class="nav-header">Admins</li>
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <i class="nav-icon fas fa-users"></i>
+          <p>
+            User Accounts
+            <i class="fas fa-angle-left right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{% url 'school:all_users' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Manage Users</p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{% url 'school:all_students' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Manage Students' Profiles</p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{% url 'school:all_lecturers' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Manage Lecturers' Profiles</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a href="/" class="nav-link">
+          <i class="nav-icon fas fa-graduation-cap"></i>
+          <p>
+            Students
+            <i class="fas fa-angle-left right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="/" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Exams</p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{% url 'school:all_fee_payment' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Fee Payments</p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="/" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Retakes Payments</p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{% url 'school:all_fee_receipts' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Fee Payment Receipts</p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="/" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Year & Semester Registration</p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="/" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Graduation</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a href="/" class="nav-link">
+          <i class="nav-icon fas fa-tv"></i>
+          <p>
+            Notice Board
+            <i class="fas fa-angle-left right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="/" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Public Notices</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Upcoming Events</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Critical Notices</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a href="/" class="nav-link">
+          <i class="nav-icon fas fa-school"></i>
+          <p>
+            Critical Dependancies
+            <i class="fas fa-angle-left right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{% url 'school:list-gender' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Gender</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'school:list-faculty' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Faculties</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'school:list-programme' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Programmes</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'school:list-stage' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Stages</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'school:list-unit' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Units</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      {% endif %}
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
 {% endif %}

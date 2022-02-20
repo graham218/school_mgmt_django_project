@@ -35,7 +35,7 @@ def unit_year_page_marks(request):
     context={
         "title":title
     }
-    return render(request, "units/year_page_marks.html", context)
+    return render(request, "units/pages/year_page_marks.html", context)
 
 @login_required
 def resit_year_page(request):
