@@ -22,15 +22,16 @@
                   <th>COUNTER</th>
                   <th>STAGE</th>
                   <th>UNIT NAME</th>
+                  <th>UNREGISTER</th>
                 </tr>
               </thead>
               <tbody>
-                {% for instance in queryset2 %}
+                {% for instance in queryset %}
                 <tr>
                   <td>{{forloop.counter}}</td>
                   <td>{{instance.stage}}</td>
                   <td>{{instance.unit_or_subject_name}}</td>
-                  <td><a class="fa fa-delete" href="{% url 'school:unregister_unit5' instance.id%}">Unregister
+                  <td><a class="fa fa-trash" href="{% url 'school:unregister_unit5' instance.id%}">Unregister
                     Unit</a></td>
                 </tr>
                 {% endfor %}
@@ -40,6 +41,7 @@
                   <th>COUNTER</th>
                   <th>STAGE</th>
                   <th>UNIT NAME</th>
+                  <th>UNREGISTER</th>
                 </tr>
               </tfoot>
             </table>

@@ -116,6 +116,9 @@ class marks_yr1(models.Model):
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
 
+    def __str__(self):
+        return self.unit_or_subject_name
+
 class marks_yr2(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
@@ -126,6 +129,10 @@ class marks_yr2(models.Model):
     date_created = models.DateTimeField(
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+    def __str__(self):
+        return self.unit_or_subject_name
+
 
 class marks_yr3(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
@@ -138,6 +145,9 @@ class marks_yr3(models.Model):
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
 
+    def __str__(self):
+        return self.unit_or_subject_name
+
 class marks_yr4(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
@@ -148,6 +158,9 @@ class marks_yr4(models.Model):
     date_created = models.DateTimeField(
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+    def __str__(self):
+        return self.unit_or_subject_name
 
 class marks_yr5(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
@@ -160,6 +173,9 @@ class marks_yr5(models.Model):
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
 
+    def __str__(self):
+        return self.unit_or_subject_name
+
 class marks_yr6(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
@@ -170,6 +186,9 @@ class marks_yr6(models.Model):
     date_created = models.DateTimeField(
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+    def __str__(self):
+        return self.unit_or_subject_name
 
 class marks_yr7(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
@@ -182,6 +201,9 @@ class marks_yr7(models.Model):
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
 
+    def __str__(self):
+        return self.unit_or_subject_name
+
 class fee_payment(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
@@ -193,6 +215,7 @@ class fee_payment(models.Model):
     date_paid = models.DateTimeField(
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
 
 class FeeReceipt(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)

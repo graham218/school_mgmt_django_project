@@ -31,7 +31,7 @@
                   <td>{{forloop.counter}}</td>
                   <td>{{instance.stage}}</td>
                   <td>{{instance.unit_or_subject_name}}</td>
-                  <td><a class="fa fa-delete" href="{% url 'school:unregister_unit1' instance.id%}">Unregister
+                  <td><a class="fa fa-trash" href="{% url 'school:unregister_unit1' instance.id%}">Unregister
                     Unit</a></td>
                 </tr>
                 {% endfor %}

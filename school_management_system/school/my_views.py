@@ -78,7 +78,7 @@ def unit_registration(request):
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
-        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
+        instance.full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
         instance.stage=form.cleaned_data['stage']
         instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
         instance.save()
@@ -117,13 +117,14 @@ def insert_marks(request, pk):
     if request.method == "POST":
         form = MarksForm(request.POST or None, instance=queryset)
         form.save()
+        messages.success(request, str(queryset.unit_or_subject_name)+' '+"Marks & Grade Of "+str(queryset.full_name)+' Have Been Updated Successfully')
         return redirect("/school/list_registered_units1/")
     context = {
         "title": title,
         "button": button,
         "form": form
     }
-    return render(request, "units/update_marks.html", context)
+    return render(request, "units/update-marks.html", context)
 
 def list_registered_units1(request):
     title = 'List of Registered Students'
@@ -153,7 +154,7 @@ def unit_registration2(request):
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
-        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
+        instance.full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
         instance.stage=form.cleaned_data['stage']
         instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
         instance.save()
@@ -193,13 +194,14 @@ def insert_marks2(request, pk):
     if request.method == "POST":
         form = MarksForm2(request.POST or None, instance=queryset)
         form.save()
+        messages.success(request, str(queryset.unit_or_subject_name)+' '+"Marks & Grade Of "+str(queryset.full_name)+' Have Been Updated Successfully')
         return redirect("/school/list_registered_units2/")
     context = {
         "title": title,
         "button": button,
         "form": form
     }
-    return render(request, "units/update_marks.html", context)
+    return render(request, "units/update-marks.html", context)
 
 
 def list_registered_units2(request):
@@ -231,7 +233,7 @@ def unit_registration3(request):
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
-        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
+        instance.full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
         instance.stage=form.cleaned_data['stage']
         instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
         instance.save()
@@ -270,13 +272,14 @@ def insert_marks3(request, pk):
     if request.method == "POST":
         form = MarksForm3(request.POST or None, instance=queryset)
         form.save()
+        messages.success(request, str(queryset.unit_or_subject_name)+' '+"Marks & Grade Of "+str(queryset.full_name)+' Have Been Updated Successfully')
         return redirect("/school/list_registered_units3/")
     context = {
         "title": title,
         "button": button,
         "form": form
     }
-    return render(request, "units/update_marks.html", context)
+    return render(request, "units/update-marks.html", context)
 
 
 def list_registered_units3(request):
@@ -307,7 +310,7 @@ def unit_registration4(request):
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
-        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
+        instance.full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
         instance.stage=form.cleaned_data['stage']
         instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
         instance.save()
@@ -346,13 +349,14 @@ def insert_marks4(request, pk):
     if request.method == "POST":
         form = MarksForm4(request.POST or None, instance=queryset)
         form.save()
+        messages.success(request, str(queryset.unit_or_subject_name)+' '+"Marks & Grade Of "+str(queryset.full_name)+' Have Been Updated Successfully')
         return redirect("/school/list_registered_units4/")
     context = {
         "title": title,
         "button": button,
         "form": form
     }
-    return render(request, "units/update_marks.html", context)
+    return render(request, "units/update-marks.html", context)
 
 
 def list_registered_units4(request):
@@ -383,7 +387,7 @@ def unit_registration5(request):
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
-        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
+        instance.full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
         instance.stage=form.cleaned_data['stage']
         instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
         instance.save()
@@ -421,13 +425,14 @@ def insert_marks5(request, pk):
     if request.method == "POST":
         form = MarksForm5(request.POST or None, instance=queryset)
         form.save()
+        messages.success(request, str(queryset.unit_or_subject_name)+' '+"Marks & Grade Of "+str(queryset.full_name)+' Have Been Updated Successfully')
         return redirect("/school/list_registered_units5/")
     context = {
         "title": title,
         "button": button,
         "form": form
     }
-    return render(request, "units/update_marks.html", context)
+    return render(request, "units/update-marks.html", context)
 
 
 def list_registered_units5(request):
@@ -458,7 +463,7 @@ def unit_registration6(request):
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
-        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
+        instance.full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
         instance.stage=form.cleaned_data['stage']
         instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
         instance.save()
@@ -497,13 +502,14 @@ def insert_marks6(request, pk):
     if request.method == "POST":
         form = MarksForm6(request.POST or None, instance=queryset)
         form.save()
+        messages.success(request, str(queryset.unit_or_subject_name)+' '+"Marks & Grade Of "+str(queryset.full_name)+' Have Been Updated Successfully')
         return redirect("school/list_registered_units6/")
     context = {
         "title": title,
         "button": button,
         "form": form
     }
-    return render(request, "units/update_marks.html", context)
+    return render(request, "units/update-marks.html", context)
 
 
 def list_registered_units6(request):
@@ -534,7 +540,7 @@ def unit_registration7(request):
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
-        instance.full_name=request.user.first_name+' '+str(request.user.last_name)
+        instance.full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
         instance.stage=form.cleaned_data['stage']
         instance.unit_or_subject_name=form.cleaned_data['unit_or_subject_name']
         instance.save()
@@ -573,13 +579,14 @@ def insert_marks7(request, pk):
     if request.method == "POST":
         form = MarksForm7(request.POST or None, instance=queryset)
         form.save()
+        messages.success(request, str(queryset.unit_or_subject_name)+' '+"Marks & Grade Of "+str(queryset.full_name)+' Have Been Updated Successfully')
         return redirect("/school/list_registered_units7/")
     context = {
         "title": title,
         "button": button,
         "form": form
     }
-    return render(request, "units/update_marks.html", context)
+    return render(request, "units/update-marks.html", context)
 
 
 def list_registered_units7(request):
