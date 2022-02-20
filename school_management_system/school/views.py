@@ -7,14 +7,10 @@ from django.shortcuts import render, redirect
 from .forms import *
 from .models import *
 from django.http import HttpResponse
-import csv
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-#
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
-#from django.contrib.auth.forms import PasswordResetForm
-# from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -137,9 +133,8 @@ def CreateAccountStudentsView(request):
         messages.success(
             request, "Congratulations! Registration Successful, you can now log in!")
         form.save()
-    # else:
-    #     messages.error(request, "An Error occured while trying to create your new account!!!")
-    #     messages.success(request, "Please check if the passwords match correctly or meet the minimum requirements")
+        # messages.error(request, "An Error occured while trying to create your new account!!!")
+        # messages.info(request, "Please check if the passwords match correctly or meet the minimum requirements")
         return redirect('/accounts/login/')
     return render(request, 'account/register.html', {'form': form})
 
@@ -208,7 +203,7 @@ def AddStudentsProfile(request):
                        postal_address=postal_address,total_fees_billed=total_fees_billed, total_fees_paid=total_fees_paid, balance=balance)
         reg.save()
         messages.success(request, "Profile Added Successfully")
-        messages.success(request, "You Can Now Be Able To Access Services Offered To Students")
+        messages.info(request, "You Can Now Be Able To Access Services Offered To Students")
         return redirect("/")
     context = {
         "title": title,
@@ -276,7 +271,7 @@ def AddLecturerProfile(request):
                        total_salary_paid=total_salary_paid,balance=balance)
         reg.save()
         messages.success(request, "Profile Added Successfully")
-        messages.success(request, "You Can Now Be Able to access Services Offered To Lecturers")
+        messages.info(request, "You Can Now Be Able to access Services Offered To Lecturers")
         return redirect("/")
     context = {
         "title": title,
@@ -414,7 +409,7 @@ def DeleteGender(request, pk):
     title = "Delete Gender"
     if request.method == "POST":
         queryset.delete()
-        messages.success(request, "Gender Deleted Successfully")
+        messages.error(request, "Gender Deleted Successfully")
         return redirect('/school/list-gender')
     context = {
         "title": title
@@ -465,7 +460,7 @@ def DeleteProgramme(request, pk):
     title = "Delete Programme"
     if request.method == "POST":
         queryset.delete()
-        messages.success(request, "Programme Deleted Successfully")
+        messages.error(request, "Programme Deleted Successfully")
         return redirect('/school/list-programme')
     context = {
         "title": title
@@ -516,7 +511,7 @@ def DeleteStage(request, pk):
     title = "Delete Stage"
     if request.method == "POST":
         queryset.delete()
-        messages.success(request, "Stage Deleted Successfully")
+        messages.error(request, "Stage Deleted Successfully")
         return redirect('/school/list-stage')
     context = {
         "title": title
@@ -567,7 +562,7 @@ def DeleteUnit(request, pk):
     title = "Delete Unit"
     if request.method == "POST":
         queryset.delete()
-        messages.success(request, "Unit Deleted Successfully")
+        messages.error(request, "Unit Deleted Successfully")
         return redirect('/school/list-unit')
     context = {
         "title": title
