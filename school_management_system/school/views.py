@@ -244,7 +244,7 @@ def DeleteStudent(request, pk):
     title = "Delete Student"
     if request.method == "POST":
         queryset.delete()
-        messages.success(request, "Student Deleted Successfully")
+        messages.error(request, "Student Deleted Successfully")
         return redirect("/school/all_students")
     context = {
         "title": title
@@ -292,7 +292,7 @@ def DeleteLecturer(request, pk):
     title = "Delete Lecturer"
     if request.method == "POST":
         queryset.delete()
-        messages.success(request, "Lecturer Deleted Successfully")
+        messages.error(request, "Lecturer Deleted Successfully")
         return redirect("/school/all_lecturers")
     context = {
         "title": title
@@ -363,7 +363,7 @@ def DeleteFaculty(request, pk):
     title = "Delete Faculty"
     if request.method == "POST":
         queryset.delete()
-        messages.success(request, "Faculty Deleted Successfully")
+        messages.error(request, "Faculty Deleted Successfully")
         return redirect('/school/list-faculty')
     context = {
         "title": title
