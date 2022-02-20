@@ -45,12 +45,10 @@ class SpecialExamMarksForm(forms.ModelForm):
 class LecturerUnitsForm(forms.ModelForm):
     class Meta:
         model=LecturerUnits
-        fields=['full_name','unit_name','level_of_understanding']
-        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
-        'stage': forms.Select(attrs={'class': 'form-control'}),
+        fields=['unit_name','level_of_understanding']
+        widgets={'stage': forms.Select(attrs={'class': 'form-control'}),
         'unit_name': forms.Select(attrs={'class': 'form-control'}),
-        'level_of_understanding': forms.Textarea(attrs={'class': 'form-control'}),
-        'grade': forms.TextInput(attrs={'class': 'form-control'})}
+        'level_of_understanding': forms.Textarea(attrs={'class': 'form-control'})}
 
 class NoticeBoardForm(forms.ModelForm):
     class Meta:

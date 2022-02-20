@@ -90,7 +90,7 @@ urlpatterns = [
     path('delete_special_exams/<str:pk>', views2.delete_special_exams, name='delete_special_exams'),
     path('SpecialExamList/', views2.SpecialExamList, name='SpecialExamList'),
     
-    path('lecturer_units/', views2.lecturer_units, name='lecturer_units'),
+    path('create_edit_lecturer_units/', views2.add_lecturer_units, name='create_edit_lecturer_units'),
     path('lecturer_units_edit/<str:pk>', views2.lecturer_units_edit, name='lecturer_units_edit'),
     path('lecturer_units_delete/<str:pk>', views2.lecturer_units_delete, name='lecturer_units_delete'),
     path('ListAllLecturerUnits/', views2.ListAllLecturerUnits, name='ListAllLecturerUnits'),

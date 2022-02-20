@@ -109,18 +109,16 @@ def SpecialExamList(request):
 
 
 @login_required
-def lecturer_units(request):
+def add_lecturer_units(request):
     title = "Add Units"
     button = "Add Unit"
     form = LecturerUnitsForm(request.POST or None)
     if form.is_valid():
-        instance = form.save(commit=False)
-        instance.user = request.user
-        instance.full_name = request.user.first_name + \
-            ' '+str(request.user.last_name)
-        instance.unit_name = form.cleaned_data['unit_name']
-        instance.level_of_understanding = form.cleaned_data['level_of_understanding']
-        instance.save()
+        user = request.user
+        full_name = request.user.first_name+' '+str(request.user.last_name)
+        unit_name = form.cleaned_data['unit_name']
+        level_of_understanding = form.cleaned_data['level_of_understanding']
+        LecturerUnits.save(user=user,full_name=full_name,level_of_understanding=level_of_understanding)
         messages.success(request, "Unit Registered Successfully")
         return HttpResponseRedirect("/school/lecturer_units")
     context = {
@@ -128,7 +126,7 @@ def lecturer_units(request):
         "form": form,
         "button": button,
     }
-    return render(request, "next/lecturer_units.html", context)
+    return render(request, "next/create_edit_lecturer_units.html", context)
 
 
 @login_required
