@@ -29,9 +29,8 @@ class FeeReceiptForm(forms.ModelForm):
 class SpecialExamRegisterForm(forms.ModelForm):
     class Meta:
         model=SpecialExam
-        fields=['full_name','stage','unit_name']
-        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
-        'stage': forms.Select(attrs={'class': 'form-control'}),
+        fields=['stage','unit_name']
+        widgets={'stage': forms.Select(attrs={'class': 'form-control'}),
         'unit_name': forms.Select(attrs={'class': 'form-control'})}
 
 class SpecialExamMarksForm(forms.ModelForm):
@@ -48,7 +47,7 @@ class LecturerUnitsForm(forms.ModelForm):
         fields=['unit_name','level_of_understanding']
         widgets={'stage': forms.Select(attrs={'class': 'form-control'}),
         'unit_name': forms.Select(attrs={'class': 'form-control'}),
-        'level_of_understanding': forms.Textarea(attrs={'class': 'form-control'})}
+        'level_of_understanding': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Professional, Advanced'})}
 
 class NoticeBoardForm(forms.ModelForm):
     class Meta:

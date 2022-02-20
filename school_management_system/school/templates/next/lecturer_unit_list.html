@@ -37,9 +37,11 @@
                   <td>{{instance.full_name}}</td>
                   <td>{{instance.unit_name}}</td>
                   <td>{{instance.level_of_understanding}}</td>
+                  <td>{{instance.created_at}}</td>
+                  <td>{{instance.updated_at}}</td>
                   <td><a class="fa fa-edit"
                       href="{% url 'school:lecturer_units_edit' instance.id%}">Update</a></td>
-                  <td><a class="fa fa-delete"
+                  <td><a class="fa fa-trash"
                       href="{% url 'school:lecturer_units_delete' instance.id%}">Delete</a></td>
                 </tr>
                 {% endfor %}

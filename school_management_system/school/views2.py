@@ -35,13 +35,11 @@ def register_special_exams(request):
     button = "Register Unit"
     form = SpecialExamRegisterForm(request.POST or None)
     if form.is_valid():
-        instance = form.save(commit=False)
-        instance.user = request.user
-        instance.full_name = request.user.first_name + \
-            ' '+str(request.user.last_name)
-        instance.stage = form.cleaned_data['stage']
-        instance.unit_name = form.cleaned_data['unit_name']
-        instance.save()
+        user = request.user
+        full_name = request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
+        stage = form.cleaned_data['stage']
+        unit_name = form.cleaned_data['unit_name']
+        reg=SpecialExam(user=user,full_name=full_name,stage=stage, unit_name=unit_name)
         messages.success(request, "Unit Registered Successfully")
         return HttpResponseRedirect("/school/my_special_exams")
     context = {
@@ -114,13 +112,14 @@ def add_lecturer_units(request):
     button = "Add Unit"
     form = LecturerUnitsForm(request.POST or None)
     if form.is_valid():
-        user = request.user
-        full_name = request.user.first_name+' '+str(request.user.last_name)
+        username = request.user
+        full_name = request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
         unit_name = form.cleaned_data['unit_name']
         level_of_understanding = form.cleaned_data['level_of_understanding']
-        LecturerUnits.save(user=user,full_name=full_name,level_of_understanding=level_of_understanding)
+        reg=LecturerUnits(unit_name=unit_name,username=username,full_name=full_name,level_of_understanding=level_of_understanding)
+        reg.save()
         messages.success(request, "Unit Registered Successfully")
-        return HttpResponseRedirect("/school/lecturer_units")
+        return HttpResponseRedirect("/school/ListAllLecturerUnits")
     context = {
         "title": title,
         "form": form,
