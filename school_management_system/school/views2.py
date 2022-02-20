@@ -30,6 +30,14 @@ def unit_year_page(request):
     return render(request, "units/year_page.html", context)
 
 @login_required
+def resit_year_page(request):
+    title="Choose Your Year Of Study"
+    context={
+        "title":title
+    }
+    return render(request, "units/pages/resit_year_page.html", context)
+
+@login_required
 def register_special_exams(request):
     title = "Register For Special Exams"
     button = "Register Unit"
