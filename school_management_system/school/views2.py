@@ -39,7 +39,7 @@ def unit_year_page_marks(request):
 
 @login_required
 def resit_year_page(request):
-    title="Choose Your Year Of Study To Register Resits/Retakes/Special Examx"
+    title="Choose Your Year Of Study To Register Resits/Retakes/Special Exams"
     context={
         "title":title
     }

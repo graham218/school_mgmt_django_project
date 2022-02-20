@@ -115,15 +115,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/" class="nav-link">
+                <a href="{% url 'school:resit_year_page' %}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Register Resits</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Register Special Exams</p>
+                  <p>Register Resits & Special Exams</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -355,14 +349,24 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/" class="nav-link">
+                <a href="{% url 'school:unit_year_page_marks' %}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                    Students' Marks
+                    Examination Marks
                   </p>
                 </a>
                 </ul>
               </li>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{% url 'school:resit_year_page_marks' %}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Resit/Retake Marks
+                    </p>
+                  </a>
+                  </ul>
+                </li>
           </li>
           {% endif %}
           {% if request.user.is_admin %}
