@@ -114,6 +114,9 @@ urlpatterns = [
     path('list_suggestions/', views2.list_suggestions, name='list_suggestions'),
 
     path('unit_year_page/', views2.unit_year_page, name='unit_year_page'),
+    path('unit_year_page_marks/', views2.unit_year_page_marks, name='unit_year_page_marks'),
+    path('resit_year_page/', views2.resit_year_page, name='resit_year_page'),
+    path('resit_year_page_marks/', views2.resit_year_page_marks, name='resit_year_page_marks'),
 
     # admin pages
     path('all_users/', views.all_users, name='all_users'),

@@ -30,12 +30,28 @@ def unit_year_page(request):
     return render(request, "units/year_page.html", context)
 
 @login_required
-def resit_year_page(request):
+def unit_year_page_marks(request):
     title="Choose Your Year Of Study"
     context={
         "title":title
     }
+    return render(request, "units/year_page_marks.html", context)
+
+@login_required
+def resit_year_page(request):
+    title="Choose Your Year Of Study To Register Resits/Retakes/Special Examx"
+    context={
+        "title":title
+    }
     return render(request, "units/pages/resit_year_page.html", context)
+
+@login_required
+def resit_year_page_marks(request):
+    title="Choose Year Of Study To Enter Marks And Grades"
+    context={
+        "title":title
+    }
+    return render(request, "units/pages/resit_year_page_marks.html", context)
 
 @login_required
 def register_special_exams(request):
