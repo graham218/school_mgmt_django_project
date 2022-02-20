@@ -61,8 +61,8 @@ def home(request):
     lec_queryset=Lectures.objects.filter(user=request.user)
     total_users=User.objects.all().count()
     # total_ghost_users=User.objects.filter(is_admin=False,is_student=False,is_lecturer=False,is_non_sfaff=False,is_supplier=False).count()
-    total_students=Students.objects.all().count()
-    total_lecturers=Lectures.objects.all().count()
+    total_students=User.objects.filter(is_student=True).count()
+    total_lecturers=User.objects.filter(is_lecturer=True).count()
     context = {
         "title": title,
         "students_title": students_title,
