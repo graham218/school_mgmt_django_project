@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django_countries',
     'custom_user',
     'crispy_forms',
-    'ckeditor'
+    'ckeditor',
+    'mptt'
 ]
 AUTH_USER_MODEL = 'custom_user.User'
 
