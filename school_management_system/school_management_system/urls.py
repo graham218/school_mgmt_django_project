@@ -22,12 +22,14 @@ from django.contrib.auth import views as auth_views
 
 from django.conf import settings
 from django.conf.urls.static import static
+from mpesa.urls import mpesa_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('school/', include('school.urls')),
     # path('api/v1/', include('mpesa_api.urls')),
+    path('mpesa/', include(mpesa_urls)),
 
     #paypal urls
     #url('paypal/', include('paypal.standard.ipn.urls')),
