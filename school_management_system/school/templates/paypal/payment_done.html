@@ -1,0 +1,39 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment Accepted</title>
+  {% include '../scripts/login-head.html' %}
+</head>
+<body class="hold-transition login-page" style="background-image: url('{% static "images/kaidi-guo-jGlqOzrhn9k-unsplash.jpg" %}');" id="bg">
+  <br><br><br><br><br><br><br>
+  <div class="container">
+    <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-center">
+          <h1>Fee Payment Received</h1>
+        </div>
+        <div class="text-center">
+          <h3>Your Fee Payment Process has been Accepted Successfully, You Can Now Go and Confirm Your Fee Balance On Your User Profile</h3>
+        </div>
+        <div class="text-center">
+          Thank you for using our services
+        </div>
+        
+        <div class="text-center md 4">
+          Go to Home Page<a class="btn btn-primary" href="{% url 'home' %}"> Home</a>
+        </div>
+        
+      </div>
+    </div>
+
+    </div>       
+  </div>
+
+{% include '../scripts/login-js.html' %}
+</body>
+</html>

@@ -7,10 +7,6 @@ import csv
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from django.conf import settings
-from django.urls import reverse
-from paypal.standard.forms import PayPalPaymentsForm
-
 
 @login_required
 def EditStudentsProfile(request, pk):
@@ -52,22 +48,6 @@ def EditLecturerProfile(request, pk):
     return render(request, 'school/create-edit-lecturers.html', context)
 
 # paypal payment view
-
-
-def payment_process(request):
-    host = request.get_host()
-    paypal_dict = {
-        'business': settings.PAYPAL_RECEIVER_EMAIL,
-        'amount': '100',
-        'item_name': 'Item_Name_xyz',
-        'invoice': 'Test Payment Invoice',
-        'currency_code': 'USD',
-        'notify_myurl': 'http://{}{}'.format(host, reverse('paypal-ipn')),
-        'return_myurl': 'http://{}{}'.format(host, reverse('payment_done')),
-        'cancel_return': 'http://{}{}'.format(host, reverse('payment_canceled')),
-    }
-    form = PayPalPaymentsForm(initial=paypal_dict)
-    return render(request, 'pets/payment_process.html', {'form': form})
 
 
 @login_required

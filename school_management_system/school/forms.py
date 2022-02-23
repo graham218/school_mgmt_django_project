@@ -407,3 +407,9 @@ class MarksForm7(forms.ModelForm):
             'grade': forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'Enter Unit Grade'})}
 #==========================================================================================
+class PayFeesPayPalForm(forms.ModelForm):
+    class Meta:
+        model=fee_payment
+        fields=['amount_paid']
+        widgets = {'amount_paid': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter Amount In US Dollars'})}

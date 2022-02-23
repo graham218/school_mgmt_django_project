@@ -1,5 +1,5 @@
 from django.urls import path
-from .import views, my_views, views2
+from .import views, my_views, views2, paypal_views
 
 app_name='school'
 
@@ -129,5 +129,11 @@ urlpatterns = [
     # public notices
     path('compose_notices/', views2.compose_notices, name='compose_notices'),
     path('all_public_notices/', views2.all_public_notices, name='all_public_notices'),
-    path('read_public_notices/', views2.read_public_notices, name='read_public_notices')
+    path('read_public_notices/', views2.read_public_notices, name='read_public_notices'),
+
+    # paypal
+    path('send_payment/', paypal_views.send_payment, name='send_payment'),
+    path('process-payment/', paypal_views.process_payment, name='process_payment'),
+    path('payment-done/', paypal_views.payment_done, name='payment_done'),
+    path('payment-cancelled/', paypal_views.payment_canceled, name='payment_cancelled')
 ]

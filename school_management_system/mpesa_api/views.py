@@ -26,8 +26,8 @@ def getAccessToken(request):
 @loginRequired
 def lipa_na_mpesa_online(request):
     paybill = LipanaMpesaPassword.Business_short_code
-    if request.method == 'POST' and request.POST['mpesa_number']:
-        fee_payment_id = request.POST['fee_payment_id']
+    if request.method == 'POST':
+        account_no = request.POST['admission_no']
         mpesa_number = request.POST['mpesa_number']
         amount = request.POST['amount']
         if len(mpesa_number) == 12 and int(mpesa_number[0:3]) == 254:
@@ -35,32 +35,27 @@ def lipa_na_mpesa_online(request):
             api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
             headers = {"Authorization": "Bearer %s" % access_token}
             request = {
-                "BusinessShortCode": 174379,
+                "BusinessShortCode": LipanaMpesaPassword.Business_short_code,
                 "Password": LipanaMpesaPassword.decode_password,
                 "Timestamp": LipanaMpesaPassword.lipa_time,
                 "TransactionType": "CustomerPayBillOnline",
-                "Amount": 1,
-                "PartyA": 254790613916,
-                "PartyB": 174379,
-                "PhoneNumber": int(mpesa_number),
-                "CallBackURL": "https://4e28-41-89-192-24.ngrok.io/api/c2b/callback/",
-                "AccountReference": "Ref01",
-                "TransactionDesc": "Testing STK Push"
+                "Amount": int(amount),
+                "PartyA": mpesa_number,
+                "PartyB": LipanaMpesaPassword.Business_short_code,
+                "PhoneNumber": mpesa_number,
+                "CallBackURL": "https://4e28-41-89-192-24.ngrok.io/api/v1/c2b/callback/",
+                "AccountReference": account_no,
+                "TransactionDesc": "Pay School Fee"
             }
             response = requests.post(api_url, json=request, headers=headers)
             print(response.json())
             messages.success(
                 request, "Fee Payment made, waiting for confirmation from the callback url")
-            return redirect('/', fee_payment_id=fee_payment_id)
+            return redirect('/')
         else:
-            paying = get_object_or_404(fee_payment, id=fee_payment_id)
-            context = {
-                'paying': paying,
-                'alert_message': 'invalid Phone number'
-            }
             messages.error(request, "Invalid phone number, please try again with a valid phone number")
-            return render(request, 'payment/error_page.html', context)
-    return redirect('payment/fee_payment')
+            return redirect("/")
+    return render(request, 'fee_payment.html', context)
 
 
 @csrf_exempt

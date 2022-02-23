@@ -29,13 +29,9 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('school/', include('school.urls')),
     # path('api/v1/', include('mpesa_api.urls')),
-    path('mpesa/', include(mpesa_urls)),
 
-    #paypal urls
-    #url('paypal/', include('paypal.standard.ipn.urls')),
-    #url('payment_process/', my_views.payment_process, name='payment_process' ),
-    #url('payment_done/', TemplateView.as_view(template_name= "pets/payment_done.html"), name='payment_done'),
-    #url('payment_canceled/', TemplateView.as_view(template_name= "pets/payment_canceled.html"), name='payment_canceled'),
+    # paypal
+    path('paypal/', include('paypal.standard.ipn.urls')),
 
     # URL for Authentication
     path('accounts/register_students/', views.CreateAccountStudentsView, name="register_students"),

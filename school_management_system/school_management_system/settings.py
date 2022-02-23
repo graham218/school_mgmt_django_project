@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-2om%0cbnd_-b7^fm83p9!qbhf1js7vega-!v)aw=i-50s3h5x)
 DEBUG = True
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['https://django-school-mis-lte.herokuapp.com/','https://03fc-41-89-192-24.ngrok.io/', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'school',
     'mpesa',
     # 'mpesa_api',
-    #'paypal.standard.ipn',
+    'paypal.standard.ipn',
     'django_countries',
     'custom_user',
     'crispy_forms',
@@ -136,21 +136,11 @@ MEDIA_URL = '/images/'
 MEDIA_ROOT = BASE_DIR / 'static/images'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-PAYPAL_RECEIVER_EMAIL = 'XXXXX'
+# paypal
+PAYPAL_RECEIVER_EMAIL = 'sb-id8jr11652615@business.example.com'
 PAYPAL_TEST = True
-
-#Email details
-#EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
-#EMAIL_HOST = 'smtp.gmail.com'
-#EMAIL_HOST_USER = ' ' #your email-id
-#EMAIL_HOST_PASSWORD = ' ' #your password
-#EMAIL_PORT = 587
-#EMAIL_USE_TLS = True
-#EMAIL_USE_SSL = False
 
 EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = 'localhost'
@@ -167,13 +157,3 @@ CRISPY_TEMPLATE_PACK = 'uni_form'
 django_heroku.settings(locals())
 
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
-
-
-MPESA_CONFIG = {
-    'CONSUMER_KEY':'2A8EUTy82YQuir2G7umw1ufjFDzPPQA3',
-    'CONSUMER_SECRET':'EcRKxxFPvyKWBGQW',
-    'HOST_NAME':'https://03fc-41-89-192-24.ngrok.io/',
-    'PASS_KEY':'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919',
-    'SAFARICOM_API':'https://sandbox.safaricom.co.ke',
-    'SHORT_CODE':'174379',
-}

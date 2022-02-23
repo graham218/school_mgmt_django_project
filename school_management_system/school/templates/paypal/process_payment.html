@@ -1,0 +1,13 @@
+{% extends 'index2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <h2 style="text-align: center;">Pay Fee In US Dollars</h2>
+    {{form.render}}
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+{% endblock content %}
