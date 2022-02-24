@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import requests
 from requests.auth import HTTPBasicAuth
 import json
@@ -9,6 +9,8 @@ from .models import *
 from school.models import *
 from school_management_system.utils import accountNumberToPk
 from django.contrib import messages
+from .forms import MpesaForm
+from django.contrib.auth.decorators import login_required
 
 
 def getAccessToken(request):
@@ -22,9 +24,10 @@ def getAccessToken(request):
     pass
 
 
-@loginRequired
+@login_required
 def lipa_na_mpesa_online(request):
     paybill = LipanaMpesaPassword.Business_short_code
+    form=MpesaForm(request.POST or None)
     if request.method == 'POST':
         account_no = request.user
         mpesa_number = request.POST['mpesa_number']
@@ -42,18 +45,20 @@ def lipa_na_mpesa_online(request):
                 "PartyA": mpesa_number,
                 "PartyB": LipanaMpesaPassword.Business_short_code,
                 "PhoneNumber": mpesa_number,
-                "CallBackURL": "https://4e28-41-89-192-24.ngrok.io/api/v1/c2b/confirmation/",
-                "AccountReference": account_no,
+                "CallBackURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/call_back/",
+                "AccountReference": str(account_no),
                 "TransactionDesc": "Pay School Fee"
             }
             response = requests.post(api_url, json=request, headers=headers)
-            print(response.json())
-            messages.success(
-                request, "Fee Payment made, waiting for confirmation from the callback url")
-            return redirect('/api/v1/c2b/confirmation')
+            # messages.success(
+            #     request, "Fee Payment made, waiting for confirmation from the callback url")
+            return redirect('/api/v1/c2b/lipa_na_mpesa_online')
         else:
             messages.error(request, "Invalid phone number, please try again with a valid phone number")
             return redirect("/api/v1/c2b/lipa_na_mpesa_online")
+    context={
+        "form":form
+    }
     return render(request, 'fee_payment.html', context)
 
 
@@ -64,8 +69,8 @@ def register_urls(request):
     headers = {"Authorization": "Bearer %s" % access_token}
     options = {"ShortCode": LipanaMpesaPassword.Business_short_code,
                "ResponseType": "Completed",
-               "ConfirmationURL": "https://4e28-41-89-192-24.ngrok.io/api/v1/c2b/confirmation",
-               "ValidationURL": "https://4e28-41-89-192-24.ngrok.io/api/v1/c2b/validation"}
+               "ConfirmationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/confirmation",
+               "ValidationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/validation"}
     response = requests.post(api_url, json=options, headers=headers)
     return HttpResponse(response.text)
 
@@ -138,7 +143,7 @@ def confirmation(request):
 
 
 @csrf_exempt
-@loginRequired
+@login_required
 def simulate_payment(request):
     if request.is_ajax():
         paying_fee = get_object_or_404(fee_payment, id=request.POST['fee_payment_id'])
