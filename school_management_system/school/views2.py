@@ -466,3 +466,22 @@ def list_suggestions(request):
         "queryset": queryset,
     }
     return render(request, "next/list_suggestions.html", context)
+
+def send_notice(request):
+    title="Compose New Notice And Send"
+    form=NoticeBoardForm(request.POST or None)
+    if form.is_valid():
+        full_name=request.user.first_name+" "+request.user.middle_name+" "+request.user.last_name
+        written_by=request.user
+        group=form.cleaned_data['group']
+        signature=form.cleaned_data['signature']
+        notice=form.cleaned_data['notice']
+        reg=NoticeBoard(full_name=full_name, written_by=written_by,group=group,signature=signature, notice=notice)
+        reg.save()
+        messages.success(request, "Notice Published Successfully on the Notice Board")
+        return redirect("/")
+    context={
+        "form":form,
+        "title":title
+    }
+    return render(request, "notifications/compose_notice.html", context)
