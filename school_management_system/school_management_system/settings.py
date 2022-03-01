@@ -41,13 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'school',
     'mpesa',
-    'mpesa_api',
+    # 'mpesa_api',
     'paypal.standard.ipn',
     'django_countries',
     'custom_user',
     'crispy_forms',
     'ckeditor',
-    'mptt'
+    'ckeditor_uploader',
+    'mptt',
 ]
 AUTH_USER_MODEL = 'custom_user.User'
 
@@ -156,4 +157,22 @@ CRISPY_TEMPLATE_PACK = 'uni_form'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATIC_ROOT = BASE_DIR / 'static/files'
+
+#...
+SITE_ID = 1
+
+####################################
+    ##  CKEDITOR CONFIGURATION ##
+####################################
+
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    },
+}

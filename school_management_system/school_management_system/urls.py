@@ -28,7 +28,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('school/', include('school.urls')),
-    path('api/v1/', include('mpesa_api.urls')),
+    # path('api/v1/', include('mpesa_api.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 
     # paypal
     path('paypal/', include('paypal.standard.ipn.urls')),
