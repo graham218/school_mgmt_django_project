@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, User
 from django.utils.translation import gettext, gettext_lazy as _
 from django.forms.widgets import DateInput
 from django_countries.fields import CountryField
-from ckeditor.widgets import CKEditorWidget
+# from ckeditor.widgets import CKEditorWidget
 
 class FeeReceiptForm(forms.ModelForm):
     class Meta:
@@ -51,13 +51,13 @@ class LecturerUnitsForm(forms.ModelForm):
         'level_of_understanding': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Professional, Advanced'})}
 
 class NoticeBoardForm(forms.ModelForm):
-    notice=forms.CharField(widget=CKEditorWidget())
+    # notice=forms.CharField(widget=CKEditorWidget())
     class Meta:
         model=NoticeBoard
         fields=['full_name','notice','signature']
         widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
         'stage': forms.Select(attrs={'class': 'form-control'}),
-        # 'notice': forms.Textarea(attrs={'class': 'form-control'}),
+        'notice': forms.Textarea(attrs={'class': 'form-control'}),
         'signature': forms.TextInput(attrs={'class': 'form-control'})}
 
 class VotingForm(forms.ModelForm):
@@ -70,13 +70,13 @@ class VotingForm(forms.ModelForm):
         'seat': forms.Select(attrs={'class': 'form-control'})}
 
 class SuggestionBoxForm(forms.ModelForm):
-    suggestion=forms.CharField(widget=CKEditorWidget())
+    # suggestion=forms.CharField(widget=CKEditorWidget())
     class Meta:
         model=SuggestionBox
         fields=['full_name','suggestion']
         widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
         'stage': forms.Select(attrs={'class': 'form-control'}),
-        # 'suggestion': forms.TextInput(attrs={'class': 'form-control'})
+        'suggestion': forms.TextInput(attrs={'class': 'form-control'})
         }
 
 class SeatsForm(forms.ModelForm):

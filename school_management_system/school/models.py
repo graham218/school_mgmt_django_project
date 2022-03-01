@@ -1,5 +1,5 @@
 from django.db import models
-from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth import get_user_model
 User=get_user_model()
 
@@ -277,7 +277,7 @@ class NoticeBoard(models.Model):
     written_by = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
     group=models.CharField(max_length=255, blank=False, choices=NOTICE_CATEGORY, default="PUBLIC")
-    notice = RichTextField()
+    notice = RichTextUploadingField(default="")
     signature = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(
         null=True, blank=True, auto_now_add=True, editable=True)
@@ -303,7 +303,7 @@ class Voting(models.Model):
 class SuggestionBox(models.Model):
     written_by = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
-    suggestion = RichTextField()
+    suggestion = RichTextUploadingField(default='')
     check=models.BooleanField(default=False, blank=True)
     status=models.CharField(max_length=500, blank=True, null=True)
     created_at = models.DateTimeField(
