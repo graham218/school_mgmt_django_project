@@ -69,18 +69,17 @@ def register_urls(request):
     headers = {"Authorization": "Bearer %s" % access_token}
     options = {"ShortCode": LipanaMpesaPassword.Business_short_code,
                "ResponseType": "Completed",
-               "ConfirmationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/confirmation",
+               "ConfirmationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/call_back",
                "ValidationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/validation"}
     response = requests.post(api_url, json=options, headers=headers)
     return HttpResponse(response.text)
-
+# "ValidationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/validation",
 
 @csrf_exempt
 def call_back(request):
-    json_data = request.body.decode('utf-8')
-    loaded_data = json.loads(json_data)
-    print(loaded_data)
-    return JsonResponse(loaded_data)
+    url="https://django-school-mis-lte.herokuapp.com/api/v1/c2b/call_back/"
+    json_data = requests.get(url).json()
+    return HttpResponse(json_data)
 
 
 @csrf_exempt
