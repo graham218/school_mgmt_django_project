@@ -477,10 +477,11 @@ def send_notice(request):
         group=form.cleaned_data['group']
         signature=form.cleaned_data['signature']
         notice=form.cleaned_data['notice']
-        reg=NoticeBoard(full_name=full_name, written_by=written_by,group=group,signature=signature, notice=notice)
+        notice_title=form.cleaned_data['notice_title']
+        reg=NoticeBoard(full_name=full_name, written_by=written_by,group=group,signature=signature, notice=notice, notice_title=notice_title)
         reg.save()
         messages.success(request, "Notice Published Successfully on the Notice Board")
-        return redirect("/")
+        return redirect("/school/all_public_notices")
     context={
         "form":form,
         "title":title
@@ -497,7 +498,7 @@ def edit_notice(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Notice Updated Successfully on the Notice Board")
-            return redirect("/")
+            return redirect("/school/all_public_notices")
     context={
         "form":form,
         "title":title
@@ -523,3 +524,15 @@ def read_notices(request,pk):
         "queryset":queryset
     }
     return render(request, "notifications/read_public_notices.html", context)
+
+def delete_notice(request, pk):
+    queryset=NoticeBoard.objects.get(id=pk)
+    title="Delete Notice"
+    if request.method=="POST":
+        queryset.delete()
+        messages.error(request, "Notice "+str(queryset.notice_title)+" Has Been deleted from the Notice Board!!!!!")
+        return redirect("/school/all_public_notices")
+    context={
+        "title":title
+    }
+    return render(request, "notifications/delete_notices.html", context)

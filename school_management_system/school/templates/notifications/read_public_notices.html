@@ -51,14 +51,16 @@
             </div>
             <!-- /.mailbox-read-message -->
           </div>
-          <!-- /.card-body -->
           <!-- /.card-footer -->
           <div class="card-footer">
             <div class="float-right">
               <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Reply</button>
               <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Forward</button>
             </div>
-            <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
+            
+            <a href="{% url 'school:delete_notice' queryset.id %}" type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</a>
+            <a href="" type="button" class="btn btn-default"><i class="fas fa-edit"></i> Edit</a>
+            
             <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
           </div>
           <!-- /.card-footer -->
