@@ -70,8 +70,8 @@
                         <label for="check1"></label>
                       </div>
                     </td>
-                    <td class="mailbox-star"><a href="{% url 'school:all_public_notices' %}"><i class="fas fa-star text-warning"></i></a></td>
-                    <td class="mailbox-name"><a href="/">{{instance.full_name}}</a></td>
+                    <td class="mailbox-star"><a href="{% url 'school:read_public_notices' instance.id%}"><i class="fas fa-star text-warning"></i></a></td>
+                    <td class="mailbox-name"><a href="{% url 'school:read_public_notices' instance.id%}">{{instance.full_name}}</a></td>
                     <td class="mailbox-subject"><b>{{instance.notice_title}}</b>
                     </td>
                     <td class="mailbox-attachment"></td>

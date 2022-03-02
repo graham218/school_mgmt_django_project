@@ -11,7 +11,7 @@
       <div class="col-md-9">
         <div class="card card-primary card-outline">
           <div class="card-header">
-            <h3 class="card-title">Read Mail</h3>
+            <h3 class="card-title">{{title}}</h3>
 
             <div class="card-tools">
               <a href="#" class="btn btn-tool" title="Previous"><i class="fas fa-chevron-left"></i></a>
@@ -21,10 +21,10 @@
           <!-- /.card-header -->
           <div class="card-body p-0">
             <div class="mailbox-read-info">
-              <h5>RE: {{instance.notice_title}}</h5>
-              <h6>From: {{instance.full_name}}
-                <span class="mailbox-read-time float-right">Created At: {{instance.created_at}}</span><br>
-                <span class="mailbox-read-time float-right">Udated At: {{instance.updated_at}}</span>
+              <h5>Title: {{queryset.notice_title}}</h5>
+              <h6>From: {{queryset.full_name}}
+                <span class="mailbox-read-time float-right">Created At: {{queryset.created_at}}</span><br>
+                <span class="mailbox-read-time float-right">Udated At: {{queryset.updated_at}}</span>
               </h6>
             </div>
             <!-- /.mailbox-read-info -->
@@ -47,7 +47,7 @@
             </div>
             <!-- /.mailbox-controls -->
             <div class="mailbox-read-message">
-              {{instance.notice}}
+              {{queryset.notice|safe}}
             </div>
             <!-- /.mailbox-read-message -->
           </div>
