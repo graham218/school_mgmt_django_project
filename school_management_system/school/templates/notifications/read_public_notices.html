@@ -21,9 +21,10 @@
           <!-- /.card-header -->
           <div class="card-body p-0">
             <div class="mailbox-read-info">
-              <h5>Message Subject Is Placed Here</h5>
-              <h6>From: support@adminlte.io
-                <span class="mailbox-read-time float-right">15 Feb. 2015 11:03 PM</span>
+              <h5>{{instance.notice_title}}</h5>
+              <h6>From: {{instance.full_name}}
+                <span class="mailbox-read-time float-right">Created At: {{instance.created_at}}</span><br>
+                <span class="mailbox-read-time float-right">Udated At: {{instance.updated_at}}</span>
               </h6>
             </div>
             <!-- /.mailbox-read-info -->

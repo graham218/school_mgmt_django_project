@@ -514,4 +514,8 @@ def list_notices(request):
 def read_notices(request,pk):
     title="Read Notice"
     queryset=NoticeBoard.objects.get(id=pk)
-    
+    context={
+        "title":title,
+        "queryset":queryset
+    }
+    return render(request, "notifications/read_public_notices.html", context)
