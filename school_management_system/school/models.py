@@ -277,6 +277,7 @@ class NoticeBoard(models.Model):
     written_by = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
     group=models.CharField(max_length=255, blank=False, choices=NOTICE_CATEGORY, default="PUBLIC")
+    notice_title=models.CharField(max_length=255, blank=True, null=True)
     notice = RichTextUploadingField(default="")
     signature = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(
