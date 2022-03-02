@@ -485,3 +485,28 @@ def send_notice(request):
         "title":title
     }
     return render(request, "notifications/compose_notice.html", context)
+
+def edit_notice(request, pk):
+    title="Edit Notice And Send"
+    queryset=NoticeBoard.objects.get(id=pk)
+    form=NoticeBoardForm(request.POST or None, queryset)
+    if request.method=="POST":
+        form=NoticeBoardForm(request.POST or None, queryset)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Notice Updated Successfully on the Notice Board")
+            return redirect("/")
+    context={
+        "form":form,
+        "title":title
+    }
+    return render(request, "notifications/compose_notice.html", context)
+
+def list_notices(request):
+    title="ALL NOTICES"
+    queryset=NoticeBoard.objects.all()
+    context={
+        "title":title,
+        "queryset":queryset
+    }
+    return render(request, "notifications/all_public_notices.html", context)

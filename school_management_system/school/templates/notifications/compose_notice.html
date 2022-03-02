@@ -16,7 +16,8 @@
             <div class="card-body">
               <form action="" method="post">
                 {% csrf_token %}
-
+                {{ form.media }}
+                {{ form|crispy }}
                 <div class="card-footer">
                   <div class="float-right">
                     <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Send</button>

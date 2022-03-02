@@ -55,11 +55,11 @@ class NoticeBoardForm(forms.ModelForm):
     notice=forms.CharField(widget=CKEditorUploadingWidget())
     class Meta:
         model=NoticeBoard
-        fields=['full_name','notice','signature']
+        fields=['group','notice','signature']
         widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
         'stage': forms.Select(attrs={'class': 'form-control'}),
-        'notice': forms.Textarea(attrs={'class': 'form-control'}),
-        'signature': forms.TextInput(attrs={'class': 'form-control'})}
+        'signature': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg MIT'}),
+        'group': forms.Select(attrs={'class': 'form-control'})}
 
 class VotingForm(forms.ModelForm):
     class Meta:

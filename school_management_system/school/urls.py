@@ -127,7 +127,7 @@ urlpatterns = [
     path('all_fee_receipts/', views.all_fee_receipts, name='all_fee_receipts'),
 
     # public notices
-    path('compose_notices/', views2.compose_notices, name='compose_notices'),
+    path('compose_notices/', views2.send_notice, name='compose_notices'),
     path('all_public_notices/', views2.all_public_notices, name='all_public_notices'),
     path('read_public_notices/', views2.read_public_notices, name='read_public_notices'),
 
