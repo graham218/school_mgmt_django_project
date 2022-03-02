@@ -467,6 +467,7 @@ def list_suggestions(request):
     }
     return render(request, "next/list_suggestions.html", context)
 
+@login_required
 def send_notice(request):
     title="Compose New Notice And Send"
     form=NoticeBoardForm(request.POST or None)
@@ -486,6 +487,7 @@ def send_notice(request):
     }
     return render(request, "notifications/compose_notice.html", context)
 
+@login_required
 def edit_notice(request, pk):
     title="Edit Notice And Send"
     queryset=NoticeBoard.objects.get(id=pk)
@@ -502,6 +504,7 @@ def edit_notice(request, pk):
     }
     return render(request, "notifications/compose_notice.html", context)
 
+@login_required
 def list_notices(request):
     title="ALL NOTICES"
     queryset=NoticeBoard.objects.all()
@@ -511,6 +514,7 @@ def list_notices(request):
     }
     return render(request, "notifications/all_public_notices.html", context)
 
+@login_required
 def read_notices(request,pk):
     title="Read Notice"
     queryset=NoticeBoard.objects.get(id=pk)

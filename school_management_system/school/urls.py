@@ -129,7 +129,7 @@ urlpatterns = [
     # public notices
     path('compose_notices/', views2.send_notice, name='compose_notices'),
     path('all_public_notices/', views2.list_notices, name='all_public_notices'),
-    path('read_public_notices/', views2.read_public_notices, name='read_public_notices'),
+    path('read_public_notices/', views2.read_notices, name='read_public_notices'),
 
     # paypal
     path('send_payment/', paypal_views.send_payment, name='send_payment'),
