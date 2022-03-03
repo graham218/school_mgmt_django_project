@@ -7,6 +7,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, User
 from django.utils.translation import gettext, gettext_lazy as _
 from django.forms.widgets import DateInput
 from django_countries.fields import CountryField
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
 
 class FeeReceiptForm(forms.ModelForm):
     class Meta:
@@ -50,13 +52,14 @@ class LecturerUnitsForm(forms.ModelForm):
         'level_of_understanding': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Professional, Advanced'})}
 
 class NoticeBoardForm(forms.ModelForm):
+    notice=forms.CharField(widget=CKEditorUploadingWidget())
     class Meta:
         model=NoticeBoard
-        fields=['full_name','notice','signature']
+        fields=['group','notice_title','notice','signature']
         widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
-        'stage': forms.Select(attrs={'class': 'form-control'}),
-        'notice': forms.Textarea(attrs={'class': 'form-control'}),
-        'signature': forms.TextInput(attrs={'class': 'form-control'})}
+        'notice_title': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg: Inviting all students to the incoming meeting'}),
+        'signature': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'eg MIT'}),
+        'group': forms.Select(attrs={'class': 'form-control'})}
 
 class VotingForm(forms.ModelForm):
     class Meta:
@@ -68,12 +71,14 @@ class VotingForm(forms.ModelForm):
         'seat': forms.Select(attrs={'class': 'form-control'})}
 
 class SuggestionBoxForm(forms.ModelForm):
+    suggestion=forms.CharField(widget=CKEditorUploadingWidget())
     class Meta:
         model=SuggestionBox
         fields=['full_name','suggestion']
         widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
         'stage': forms.Select(attrs={'class': 'form-control'}),
-        'suggestion': forms.TextInput(attrs={'class': 'form-control'})}
+        'suggestion': forms.TextInput(attrs={'class': 'form-control'})
+        }
 
 class SeatsForm(forms.ModelForm):
     class Meta:

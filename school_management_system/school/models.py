@@ -1,6 +1,8 @@
 from django.db import models
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth import get_user_model
 User=get_user_model()
+
 
 # Create your models here.
 
@@ -264,10 +266,19 @@ class LecturerUnits(models.Model):
         null=True, blank=True, auto_now_add=True)
     updated_at = models.DateTimeField(null=True, blank=True, auto_now=True)
 
+NOTICE_CATEGORY=[
+    ('PUBLIC','PUBLIC'),
+    ('STAFF','STAFF'),
+    ('SUPPLIERS','SUPPLIERS'),
+    ('STUDENTS','STUDENTS'),
+    ('LECTURERS','LECTURERS')
+]
 class NoticeBoard(models.Model):
     written_by = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
-    notice = models.CharField(max_length=5000, blank=True, null=True)
+    group=models.CharField(max_length=255, blank=False, choices=NOTICE_CATEGORY, default="PUBLIC")
+    notice_title=models.CharField(max_length=255, blank=True, null=True)
+    notice = RichTextUploadingField(default="")
     signature = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(
         null=True, blank=True, auto_now_add=True, editable=True)
@@ -293,7 +304,7 @@ class Voting(models.Model):
 class SuggestionBox(models.Model):
     written_by = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
-    suggestion = models.CharField(max_length=5000, blank=True, null=True)
+    suggestion = RichTextUploadingField(default='')
     check=models.BooleanField(default=False, blank=True)
     status=models.CharField(max_length=500, blank=True, null=True)
     created_at = models.DateTimeField(

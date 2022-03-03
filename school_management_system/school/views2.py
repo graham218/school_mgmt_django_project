@@ -466,3 +466,73 @@ def list_suggestions(request):
         "queryset": queryset,
     }
     return render(request, "next/list_suggestions.html", context)
+
+@login_required
+def send_notice(request):
+    title="Compose New Notice And Send"
+    form=NoticeBoardForm(request.POST or None)
+    if form.is_valid():
+        full_name=request.user.first_name+" "+request.user.middle_name+" "+request.user.last_name
+        written_by=request.user
+        group=form.cleaned_data['group']
+        signature=form.cleaned_data['signature']
+        notice=form.cleaned_data['notice']
+        notice_title=form.cleaned_data['notice_title']
+        reg=NoticeBoard(full_name=full_name, written_by=written_by,group=group,signature=signature, notice=notice, notice_title=notice_title)
+        reg.save()
+        messages.success(request, "Notice Published Successfully on the Notice Board")
+        return redirect("/school/all_public_notices")
+    context={
+        "form":form,
+        "title":title
+    }
+    return render(request, "notifications/compose_notice.html", context)
+
+@login_required
+def edit_notice(request, pk):
+    title="Edit Notice And Send"
+    queryset=NoticeBoard.objects.get(id=pk)
+    form=NoticeBoardForm(request.POST or None, queryset)
+    if request.method=="POST":
+        form=NoticeBoardForm(request.POST or None, queryset)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Notice Updated Successfully on the Notice Board")
+            return redirect("/school/all_public_notices")
+    context={
+        "form":form,
+        "title":title
+    }
+    return render(request, "notifications/compose_notice.html", context)
+
+@login_required
+def list_notices(request):
+    title="ALL NOTICES"
+    queryset=NoticeBoard.objects.all()
+    context={
+        "title":title,
+        "queryset":queryset
+    }
+    return render(request, "notifications/all_public_notices.html", context)
+
+@login_required
+def read_notices(request,pk):
+    title="Read Notice"
+    queryset=NoticeBoard.objects.get(id=pk)
+    context={
+        "title":title,
+        "queryset":queryset
+    }
+    return render(request, "notifications/read_public_notices.html", context)
+
+def delete_notice(request, pk):
+    queryset=NoticeBoard.objects.get(id=pk)
+    title="Delete Notice"
+    if request.method=="POST":
+        queryset.delete()
+        messages.error(request, "Notice "+str(queryset.notice_title)+" Has Been deleted from the Notice Board!!!!!")
+        return redirect("/school/all_public_notices")
+    context={
+        "title":title
+    }
+    return render(request, "notifications/delete_notices.html", context)
