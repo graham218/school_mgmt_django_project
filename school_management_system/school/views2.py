@@ -69,39 +69,22 @@ def list_resit_year_page(request):
         "title":title
     }
     return render(request, "units/pages/list_resit_year_page.html", context)
-
+# ----------------------------------------------------------------------------------------
+# Year 1 Resits/Retakes
 @login_required
-def register_retakes(request):
-    title = "Register Retakes/ Resits"
-    button = "Register Retake"
-    form = SpecialExamRegisterForm(request.POST or None)
+def resit_reg_year1(request):
+    title = "Resit/Retake Registration Year 1"
+    button="Register Resit"
+    form = UnitRegistrationForm(request.POST or None)
     if form.is_valid():
-        user = request.user
-        full_name = request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
-        stage = form.cleaned_data['stage']
-        unit_name = form.cleaned_data['unit_name']
-        reg=SpecialExam(user=user,full_name=full_name,stage=stage, unit_name=unit_name)
-        messages.success(request, "Unit Registered Successfully")
-        return HttpResponseRedirect("/school/my_special_exams")
-    context = {
-        "title": title,
-        "form": form,
-        "button": button,
-    }
-    return render(request, "units/register_retakes.html", context)
-
-@login_required
-def update_resit_marks(request, pk):
-    title = "Add Marks For Special Exams"
-    button = "Add Marks"
-    queryset = SpecialExam.objects.get(id=pk)
-    form = SpecialExamMarksForm(request.POST or None, instance=queryset)
-    if request.method == "POST":
-        form = SpecialExamMarksForm(request.POST or None, instance=queryset)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Marks Added Successfully")
-            return HttpResponseRedirect("/school/SpecialExamList")
+        instance=form.save(commit=False)
+        instance.user=request.user
+        instance.full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
+        instance.stage=form.cleaned_data['stage']
+        instance.unit_name=form.cleaned_data['unit_name']
+        instance.save()
+        messages.success(request, "Resit Registered Successfully")
+        return HttpResponseRedirect("/school/my_registered_resits1/")
     context = {
         "title": title,
         "form": form,
@@ -111,20 +94,38 @@ def update_resit_marks(request, pk):
 
 
 @login_required
-def delete_special_exams(request, pk):
-    title = "Delete Special Exams"
-    button = "Delete"
-    queryset = SpecialExam.objects.get(id=pk)
+def unregister_resit_yr1(request, pk):
+    queryset = resit_exam_yr7.objects.get(id=pk)
+    title = "Unregister Resit/Reatake"
+    button="Unregister Resit"
     if request.method == "POST":
         queryset.delete()
-        messages.error(request, "Unit Unregistered from Special Exams")
-        return HttpResponseRedirect("/school/my_resit_year_page")
+        messages.error(request, "Resit Unregistered Successfully")
+        return HttpResponseRedirect("/school/my_registered_resits1")
     context = {
         "title": title,
         "button": button,
     }
     return render(request, "school/delete_items.html", context)
 
+
+def list_registered_resits1(request):
+    title = 'List of Registered Students'
+    queryset = resit_exam_yr1.objects.all()
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "units/list_registered_resits/list_registered_resits_yr1.html", context)
+
+def my_registered_units1(request):
+    title = 'MY REGISTERED RESITS OF YEAR 1'
+    queryset = resit_exam_yr1.objects.filter(user=request.user)
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "units/my_registered_resits/my_registered_resits_yr1.html", context)
 
 
 # End Of Resits/Retakes
