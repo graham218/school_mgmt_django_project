@@ -33,6 +33,7 @@ class Stages(models.Model):
         return self.year
 
 
+
 class Gender(models.Model):
     gender = models.CharField(max_length=255, blank=True, null=True)
 
