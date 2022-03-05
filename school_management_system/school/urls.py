@@ -84,11 +84,6 @@ urlpatterns = [
 
     path('FeeReceiptList/', views2.FeeReceiptList, name='FeeReceiptList'),
 
-    path('register_special_exam/', views2.register_special_exams, name='register_special_exam'),
-    path('my_special_exams/', views2.my_special_exams, name='my_special_exams'),
-    path('special_exams_marks/<str:pk>', views2.special_exams_marks, name='special_exams_marks'),
-    path('delete_special_exams/<str:pk>', views2.delete_special_exams, name='delete_special_exams'),
-    path('SpecialExamList/', views2.SpecialExamList, name='SpecialExamList'),
     
     path('create_edit_lecturer_units/', views2.add_lecturer_units, name='create_edit_lecturer_units'),
     path('lecturer_units_edit/<str:pk>', views2.lecturer_units_edit, name='lecturer_units_edit'),
@@ -118,6 +113,7 @@ urlpatterns = [
     path('list_marks_year_page/', views2.list_marks_year_page, name='list_marks_year_page'),
     path('my_resit_year_page/', views2.my_resit_year_page, name='my_resit_year_page'),
     path('list_resit_year_page/', views2.list_resit_year_page, name='list_resit_year_page'),
+    
 
     # admin pages
     path('all_users/', views.all_users, name='all_users'),

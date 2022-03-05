@@ -70,9 +70,9 @@ def list_resit_year_page(request):
     return render(request, "units/pages/list_resit_year_page.html", context)
 
 @login_required
-def register_special_exams(request):
-    title = "Register For Special Exams"
-    button = "Register Unit"
+def register_retakes(request):
+    title = "Register Retakes/ Resits"
+    button = "Register Retake"
     form = SpecialExamRegisterForm(request.POST or None)
     if form.is_valid():
         user = request.user
@@ -87,21 +87,10 @@ def register_special_exams(request):
         "form": form,
         "button": button,
     }
-    return render(request, "next/register_special_exams.html", context)
-
-
-def my_special_exams(request):
-    title = "My Registered Special Exams"
-    queryset = SpecialExam.objects.filter(user=request.user)
-    context = {
-        "title": title,
-        "queryset": queryset,
-    }
-    return render(request, "next/my_special_exams.html", context)
-
+    return render(request, "units/register_retakes.html", context)
 
 @login_required
-def special_exams_marks(request, pk):
+def update_resit_marks(request, pk):
     title = "Add Marks For Special Exams"
     button = "Add Marks"
     queryset = SpecialExam.objects.get(id=pk)
@@ -117,7 +106,7 @@ def special_exams_marks(request, pk):
         "form": form,
         "button": button,
     }
-    return render(request, "next/register_special_exams.html", context)
+    return render(request, "units/register_retakes.html", context)
 
 
 @login_required
@@ -128,7 +117,7 @@ def delete_special_exams(request, pk):
     if request.method == "POST":
         queryset.delete()
         messages.error(request, "Unit Unregistered from Special Exams")
-        return HttpResponseRedirect("/school/my_special_exams")
+        return HttpResponseRedirect("/school/my_resit_year_page")
     context = {
         "title": title,
         "button": button,
