@@ -52,7 +52,8 @@ def list_marks_year_page(request):
         "title":title
     }
     return render(request, "units/pages/list_marks_year_page.html", context)
-
+# ------------------------------------------------------------------------------------
+# Resits/Retakes
 @login_required
 def my_resit_year_page(request):
     title="Choose Your Year Of Study To Register Resits/Retakes/Special Exams"
@@ -125,16 +126,8 @@ def delete_special_exams(request, pk):
     return render(request, "school/delete_items.html", context)
 
 
-def SpecialExamList(request):
-    title = "Special Exams Students' List"
-    queryset = SpecialExam.objects.all()
-    context = {
-        "title": title,
-        "queryset": queryset,
-    }
-    return render(request, "next/special_exams_list.html", context)
-
-
+# End Of Resits/Retakes
+# ---------------------------------------------------------------------------------
 @login_required
 def add_lecturer_units(request):
     title = "Add Units"
