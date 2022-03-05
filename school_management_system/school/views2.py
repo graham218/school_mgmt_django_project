@@ -12,14 +12,6 @@ from django.urls import reverse
 # =====================================================================
 
 @login_required
-def compose_notices(request):
-    title='Compose Notice To Reach Everyone'
-    context={
-        'title':title
-    }
-    return render(request, 'notifications/compose_notice.html', context)
-
-@login_required
 def all_public_notices(request):
     title='All Public Notices'
     context={
@@ -46,36 +38,36 @@ def FeeReceiptList(request):
     return render(request, "next/fee_receipt_list.html", context)
 
 @login_required
-def unit_year_page(request):
+def my_reg_units_year_page(request):
     title="Choose Your Year Of Study"
     context={
         "title":title
     }
-    return render(request, "units/year_page.html", context)
+    return render(request, "units/my_reg_units_year_page.html", context)
 
 @login_required
-def unit_year_page_marks(request):
+def list_marks_year_page(request):
     title="Choose Your Year Of Study"
     context={
         "title":title
     }
-    return render(request, "units/pages/year_page_marks.html", context)
+    return render(request, "units/pages/list_marks_year_page.html", context)
 
 @login_required
-def resit_year_page(request):
+def my_resit_year_page(request):
     title="Choose Your Year Of Study To Register Resits/Retakes/Special Exams"
     context={
         "title":title
     }
-    return render(request, "units/pages/resit_year_page.html", context)
+    return render(request, "units/pages/my_resit_year_page.html", context)
 
 @login_required
-def resit_year_page_marks(request):
+def list_resit_year_page(request):
     title="Choose Year Of Study To Enter Marks And Grades"
     context={
         "title":title
     }
-    return render(request, "units/pages/resit_year_page_marks.html", context)
+    return render(request, "units/pages/list_resit_year_page.html", context)
 
 @login_required
 def register_special_exams(request):

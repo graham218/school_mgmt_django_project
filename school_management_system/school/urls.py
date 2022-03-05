@@ -114,10 +114,10 @@ urlpatterns = [
     path('list_suggestions/', views2.list_suggestions, name='list_suggestions'),
 
     # pages
-    path('unit_year_page/', views2.unit_year_page, name='unit_year_page'),
-    path('unit_year_page_marks/', views2.unit_year_page_marks, name='unit_year_page_marks'),
-    path('resit_year_page/', views2.resit_year_page, name='resit_year_page'),
-    path('resit_year_page_marks/', views2.resit_year_page_marks, name='resit_year_page_marks'),
+    path('my_reg_units_year_page/', views2.my_reg_units_year_page, name='my_reg_units_year_page'),
+    path('list_marks_year_page/', views2.list_marks_year_page, name='list_marks_year_page'),
+    path('my_resit_year_page/', views2.my_resit_year_page, name='my_resit_year_page'),
+    path('list_resit_year_page/', views2.list_resit_year_page, name='list_resit_year_page'),
 
     # admin pages
     path('all_users/', views.all_users, name='all_users'),
