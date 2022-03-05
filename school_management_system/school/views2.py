@@ -84,7 +84,7 @@ def resit_reg_year1(request):
         instance.unit_name=form.cleaned_data['unit_name']
         instance.save()
         messages.success(request, "Resit Registered Successfully")
-        return HttpResponseRedirect("/school/my_registered_resits1/")
+        return HttpResponseRedirect("/school/my_registered_resits_yr1/")
     context = {
         "title": title,
         "form": form,
@@ -101,7 +101,7 @@ def unregister_resit_yr1(request, pk):
     if request.method == "POST":
         queryset.delete()
         messages.error(request, "Resit Unregistered Successfully")
-        return HttpResponseRedirect("/school/my_registered_resits1")
+        return HttpResponseRedirect("/school/my_registered_resits_yr1")
     context = {
         "title": title,
         "button": button,
@@ -110,7 +110,7 @@ def unregister_resit_yr1(request, pk):
 
 
 def list_registered_resits1(request):
-    title = 'List of Registered Students'
+    title = 'List of Registered Students Doing Resits/Retakes'
     queryset = resit_exam_yr1.objects.all()
     context = {
         "title": title,
@@ -118,7 +118,7 @@ def list_registered_resits1(request):
     }
     return render(request, "units/list_registered_resits/list_registered_resits_yr1.html", context)
 
-def my_registered_units1(request):
+def my_registered_resits_yr1(request):
     title = 'MY REGISTERED RESITS OF YEAR 1'
     queryset = resit_exam_yr1.objects.filter(user=request.user)
     context = {

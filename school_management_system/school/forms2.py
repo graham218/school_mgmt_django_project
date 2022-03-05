@@ -93,3 +93,52 @@ class FeePaymentForm(forms.ModelForm):
         attrs={'placeholder': 'format: 254............', 'class': 'form-control'}))
     amount=forms.DecimalField(label=_("Fee Payment ID"), widget=forms.NumberInput(
         attrs={'class': 'form-control'}))
+
+class ResitRegYr1Form(forms.ModelForm):
+    class Meta:
+        model=resit_exam_yr1
+        fields=['stage','unit_name']
+        widgets={'stage': forms.Select(attrs={'class': 'form-control'}),
+        'unit_name': forms.Select(attrs={'class': 'form-control'})}
+
+class ResitRegYr2Form(forms.ModelForm):
+    class Meta:
+        model=resit_exam_yr2
+        fields=['stage','unit_name']
+        widgets={'stage': forms.Select(attrs={'class': 'form-control'}),
+        'unit_name': forms.Select(attrs={'class': 'form-control'})}
+
+class ResitRegYr3Form(forms.ModelForm):
+    class Meta:
+        model=resit_exam_yr3
+        fields=['stage','unit_name']
+        widgets={'stage': forms.Select(attrs={'class': 'form-control'}),
+        'unit_name': forms.Select(attrs={'class': 'form-control'})}
+
+class ResitRegYr4Form(forms.ModelForm):
+    class Meta:
+        model=resit_exam_yr4
+        fields=['stage','unit_name']
+        widgets={'stage': forms.Select(attrs={'class': 'form-control'}),
+        'unit_name': forms.Select(attrs={'class': 'form-control'})}
+
+class ResitRegYr5Form(forms.ModelForm):
+    class Meta:
+        model=resit_exam_yr5
+        fields=['stage','unit_name']
+        widgets={'stage': forms.Select(attrs={'class': 'form-control'}),
+        'unit_name': forms.Select(attrs={'class': 'form-control'})}
+
+class ResitRegYr6Form(forms.ModelForm):
+    class Meta:
+        model=resit_exam_yr6
+        fields=['stage','unit_name']
+        widgets={'stage': forms.Select(attrs={'class': 'form-control'}),
+        'unit_name': forms.Select(attrs={'class': 'form-control'})}
+
+class ResitRegYr7Form(forms.ModelForm):
+    class Meta:
+        model=resit_exam_yr7
+        fields=['stage','unit_name']
+        widgets={'stage': forms.Select(attrs={'class': 'form-control'}),
+        'unit_name': forms.Select(attrs={'class': 'form-control'})}
