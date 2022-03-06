@@ -133,7 +133,7 @@ def my_registered_resits_yr1(request):
 def resit_reg_year2(request):
     title = "Resit/Retake Registration Year 2"
     button="Register Resit"
-    form = ResitRegYr1Form(request.POST or None)
+    form = ResitRegYr2Form(request.POST or None)
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
@@ -167,14 +167,14 @@ def unregister_resit_yr2(request, pk):
     return render(request, "school/delete_items.html", context)
 
 
-def list_registered_resits1(request):
+def list_registered_resits2(request):
     title = 'List of Registered Students Doing Resits/Retakes Year 2'
     queryset = resit_exam_yr2.objects.all()
     context = {
         "title": title,
         "queryset": queryset,
     }
-    return render(request, "units/list_registered_resits/list_registered_resits_yr3.html", context)
+    return render(request, "units/list_registered_resits/list_registered_resits_yr2.html", context)
 
 def my_registered_resits_yr2(request):
     title = 'MY REGISTERED RESITS OF YEAR 2'
@@ -186,12 +186,12 @@ def my_registered_resits_yr2(request):
     return render(request, "units/my_registered_resits/my_registered_resits_yr2.html", context)
 # End Of Yr 2 Retakes
 
-# Year 1 Resits/Retakes
+# Year 3 Resits/Retakes
 @login_required
 def resit_reg_year3(request):
     title = "Resit/Retake Registration Year 3"
     button="Register Resit"
-    form = ResitRegYr1Form(request.POST or None)
+    form = ResitRegYr3Form(request.POST or None)
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
@@ -244,12 +244,12 @@ def my_registered_resits_yr3(request):
     return render(request, "units/my_registered_resits/my_registered_resits_yr3.html", context)
 # End of yr 3 Retakes
 
-# Year 1 Resits/Retakes
+# Year 4 Resits/Retakes
 @login_required
-def resit_reg_year1(request):
-    title = "Resit/Retake Registration Year 1"
+def resit_reg_year4(request):
+    title = "Resit/Retake Registration Year 4"
     button="Register Resit"
-    form = ResitRegYr1Form(request.POST or None)
+    form = ResitRegYr4Form(request.POST or None)
     if form.is_valid():
         instance=form.save(commit=False)
         instance.user=request.user
@@ -258,7 +258,7 @@ def resit_reg_year1(request):
         instance.unit_name=form.cleaned_data['unit_name']
         instance.save()
         messages.success(request, "Resit Registered Successfully")
-        return HttpResponseRedirect("/school/my_registered_resits_yr1/")
+        return HttpResponseRedirect("/school/my_registered_resits_yr4/")
     context = {
         "title": title,
         "form": form,
@@ -268,14 +268,14 @@ def resit_reg_year1(request):
 
 
 @login_required
-def unregister_resit_yr1(request, pk):
-    queryset = resit_exam_yr1.objects.get(id=pk)
+def unregister_resit_yr4(request, pk):
+    queryset = resit_exam_yr4.objects.get(id=pk)
     title = "Unregister Resit/Retake"
     button="Unregister Resit"
     if request.method == "POST":
         queryset.delete()
         messages.error(request, "Resit Unregistered Successfully")
-        return HttpResponseRedirect("/school/my_registered_resits_yr1")
+        return HttpResponseRedirect("/school/my_registered_resits_yr4")
     context = {
         "title": title,
         "button": button,
@@ -283,24 +283,140 @@ def unregister_resit_yr1(request, pk):
     return render(request, "school/delete_items.html", context)
 
 
-def list_registered_resits1(request):
+def list_registered_resits4(request):
     title = 'List of Registered Students Doing Resits/Retakes'
-    queryset = resit_exam_yr1.objects.all()
+    queryset = resit_exam_yr4.objects.all()
     context = {
         "title": title,
         "queryset": queryset,
     }
-    return render(request, "units/list_registered_resits/list_registered_resits_yr1.html", context)
+    return render(request, "units/list_registered_resits/list_registered_resits_yr4.html", context)
 
-def my_registered_resits_yr1(request):
-    title = 'MY REGISTERED RESITS OF YEAR 1'
-    queryset = resit_exam_yr1.objects.filter(user=request.user)
+def my_registered_resits_yr4(request):
+    title = 'MY REGISTERED RESITS OF YEAR 4'
+    queryset = resit_exam_yr4.objects.filter(user=request.user)
     context = {
         "title": title,
         "queryset": queryset,
     }
-    return render(request, "units/my_registered_resits/my_registered_resits_yr1.html", context)
+    return render(request, "units/my_registered_resits/my_registered_resits_yr4.html", context)
+# End Of Yr 4 Retakes
 
+# Year 5 Resits/Retakes
+@login_required
+def resit_reg_year5(request):
+    title = "Resit/Retake Registration Year 5"
+    button="Register Resit"
+    form = ResitRegYr5Form(request.POST or None)
+    if form.is_valid():
+        instance=form.save(commit=False)
+        instance.user=request.user
+        instance.full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
+        instance.stage=form.cleaned_data['stage']
+        instance.unit_name=form.cleaned_data['unit_name']
+        instance.save()
+        messages.success(request, "Resit Registered Successfully")
+        return HttpResponseRedirect("/school/my_registered_resits_yr5/")
+    context = {
+        "title": title,
+        "form": form,
+        "button": button,
+    }
+    return render(request, "units/register_retakes.html", context)
+
+
+@login_required
+def unregister_resit_yr5(request, pk):
+    queryset = resit_exam_yr5.objects.get(id=pk)
+    title = "Unregister Resit/Retake"
+    button="Unregister Resit"
+    if request.method == "POST":
+        queryset.delete()
+        messages.error(request, "Resit Unregistered Successfully")
+        return HttpResponseRedirect("/school/my_registered_resits_yr5")
+    context = {
+        "title": title,
+        "button": button,
+    }
+    return render(request, "school/delete_items.html", context)
+
+
+def list_registered_resits5(request):
+    title = 'List of Registered Students Doing Resits/Retakes'
+    queryset = resit_exam_yr5.objects.all()
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "units/list_registered_resits/list_registered_resits_yr5.html", context)
+
+def my_registered_resits_yr5(request):
+    title = 'MY REGISTERED RESITS OF YEAR 5'
+    queryset = resit_exam_yr5.objects.filter(user=request.user)
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "units/my_registered_resits/my_registered_resits_yr5.html", context)
+# End of yr 5 retakes
+
+# Year 6 Resits/Retakes
+@login_required
+def resit_reg_year6(request):
+    title = "Resit/Retake Registration Year 6"
+    button="Register Resit"
+    form = ResitRegYr6Form(request.POST or None)
+    if form.is_valid():
+        instance=form.save(commit=False)
+        instance.user=request.user
+        instance.full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
+        instance.stage=form.cleaned_data['stage']
+        instance.unit_name=form.cleaned_data['unit_name']
+        instance.save()
+        messages.success(request, "Resit Registered Successfully")
+        return HttpResponseRedirect("/school/my_registered_resits_yr6/")
+    context = {
+        "title": title,
+        "form": form,
+        "button": button,
+    }
+    return render(request, "units/register_retakes.html", context)
+
+
+@login_required
+def unregister_resit_yr6(request, pk):
+    queryset = resit_exam_yr6.objects.get(id=pk)
+    title = "Unregister Resit/Retake"
+    button="Unregister Resit"
+    if request.method == "POST":
+        queryset.delete()
+        messages.error(request, "Resit Unregistered Successfully")
+        return HttpResponseRedirect("/school/my_registered_resits_yr6")
+    context = {
+        "title": title,
+        "button": button,
+    }
+    return render(request, "school/delete_items.html", context)
+
+
+def list_registered_resits6(request):
+    title = 'List of Registered Students Doing Resits/Retakes'
+    queryset = resit_exam_yr6.objects.all()
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "units/list_registered_resits/list_registered_resits_yr6.html", context)
+
+def my_registered_resits_yr6(request):
+    title = 'MY REGISTERED RESITS OF YEAR 6'
+    queryset = resit_exam_yr6.objects.filter(user=request.user)
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "units/my_registered_resits/my_registered_resits_yr6.html", context)
+# End of yr 6 retakes
 
 
 # End Of Resits/Retakes
