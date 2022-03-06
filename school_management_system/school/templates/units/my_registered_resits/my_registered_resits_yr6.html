@@ -12,7 +12,7 @@
             <h3 class="card-title">{{title}}</h3>
           </div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="{% url 'school:unit_registration1' %}" class="btn btn-primary">Add New Units</a>
+            <a href="{% url 'school:resit_reg_year6' %}" class="btn btn-primary">Add New Retakes</a>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -31,7 +31,7 @@
                   <td>{{forloop.counter}}</td>
                   <td>{{instance.stage}}</td>
                   <td>{{instance.unit_name}}</td>
-                  <td><a class="fa fa-trash" href="{% url 'school:unregister_resit_yr1' instance.id%}">Unregister
+                  <td><a class="fa fa-trash" href="{% url 'school:unregister_resit_yr6' instance.id%}">Unregister
                     Unit</a></td>
                 </tr>
                 {% endfor %}
