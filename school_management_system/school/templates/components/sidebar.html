@@ -121,12 +121,6 @@
                 <p>Register Resits & Special Exams</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="/" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Print Resit & Special Exam card</p>
-              </a>
-            </li>
           </ul>
         </li>
         <li class="nav-item">
@@ -249,7 +243,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="/" class="nav-link">
+              <a href="{% url 'school:list_notices' %}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Public Notices</p>
               </a>
@@ -258,12 +252,6 @@
               <a href="/" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Upcoming Events</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Critical Notices</p>
               </a>
             </li>
           </ul>
@@ -321,7 +309,7 @@
           <a href="/" class="nav-link">
             <i class="nav-icon fas fa-envelope"></i>
             <p>
-              Registration
+              My Profile
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
@@ -335,7 +323,7 @@
             <li class="nav-item">
               <a href="/" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Documents</p>
+                <p>Update Profile</p>
               </a>
             </li>
           </ul>
@@ -415,9 +403,17 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="/" class="nav-link">
+            <a href="{% url 'school:list_marks_year_page' %}" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Exams</p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{% url 'school:list_resit_year_page' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Resits/Retakes</p>
             </a>
           </li>
         </ul>
@@ -473,7 +469,7 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="/" class="nav-link">
+            <a href="{% url 'school:all_public_notices' %}" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Public Notices</p>
             </a>
@@ -482,12 +478,6 @@
             <a href="/" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Upcoming Events</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Critical Notices</p>
             </a>
           </li>
         </ul>

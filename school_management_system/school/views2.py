@@ -10,23 +10,6 @@ from django.conf import settings
 from django.urls import reverse
 
 # =====================================================================
-
-@login_required
-def all_public_notices(request):
-    title='All Public Notices'
-    context={
-        'title':title
-    }
-    return render(request, 'notifications/all_public_notices.html', context)
-
-@login_required
-def read_public_notices(request):
-    title='All Public Notices'
-    context={
-        'title':title
-    }
-    return render(request, 'notifications/read_public_notices.html', context)
-
 @login_required
 def FeeReceiptList(request):
     title = 'List All Fee Student Receipts'
