@@ -132,5 +132,12 @@ urlpatterns = [
     path('send_payment/', paypal_views.send_payment, name='send_payment'),
     path('process-payment/', paypal_views.process_payment, name='process_payment'),
     path('payment-done/', paypal_views.payment_done, name='payment_done'),
-    path('payment-cancelled/', paypal_views.payment_canceled, name='payment_cancelled')
+    path('payment-cancelled/', paypal_views.payment_canceled, name='payment_cancelled'),
+
+    # Resits/Retakes
+    path('resit_reg_year1/', views2.resit_reg_year1, name='resit_reg_year1'),
+    path('unregister_resit_yr1/<str:pk>', views2.unregister_resit_yr1, name='unregister_resit_yr1'),
+    path('list_registered_resits1/', views2.list_registered_resits1, name='list_registered_resits1'),
+    path('my_registered_resits_yr1/', views2.my_registered_resits_yr1, name='my_registered_resits_yr1'),
+
 ]
