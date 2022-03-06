@@ -623,8 +623,7 @@ def add_notice(request):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.written_by = request.user
-        instance.full_name = request.user.first_name + \
-            ' '+str(request.user.last_name)
+        instance.full_name = request.user.first_name +' '+str(request.user.middle_name)+' '+str(request.user.last_name)
         instance.stage = form.cleaned_data['stage']
         instance.notice = form.cleaned_data['notice']
         instance.signature = form.cleaned_data['signature']
@@ -790,6 +789,8 @@ def list_suggestions(request):
     }
     return render(request, "next/list_suggestions.html", context)
 
+# ----------------------------------------------------------------------------------------------
+# Noticeboard
 @login_required
 def send_notice(request):
     title="Compose New Notice And Send"
@@ -859,3 +860,6 @@ def delete_notice(request, pk):
         "title":title
     }
     return render(request, "notifications/delete_notices.html", context)
+
+# End of Noticeboard
+# --------------------------------------------------------------------------------------------
