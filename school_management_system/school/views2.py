@@ -418,7 +418,63 @@ def my_registered_resits_yr6(request):
     return render(request, "units/my_registered_resits/my_registered_resits_yr6.html", context)
 # End of yr 6 retakes
 
+# Year 7 Resits/Retakes
+@login_required
+def resit_reg_year7(request):
+    title = "Resit/Retake Registration Year 7"
+    button="Register Resit"
+    form = ResitRegYr7Form(request.POST or None)
+    if form.is_valid():
+        instance=form.save(commit=False)
+        instance.user=request.user
+        instance.full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
+        instance.stage=form.cleaned_data['stage']
+        instance.unit_name=form.cleaned_data['unit_name']
+        instance.save()
+        messages.success(request, "Resit Registered Successfully")
+        return HttpResponseRedirect("/school/my_registered_resits_yr7/")
+    context = {
+        "title": title,
+        "form": form,
+        "button": button,
+    }
+    return render(request, "units/register_retakes.html", context)
 
+
+@login_required
+def unregister_resit_yr7(request, pk):
+    queryset = resit_exam_yr7.objects.get(id=pk)
+    title = "Unregister Resit/Retake"
+    button="Unregister Resit"
+    if request.method == "POST":
+        queryset.delete()
+        messages.error(request, "Resit Unregistered Successfully")
+        return HttpResponseRedirect("/school/my_registered_resits_yr7")
+    context = {
+        "title": title,
+        "button": button,
+    }
+    return render(request, "school/delete_items.html", context)
+
+
+def list_registered_resits7(request):
+    title = 'List of Registered Students Doing Resits/Retakes'
+    queryset = resit_exam_yr7.objects.all()
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "units/list_registered_resits/list_registered_resits_yr7.html", context)
+
+def my_registered_resits_yr7(request):
+    title = 'MY REGISTERED RESITS OF YEAR 7'
+    queryset = resit_exam_yr7.objects.filter(user=request.user)
+    context = {
+        "title": title,
+        "queryset": queryset,
+    }
+    return render(request, "units/my_registered_resits/my_registered_resits_yr7.html", context)
+# End of yr 7 retakes
 # End Of Resits/Retakes
 # ---------------------------------------------------------------------------------
 @login_required
