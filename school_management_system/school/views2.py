@@ -612,57 +612,7 @@ def list_seats(request):
     }
     return render(request, "next/list_seats.html", context)
 # ==========================================================================================
-# Notice Board
 
-
-@login_required
-def add_notice(request):
-    title = "Add Notice"
-    button = "Add Notice"
-    form = NoticeBoardForm(request.POST or None)
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.written_by = request.user
-        instance.full_name = request.user.first_name +' '+str(request.user.middle_name)+' '+str(request.user.last_name)
-        instance.stage = form.cleaned_data['stage']
-        instance.notice = form.cleaned_data['notice']
-        instance.signature = form.cleaned_data['signature']
-        instance.save()
-        messages.success(request, "Notice Added Successfully on Board")
-        return HttpResponseRedirect("/school/add_notice")
-    context = {
-        "title": title,
-        "form": form,
-        "button": button,
-    }
-    return render(request, "next/add_notice.html", context)
-
-
-@login_required
-def delete_notice(request, pk):
-    title = "Delete Notice"
-    button = "Delete Notice"
-    queryset = NoticeBoard.objects.get(id=pk)
-    if request.method == "POST":
-        queryset.delete()
-        messages.error(request, "Notice Deleted From Board")
-        return HttpResponseRedirect("/school/list_notices")
-    context = {
-        "title": title,
-        "form": form,
-        "button": button,
-    }
-    return render(request, "school/delete_items.html", context)
-
-
-def list_notices(request):
-    title = "School Notice Board"
-    queryset = NoticeBoard.objects.all()
-    context = {
-        "title": title,
-        "queryset": queryset,
-    }
-    return render(request, "next/list_notices.html", context)
 # =================================================================================================
 # Voting
 
