@@ -140,4 +140,35 @@ urlpatterns = [
     path('list_registered_resits1/', views2.list_registered_resits1, name='list_registered_resits1'),
     path('my_registered_resits_yr1/', views2.my_registered_resits_yr1, name='my_registered_resits_yr1'),
 
+    path('resit_reg_year2/', views2.resit_reg_year2, name='resit_reg_year2'),
+    path('unregister_resit_yr2/<str:pk>', views2.unregister_resit_yr2, name='unregister_resit_yr2'),
+    path('list_registered_resits2/', views2.list_registered_resits2, name='list_registered_resits2'),
+    path('my_registered_resits_yr2/', views2.my_registered_resits_yr2, name='my_registered_resits_yr2'),
+    
+    path('resit_reg_year3/', views2.resit_reg_year3, name='resit_reg_year3'),
+    path('unregister_resit_yr3/<str:pk>', views2.unregister_resit_yr3, name='unregister_resit_yr3'),
+    path('list_registered_resits3/', views2.list_registered_resits3, name='list_registered_resits3'),
+    path('my_registered_resits_yr3/', views2.my_registered_resits_yr3, name='my_registered_resits_yr3'),
+    
+    path('resit_reg_year4/', views2.resit_reg_year4, name='resit_reg_year4'),
+    path('unregister_resit_yr4/<str:pk>', views2.unregister_resit_yr4, name='unregister_resit_yr4'),
+    path('list_registered_resits4/', views2.list_registered_resits4, name='list_registered_resits4'),
+    path('my_registered_resits_yr4/', views2.my_registered_resits_yr4, name='my_registered_resits_yr4'),
+    
+    path('resit_reg_year5/', views2.resit_reg_year5, name='resit_reg_year5'),
+    path('unregister_resit_yr5/<str:pk>', views2.unregister_resit_yr5, name='unregister_resit_yr5'),
+    path('list_registered_resits5/', views2.list_registered_resits5, name='list_registered_resits5'),
+    path('my_registered_resits_yr5/', views2.my_registered_resits_yr5, name='my_registered_resits_yr5'),
+    
+    path('resit_reg_year6/', views2.resit_reg_year6, name='resit_reg_year6'),
+    path('unregister_resit_yr6/<str:pk>', views2.unregister_resit_yr6, name='unregister_resit_yr6'),
+    path('list_registered_resits6/', views2.list_registered_resits6, name='list_registered_resits6'),
+    path('my_registered_resits_yr6/', views2.my_registered_resits_yr6, name='my_registered_resits_yr6'),
+    
+    path('resit_reg_year7/', views2.resit_reg_year7, name='resit_reg_year1'),
+    path('unregister_resit_yr7/<str:pk>', views2.unregister_resit_yr7, name='unregister_resit_yr7'),
+    path('list_registered_resits7/', views2.list_registered_resits7, name='list_registered_resits7'),
+    path('my_registered_resits_yr7/', views2.my_registered_resits_yr7, name='my_registered_resits_yr7'),
+    # End of Resit/Retake URLs
+
 ]
