@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.conf import settings
 from django.urls import reverse
+import datetime
 
 # =====================================================================
 @login_required
@@ -109,6 +110,23 @@ def my_registered_resits_yr1(request):
         "queryset": queryset,
     }
     return render(request, "units/my_registered_resits/my_registered_resits_yr1.html", context)
+
+def resit_card_yr1(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = resit_exam_yr1.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        "tel":tel,
+        "email":email,
+        "queryset":queryset,
+        "date_downloaded":date_downloaded,
+    }
+    return render(request, "units/resit_card/resit_card_yr1.html", context)
 # End of yr 1 retakes
 
 # Year 2 Resits/Retakes
@@ -167,6 +185,23 @@ def my_registered_resits_yr2(request):
         "queryset": queryset,
     }
     return render(request, "units/my_registered_resits/my_registered_resits_yr2.html", context)
+
+def resit_card_yr2(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = resit_exam_yr2.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        "tel":tel,
+        "email":email,
+        "queryset":queryset,
+        "date_downloaded":date_downloaded,
+    }
+    return render(request, "units/resit_card/resit_card_yr2.html", context)
 # End Of Yr 2 Retakes
 
 # Year 3 Resits/Retakes
@@ -225,6 +260,23 @@ def my_registered_resits_yr3(request):
         "queryset": queryset,
     }
     return render(request, "units/my_registered_resits/my_registered_resits_yr3.html", context)
+
+def resit_card_yr3(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = resit_exam_yr3.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        "tel":tel,
+        "email":email,
+        "queryset":queryset,
+        "date_downloaded":date_downloaded,
+    }
+    return render(request, "units/resit_card/resit_card_yr3.html", context)
 # End of yr 3 Retakes
 
 # Year 4 Resits/Retakes
@@ -283,6 +335,23 @@ def my_registered_resits_yr4(request):
         "queryset": queryset,
     }
     return render(request, "units/my_registered_resits/my_registered_resits_yr4.html", context)
+
+def resit_card_yr4(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = resit_exam_yr4.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        "tel":tel,
+        "email":email,
+        "queryset":queryset,
+        "date_downloaded":date_downloaded,
+    }
+    return render(request, "units/resit_card/resit_card_yr4.html", context)
 # End Of Yr 4 Retakes
 
 # Year 5 Resits/Retakes
@@ -341,6 +410,23 @@ def my_registered_resits_yr5(request):
         "queryset": queryset,
     }
     return render(request, "units/my_registered_resits/my_registered_resits_yr5.html", context)
+
+def resit_card_yr5(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = resit_exam_yr5.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        "tel":tel,
+        "email":email,
+        "queryset":queryset,
+        "date_downloaded":date_downloaded,
+    }
+    return render(request, "units/resit_card/resit_card_yr5.html", context)
 # End of yr 5 retakes
 
 # Year 6 Resits/Retakes
@@ -399,6 +485,23 @@ def my_registered_resits_yr6(request):
         "queryset": queryset,
     }
     return render(request, "units/my_registered_resits/my_registered_resits_yr6.html", context)
+
+def resit_card_yr6(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = resit_exam_yr6.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        "tel":tel,
+        "email":email,
+        "queryset":queryset,
+        "date_downloaded":date_downloaded,
+    }
+    return render(request, "units/resit_card/resit_card_yr6.html", context)
 # End of yr 6 retakes
 
 # Year 7 Resits/Retakes
@@ -457,6 +560,23 @@ def my_registered_resits_yr7(request):
         "queryset": queryset,
     }
     return render(request, "units/my_registered_resits/my_registered_resits_yr7.html", context)
+
+def resit_card_yr7(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = resit_exam_yr7.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        "tel":tel,
+        "email":email,
+        "queryset":queryset,
+        "date_downloaded":date_downloaded,
+    }
+    return render(request, "units/resit_card/resit_card_yr7.html", context)
 # End of yr 7 retakes
 # End Of Resits/Retakes
 # ---------------------------------------------------------------------------------
