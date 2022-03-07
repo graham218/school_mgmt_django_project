@@ -8,7 +8,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Year 1 Exam Card</h3><br>
+            <h3 class="card-title">Exams Results Slip</h3><br>
             <a href="{% url 'school:my_reg_units_year_page' %}" class="btn btn-sm btn-primary">
               <i class=""></i> Year Page
             </a>
@@ -25,27 +25,36 @@
                 {% for instance1 in queryset %}
                 <h4 style="text-align: left; font-size: small;">{{instance1.full_name}}</h4>
                 {% endfor %}
-                <h4 style="text-align: left; font-size: small;">Year 1 Exam Card</h4>
+                <h4 style="text-align: left; font-size: small;">Exams Results Slip</h4>
                 <tr>
                     <th>COUNTER</th>
+                    <th>STAGE</th>
                     <th>UNIT NAME</th>
-                    <th>LECTURER'S SIGNATURE</th>
+                    <th>MARKS</th>
+                    <th>GRADE</th>
+                    <th>DATE UPDATED</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                     {% for instance in queryset %}
                         <td>{{forloop.counter}}</td>
-                        <td>{{instance.unit_name}}</td>
-                        <td>___________________</td>
+                        <td>{{instance.stage}}</td>
+                        <td>{{instance.unit_or_subject_name}}</td>
+                        <td>{{instance.marks}}</td>
+                        <td>{{instance.grade}}</td>
+                        <td>{{instance.date_updated}}</td>
                     {% endfor %}
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                     <th>COUNTER</th>
+                    <th>STAGE</th>
                     <th>UNIT NAME</th>
-                    <th>LECTURER'S SIGNATURE</th>
+                    <th>MARKS</th>
+                    <th>GRADE</th>
+                    <th>DATE UPDATED</th>
                 </tr>
               </tfoot>
             </table>
