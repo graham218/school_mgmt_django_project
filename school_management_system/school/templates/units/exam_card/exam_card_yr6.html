@@ -8,11 +8,14 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Year 6 Exam Card</h3>
+            <h3 class="card-title">Year 6 Exam Card</h3><br>
+            <a href="{% url 'school:my_reg_units_year_page' %}" class="btn btn-sm btn-primary">
+              <i class=""></i> Year Page
+            </a>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <table id="faculty" class="table table-bordered">
+            <table id="exam_card_yr6" class="table table-bordered">
               <thead>
                 <h1 style="text-align: center; font-size: large;font-weight: bolder;">{{school}}</h1>
                 <h2 style="text-align: center; font-size: large; font-weight: bold;">{{box}}</h2>
