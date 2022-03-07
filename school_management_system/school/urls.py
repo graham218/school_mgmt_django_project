@@ -167,4 +167,21 @@ urlpatterns = [
     path('my_registered_resits_yr7/', views2.my_registered_resits_yr7, name='my_registered_resits_yr7'),
     # End of Resit/Retake URLs
 
+    # Print Exam Card URLs
+    path('exam_card_yr1/', my_views.exam_card_yr1, name='exam_card_yr1'),
+    path('exam_card_yr2/', my_views.exam_card_yr2, name='exam_card_yr2'),
+    path('exam_card_yr3/', my_views.exam_card_yr3, name='exam_card_yr3'),
+    path('exam_card_yr4/', my_views.exam_card_yr4, name='exam_card_yr4'),
+    path('exam_card_yr5/', my_views.exam_card_yr5, name='exam_card_yr5'),
+    path('exam_card_yr6/', my_views.exam_card_yr6, name='exam_card_yr6'),
+    path('exam_card_yr7/', my_views.exam_card_yr7, name='exam_card_yr7'),
+
+    # Print Resit/Retake Card URLs
+    path('resit_card_yr1/', views2.resit_card_yr1, name='resit_card_yr1'),
+    path('resit_card_yr2/', views2.resit_card_yr2, name='resit_card_yr2'),
+    path('resit_card_yr3/', views2.resit_card_yr3, name='resit_card_yr3'),
+    path('resit_card_yr4/', views2.resit_card_yr4, name='resit_card_yr4'),
+    path('resit_card_yr5/', views2.resit_card_yr5, name='resit_card_yr5'),
+    path('resit_card_yr6/', views2.resit_card_yr6, name='resit_card_yr6'),
+    path('resit_card_yr7/', views2.resit_card_yr7, name='resit_card_yr7'),
 ]
