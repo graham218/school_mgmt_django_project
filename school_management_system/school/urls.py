@@ -109,7 +109,7 @@ urlpatterns = [
     path('list_marks_year_page/', views2.list_marks_year_page, name='list_marks_year_page'),
     path('my_resit_year_page/', views2.my_resit_year_page, name='my_resit_year_page'),
     path('list_resit_year_page/', views2.list_resit_year_page, name='list_resit_year_page'),
-    
+    path('exam_results_page/', views2.exam_results_page, name='exam_results_page'),
 
     # admin pages
     path('all_users/', views.all_users, name='all_users'),
@@ -184,4 +184,13 @@ urlpatterns = [
     path('resit_card_yr5/', views2.resit_card_yr5, name='resit_card_yr5'),
     path('resit_card_yr6/', views2.resit_card_yr6, name='resit_card_yr6'),
     path('resit_card_yr7/', views2.resit_card_yr7, name='resit_card_yr7'),
+
+    #Print Resuts slip
+    path('results_slip_year1/', my_views.results_slip_year1, name='results_slip_year1'),
+    path('results_slip_year2/', my_views.results_slip_year2, name='results_slip_year2'),
+    path('results_slip_year3/', my_views.results_slip_year3, name='results_slip_year3'),
+    path('results_slip_year4/', my_views.results_slip_year4, name='results_slip_year4'),
+    path('results_slip_year5/', my_views.results_slip_year5, name='results_slip_year5'),
+    path('results_slip_year6/', my_views.results_slip_year6, name='results_slip_year6'),
+    path('results_slip_year7/', my_views.results_slip_year7, name='results_slip_year7'),
 ]

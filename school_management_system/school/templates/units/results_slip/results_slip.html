@@ -8,8 +8,8 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Exams Results Slip</h3><br>
-            <a href="{% url 'school:my_reg_units_year_page' %}" class="btn btn-sm btn-primary">
+            <h3 class="card-title">Exam Results Slip</h3><br>
+            <a href="{% url 'school:exam_results_page' %}" class="btn btn-sm btn-primary">
               <i class=""></i> Year Page
             </a>
           </div>
@@ -27,7 +27,7 @@
                 {% endfor %}
                 <h4 style="text-align: left; font-size: small;">Exams Results Slip</h4>
                 <tr>
-                    <th>COUNTER</th>
+                    <th></th>
                     <th>STAGE</th>
                     <th>UNIT NAME</th>
                     <th>MARKS</th>
@@ -49,7 +49,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                    <th>COUNTER</th>
+                    <th></th>
                     <th>STAGE</th>
                     <th>UNIT NAME</th>
                     <th>MARKS</th>

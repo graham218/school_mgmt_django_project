@@ -36,6 +36,14 @@ def list_marks_year_page(request):
         "title":title
     }
     return render(request, "units/pages/list_marks_year_page.html", context)
+
+@login_required
+def exam_results_page(request):
+    title="Choose Year Of Study To View Results"
+    context={
+        "title":title
+    }
+    return render(request, "units/pages/exam_results_slip_page.html", context)
 # ------------------------------------------------------------------------------------
 # Resits/Retakes
 @login_required
