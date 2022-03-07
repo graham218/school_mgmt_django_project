@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'mptt',
+    'base',
 ]
 AUTH_USER_MODEL = 'custom_user.User'
 

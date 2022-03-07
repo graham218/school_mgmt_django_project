@@ -22,7 +22,6 @@ from django.contrib.auth import views as auth_views
 
 from django.conf import settings
 from django.conf.urls.static import static
-from mpesa.urls import mpesa_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +29,7 @@ urlpatterns = [
     path('school/', include('school.urls')),
     # path('api/v1/', include('mpesa_api.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('base/', include('base.urls')),
 
     # paypal
     path('paypal/', include('paypal.standard.ipn.urls')),

@@ -1,5 +1,5 @@
 
-const APP_ID = 'YOUR APP ID'
+const APP_ID = '679daffd13bb46c6b2f4324368e67064'
 const TOKEN = sessionStorage.getItem('token')
 const CHANNEL = sessionStorage.getItem('room')
 let UID = sessionStorage.getItem('UID')
@@ -21,7 +21,7 @@ let joinAndDisplayLocalStream = async () => {
         UID = await client.join(APP_ID, CHANNEL, TOKEN, UID)
     }catch(error){
         console.error(error)
-        window.open('/', '_self')
+        window.open('/base/lobby', '_self')
     }
     
     localTracks = await AgoraRTC.createMicrophoneAndCameraTracks()
@@ -78,7 +78,7 @@ let leaveAndRemoveLocalStream = async () => {
     await client.leave()
     //This is somewhat of an issue because if user leaves without actaull pressing leave button, it will not trigger
     deleteMember()
-    window.open('/', '_self')
+    window.open('/base/lobby', '_self')
 }
 
 let toggleCamera = async (e) => {
@@ -104,7 +104,7 @@ let toggleMic = async (e) => {
 }
 
 let createMember = async () => {
-    let response = await fetch('/create_member/', {
+    let response = await fetch('/base/create_member/', {
         method:'POST',
         headers: {
             'Content-Type':'application/json'
@@ -117,13 +117,13 @@ let createMember = async () => {
 
 
 let getMember = async (user) => {
-    let response = await fetch(`/get_member/?UID=${user.uid}&room_name=${CHANNEL}`)
+    let response = await fetch(`/base/get_member/?UID=${user.uid}&room_name=${CHANNEL}`)
     let member = await response.json()
     return member
 }
 
 let deleteMember = async () => {
-    let response = await fetch('/delete_member/', {
+    let response = await fetch('/base/delete_member/', {
         method:'POST',
         headers: {
             'Content-Type':'application/json'
