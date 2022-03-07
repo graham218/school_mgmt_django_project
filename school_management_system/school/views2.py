@@ -27,7 +27,7 @@ def my_reg_units_year_page(request):
     context={
         "title":title
     }
-    return render(request, "units/my_reg_units_year_page.html", context)
+    return render(request, "units/pages/my_reg_units_year_page.html", context)
 
 @login_required
 def list_marks_year_page(request):
