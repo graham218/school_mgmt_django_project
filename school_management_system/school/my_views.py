@@ -124,6 +124,23 @@ def my_registered_units1(request):
     }
     return render(request, "units/my_registered_units/my_registered_units_yr1.html", context)
 
+def exam_card_yr1(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr1.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset
+    }
+    return render(request, "units/exam_card/exam_card_yr1.html", context)
+
 #==============================================================================================
 @login_required
 def unit_registration2(request):
@@ -201,6 +218,23 @@ def my_registered_units2(request):
         "queryset": queryset,
     }
     return render(request, "units/my_registered_units/my_registered_units_yr2.html", context)
+
+def exam_card_yr2(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr2.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset
+    }
+    return render(request, "units/exam_card/exam_card_yr2.html", context)
 #====================================================================================================
 
 #Unit Registration 3
@@ -279,6 +313,23 @@ def my_registered_units3(request):
         "queryset": queryset,
     }
     return render(request, "units/my_registered_units/my_registered_units_yr3.html", context)
+
+def exam_card_yr3(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr3.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset
+    }
+    return render(request, "units/exam_card/exam_card_yr3.html", context)
 #====================================================================================================
 #Unit Registration 4
 #==============================================================================================
@@ -356,6 +407,23 @@ def my_registered_units4(request):
         "queryset": queryset,
     }
     return render(request, "units/my_registered_units/my_registered_units_yr4.html", context)
+
+def exam_card_yr4(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr4.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset
+    }
+    return render(request, "units/exam_card/exam_card_yr4.html", context)
 #====================================================================================================
 #Unit Registration 5
 #==============================================================================================
@@ -432,6 +500,23 @@ def my_registered_units5(request):
         "queryset": queryset,
     }
     return render(request, "units/my_registered_units/my_registered_units_yr5.html", context)
+
+def exam_card_yr5(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr5.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset
+    }
+    return render(request, "units/exam_card/exam_card_yr5.html", context)
 #====================================================================================================
 #Unit Registration 6
 #==============================================================================================
@@ -509,6 +594,23 @@ def my_registered_units6(request):
         "queryset": queryset,
     }
     return render(request, "units/my_registered_units/my_registered_units_yr6.html", context)
+
+def exam_card_yr6(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr6.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset
+    }
+    return render(request, "units/exam_card/exam_card_yr6.html", context)
 #====================================================================================================
 #Unit Registration 7
 #==============================================================================================
@@ -586,4 +688,21 @@ def my_registered_units7(request):
         "queryset": queryset,
     }
     return render(request, "units/my_registered_units/my_registered_units_yr7.html", context)
+
+def exam_card_yr7(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr7.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset
+    }
+    return render(request, "units/exam_card/exam_card_yr7.html", context)
 #====================================================================================================
