@@ -12,53 +12,40 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <table id="special-exams" class="table table-bordered table-striped">
+            <table id="faculty" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>Counter</th>
-                  <th>USERNAME</th>
-                  <th>FULL NAME</th>
-                  <th>STAGE</th>
-                  <th>UNIT NAME</th>
-                  <th>MARKS</th>
-                  <th>GRADE</th>
-                  <th>COMMENTS</th>
-                  <th>DATE REGISTERED</th>
-                  <th>DATE UPDATED</th>
-                  <th>UPDATE</th>
+                <tr>
+                  <th> COUNTER </th>
+                  <th> USERNAME </th>
+                  <th> STUDENT NAME </th>
+                  <th> STAGE </th>
+                  <th> UNIT NAME </th>
+                  <th> DATE REAGISTERED </th>
+                  <th> DATE UPDATED </th>
                 </tr>
               </thead>
               <tbody>
-                {% for instance in queryset2 %}
+                {% for instance in queryset %}
                 <tr>
                   <td>{{forloop.counter}}</td>
                   <td>{{instance.user}}</td>
                   <td>{{instance.full_name}}</td>
                   <td>{{instance.stage}}</td>
                   <td>{{instance.unit_name}}</td>
-                  <td>{{instance.marks}}</td>
-                  <td>{{instance.grade}}</td>
-                  <td>{{instance.comments}}</td>
                   <td>{{instance.date_registered}}</td>
                   <td>{{instance.date_updated}}</td>
-                  <td><a href="{% url 'school:special_exams_marks' instance.id%}" class="fa fa-edit">UPDATE</a>
-                  <td>
-                </tr>
                 {% endfor %}
               </tbody>
               <tfoot>
                 <tr>
-                  <th>Counter</th>
-                  <th>USERNAME</th>
-                  <th>FULL NAME</th>
-                  <th>STAGE</th>
-                  <th>UNIT NAME</th>
-                  <th>MARKS</th>
-                  <th>GRADE</th>
-                  <th>COMMENTS</th>
-                  <th>DATE REGISTERED</th>
-                  <th>DATE UPDATED</th>
-                  <th>UPDATE</th>
+                  <th> COUNTER </th>
+                  <th> USERNAME </th>
+                  <th> STUDENT NAME </th>
+                  <th> STAGE </th>
+                  <th> UNIT NAME </th>
+                  <th> DATE REAGISTERED </th>
+                  <th> DATE UPDATED </th>
                 </tr>
               </tfoot>
             </table>

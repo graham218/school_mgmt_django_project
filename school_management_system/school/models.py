@@ -33,6 +33,7 @@ class Stages(models.Model):
         return self.year
 
 
+
 class Gender(models.Model):
     gender = models.CharField(max_length=255, blank=True, null=True)
 
@@ -107,6 +108,8 @@ class Lectures(models.Model):
         return self.full_name
 
 
+# ---------------------------------------------------------------------------------------
+# Normal Exams
 class marks_yr1(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
@@ -205,6 +208,77 @@ class marks_yr7(models.Model):
 
     def __str__(self):
         return self.unit_or_subject_name
+
+# End of normal Exams
+# --------------------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------------------
+# Resit Exams
+class resit_exam_yr1(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage=models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
+    unit_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=True, default="")
+    date_registered = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class resit_exam_yr2(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage=models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
+    unit_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=True, default="")
+    date_registered = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class resit_exam_yr3(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage=models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
+    unit_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=True, default="")
+    date_registered = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class resit_exam_yr4(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage=models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
+    unit_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=True, default="")
+    date_registered = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class resit_exam_yr5(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage=models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
+    unit_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=True, default="")
+    date_registered = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class resit_exam_yr6(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage=models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
+    unit_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=True, default="")
+    date_registered = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+class resit_exam_yr7(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    stage=models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
+    unit_name = models.ForeignKey(Units, max_length=255, on_delete=models.CASCADE, blank=True, default="")
+    date_registered = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+# End of Resit exams
+# ---------------------------------------------------------------------------------------
 
 class fee_payment(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)

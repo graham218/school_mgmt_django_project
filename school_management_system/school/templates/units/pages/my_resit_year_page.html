@@ -2,7 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h3 style="text-align: center;" class="responsive">{{title}}</h3>
+<h3 style="text-align: center;">{{title}}</h3>
         <!-- Main content -->
         <section class="content">
 
@@ -15,10 +15,10 @@
                                 <div class="card-body pt-0">
                                     <div class="row">
                                         <div class="col-7">
-                                            <h2 class="lead"><b>Year One Units</b></h2>
+                                            <h2 class="lead"><b>Year One Retakes</b></h2>
                                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                                 <li class="small"><span class="fa-li"><i
-                                                            class="fas fa-lg fa-building"></i></span> Units: All Units
+                                                            class="fas fa-lg fa-building"></i></span> Units: All Units Failed
                                                 </li>
                                                 <li class="small">
                                             </ul>
@@ -31,8 +31,11 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="{% url 'school:my_registered_units1' %}" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-user"></i> View Year 1 Units
+                                        <a href="{% url 'school:my_registered_resits_yr1' %}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i>View Year 1 Resits
+                                        </a><br><br>
+                                        <a href="{% url 'school:resit_card_yr1' %}" class="btn btn-sm btn-success">
+                                            <i class="fas fa-user"></i>Resit Card: Year 1
                                         </a>
                                     </div>
                                 </div>
@@ -43,10 +46,10 @@
                                 <div class="card-body pt-0">
                                     <div class="row">
                                         <div class="col-7">
-                                            <h2 class="lead"><b>Year Two Units</b></h2>
+                                            <h2 class="lead"><b>Year Two Retakes</b></h2>
                                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                                 <li class="small"><span class="fa-li"><i
-                                                            class="fas fa-lg fa-building"></i></span> Units: All Units
+                                                            class="fas fa-lg fa-building"></i></span> Units: All Units Failed
                                                 </li>
                                                 <li class="small">
                                             </ul>
@@ -59,8 +62,11 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="{% url 'school:my_registered_units2' %}" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-user"></i> View Year 2 Units
+                                        <a href="{% url 'school:my_registered_resits_yr2' %}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i>View Year 2 Resits
+                                        </a><br><br>
+                                        <a href="{% url 'school:resit_card_yr2' %}" class="btn btn-sm btn-success">
+                                            <i class="fas fa-user"></i>Resit Card: Year 2
                                         </a>
                                     </div>
                                 </div>
@@ -71,10 +77,10 @@
                                 <div class="card-body pt-0">
                                     <div class="row">
                                         <div class="col-7">
-                                            <h2 class="lead"><b>Year Three Units</b></h2>
+                                            <h2 class="lead"><b>Year Three Retakes</b></h2>
                                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                                 <li class="small"><span class="fa-li"><i
-                                                            class="fas fa-lg fa-building"></i></span> Units: All Units
+                                                            class="fas fa-lg fa-building"></i></span> Units: All Units Failed
                                                 </li>
                                                 <li class="small">
                                             </ul>
@@ -87,8 +93,11 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="{% url 'school:my_registered_units3' %}" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-user"></i> View Year 3 Units
+                                        <a href="{% url 'school:my_registered_resits_yr3' %}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i>View Year 3 Resits
+                                        </a><br><br>
+                                        <a href="{% url 'school:resit_card_yr3' %}" class="btn btn-sm btn-success">
+                                            <i class="fas fa-user"></i>Resit Card: Year 3
                                         </a>
                                     </div>
                                 </div>
@@ -99,10 +108,10 @@
                                 <div class="card-body pt-0">
                                     <div class="row">
                                         <div class="col-7">
-                                            <h2 class="lead"><b>Year Four Units</b></h2>
+                                            <h2 class="lead"><b>Year Four Retakes</b></h2>
                                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                                 <li class="small"><span class="fa-li"><i
-                                                            class="fas fa-lg fa-building"></i></span> Units: All Units
+                                                            class="fas fa-lg fa-building"></i></span> Units: All Units Failed
                                                 </li>
                                                 <li class="small">
                                             </ul>
@@ -115,8 +124,11 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="{% url 'school:my_registered_units4' %}" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-user"></i> View Year 4 Units
+                                        <a href="{% url 'school:my_registered_resits_yr4' %}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i>View Year 4 Resits
+                                        </a><br><br>
+                                        <a href="{% url 'school:resit_card_yr4' %}" class="btn btn-sm btn-success">
+                                            <i class="fas fa-user"></i>Resit Card: Year 4
                                         </a>
                                     </div>
                                 </div>
@@ -127,10 +139,10 @@
                                 <div class="card-body pt-0">
                                     <div class="row">
                                         <div class="col-7">
-                                            <h2 class="lead"><b>Year Five Units</b></h2>
+                                            <h2 class="lead"><b>Year Five Retakes</b></h2>
                                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                                 <li class="small"><span class="fa-li"><i
-                                                            class="fas fa-lg fa-building"></i></span> Units: All Units
+                                                            class="fas fa-lg fa-building"></i></span> Units: All Units Failed
                                                 </li>
                                                 <li class="small">
                                             </ul>
@@ -143,8 +155,11 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="{% url 'school:my_registered_units5' %}" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-user"></i> View Year 5 Units
+                                        <a href="{% url 'school:my_registered_resits_yr5' %}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i> View Year 5 Resits
+                                        </a><br><br>
+                                        <a href="{% url 'school:resit_card_yr5' %}" class="btn btn-sm btn-success">
+                                            <i class="fas fa-user"></i>Resit Card: Year 5
                                         </a>
                                     </div>
                                 </div>
@@ -155,10 +170,10 @@
                                 <div class="card-body pt-0">
                                     <div class="row">
                                         <div class="col-7">
-                                            <h2 class="lead"><b>Year Six Units</b></h2>
+                                            <h2 class="lead"><b>Year Six Retakes</b></h2>
                                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                                 <li class="small"><span class="fa-li"><i
-                                                            class="fas fa-lg fa-building"></i></span> Units: All Units
+                                                            class="fas fa-lg fa-building"></i></span> Units: All Units Failed
                                                 </li>
                                                 <li class="small">
                                             </ul>
@@ -171,8 +186,11 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-user"></i> View Year 6 Units
+                                        <a href="{% url 'school:my_registered_resits_yr6' %}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i>View Year 6 Resits
+                                        </a><br><br>
+                                        <a href="{% url 'school:resit_card_yr6' %}" class="btn btn-sm btn-success">
+                                            <i class="fas fa-user"></i>Resit Card: Year 6
                                         </a>
                                     </div>
                                 </div>
@@ -183,10 +201,10 @@
                                 <div class="card-body pt-0">
                                     <div class="row">
                                         <div class="col-7">
-                                            <h2 class="lead"><b>Year Seven Units</b></h2>
+                                            <h2 class="lead"><b>Year Seven Retakes</b></h2>
                                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                                 <li class="small"><span class="fa-li"><i
-                                                            class="fas fa-lg fa-building"></i></span> Units: All Units</li>
+                                                            class="fas fa-lg fa-building"></i></span> Units: All Units Failed</li>
                                                 <li class="small">
                                             </ul>
                                         </div>
@@ -198,8 +216,11 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="{% url 'school:my_registered_units7' %}" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-user"></i> View Year 7 Units
+                                        <a href="{% url 'school:my_registered_resits_yr7' %}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i>View Year 7 Resits
+                                        </a><br><br>
+                                        <a href="{% url 'school:resit_card_yr7' %}" class="btn btn-sm btn-success">
+                                            <i class="fas fa-user"></i>Resit Card: Year 7
                                         </a>
                                     </div>
                                 </div>

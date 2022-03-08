@@ -171,3 +171,12 @@ admin.site.register(LecturerUnits, LecturerUnitsAdmin)
 admin.site.register(NoticeBoard, NoticeBoardAdmin)
 admin.site.register(Voting, VotingAdmin)
 admin.site.register(SuggestionBox, SuggestionBoxAdmin)
+
+# resits
+admin.site.register(resit_exam_yr1)
+admin.site.register(resit_exam_yr2)
+admin.site.register(resit_exam_yr3)
+admin.site.register(resit_exam_yr4)
+admin.site.register(resit_exam_yr5)
+admin.site.register(resit_exam_yr6)
+admin.site.register(resit_exam_yr7)

@@ -63,6 +63,7 @@ def home(request):
     # total_ghost_users=User.objects.filter(is_admin=False,is_student=False,is_lecturer=False,is_non_sfaff=False,is_supplier=False).count()
     total_students=User.objects.filter(is_student=True).count()
     total_lecturers=User.objects.filter(is_lecturer=True).count()
+    total_admins=User.objects.filter(is_admin=True).count()
     context = {
         "title": title,
         "students_title": students_title,
@@ -73,7 +74,7 @@ def home(request):
         "students_queryset": students_queryset,
         "lec_queryset": lec_queryset,
         "total_users": total_users,
-        # "total_ghost_users": total_ghost_users,
+        "total_admins": total_admins,
         "total_students": total_students,
         "total_lecturers": total_lecturers,
     }

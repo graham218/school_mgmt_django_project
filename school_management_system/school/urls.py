@@ -84,11 +84,6 @@ urlpatterns = [
 
     path('FeeReceiptList/', views2.FeeReceiptList, name='FeeReceiptList'),
 
-    path('register_special_exam/', views2.register_special_exams, name='register_special_exam'),
-    path('my_special_exams/', views2.my_special_exams, name='my_special_exams'),
-    path('special_exams_marks/<str:pk>', views2.special_exams_marks, name='special_exams_marks'),
-    path('delete_special_exams/<str:pk>', views2.delete_special_exams, name='delete_special_exams'),
-    path('SpecialExamList/', views2.SpecialExamList, name='SpecialExamList'),
     
     path('create_edit_lecturer_units/', views2.add_lecturer_units, name='create_edit_lecturer_units'),
     path('lecturer_units_edit/<str:pk>', views2.lecturer_units_edit, name='lecturer_units_edit'),
@@ -99,10 +94,6 @@ urlpatterns = [
     path('list_seats/', views2.list_seats, name='list_seats'),
     path('seats_edit/<str:pk>', views2.seats_edit, name='seats_edit'),
     path('seats_delete/<str:pk>', views2.seats_delete, name='seats_delete'),
-
-    path('add_notice/', views2.add_notice, name='add_notice'),
-    path('delete_notice/<str:pk>', views2.delete_notice, name='delete_notice'),
-    path('list_notices/', views2.list_notices, name='list_notices'),
     
     path('register_polititian/', views2.register_polititian, name='register_polititian'),
     path('edit_polititian/<str:pk>', views2.edit_polititian, name='edit_polititian'),
@@ -114,10 +105,11 @@ urlpatterns = [
     path('list_suggestions/', views2.list_suggestions, name='list_suggestions'),
 
     # pages
-    path('unit_year_page/', views2.unit_year_page, name='unit_year_page'),
-    path('unit_year_page_marks/', views2.unit_year_page_marks, name='unit_year_page_marks'),
-    path('resit_year_page/', views2.resit_year_page, name='resit_year_page'),
-    path('resit_year_page_marks/', views2.resit_year_page_marks, name='resit_year_page_marks'),
+    path('my_reg_units_year_page/', views2.my_reg_units_year_page, name='my_reg_units_year_page'),
+    path('list_marks_year_page/', views2.list_marks_year_page, name='list_marks_year_page'),
+    path('my_resit_year_page/', views2.my_resit_year_page, name='my_resit_year_page'),
+    path('list_resit_year_page/', views2.list_resit_year_page, name='list_resit_year_page'),
+    path('exam_results_page/', views2.exam_results_page, name='exam_results_page'),
 
     # admin pages
     path('all_users/', views.all_users, name='all_users'),
@@ -136,5 +128,69 @@ urlpatterns = [
     path('send_payment/', paypal_views.send_payment, name='send_payment'),
     path('process-payment/', paypal_views.process_payment, name='process_payment'),
     path('payment-done/', paypal_views.payment_done, name='payment_done'),
-    path('payment-cancelled/', paypal_views.payment_canceled, name='payment_cancelled')
+    path('payment-cancelled/', paypal_views.payment_canceled, name='payment_cancelled'),
+
+    # Resits/Retakes
+    path('resit_reg_year1/', views2.resit_reg_year1, name='resit_reg_year1'),
+    path('unregister_resit_yr1/<str:pk>', views2.unregister_resit_yr1, name='unregister_resit_yr1'),
+    path('list_registered_resits1/', views2.list_registered_resits1, name='list_registered_resits1'),
+    path('my_registered_resits_yr1/', views2.my_registered_resits_yr1, name='my_registered_resits_yr1'),
+
+    path('resit_reg_year2/', views2.resit_reg_year2, name='resit_reg_year2'),
+    path('unregister_resit_yr2/<str:pk>', views2.unregister_resit_yr2, name='unregister_resit_yr2'),
+    path('list_registered_resits2/', views2.list_registered_resits2, name='list_registered_resits2'),
+    path('my_registered_resits_yr2/', views2.my_registered_resits_yr2, name='my_registered_resits_yr2'),
+    
+    path('resit_reg_year3/', views2.resit_reg_year3, name='resit_reg_year3'),
+    path('unregister_resit_yr3/<str:pk>', views2.unregister_resit_yr3, name='unregister_resit_yr3'),
+    path('list_registered_resits3/', views2.list_registered_resits3, name='list_registered_resits3'),
+    path('my_registered_resits_yr3/', views2.my_registered_resits_yr3, name='my_registered_resits_yr3'),
+    
+    path('resit_reg_year4/', views2.resit_reg_year4, name='resit_reg_year4'),
+    path('unregister_resit_yr4/<str:pk>', views2.unregister_resit_yr4, name='unregister_resit_yr4'),
+    path('list_registered_resits4/', views2.list_registered_resits4, name='list_registered_resits4'),
+    path('my_registered_resits_yr4/', views2.my_registered_resits_yr4, name='my_registered_resits_yr4'),
+    
+    path('resit_reg_year5/', views2.resit_reg_year5, name='resit_reg_year5'),
+    path('unregister_resit_yr5/<str:pk>', views2.unregister_resit_yr5, name='unregister_resit_yr5'),
+    path('list_registered_resits5/', views2.list_registered_resits5, name='list_registered_resits5'),
+    path('my_registered_resits_yr5/', views2.my_registered_resits_yr5, name='my_registered_resits_yr5'),
+    
+    path('resit_reg_year6/', views2.resit_reg_year6, name='resit_reg_year6'),
+    path('unregister_resit_yr6/<str:pk>', views2.unregister_resit_yr6, name='unregister_resit_yr6'),
+    path('list_registered_resits6/', views2.list_registered_resits6, name='list_registered_resits6'),
+    path('my_registered_resits_yr6/', views2.my_registered_resits_yr6, name='my_registered_resits_yr6'),
+    
+    path('resit_reg_year7/', views2.resit_reg_year7, name='resit_reg_year1'),
+    path('unregister_resit_yr7/<str:pk>', views2.unregister_resit_yr7, name='unregister_resit_yr7'),
+    path('list_registered_resits7/', views2.list_registered_resits7, name='list_registered_resits7'),
+    path('my_registered_resits_yr7/', views2.my_registered_resits_yr7, name='my_registered_resits_yr7'),
+    # End of Resit/Retake URLs
+
+    # Print Exam Card URLs
+    path('exam_card_yr1/', my_views.exam_card_yr1, name='exam_card_yr1'),
+    path('exam_card_yr2/', my_views.exam_card_yr2, name='exam_card_yr2'),
+    path('exam_card_yr3/', my_views.exam_card_yr3, name='exam_card_yr3'),
+    path('exam_card_yr4/', my_views.exam_card_yr4, name='exam_card_yr4'),
+    path('exam_card_yr5/', my_views.exam_card_yr5, name='exam_card_yr5'),
+    path('exam_card_yr6/', my_views.exam_card_yr6, name='exam_card_yr6'),
+    path('exam_card_yr7/', my_views.exam_card_yr7, name='exam_card_yr7'),
+
+    # Print Resit/Retake Card URLs
+    path('resit_card_yr1/', views2.resit_card_yr1, name='resit_card_yr1'),
+    path('resit_card_yr2/', views2.resit_card_yr2, name='resit_card_yr2'),
+    path('resit_card_yr3/', views2.resit_card_yr3, name='resit_card_yr3'),
+    path('resit_card_yr4/', views2.resit_card_yr4, name='resit_card_yr4'),
+    path('resit_card_yr5/', views2.resit_card_yr5, name='resit_card_yr5'),
+    path('resit_card_yr6/', views2.resit_card_yr6, name='resit_card_yr6'),
+    path('resit_card_yr7/', views2.resit_card_yr7, name='resit_card_yr7'),
+
+    #Print Resuts slip
+    path('results_slip_year1/', my_views.results_slip_year1, name='results_slip_year1'),
+    path('results_slip_year2/', my_views.results_slip_year2, name='results_slip_year2'),
+    path('results_slip_year3/', my_views.results_slip_year3, name='results_slip_year3'),
+    path('results_slip_year4/', my_views.results_slip_year4, name='results_slip_year4'),
+    path('results_slip_year5/', my_views.results_slip_year5, name='results_slip_year5'),
+    path('results_slip_year6/', my_views.results_slip_year6, name='results_slip_year6'),
+    path('results_slip_year7/', my_views.results_slip_year7, name='results_slip_year7'),
 ]

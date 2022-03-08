@@ -1,0 +1,58 @@
+{% extends 'index2.html' %}
+{% load static %}
+{% block content %}
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Year 1 Resit/Retake Card</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="faculty" class="table table-bordered">
+              <thead>
+                <h1 style="text-align: center; font-size: large;font-weight: bolder;">{{school}}</h1>
+                <h2 style="text-align: center; font-size: large; font-weight: bold;">{{box}}</h2>
+                <h3 style="text-align: center; font-size: large; font-style: italic; text-decoration: underline;">Tel: {{tel}} &nbsp;&nbsp; Email:{{email}}</h3>
+                <h4 style="text-align: right; font-size: small;">{{date_downloaded}}</h4>
+                {% for instance1 in queryset %}
+                <h4 style="text-align: left; font-size: small;">{{instance1.full_name}}</h4>
+                {% endfor %}
+                <tr>
+                    <th>COUNTER</th>
+                    <th>UNIT NAME</th>
+                    <th>LECTURER'S SIGNATURE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    {% for instance in queryset %}
+                        <td>{{forloop.counter}}</td>
+                        <td>{{instance.unit_name}}</td>
+                        <td>___________________</td>
+                    {% endfor %}
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                    <th>COUNTER</th>
+                    <th>UNIT NAME</th>
+                    <th>LECTURER'S SIGNATURE</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+{% endblock content %}

@@ -1,0 +1,72 @@
+{% extends 'index2.html' %}
+{% load static %}
+{% block content %}
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Exam Results Slip</h3><br>
+            <a href="{% url 'school:exam_results_page' %}" class="btn btn-sm btn-primary">
+              <i class=""></i> Year Page
+            </a>
+          </div>
+          
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="exam_card_yr1" class="table table-bordered">
+              <thead>
+                <h1 style="text-align: center; font-size: large;font-weight: bolder;">{{school}}</h1>
+                <h2 style="text-align: center; font-size: large; font-weight: bold;">{{box}}</h2>
+                <h3 style="text-align: center; font-size: large; font-style: italic; text-decoration: underline;">Tel: {{tel}} &nbsp;&nbsp; Email:{{email}}</h3>
+                <h4 style="text-align: right; font-size: small;">{{date_downloaded}}</h4>
+                {% for instance1 in queryset %}
+                <h4 style="text-align: left; font-size: small;">{{instance1.full_name}}</h4>
+                {% endfor %}
+                <h4 style="text-align: left; font-size: small;">Exams Results Slip</h4>
+                <tr>
+                    <th></th>
+                    <th>STAGE</th>
+                    <th>UNIT NAME</th>
+                    <th>MARKS</th>
+                    <th>GRADE</th>
+                    <th>DATE UPDATED</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    {% for instance in queryset %}
+                        <td>{{forloop.counter}}</td>
+                        <td>{{instance.stage}}</td>
+                        <td>{{instance.unit_or_subject_name}}</td>
+                        <td>{{instance.marks}}</td>
+                        <td>{{instance.grade}}</td>
+                        <td>{{instance.date_updated}}</td>
+                    {% endfor %}
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                    <th></th>
+                    <th>STAGE</th>
+                    <th>UNIT NAME</th>
+                    <th>MARKS</th>
+                    <th>GRADE</th>
+                    <th>DATE UPDATED</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+{% endblock content %}

@@ -1,0 +1,215 @@
+{% extends 'index2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h3 style="text-align: center;" class="responsive">{{title}}</h3>
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Default box -->
+            <div class="card card-solid">
+                <div class="card-body pb-0">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                            <div class="card bg-light d-flex flex-fill">
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="lead"><b>Year One Results</b></h2>
+                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                <li class="small"><span class="fa-li"><i
+                                                            class="fas fa-lg fa-building"></i></span> Units: All Units
+                                                </li>
+                                                <li class="small">
+                                            </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <img src="{% static 'dist/img/user1-128x128.jpg' %}" alt="user-avatar"
+                                                class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-right">
+                                        <a href="{% url 'school:results_slip_year1' %}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i> View Year 1 Results
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                            <div class="card bg-light d-flex flex-fill">
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="lead"><b>Year Two Results</b></h2>
+                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                <li class="small"><span class="fa-li"><i
+                                                            class="fas fa-lg fa-building"></i></span> Units: All Units
+                                                </li>
+                                                <li class="small">
+                                            </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <img src="{% static 'dist/img/user1-128x128.jpg' %}" alt="user-avatar"
+                                                class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-right">
+                                        <a href="{% url 'school:results_slip_year2' %}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i> View Year 2 Results
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                            <div class="card bg-light d-flex flex-fill">
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="lead"><b>Year Three Results</b></h2>
+                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                <li class="small"><span class="fa-li"><i
+                                                            class="fas fa-lg fa-building"></i></span> Units: All Units
+                                                </li>
+                                                <li class="small">
+                                            </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <img src="{% static 'dist/img/user1-128x128.jpg' %}" alt="user-avatar"
+                                                class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-right">
+                                        <a href="{% url 'school:results_slip_year3' %}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i> View Year 3 Results
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                            <div class="card bg-light d-flex flex-fill">
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="lead"><b>Year Four Results</b></h2>
+                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                <li class="small"><span class="fa-li"><i
+                                                            class="fas fa-lg fa-building"></i></span> Units: All Units
+                                                </li>
+                                                <li class="small">
+                                            </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <img src="{% static 'dist/img/user1-128x128.jpg' %}" alt="user-avatar"
+                                                class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-right">
+                                        <a href="{% url 'school:results_slip_year4' %}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i> View Year 4 Results
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                            <div class="card bg-light d-flex flex-fill">
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="lead"><b>Year Five Results</b></h2>
+                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                <li class="small"><span class="fa-li"><i
+                                                            class="fas fa-lg fa-building"></i></span> Units: All Units
+                                                </li>
+                                                <li class="small">
+                                            </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <img src="{% static 'dist/img/user1-128x128.jpg' %}" alt="user-avatar"
+                                                class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-right">
+                                        <a href="{% url 'school:results_slip_year5' %}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i> View Year 5 Results
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                            <div class="card bg-light d-flex flex-fill">
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="lead"><b>Year Six Results</b></h2>
+                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                <li class="small"><span class="fa-li"><i
+                                                            class="fas fa-lg fa-building"></i></span> Units: All Units
+                                                </li>
+                                                <li class="small">
+                                            </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <img src="{% static 'dist/img/user1-128x128.jpg' %}" alt="user-avatar"
+                                                class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-right">
+                                        <a href="{% url 'school:results_slip_year6' %}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i> View Year 6 Results
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                            <div class="card bg-light d-flex flex-fill">
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="lead"><b>Year Seven Results</b></h2>
+                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                <li class="small"><span class="fa-li"><i
+                                                            class="fas fa-lg fa-building"></i></span> Units: All Units</li>
+                                                <li class="small">
+                                            </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <img src="{% static 'dist/img/user1-128x128.jpg' %}" alt="user-avatar"
+                                                class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-right">
+                                        <a href="{% url 'school:results_slip_year7' %}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i> View Year 7 Results
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+
+        </section>
+        <!-- /.content -->
+{% endblock content %}
