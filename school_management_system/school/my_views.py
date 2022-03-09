@@ -105,6 +105,7 @@ def insert_marks(request, pk):
     }
     return render(request, "units/update-marks.html", context)
 
+@login_required
 def list_registered_units1(request):
     title = 'List of Registered Students'
     queryset = marks_yr1.objects.all()
@@ -114,6 +115,7 @@ def list_registered_units1(request):
     }
     return render(request, "units/list_registered_units/list_registered_units_yr1.html", context)
 
+@login_required
 def my_registered_units1(request):
     title = 'MY REGISTERED UNITS OF YEAR 1'
     queryset = marks_yr1.objects.filter(user=request.user)
@@ -123,6 +125,7 @@ def my_registered_units1(request):
     }
     return render(request, "units/my_registered_units/my_registered_units_yr1.html", context)
 
+@login_required
 def exam_card_yr1(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -140,6 +143,7 @@ def exam_card_yr1(request):
     }
     return render(request, "units/exam_card/exam_card_yr1.html", context)
 
+@login_required
 def results_slip_year1(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -216,7 +220,7 @@ def insert_marks2(request, pk):
     }
     return render(request, "units/update-marks.html", context)
 
-
+@login_required
 def list_registered_units2(request):
     title = 'List of Registered Students Semester 2'
     queryset = marks_yr2.objects.all()
@@ -226,6 +230,7 @@ def list_registered_units2(request):
     }
     return render(request, "units/list_registered_units/list_registered_units_yr2.html", context)
 
+@login_required
 def my_registered_units2(request):
     title = 'MY REGISTERED UNITS OF YEAR 2'
     queryset = marks_yr2.objects.filter(user=request.user)
@@ -235,6 +240,7 @@ def my_registered_units2(request):
     }
     return render(request, "units/my_registered_units/my_registered_units_yr2.html", context)
 
+@login_required
 def exam_card_yr2(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -252,6 +258,7 @@ def exam_card_yr2(request):
     }
     return render(request, "units/exam_card/exam_card_yr2.html", context)
 
+@login_required
 def results_slip_year2(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -328,7 +335,7 @@ def insert_marks3(request, pk):
     }
     return render(request, "units/update-marks.html", context)
 
-
+@login_required
 def list_registered_units3(request):
     title = 'List of Registered Students Semester 3'
     queryset = marks_yr3.objects.all()
@@ -338,6 +345,7 @@ def list_registered_units3(request):
     }
     return render(request, "units/list_registered_units/list_registered_units_yr3.html", context)
 
+@login_required
 def my_registered_units3(request):
     title = 'MY REGISTERED UNITS OF YEAR 3'
     queryset = marks_yr3.objects.filter(user=request.user)
@@ -347,6 +355,7 @@ def my_registered_units3(request):
     }
     return render(request, "units/my_registered_units/my_registered_units_yr3.html", context)
 
+@login_required
 def exam_card_yr3(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -364,6 +373,7 @@ def exam_card_yr3(request):
     }
     return render(request, "units/exam_card/exam_card_yr3.html", context)
 
+@login_required
 def results_slip_year3(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -439,7 +449,7 @@ def insert_marks4(request, pk):
     }
     return render(request, "units/update-marks.html", context)
 
-
+@login_required
 def list_registered_units4(request):
     title = 'List of Registered Students Semester 4'
     queryset = marks_yr4.objects.all()
@@ -449,6 +459,7 @@ def list_registered_units4(request):
     }
     return render(request, "units/list_registered_units/list_registered_units_yr4.html", context)
 
+@login_required
 def my_registered_units4(request):
     title = 'MY REGISTERED UNITS OF YEAR 4'
     queryset = marks_yr4.objects.filter(user=request.user)
@@ -458,6 +469,7 @@ def my_registered_units4(request):
     }
     return render(request, "units/my_registered_units/my_registered_units_yr4.html", context)
 
+@login_required
 def exam_card_yr4(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -475,6 +487,7 @@ def exam_card_yr4(request):
     }
     return render(request, "units/exam_card/exam_card_yr4.html", context)
 
+@login_required
 def results_slip_year4(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -549,7 +562,7 @@ def insert_marks5(request, pk):
     }
     return render(request, "units/update-marks.html", context)
 
-
+@login_required
 def list_registered_units5(request):
     title = 'List of Registered Students Semester 5'
     queryset = marks_yr5.objects.all()
@@ -559,6 +572,7 @@ def list_registered_units5(request):
     }
     return render(request, "units/list_registered_units/list_registered_units_yr5.html", context)
 
+@login_required
 def my_registered_units5(request):
     title = 'MY REGISTERED UNITS OF YEAR 5'
     queryset = marks_yr5.objects.filter(user=request.user)
@@ -568,6 +582,7 @@ def my_registered_units5(request):
     }
     return render(request, "units/my_registered_units/my_registered_units_yr5.html", context)
 
+@login_required
 def exam_card_yr5(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -585,6 +600,7 @@ def exam_card_yr5(request):
     }
     return render(request, "units/exam_card/exam_card_yr5.html", context)
 
+@login_required
 def results_slip_year5(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -660,7 +676,7 @@ def insert_marks6(request, pk):
     }
     return render(request, "units/update-marks.html", context)
 
-
+@login_required
 def list_registered_units6(request):
     title = 'List of Registered Students Semester 6'
     queryset = marks_yr6.objects.all()
@@ -670,6 +686,7 @@ def list_registered_units6(request):
     }
     return render(request, "units/list_registered_units/list_registered_units_yr6.html", context)
 
+@login_required
 def my_registered_units6(request):
     title = 'MY REGISTERED UNITS OF YEAR 6'
     queryset = marks_yr6.objects.filter(user=request.user)
@@ -679,6 +696,7 @@ def my_registered_units6(request):
     }
     return render(request, "units/my_registered_units/my_registered_units_yr6.html", context)
 
+@login_required
 def exam_card_yr6(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -696,6 +714,7 @@ def exam_card_yr6(request):
     }
     return render(request, "units/exam_card/exam_card_yr6.html", context)
 
+@login_required
 def results_slip_year6(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -771,7 +790,7 @@ def insert_marks7(request, pk):
     }
     return render(request, "units/update-marks.html", context)
 
-
+@login_required
 def list_registered_units7(request):
     title = 'List of Registered Students Semester 7'
     queryset = marks_yr7.objects.all()
@@ -781,6 +800,7 @@ def list_registered_units7(request):
     }
     return render(request, "units/list_registered_units/list_registered_units_yr7.html", context)
 
+@login_required
 def my_registered_units7(request):
     title = 'MY REGISTERED UNITS OF YEAR 7'
     queryset = marks_yr7.objects.filter(user=request.user)
@@ -790,6 +810,7 @@ def my_registered_units7(request):
     }
     return render(request, "units/my_registered_units/my_registered_units_yr7.html", context)
 
+@login_required
 def exam_card_yr7(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -807,6 +828,7 @@ def exam_card_yr7(request):
     }
     return render(request, "units/exam_card/exam_card_yr7.html", context)
 
+@login_required
 def results_slip_year7(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -824,3 +846,103 @@ def results_slip_year7(request):
     }
     return render(request, "units/results_slip/results_slip.html", context)
 #====================================================================================================
+
+# school Fee Views
+@login_required
+def create_fee_structure(request):
+    form=FeeStructureForm(request.POST or None)
+    title='CREATE FEE STRUCTURE FOR SPECIFIC COURSES'
+    button='Add Fee Structure'
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Program Fee structure Added successfully')
+        messages.info(request, 'You can now print the new fee structure')
+        return redirect('/school/list_fee_structure')
+    
+    context={
+        'form':form,
+        'title':title,
+        'button':button
+    }
+    return render(request, 'school_fee/create_fee_structure.html', context)
+
+@login_required
+def update_fee_structure(request, pk):
+    queryset=FeeStructure.objects.get(id=pk)
+    form=FeeStructureForm(request.POST or None, queryset)
+    title='UPDATE FEE STRUCTURE FOR THIS COURSE'
+    button='Update Fee Structure'
+    if form.is_valid():
+        form=FeeStructureForm(request.POST or None, queryset)
+        if request.method=='POST':
+            form.save()
+            messages.success(request, 'Program Fee structure Updated successfully')
+            messages.info(request, 'You can now print the new updated structure')
+            return redirect('/school/list_fee_structure')
+    context={
+        'form':form,
+        'title':title,
+        'button':button
+    }
+    return render(request, 'school_fee/create_fee_structure.html', context)
+
+@login_required
+def list_fee_structure(request):
+    title='LIST OF ALL SCHOOL FEE STRUCTURES WITH SPECIFIED COURSES'
+    queryset=FeeStructure.objects.all()
+    context={
+        'title':title,
+        'queryset':queryset
+    }
+    return render(request, 'school_fee/list_fee_structure.html', context)
+
+@login_required
+def delete_fee_structure(request, pk):
+    title='Delete Fee This Fee Structure'
+    queryset=FeeStructure.objects.get(id=pk)
+    if request.method=='POST':
+        queryset.delete()
+        return redirect('/school/list_fee_structure')
+    context={
+        'title':title,
+    }
+    return render(request, 'school_fee/delete_fee_structure')
+
+@login_required
+def print_fee_structure(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset=FeeStructure.objects.all()
+    title='FEE STRUCTURE OF ALL COURSES'
+    context={
+        'school':school,
+        'box':box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset,
+        'title':title
+    }
+    return render(request, 'school_fee/fee_structure.html', context)
+
+@login_required
+def fee_payment_records(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryet=fee_payment.objects.filter(user=request.user)
+    context={
+        'school':school,
+        'box':box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryet
+    }
+    return render(request, 'school_fee/fee_payment_records.html', context)
+

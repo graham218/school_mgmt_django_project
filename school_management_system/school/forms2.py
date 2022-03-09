@@ -10,13 +10,13 @@ from django_countries.fields import CountryField
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
-class FeeReceiptForm(forms.ModelForm):
+class FeeStructureForm(forms.ModelForm):
     class Meta:
-        model=FeeReceipt
-        fields=['full_name','stage','exams','co_ocurricular_activities','hostel_charges',
+        model=FeeStructure
+        fields=['program','stage','exams','co_ocurricular_activities','hostel_charges',
         'library_charges','internet_charges','electricity_charges','food_charges','furniture_charges',
         'water_charges']
-        widgets={'full_name': forms.TextInput(attrs={'class': 'form-control'}),
+        widgets={'program': forms.Select(attrs={'class': 'form-control'}),
         'stage': forms.Select(attrs={'class': 'form-control'}),
         'exams': forms.NumberInput(attrs={'class': 'form-control'}),
         'co_ocurricular_activities': forms.NumberInput(attrs={'class': 'form-control'}),

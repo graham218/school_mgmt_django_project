@@ -108,14 +108,14 @@ class fee_payment_admin(admin.ModelAdmin):
     list_per_page = 10
 
 
-class FeeReceiptAdmin(admin.ModelAdmin):
-    list_display = ['user', 'full_name', 'stage',
+class FeeStructureAdmin(admin.ModelAdmin):
+    list_display = ['program', 'stage',
                     'exams', 'co_ocurricular_activities', 'hostel_charges', 'library_charges',
                     'internet_charges', 'electricity_charges', 'food_charges', 'furniture_charges',
                     'water_charges', 'date_updated']
     list_per_page = 10
-    search_fields=['user', 'full_name', 'stage']
-    list_filter=['user', 'full_name', 'stage']
+    search_fields=['program', 'stage']
+    list_filter=['program', 'stage']
 
 class SpecialExamAdmin(admin.ModelAdmin):
     list_display = ['user', 'full_name', 'stage',
@@ -165,7 +165,7 @@ admin.site.register(marks_yr5, MarksAdmin5)
 admin.site.register(marks_yr6, MarksAdmin6)
 admin.site.register(marks_yr7, MarksAdmin7)
 admin.site.register(fee_payment, fee_payment_admin)
-admin.site.register(FeeReceipt, FeeReceiptAdmin)
+admin.site.register(FeeStructure, FeeStructureAdmin)
 admin.site.register(SpecialExam, SpecialExamAdmin)
 admin.site.register(LecturerUnits, LecturerUnitsAdmin)
 admin.site.register(NoticeBoard, NoticeBoardAdmin)

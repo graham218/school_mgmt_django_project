@@ -293,9 +293,8 @@ class fee_payment(models.Model):
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
 
 
-class FeeReceipt(models.Model):
-    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
-    full_name = models.CharField(max_length=255, blank=True, null=True)
+class FeeStructure(models.Model):
+    program=models.ForeignKey(Programmes, max_length=255, on_delete=models.CASCADE, blank=True)
     stage=models.ForeignKey(Stages, max_length=255, on_delete=models.CASCADE, blank=True)
     exams = models.DecimalField(
         max_digits=10, decimal_places=2, blank=True, null=True)
@@ -317,6 +316,11 @@ class FeeReceipt(models.Model):
         max_digits=10, decimal_places=2, blank=True, null=True)
     date_created = models.DateTimeField(null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+    @property
+    def total(self):
+        total_school_fee=self.exams+self.co_ocurricular_activities+self.hostel_charges+self.library_charges+self.internet_charges+self.electricity_charges+self.food_charges+self.furniture_charges+self.water_charges
+
 
 class SpecialExam(models.Model):
     user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)

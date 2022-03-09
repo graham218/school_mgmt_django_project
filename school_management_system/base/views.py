@@ -6,18 +6,20 @@ from agora_token_builder import RtcTokenBuilder
 from .models import RoomMember
 import json
 from django.views.decorators.csrf import csrf_exempt
-
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 
+@login_required
 def lobby(request):
     return render(request, 'base/lobby.html')
 
+@login_required
 def room(request):
     return render(request, 'base/room.html')
 
-
+@login_required
 def getToken(request):
     appId = "679daffd13bb46c6b2f4324368e67064"
     appCertificate = "f432544de71f4601a2f80a58a5674695"
@@ -34,6 +36,7 @@ def getToken(request):
 
 
 @csrf_exempt
+@login_required
 def createMember(request):
     data = json.loads(request.body)
     member, created = RoomMember.objects.get_or_create(
@@ -44,7 +47,7 @@ def createMember(request):
 
     return JsonResponse({'name':data['name']}, safe=False)
 
-
+@login_required
 def getMember(request):
     uid = request.GET.get('UID')
     room_name = request.GET.get('room_name')
@@ -57,6 +60,7 @@ def getMember(request):
     return JsonResponse({'name':member.name}, safe=False)
 
 @csrf_exempt
+@login_required
 def deleteMember(request):
     data = json.loads(request.body)
     member = RoomMember.objects.get(

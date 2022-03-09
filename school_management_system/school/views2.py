@@ -100,7 +100,7 @@ def unregister_resit_yr1(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
-
+@login_required
 def list_registered_resits1(request):
     title = 'List of Registered Students Doing Resits/Retakes'
     queryset = resit_exam_yr1.objects.all()
@@ -110,6 +110,7 @@ def list_registered_resits1(request):
     }
     return render(request, "units/list_registered_resits/list_registered_resits_yr1.html", context)
 
+@login_required
 def my_registered_resits_yr1(request):
     title = 'MY REGISTERED RESITS OF YEAR 1'
     queryset = resit_exam_yr1.objects.filter(user=request.user)
@@ -119,6 +120,7 @@ def my_registered_resits_yr1(request):
     }
     return render(request, "units/my_registered_resits/my_registered_resits_yr1.html", context)
 
+@login_required
 def resit_card_yr1(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -175,7 +177,7 @@ def unregister_resit_yr2(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
-
+@login_required
 def list_registered_resits2(request):
     title = 'List of Registered Students Doing Resits/Retakes Year 2'
     queryset = resit_exam_yr2.objects.all()
@@ -185,6 +187,7 @@ def list_registered_resits2(request):
     }
     return render(request, "units/list_registered_resits/list_registered_resits_yr2.html", context)
 
+@login_required
 def my_registered_resits_yr2(request):
     title = 'MY REGISTERED RESITS OF YEAR 2'
     queryset = resit_exam_yr2.objects.filter(user=request.user)
@@ -194,6 +197,7 @@ def my_registered_resits_yr2(request):
     }
     return render(request, "units/my_registered_resits/my_registered_resits_yr2.html", context)
 
+@login_required
 def resit_card_yr2(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -250,7 +254,7 @@ def unregister_resit_yr3(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
-
+@login_required
 def list_registered_resits3(request):
     title = 'List of Registered Students Doing Resits/Retakes'
     queryset = resit_exam_yr3.objects.all()
@@ -260,6 +264,7 @@ def list_registered_resits3(request):
     }
     return render(request, "units/list_registered_resits/list_registered_resits_yr3.html", context)
 
+@login_required
 def my_registered_resits_yr3(request):
     title = 'MY REGISTERED RESITS OF YEAR 3'
     queryset = resit_exam_yr3.objects.filter(user=request.user)
@@ -269,6 +274,7 @@ def my_registered_resits_yr3(request):
     }
     return render(request, "units/my_registered_resits/my_registered_resits_yr3.html", context)
 
+@login_required
 def resit_card_yr3(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -325,7 +331,7 @@ def unregister_resit_yr4(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
-
+@login_required
 def list_registered_resits4(request):
     title = 'List of Registered Students Doing Resits/Retakes'
     queryset = resit_exam_yr4.objects.all()
@@ -335,6 +341,7 @@ def list_registered_resits4(request):
     }
     return render(request, "units/list_registered_resits/list_registered_resits_yr4.html", context)
 
+@login_required
 def my_registered_resits_yr4(request):
     title = 'MY REGISTERED RESITS OF YEAR 4'
     queryset = resit_exam_yr4.objects.filter(user=request.user)
@@ -344,6 +351,7 @@ def my_registered_resits_yr4(request):
     }
     return render(request, "units/my_registered_resits/my_registered_resits_yr4.html", context)
 
+@login_required
 def resit_card_yr4(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -400,7 +408,7 @@ def unregister_resit_yr5(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
-
+@login_required
 def list_registered_resits5(request):
     title = 'List of Registered Students Doing Resits/Retakes'
     queryset = resit_exam_yr5.objects.all()
@@ -410,6 +418,7 @@ def list_registered_resits5(request):
     }
     return render(request, "units/list_registered_resits/list_registered_resits_yr5.html", context)
 
+@login_required
 def my_registered_resits_yr5(request):
     title = 'MY REGISTERED RESITS OF YEAR 5'
     queryset = resit_exam_yr5.objects.filter(user=request.user)
@@ -419,6 +428,7 @@ def my_registered_resits_yr5(request):
     }
     return render(request, "units/my_registered_resits/my_registered_resits_yr5.html", context)
 
+@login_required
 def resit_card_yr5(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -475,7 +485,7 @@ def unregister_resit_yr6(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
-
+@login_required
 def list_registered_resits6(request):
     title = 'List of Registered Students Doing Resits/Retakes'
     queryset = resit_exam_yr6.objects.all()
@@ -485,6 +495,7 @@ def list_registered_resits6(request):
     }
     return render(request, "units/list_registered_resits/list_registered_resits_yr6.html", context)
 
+@login_required
 def my_registered_resits_yr6(request):
     title = 'MY REGISTERED RESITS OF YEAR 6'
     queryset = resit_exam_yr6.objects.filter(user=request.user)
@@ -494,6 +505,7 @@ def my_registered_resits_yr6(request):
     }
     return render(request, "units/my_registered_resits/my_registered_resits_yr6.html", context)
 
+@login_required
 def resit_card_yr6(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -550,7 +562,7 @@ def unregister_resit_yr7(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
-
+@login_required
 def list_registered_resits7(request):
     title = 'List of Registered Students Doing Resits/Retakes'
     queryset = resit_exam_yr7.objects.all()
@@ -560,6 +572,7 @@ def list_registered_resits7(request):
     }
     return render(request, "units/list_registered_resits/list_registered_resits_yr7.html", context)
 
+@login_required
 def my_registered_resits_yr7(request):
     title = 'MY REGISTERED RESITS OF YEAR 7'
     queryset = resit_exam_yr7.objects.filter(user=request.user)
@@ -569,6 +582,7 @@ def my_registered_resits_yr7(request):
     }
     return render(request, "units/my_registered_resits/my_registered_resits_yr7.html", context)
 
+@login_required
 def resit_card_yr7(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -645,7 +659,7 @@ def lecturer_units_delete(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
-
+@login_required
 def ListAllLecturerUnits(request):
     title = "List Of All Lecturers' Units"
     queryset = LecturerUnits.objects.all()
@@ -712,7 +726,7 @@ def seats_delete(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
-
+@login_required
 def list_seats(request):
     title = "List Of All Positions/Seats"
     queryset = Seats.objects.all()
@@ -788,7 +802,7 @@ def delete_polititian(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
-
+@login_required
 def list_politicians(request):
     title = "List Of All Polititians"
     queryset = Voting.objects.all()
@@ -840,7 +854,7 @@ def delete_suggestion(request, pk):
     }
     return render(request, "school/delete_items.html", context)
 
-
+@login_required
 def list_suggestions(request):
     title = "List Of All Suggestions"
     queryset = SuggestionBox.objects.all()
@@ -910,12 +924,13 @@ def read_notices(request,pk):
     }
     return render(request, "notifications/read_public_notices.html", context)
 
+@login_required
 def delete_notice(request, pk):
     queryset=NoticeBoard.objects.get(id=pk)
     title="Delete Notice"
     if request.method=="POST":
         queryset.delete()
-        messages.error(request, "Notice "+str(queryset.notice_title)+" Has Been deleted from the Notice Board!!!!!")
+        messages.error(request, "Notice '"+str(queryset.notice_title)+"' Has Been deleted from the Notice Board!!!!!")
         return redirect("/school/all_public_notices")
     context={
         "title":title

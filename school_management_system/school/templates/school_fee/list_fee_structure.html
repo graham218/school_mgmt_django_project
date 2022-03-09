@@ -1,0 +1,94 @@
+{% extends 'index2.html' %}
+{% load static %}
+{% block content %}
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">{{title}}</h3>
+          </div>
+          <br>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{% url 'school:create_fee_structure' %}" class="btn btn-primary">Add New Fee Structure</a>
+          </div>
+          <div class="card-body">
+            <table id="all_programmes" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th> PROGRAMME NAME </th>
+                  <th> STAGE </th>
+                  <th> EXAM</th>
+                  <th> CO-OCURRICULAR ACTIVITIES </th>
+                  <th> HOSTEL CHARGES </th>
+                  <th> LIBRARY CHARGES </th>
+                  <th> INTERNET CHARGES</th>
+                  <th>ELECTRICITY CHARGES </th>
+                  <th> FOOD CHARGES </th>
+                  <th> FUNITURE CHARGES </th>
+                  <th> WATER CHARGES</th>
+                  <th> TOTAL FEE</th>
+                  <th> DATE CREATED </th>
+                  <th> DATE UPDATED </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for instance in queryset %}
+                <tr>
+                  <td class="py-1">{{forloop.counter}}</td>
+                  <td>{{instance.program}}</td>
+                  <td>{{instance.stage}}</td>
+                  <td>{{instance.exams}}</td>
+                  <td>{{instance.co_ocurricular_activities}}</td>
+                  <td>{{instance.hostel_charges}}</td>
+                  <td>{{instance.library_charges}}</td>
+                  <td>{{instance.internet_charges}}</td>
+                  <td>{{instance.electricity_charges}}</td>
+                  <td>{{instance.food_charges}}</td>
+                  <td>{{instance.furniture_charges}}</td>
+                  <td>{{instance.water_charges}}</td>
+                  <td>{{instance.total_school_fee}}</td>
+                  <td>{{instance.date_created}}</td>
+                  <td>{{instance.date_updated}}</td>
+                  <td><a class="fa fa-edtit" href="{% url 'school:update_fee_structure' instance.id%}">Update</a>
+                  </td>
+                  <td><a class="fa fa-trash" href="{% url 'school:delete_fee_structure' instance.id%}">Delete</a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th></th>
+                  <th> PROGRAMME NAME </th>
+                  <th> STAGE </th>
+                  <th> EXAM</th>
+                  <th> CO-OCURRICULAR ACTIVITIES </th>
+                  <th> HOSTEL CHARGES </th>
+                  <th> LIBRARY CHARGES </th>
+                  <th> INTERNET CHARGES</th>
+                  <th> ELECTRICITY CHARGES </th>
+                  <th> FOOD CHARGES </th>
+                  <th> FUNITURE CHARGES </th>
+                  <th> WATER CHARGES</th>
+                  <th> TOTAL FEE</th>
+                  <th> DATE CREATED </th>
+                  <th> DATE UPDATED </th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+{% endblock content %}
