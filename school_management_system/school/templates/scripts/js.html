@@ -28,64 +28,194 @@
   $(function () {
     $("#faculty").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'All Faculties/School'
+      },{
+        extend: 'excelHtml5',
+        title: 'All Faculties/School'
+      }]
     }).buttons().container().appendTo('#faculty_wrapper .col-md-6:eq(0)');
     $("#lec_units").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'Lecture Units'
+      },{
+        extend: 'excelHtml5',
+        title: 'Lecture Units'
+      }]
     }).buttons().container().appendTo('#lec_units_wrapper .col-md-6:eq(0)');
     $("#users").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'All Registered Users'
+      },{
+        extend: 'excelHtml5',
+        title: 'All Registered Users'
+      }]
     }).buttons().container().appendTo('#users_wrapper .col-md-6:eq(0)');
     $("#students").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'All Students'
+      },{
+        extend: 'excelHtml5',
+        title: 'All Students'
+      }]
     }).buttons().container().appendTo('#students_wrapper .col-md-6:eq(0)');
 
     //
     $("#fee_payment").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'All Fee Payments'
+      },{
+        extend: 'excelHtml5',
+        title: 'All Fee Payments'
+      }]
     }).buttons().container().appendTo('#fee_payment_wrapper .col-md-6:eq(0)');
     $("#gender").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'All Registered Genders'
+      },{
+        extend: 'excelHtml5',
+        title: 'All Registered Genders'
+      }]
     }).buttons().container().appendTo('#gender_wrapper .col-md-6:eq(0)');
     $("#programmes").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'All Courses/Courses Offered'
+      },{
+        extend: 'excelHtml5',
+        title: 'All Courses/Courses Offered'
+      }]
     }).buttons().container().appendTo('#programmes_wrapper .col-md-6:eq(0)');
 
     $("#stages").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'All Stages'
+      },{
+        extend: 'excelHtml5',
+        title: 'All Stages'
+      }]
     }).buttons().container().appendTo('#stages_wrapper .col-md-6:eq(0)');
     $("#list_units").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'All Units Offered'
+      },{
+        extend: 'excelHtml5',
+        title: 'All Units Offered'
+      }]
     }).buttons().container().appendTo('#list_units_wrapper .col-md-6:eq(0)');
     $("#all_programmes").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'All Programmes Offered'
+      },{
+        extend: 'excelHtml5',
+        title: 'All Programmes Offered'
+      }]
     }).buttons().container().appendTo('#all_programmes_wrapper .col-md-6:eq(0)');
 
     $("#seats").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'All Seats'
+      },{
+        extend: 'excelHtml5',
+        title: 'All Seats'
+      }]
     }).buttons().container().appendTo('#seats_wrapper .col-md-6:eq(0)');
     $("#my_special_exams").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'My Special Exams'
+      },{
+        extend: 'excelHtml5',
+        title: 'My Special Exams'
+      }]
     }).buttons().container().appendTo('#my_special_exams_wrapper .col-md-6:eq(0)');
     $("#special-exams").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'Special Exams'
+      },{
+        extend: 'excelHtml5',
+        title: 'Special Exams'
+      }]
     }).buttons().container().appendTo('#special-exams_wrapper .col-md-6:eq(0)');
     $("#lecturers").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'All Lecturers'
+      },{
+        extend: 'excelHtml5',
+        title: 'All Lecturers'
+      }]
     }).buttons().container().appendTo('#lecturers_wrapper .col-md-6:eq(0)');
+
+    //exam cards
+    $("#exam_card_yr1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#exam_card_yr1_wrapper .col-md-6:eq(0)');
+    $("#exam_card_yr2").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#exam_card_yr2_wrapper .col-md-6:eq(0)');
+    $("#exam_card_yr3").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#exam_card_yr3_wrapper .col-md-6:eq(0)');
+    $("#exam_card_yr4").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#exam_card_yr4_wrapper .col-md-6:eq(0)');
+    $("#exam_card_yr5").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#exam_card_yr5_wrapper .col-md-6:eq(0)');
+    $("#exam_card_yr6").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#exam_card_yr6_wrapper .col-md-6:eq(0)');
+    $("#exam_card_yr7").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#exam_card_yr7_wrapper .col-md-6:eq(0)');
+
+    //Resit cards
+    $("#resit_card_yr1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#resit_card_yr1_wrapper .col-md-6:eq(0)');
+    $("#resit_card_yr2").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#resit_card_yr2_wrapper .col-md-6:eq(0)');
+    $("#resit_card_yr3").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#resit_card_yr3_wrapper .col-md-6:eq(0)');
+    $("#resit_card_yr4").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#resit_card_yr4_wrapper .col-md-6:eq(0)');
+    $("#resit_card_yr5").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#resit_card_yr5_wrapper .col-md-6:eq(0)');
+    $("#resit_card_yr6").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#resit_card_yr6_wrapper .col-md-6:eq(0)');
+    $("#resit_card_yr7").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#resit_card_yr7_wrapper .col-md-6:eq(0)');
   });
 </script>
 <!-- Toastr Configuration -->
