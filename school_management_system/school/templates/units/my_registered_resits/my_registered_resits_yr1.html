@@ -9,7 +9,10 @@
         <div class="card">
           <div class="card-header">
             {% include 'messages.html' %}
-            <h3 class="card-title">{{title}}</h3>
+            <h3 class="card-title">{{title}}</h3><br>
+            <a href="{% url 'school:my_resit_year_page' %}" class="btn btn-sm btn-primary">
+              <i class=""></i> Year Page
+            </a>
           </div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="{% url 'school:resit_reg_year1' %}" class="btn btn-primary">Add New Retake Units</a>
