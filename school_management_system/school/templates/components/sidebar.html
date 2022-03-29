@@ -16,6 +16,7 @@
       <div class="image">
         <img {% if request.user.profile_photo %}src="{{request.user.profile_photo.url}}" {% else %}src="{% static 'dist/img/user2-160x160.jpg' %}" {% endif %} class="img-circle elevation-2" alt="User Image">
       </div>
+
       <div class="info">
         <a href="/" class="d-block">{{request.user.first_name}} {{request.user.last_name}}</a>
         <a href="/" class="d-block">{{request.user.email}}</a>
@@ -305,7 +306,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{% url 'school:unit_year_page_marks' %}" class="nav-link">
+              <a href="{% url 'school:list_marks_year_page' %}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Examination Marks
@@ -314,7 +315,7 @@
           </ul>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{% url 'school:resit_year_page_marks' %}" class="nav-link">
+              <a href="{% url 'school:list_resit_year_page' %}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Resit/Retake Marks
