@@ -1,3 +1,4 @@
+{%load static %}
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
@@ -70,20 +71,24 @@
           <!-- user information -->
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">User Information</h3>
+              <h3 class="card-title">Profile Photo</h3>
             </div>
             <div class="card-body">
-
+              <div class="profile_photo">
+                <img {% if request.user.profile_photo %}src="{{request.user.profile_photo.url}}" {% else %}src="{% static 'dist/img/user2-160x160.jpg' %}" {% endif %} alt="profile_pic">
+              </div>
             </div>
           </div>
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">
-                More Information
+                School Badge
               </h3>
             </div>
             <div class="card-body">
-
+              <div class="school_badge">
+                <img src="{% static 'dist/img/user2-160x160.jpg' %}" alt="school_badge">
+              </div>
             </div>
           </div>
         </section>
@@ -92,22 +97,54 @@
             <div class="card-header border-0">
               <h3 class="card-title">
                 <i class="fas fa-user"></i>
-                Others
+                Student's Information
               </h3>
             </div>
             <div class="card-body">
-
-            </div>
-          </div>
-          <div class="card bg-gradient-info">
-            <div class="card-header border-0">
-              <h3 class="card-title">
-                <i class="fas fa-user"></i>
-                more
-              </h3>
-            </div>
-            <div class="card-body">
-
+              <table class="table table-border">
+                <tr>
+                  <th>Name: </th><td>{{instance.full_name}}</td>
+                </tr>
+                <tr>
+                  <th>Adm No: </th><td>{{instance.admission_no}}</td>
+                </tr>
+                <tr>
+                  <th>Nationality: </th><td>{{instance.nationality}}</td>
+                </tr>
+                <tr>
+                  <th>Gender: </th><td>{{instance.stud_gender}}</td>
+                </tr>
+                <tr>
+                  <th>Birth Cert No: </th><td>{{instance.birth_cert_no}}</td>
+                </tr>
+                <tr>
+                  <th>Phone No: </th><td>{{instance.phone_number}}</td>
+                </tr>
+                <tr>
+                  <th>Date Of Birth: </th><td>{{instance.DOB}}</td>
+                </tr>
+                <tr>
+                  <th>Date Of Admission: </th><td>{{instance.date_of_admission}}</td>
+                </tr>
+                <tr>
+                  <th>Date Of Graduation: </th><td>{{instance.date_of_graduation}}</td>
+                </tr>
+                <tr>
+                  <th>Course/Programme: </th><td>{{instance.programme}}</td>
+                </tr>
+                <tr>
+                  <th>Current Stage: </th><td>{{instance.stage}}</td>
+                </tr>
+                <tr>
+                  <th>Home Adress: </th><td>{{instance.postal_address}}</td>
+                </tr>
+                <tr>
+                  <th>School Email: </th><td>{{instance.school_email}}</td>
+                </tr>
+                <tr>
+                  <th>School Email Password: </th><td>{{instance.school_email_password}}</td>
+                </tr>
+              </table>
             </div>
           </div>
         </section>
