@@ -635,7 +635,7 @@ def lecturer_units_edit(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Unit Updated Successfully")
-            return HttpResponseRedirect("/school/lecturer_units")
+            return HttpResponseRedirect("/school/ListAllLecturerUnits")
     context = {
         "title": title,
         "form": form,
