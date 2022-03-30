@@ -192,6 +192,18 @@
       }]
     }).buttons().container().appendTo('#resits_wrapper .col-md-6:eq(0)');
 
+    //list students registered for exams
+    $("#exams").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'List of Students Registered For Exams'
+      },{
+        extend: 'excelHtml5',
+        title: 'List of Students Registered For Exams'
+      }]
+    }).buttons().container().appendTo('#exams_wrapper .col-md-6:eq(0)');
+
 
     //exam cards
     $("#exam_card_yr1").DataTable({
