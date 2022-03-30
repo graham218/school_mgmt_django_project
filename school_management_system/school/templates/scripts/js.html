@@ -170,6 +170,28 @@
         title: 'All Lecturers'
       }]
     }).buttons().container().appendTo('#lecturers_wrapper .col-md-6:eq(0)');
+    $("#lecturer_units").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'All Units Assigned'
+      },{
+        extend: 'excelHtml5',
+        title: 'All Units Assigned'
+      }]
+    }).buttons().container().appendTo('#lecturer_units_wrapper .col-md-6:eq(0)');
+    //list retakes
+    $("#resits").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": [{
+        extend: 'csvHtml5',
+        title: 'List of Students Doing Retakes'
+      },{
+        extend: 'excelHtml5',
+        title: 'List of Students Doing Retakes'
+      }]
+    }).buttons().container().appendTo('#resits_wrapper .col-md-6:eq(0)');
+
 
     //exam cards
     $("#exam_card_yr1").DataTable({
