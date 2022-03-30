@@ -292,6 +292,18 @@ class fee_payment(models.Model):
         null=True, blank=True, auto_now_add=True)
     date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
 
+class salary_payment(models.Model):
+    user = models.ForeignKey(User, max_length=255, on_delete=models.CASCADE, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    amount_paid=models.CharField(max_length=255, blank=True, null=True)
+    payment_method=models.CharField(max_length=255, blank=True, null=True)
+    paid=models.BooleanField(default=False)
+    bill_reference_no=models.CharField(max_length=255, blank=True, null=True)
+    phone_number=models.CharField(max_length=255, blank=True, null=True)
+    date_paid = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    date_updated = models.DateTimeField(null=True, blank=True, auto_now=True)
+
 
 class FeeStructure(models.Model):
     program=models.ForeignKey(Programmes, max_length=255, on_delete=models.CASCADE, blank=True)
