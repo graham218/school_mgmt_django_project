@@ -194,10 +194,15 @@ urlpatterns = [
     path('results_slip_year6/', my_views.results_slip_year6, name='results_slip_year6'),
     path('results_slip_year7/', my_views.results_slip_year7, name='results_slip_year7'),
 
-    # school fee
+    # school feE structure
     path('create_fee_structure/', my_views.create_fee_structure, name='create_fee_structure'),
     path('update_fee_structure/<str:pk>', my_views.update_fee_structure, name='update_fee_structure'),
     path('delete_fee_structure/<str:pk>', my_views.delete_fee_structure, name='delete_fee_structure'),
     path('list_fee_structure/', my_views.list_fee_structure, name='list_fee_structure'),
     path('print_fee_structure/', my_views.print_fee_structure, name='print_fee_structure'),
+
+    # fee_payments
+
+    # salary payments
+    
 ]
