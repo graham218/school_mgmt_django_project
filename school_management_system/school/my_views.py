@@ -847,7 +847,7 @@ def results_slip_year7(request):
     return render(request, "units/results_slip/results_slip.html", context)
 #====================================================================================================
 
-# school Fee Views
+# school Fee structure Views
 @login_required
 def create_fee_structure(request):
     form=FeeStructureForm(request.POST or None)
@@ -928,21 +928,4 @@ def print_fee_structure(request):
     }
     return render(request, 'school_fee/fee_structure.html', context)
 
-@login_required
-def fee_payment_records(request):
-    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
-    box='P.O BOX 7676 NAIROBI(K)'
-    tel='+254-787675655768'
-    email='grahambill011@gmail.com'
-    date_downloaded=datetime.datetime.now()
-    queryet=fee_payment.objects.filter(user=request.user)
-    context={
-        'school':school,
-        'box':box,
-        'tel':tel,
-        'email':email,
-        'date_downloaded':date_downloaded,
-        'queryset':queryet
-    }
-    return render(request, 'school_fee/fee_payment_records.html', context)
 

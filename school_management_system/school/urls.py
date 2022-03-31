@@ -194,7 +194,7 @@ urlpatterns = [
     path('results_slip_year6/', my_views.results_slip_year6, name='results_slip_year6'),
     path('results_slip_year7/', my_views.results_slip_year7, name='results_slip_year7'),
 
-    # school feE structure
+    # school fee structure
     path('create_fee_structure/', my_views.create_fee_structure, name='create_fee_structure'),
     path('update_fee_structure/<str:pk>', my_views.update_fee_structure, name='update_fee_structure'),
     path('delete_fee_structure/<str:pk>', my_views.delete_fee_structure, name='delete_fee_structure'),
@@ -204,5 +204,5 @@ urlpatterns = [
     # fee_payments
 
     # salary payments
-    
+
 ]

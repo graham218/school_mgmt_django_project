@@ -939,3 +939,33 @@ def delete_notice(request, pk):
 
 # End of Noticeboard
 # --------------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------------------------
+# fee payments
+@login_required
+def fee_payment_receipt(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryet=fee_payment.objects.filter(user=request.user)
+    context={
+        'school':school,
+        'box':box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryet
+    }
+    return render(request, 'school_fee/fee_payment_receipt.html', context)
+
+def fee_payment_records(request):
+    title="FEE PAYMENT RECORDS"
+    queryet=fee_payment.objects.all()
+    context={
+        "title":title,
+        "queryset":queryet
+    }
+    return render(request, "school_fee/fee_payment_records.html", context)
+
