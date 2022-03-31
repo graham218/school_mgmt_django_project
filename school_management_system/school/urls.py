@@ -202,7 +202,10 @@ urlpatterns = [
     path('print_fee_structure/', my_views.print_fee_structure, name='print_fee_structure'),
 
     # fee_payments
-
+    path('pay_fee/', views2.pay_fee, name='pay_fee'),
+    path('update_fee_payment/<str:pk>', views2.update_fee_payment, name='update_fee_payment'),
+    path('delete_fee_payment/<str:pk>', views2.delete_fee_payment, name='delete_fee_payment'),
+    path('fee_payment_records/', views2.fee_payment_records, name='fee_payment_records'),
     # salary payments
 
 ]

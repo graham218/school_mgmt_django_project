@@ -102,12 +102,6 @@ class MarksAdmin7(admin.ModelAdmin):
     list_filter = ['user', 'full_name', 'unit_or_subject_name', 'stage']
 
 
-class fee_payment_admin(admin.ModelAdmin):
-    list_display = ['user', 'full_name', 'amount_paid',
-                    'payment_method', 'date_paid', 'date_paid']
-    list_per_page = 10
-
-
 class FeeStructureAdmin(admin.ModelAdmin):
     list_display = ['program', 'stage',
                     'exams', 'co_ocurricular_activities', 'hostel_charges', 'library_charges',
@@ -164,7 +158,6 @@ admin.site.register(marks_yr4, MarksAdmin4)
 admin.site.register(marks_yr5, MarksAdmin5)
 admin.site.register(marks_yr6, MarksAdmin6)
 admin.site.register(marks_yr7, MarksAdmin7)
-admin.site.register(fee_payment, fee_payment_admin)
 admin.site.register(FeeStructure, FeeStructureAdmin)
 admin.site.register(SpecialExam, SpecialExamAdmin)
 admin.site.register(LecturerUnits, LecturerUnitsAdmin)

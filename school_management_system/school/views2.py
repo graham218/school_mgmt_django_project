@@ -969,3 +969,45 @@ def fee_payment_records(request):
     }
     return render(request, "school_fee/fee_payment_records.html", context)
 
+def pay_fee(request):
+    title="PAY SCHOOL FEE MANUALLY"
+    form=SchoolFeePaymentForm(request.POST or None)
+    if request.method=="POST":
+        form=SchoolFeePaymentForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Fee Payment Made Successfully')
+            return redirect("/school/fee_payment_records")
+    context={
+        "title":title,
+        "form":form
+    }
+    return render(request, "school_fee/pay_fee.html", context)
+
+def update_fee_payment(request, pk):
+    title="UPDATE SCHOOL FEE PAYMENT"
+    queryet=fee_payment.objects.get(id=pk)
+    form=SchoolFeePaymentForm(request.POST or None, queryet)
+    if request.method=="POST":
+        form=SchoolFeePaymentForm(request.POST or None, queryet)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Fee Payment Updated Successfully')
+            return redirect("/school/fee_payment_records")
+    context={
+        "title":title,
+        "form":form
+    }
+    return render(request, "school_fee/pay_fee.html", context)
+
+def delete_fee_payment(request, pk):
+    title="Delete Fee Payment"
+    queryet=fee_payment.objects.get(id=pk)
+    if request.method=="POST":
+        messages.danger(request, 'Fee Payment Deleted From Database')
+        return redirect("/school/fee_payment_records")
+    context={
+        "title":title,
+    }
+    return render(request, "school_fee/delete_fee_structure.html", context)
+
