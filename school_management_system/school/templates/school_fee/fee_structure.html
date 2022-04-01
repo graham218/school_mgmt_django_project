@@ -17,35 +17,43 @@
           <!-- /.card-header -->
           <div class="card-body">
             <table id="exam_card_yr1" class="table table-bordered">
-              <thead>
-                <h1 style="text-align: center; font-size: large;font-weight: bolder;">{{title}}</h1>
-                {% for instance in queryset %}
+              {% for instance in queryset %}
                 <h1 style="text-align: center; font-size: large;font-weight: bolder;">{{school}}</h1>
                 <h2 style="text-align: center; font-size: large; font-weight: bold;">{{box}}</h2>
                 <h3 style="text-align: center; font-size: large; font-style: italic; text-decoration: underline;">Tel: {{tel}} &nbsp;&nbsp; Email:{{email}}</h3>
+                <h2 style="text-align: center; font-size: large; font-weight: bold;">FEE STRUCTURE</h2>
+                <h2 style="text-align: center; font-size: large; font-weight: bold;">{{instance.program}}</h2>
+                <h2 style="text-align: center; font-size: large; font-weight: bold;">{{instance.stage}}</h2>
                 <h4 style="text-align: right; font-size: small;">{{date_downloaded}}</h4>
                 <h4 style="text-align: left; font-size: small;">{{instance1.full_name}}</h4>
                 <h4 style="text-align: left; font-size: small;"></h4>
                 <tr>
-                    <th>COUNTER</th>
-                    <th>UNIT NAME</th>
-                    <th>LECTURER'S SIGNATURE</th>
+                    <th>EXAMS:</th><td>{{instance.exams}}</td>
                 </tr>
-              </thead>
-              <tbody>
                 <tr>
-                    <td>{{forloop.counter}}</td>
-                    <td>{{instance.unit_name}}</td>
-                    <td>___________________</td>
+                  <th>CO-OCURRICULAR ACTIVITIES</th><td>{{instance.co_ocurricular_activities}}</td>
                 </tr>
-              </tbody>
-              <tfoot>
                 <tr>
-                    <th>COUNTER</th>
-                    <th>UNIT NAME</th>
-                    <th>LECTURER'S SIGNATURE</th>
+                  <th>HOSTEL CHARGES</th><td>{{instance.hostel_charges}}</td>
                 </tr>
-              </tfoot>
+                <tr>
+                  <th>LIBRARY CHARGES</th><td>{{instance.library_charges}}</td>
+                </tr>
+                <tr>
+                  <th>INTERNET CHARGES</th><td>{{instance.internet_charges}}</td>
+                </tr>
+                <tr>
+                  <th>ELECTRICITY CHARGES</th><td>{{instance.electricity_charges}}</td>
+                </tr>
+                <tr>
+                  <th>FOOD CHARGES</th><td>{{instance.food_charges}}</td>
+                </tr>
+                <tr>
+                  <th>FURNITURE CHARGES</th><td>{{instance.furniture_charges}}</td>
+                </tr>
+                <tr>
+                  <th>WATER CHARGES</th><td>{{instance.water_charges}}</td>
+                </tr>
               {% endfor %}
             </table>
           </div>
