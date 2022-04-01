@@ -15,7 +15,7 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <table id="resit_card_yr3" class="table table-bordered">
+            <table id="resit_card" class="table table-bordered">
               <thead>
                 <tr>
                   <h2 style="text-align: center; font-size: large;font-weight: bolder;">{{school}}</h2>
@@ -29,7 +29,7 @@
                 </tr>
 
                 <tr>
-                  <th>COUNTER</th>
+                  <th></th>
                   <th>UNIT NAME</th>
                   <th>LECTURER'S SIGNATURE</th>
                 </tr>
@@ -38,14 +38,14 @@
                 {% for instance in queryset %}
                 <tr>
                   <td>{{forloop.counter}}</td>
-                  <td>{{instance.unit_or_subject_name}}</td>
+                  <td>{{instance.unit_name}}</td>
                   <td>____________________</td>
                 </tr>
                 {% endfor %}
               </tbody>
               <tfoot>
                 <tr>
-                  <th>COUNTER</th>
+                  <th></th>
                   <th>UNIT NAME</th>
                   <th>LECTURER'S SIGNATURE</th>
                 </tr>

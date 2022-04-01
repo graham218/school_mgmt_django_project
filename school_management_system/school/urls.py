@@ -131,7 +131,7 @@ urlpatterns = [
     path('payment-cancelled/', paypal_views.payment_canceled, name='payment_cancelled'),
 
     # Resits/Retakes
-    path('resit_reg_year1/', views2.resit_reg_year1, name='resit_reg_year1'),
+    path('resit_reg_year/', views2.resit_reg_year, name='resit_reg_year'),
     path('unregister_resit_yr1/<str:pk>', views2.unregister_resit_yr1, name='unregister_resit_yr1'),
     path('list_registered_resits1/', views2.list_registered_resits1, name='list_registered_resits1'),
     path('my_registered_resits_yr1/', views2.my_registered_resits_yr1, name='my_registered_resits_yr1'),
@@ -161,7 +161,7 @@ urlpatterns = [
     path('list_registered_resits6/', views2.list_registered_resits6, name='list_registered_resits6'),
     path('my_registered_resits_yr6/', views2.my_registered_resits_yr6, name='my_registered_resits_yr6'),
     
-    path('resit_reg_year7/', views2.resit_reg_year7, name='resit_reg_year1'),
+    path('resit_reg_year7/', views2.resit_reg_year7, name='resit_reg_year7'),
     path('unregister_resit_yr7/<str:pk>', views2.unregister_resit_yr7, name='unregister_resit_yr7'),
     path('list_registered_resits7/', views2.list_registered_resits7, name='list_registered_resits7'),
     path('my_registered_resits_yr7/', views2.my_registered_resits_yr7, name='my_registered_resits_yr7'),

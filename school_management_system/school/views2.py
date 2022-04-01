@@ -64,7 +64,7 @@ def list_resit_year_page(request):
 # ----------------------------------------------------------------------------------------
 # Year 1 Resits/Retakes
 @login_required
-def resit_reg_year1(request):
+def resit_reg_year(request):
     title = "Resit/Retake Registration Year 1"
     button="Register Resit"
     form = ResitRegYr1Form(request.POST or None)
