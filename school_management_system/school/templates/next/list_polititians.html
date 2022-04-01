@@ -45,10 +45,10 @@
                   <td>{{instance.status}}</td>
                   <td>{{instance.created_at}}</td>
                   <td>{{instance.updated_at}}</td>
-                  <td><a href="{% url 'school:edit_polititian' instance.id%}" class="mdi mdi-stack-overflow">Update</a>
+                  <td><a href="{% url 'school:edit_polititian' instance.id%}" class="fa fa-edit">Update</a>
                   <td>
                   <td><a href="{% url 'school:delete_polititian' instance.id%}"
-                      class="mdi mdi-delete-forever">Delete</a>
+                    class="fa fa-delete">Delete</a>
                   <td>
                 </tr>
                 {% endfor %}

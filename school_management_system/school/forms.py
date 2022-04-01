@@ -430,3 +430,20 @@ class SchoolFeePaymentForm(forms.ModelForm):
             attrs={'class': 'form-control', 'placeholder': 'Enter Payment Method'}),
             'bill_reference_no': forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'Enter Bill Reference Number'})}
+
+class SalaryPaymentForm(forms.ModelForm):
+    class Meta:
+        model=salary_payment
+        fields=['user','full_name','phone_number','amount_paid','payment_method','paid','bill_reference_no']
+        widgets = {'user': forms.Select(
+            attrs={'class': 'form-control'}),
+            'full_name': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter Student Name'}),
+            'phone_number': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter Phone Number'}),
+            'amount_paid': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter Amount In Kenyan Shillings'}),
+            'payment_method': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter Payment Method'}),
+            'bill_reference_no': forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter Bill Reference Number'})}

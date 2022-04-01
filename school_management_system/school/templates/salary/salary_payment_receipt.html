@@ -8,7 +8,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">MY SALARY PAYMENT RECEIPTS</h3><br>
+            <h3 class="card-title">{{title}}</h3><br>
             <a href="{% url 'home' %}" class="btn btn-sm btn-primary">
               <i class=""></i> Home Page
             </a>
@@ -21,10 +21,10 @@
                 <h1 style="text-align: center; font-size: large;font-weight: bolder;">{{school}}</h1>
                 <h2 style="text-align: center; font-size: large; font-weight: bold;">{{box}}</h2>
                 <h3 style="text-align: center; font-size: large; font-style: italic; text-decoration: underline;">Tel: {{tel}} &nbsp;&nbsp; Email:{{email}}</h3>
-                <h2 style="text-align: center; font-size: large; font-weight: bold;">SALARY PAYMENT RECORDS</h2>
+                <h2 style="text-align: center; font-size: large; font-weight: bold;">{{title}}</h2>
                 <h4 style="text-align: right; font-size: small;">{{date_downloaded}}</h4>
                 <h4 style="text-align: left; font-size: large;">NAME: {{request.user.first_name}} {{request.user.middle_name}}  {{request.user.last_name}}</h4>
-                <h4 style="text-align: center; font-size: large; font-style: italic; text-decoration: underline;">Fee Payment Records</h4>
+                <h4 style="text-align: center; font-size: large; font-style: italic; text-decoration: underline;">{{title}}</h4>
                 <tr>
                     <th></th>
                     <th>AMOUNT PAID</th>
@@ -38,8 +38,8 @@
                 </tr>
               </thead>
               <tbody>
+                {% for instance in queryset %}
                 <tr>
-                    {% for instance in queryset %}
                         <td>{{forloop.counter}}</td>
                         <td>{{instance.amount_paid}}</td>
                         <td>{{instance.paid}}</td>
@@ -48,8 +48,8 @@
                         <td>{{instance.phone_number}}</td>
                         <td>{{instance.date_paid}}</td>
                         <td>{{instance.date_updated}}</td>
-                    {% endfor %}
                 </tr>
+                {% endfor %}
               </tbody>
               <tfoot>
                 <tr>

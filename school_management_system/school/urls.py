@@ -206,6 +206,12 @@ urlpatterns = [
     path('update_fee_payment/<str:pk>', views2.update_fee_payment, name='update_fee_payment'),
     path('delete_fee_payment/<str:pk>', views2.delete_fee_payment, name='delete_fee_payment'),
     path('fee_payment_records/', views2.fee_payment_records, name='fee_payment_records'),
+    path('fee_payment_receipt/', views2.fee_payment_receipt, name='fee_payment_receipt'),
     # salary payments
+    path('pay_salary/', views2.pay_salary, name='pay_salary'),
+    path('update_salary_payment/<str:pk>', views2.update_salary_payment, name='update_salary_payment'),
+    path('delete_salary_payment/<str:pk>', views2.delete_salary_payment, name='delete_salary_payment'),
+    path('salary_payment_records/', views2.salary_payment_records, name='salary_payment_records'),
+    path('salary_payment_receipt/', views2.salary_payment_receipt, name='salary_payment_receipt'),
 
 ]

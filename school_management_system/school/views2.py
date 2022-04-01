@@ -948,6 +948,7 @@ def fee_payment_receipt(request):
     box='P.O BOX 7676 NAIROBI(K)'
     tel='+254-787675655768'
     email='grahambill011@gmail.com'
+    title='FEE PAYMENT RECORDS'
     date_downloaded=datetime.datetime.now()
     queryet=fee_payment.objects.filter(user=request.user)
     context={
@@ -956,7 +957,8 @@ def fee_payment_receipt(request):
         'tel':tel,
         'email':email,
         'date_downloaded':date_downloaded,
-        'queryset':queryet
+        'queryset':queryet,
+        'title':title
     }
     return render(request, 'school_fee/fee_payment_receipt.html', context)
 
@@ -1011,3 +1013,75 @@ def delete_fee_payment(request, pk):
     }
     return render(request, "school_fee/delete_fee_structure.html", context)
 
+# -------------------------------------------------------------------------------------
+# salary payments
+@login_required
+def salary_payment_receipt(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    title='SALARY PAYMENT RECORDS'
+    date_downloaded=datetime.datetime.now()
+    queryet=salary_payment.objects.filter(user=request.user)
+    context={
+        'school':school,
+        'box':box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryet,
+        'title':title
+    }
+    return render(request, 'salary/salary_payment_receipt.html', context)
+
+def salary_payment_records(request):
+    title="SALARY PAYMENT RECORDS"
+    queryet=salary_payment.objects.all()
+    context={
+        "title":title,
+        "queryset":queryet
+    }
+    return render(request, "salary/salary_payment_records.html", context)
+
+def pay_salary(request):
+    title="PAY SALARY MANUALLY"
+    form=SalaryPaymentForm(request.POST or None)
+    if request.method=="POST":
+        form=SalaryPaymentForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Salary Payment Made Successfully')
+            return redirect("/school/salary_payment_records")
+    context={
+        "title":title,
+        "form":form
+    }
+    return render(request, "salary/pay_salary.html", context)
+
+def update_salary_payment(request, pk):
+    title="UPDATE SALARY PAYMENT"
+    queryet=salary_payment.objects.get(id=pk)
+    form=SalaryPaymentForm(request.POST or None, queryet)
+    if request.method=="POST":
+        form=SalaryPaymentForm(request.POST or None, queryet)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Salary Payment Updated Successfully')
+            return redirect("/school/salary_payment_records")
+    context={
+        "title":title,
+        "form":form
+    }
+    return render(request, "salary/pay_salary.html", context)
+
+def delete_salary_payment(request, pk):
+    title="Delete Salary Payment"
+    queryet=salary_payment.objects.get(id=pk)
+    if request.method=="POST":
+        messages.danger(request, 'Salary Payment Deleted From Database')
+        return redirect("/school/salary_payment_records")
+    context={
+        "title":title,
+    }
+    return render(request, "salary/delete_salary.html", context)

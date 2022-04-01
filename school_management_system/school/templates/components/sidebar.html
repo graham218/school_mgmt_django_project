@@ -96,15 +96,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="/" class="nav-link">
+              <a href="{% url 'school:fee_payment_receipt' %}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>View Receipts</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Other Charges</p>
+                <p>Print Receipt</p>
               </a>
             </li>
           </ul>
@@ -248,9 +242,9 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="/" class="nav-link">
+              <a href="{% url 'school:salary_payment_receipt' %}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Print Receipts</p>
+                <p>Print Receipt</p>
               </a>
             </li>
           </ul>
@@ -388,9 +382,9 @@
         </ul>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{% url 'school:all_fee_receipts' %}" class="nav-link">
+            <a href="{% url 'school:fee_payment_records' %}" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
-              <p>Fee Payment Receipts</p>
+              <p>Fee Payment Records</p>
             </a>
           </li>
         </ul>
@@ -431,6 +425,23 @@
             <a href="/" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Upcoming Events</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a href="/" class="nav-link">
+          <i class="nav-icon fas fa-book"></i>
+          <p>
+            Lecturers
+            <i class="fas fa-angle-left right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{% url 'school:salary_payment_records' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Salary payment records</p>
             </a>
           </li>
         </ul>
