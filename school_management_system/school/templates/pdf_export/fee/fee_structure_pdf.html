@@ -16,85 +16,85 @@
     <!-- <P>Page Content</P> -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <table id="exam_card_yr1" class="table table-bordered">
-                            {% for instance in queryset %}
-                            <tr>
-                                <th colspan="2" style="text-align: center; font-size: large;font-weight: bolder;">
-                                    {{school}}</th>
-                            </tr>
-                            <tr>
-                                <th colspan="2" style="text-align: center; font-size: large; font-weight: bold;">{{box}}
-                                </th>
-                            </tr>
-                            <tr>
-                                <th colspan="2"
-                                    style="text-align: center; font-size: large; font-style: italic; text-decoration: underline;">
-                                    Tel:
-                                    {{tel}} &nbsp;&nbsp; Email:{{email}}</th>
-                            </tr>
-                            <tr>
-                                <th colspan="2" style="text-align: center; font-size: large; font-weight: bold;">FEE
-                                    STRUCTURE</th>
-                            </tr>
-                            <tr>
-                                <th colspan="2" style="text-align: center; font-size: large; font-weight: bold;">
-                                    {{instance.program}}</th>
-                            </tr>
-                            <tr>
-                                <th colspan="2" style="text-align: center; font-size: large; font-weight: bold;">
-                                    {{instance.stage}}</th>
-                            </tr>
-                            <tr>
-                                <th colspan="2" style="text-align: right; font-size: small;">{{date_downloaded}}</th>
-                            </tr>
-                            <tr>
-                                <th>EXAMS:</th>
-                                <td>{{instance.exams}}</td>
-                            </tr>
-                            <tr>
-                                <th>CO-OCURRICULAR ACTIVITIES</th>
-                                <td>{{instance.co_ocurricular_activities}}</td>
-                            </tr>
-                            <tr>
-                                <th>HOSTEL CHARGES</th>
-                                <td>{{instance.hostel_charges}}</td>
-                            </tr>
-                            <tr>
-                                <th>LIBRARY CHARGES</th>
-                                <td>{{instance.library_charges}}</td>
-                            </tr>
-                            <tr>
-                                <th>INTERNET CHARGES</th>
-                                <td>{{instance.internet_charges}}</td>
-                            </tr>
-                            <tr>
-                                <th>ELECTRICITY CHARGES</th>
-                                <td>{{instance.electricity_charges}}</td>
-                            </tr>
-                            <tr>
-                                <th>FOOD CHARGES</th>
-                                <td>{{instance.food_charges}}</td>
-                            </tr>
-                            <tr>
-                                <th>FURNITURE CHARGES</th>
-                                <td>{{instance.furniture_charges}}</td>
-                            </tr>
-                            <tr>
-                                <th>WATER CHARGES</th>
-                                <td>{{instance.water_charges}}</td>
-                            </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Year 1 Exam Card</h3><br>
+                <a href="{% url 'school:my_reg_units_year_page' %}" class="btn btn-sm btn-primary">
+                  <i class=""></i> Year Page
+                </a>
+              </div>
+    
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="exam_card_yr1" class="table table-bordered">
+                  {% for instance in queryset %}
+                  <tr>
+                    <th colspan="2" style="text-align: center; font-size: large;font-weight: bolder;">{{school}}</th>
+                  </tr>
+                  <tr>
+                    <th colspan="2" style="text-align: center; font-size: large; font-weight: bold;">{{box}}</th>
+                  </tr>
+                  <tr>
+                    <th colspan="2" style="text-align: center; font-size: large; font-style: italic; text-decoration: underline;">Tel:
+                      {{tel}} &nbsp;&nbsp; Email:{{email}}</th>
+                  </tr>
+                  <tr>
+                    <th colspan="2" style="text-align: center; font-size: large; font-weight: bold;">FEE STRUCTURE</th>
+                  </tr>
+                  <tr>
+                    <th colspan="2" style="text-align: center; font-size: large; font-weight: bold;">{{instance.program}}</th>
+                  </tr>
+                  <tr>
+                    <th colspan="2" style="text-align: center; font-size: large; font-weight: bold;">{{instance.stage}}</th>
+                  </tr>
+                  <tr>
+                    <th colspan="2" style="text-align: right; font-size: small;">{{date_downloaded}}</th>
+                  </tr>
+                  <tr>
+                    <th>EXAMS:</th>
+                    <td>{{instance.exams}}</td>
+                  </tr>
+                  <tr>
+                    <th>CO-OCURRICULAR ACTIVITIES</th>
+                    <td>{{instance.co_ocurricular_activities}}</td>
+                  </tr>
+                  <tr>
+                    <th>HOSTEL CHARGES</th>
+                    <td>{{instance.hostel_charges}}</td>
+                  </tr>
+                  <tr>
+                    <th>LIBRARY CHARGES</th>
+                    <td>{{instance.library_charges}}</td>
+                  </tr>
+                  <tr>
+                    <th>INTERNET CHARGES</th>
+                    <td>{{instance.internet_charges}}</td>
+                  </tr>
+                  <tr>
+                    <th>ELECTRICITY CHARGES</th>
+                    <td>{{instance.electricity_charges}}</td>
+                  </tr>
+                  <tr>
+                    <th>FOOD CHARGES</th>
+                    <td>{{instance.food_charges}}</td>
+                  </tr>
+                  <tr>
+                    <th>FURNITURE CHARGES</th>
+                    <td>{{instance.furniture_charges}}</td>
+                  </tr>
+                  <tr>
+                    <th>WATER CHARGES</th>
+                    <td>{{instance.water_charges}}</td>
+                  </tr>
+                  {% endfor %}
+                </table>
+              </div>
+              <!-- /.card-body -->
             </div>
-            <!-- /.col -->
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
         </div>
         <!-- /.row -->
     </div>
