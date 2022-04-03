@@ -1,0 +1,84 @@
+<head>
+    {% include './scripts/pdf_head.html' %}
+</head>
+
+<body>
+    <!-- Content for Static Frame 'header_frame' -->
+    <div id="header_content">
+        <h3>SALARY PAYMENT RECEIPTS</h3>
+    </div>
+    <!-- Content for Static Frame 'footer_frame' -->
+    <div id="footer_content">(c) - page <pdf:pagenumber>
+            of <pdf:pagecount>
+    </div>
+
+    <!-- <P>Page Content</P> -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">           
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="salary_payment_records" class="table table-bordered">
+                <thead>
+                  <h1 style="text-align: center; font-size: large;font-weight: bolder;">{{school}}</h1>
+                  <h2 style="text-align: center; font-size: large; font-weight: bold;">{{box}}</h2>
+                  <h3 style="text-align: center; font-size: large; font-style: italic; text-decoration: underline;">Tel: {{tel}} &nbsp;&nbsp; Email:{{email}}</h3>
+                  <h2 style="text-align: center; font-size: large; font-weight: bold;">{{title}}</h2>
+                  <h4 style="text-align: right; font-size: small;">{{date_downloaded}}</h4>
+                  <h4 style="text-align: left; font-size: large;">NAME: {{request.user.first_name}} {{request.user.middle_name}}  {{request.user.last_name}}</h4>
+                  <h4 style="text-align: center; font-size: large; font-style: italic; text-decoration: underline;">{{title}}</h4>
+                  <tr>
+                      <th></th>
+                      <th>AMOUNT PAID</th>
+                      <th>PAYMENT METHOD</th>
+                      <th>PAYMENT STATUS</th>
+                      <th>PAYMENT METHOD</th>
+                      <th>REFERENCE NUMBER</th>
+                      <th>PHONE NUMBER</th>
+                      <th>DATE PAID</th>
+                      <th>DATE UPDATED</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for instance in queryset %}
+                  <tr>
+                          <td>{{forloop.counter}}</td>
+                          <td>{{instance.amount_paid}}</td>
+                          <td>{{instance.paid}}</td>
+                          <td>{{instance.payment_method}}</td>
+                          <td>{{instance.bill_reference_no}}</td>
+                          <td>{{instance.phone_number}}</td>
+                          <td>{{instance.date_paid}}</td>
+                          <td>{{instance.date_updated}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th></th>
+                    <th>AMOUNT PAID</th>
+                    <th>PAYMENT METHOD</th>
+                    <th>PAYMENT STATUS</th>
+                    <th>PAYMENT METHOD</th>
+                    <th>REFERENCE NUMBER</th>
+                    <th>PHONE NUMBER</th>
+                    <th>DATE PAID</th>
+                    <th>DATE UPDATED</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+
+</body>
+
+</html>
