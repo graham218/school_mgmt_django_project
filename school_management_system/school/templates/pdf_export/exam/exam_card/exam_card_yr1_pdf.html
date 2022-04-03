@@ -14,69 +14,52 @@
 
     <!-- <P>Page Content</P> -->
     <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">    
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="fee_payment_receipt" class="table table-bordered">
-                  <thead>
-                    <h1 style="text-align: center; font-size: large;font-weight: bolder;">{{school}}</h1>
-                    <h2 style="text-align: center; font-size: large; font-weight: bold;">{{box}}</h2>
-                    <h3 style="text-align: center; font-size: large; font-style: italic; text-decoration: underline;">Tel: {{tel}} &nbsp;&nbsp; Email:{{email}}</h3>
-                    <h2 style="text-align: center; font-size: large; font-weight: bold;">{{title}}</h2>
-                    <h4 style="text-align: right; font-size: small;">{{date_downloaded}}</h4>
-                    <h4 style="text-align: left; font-size: large;">NAME: {{request.user.first_name}} {{request.user.middle_name}}  {{request.user.last_name}}</h4>
-                    <h4 style="text-align: center; font-size: large; font-style: italic; text-decoration: underline;">{{title}}</h4>
-                    <tr>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">         
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="exam_card_yr1" class="table table-bordered">
+                  <h1 style="text-align: center; font-size: large;font-weight: bolder;">{{school}}</h1>
+                  <h2 style="text-align: center; font-size: large; font-weight: bold;">{{box}}</h2>
+                  <h3 style="text-align: center; font-size: large; font-style: italic; text-decoration: underline;">Tel: {{tel}} &nbsp;&nbsp; Email:{{email}}</h3>
+                  <h4 style="text-align: right; font-size: small;">{{date_downloaded}}</h4>
+  
+                  <h4 style="text-align: left; font-size: large;">NAME: {{request.user.first_name}} {{request.user.middle_name}}  {{request.user.last_name}}</h4>
+                  <h4 style="text-align: left; font-size: small;">Year 1 Exam Card</h4>
+                <thead>
+                  <tr>
                       <th></th>
-                      <th>AMOUNT PAID</th>
-                      <th>PAYMENT METHOD</th>
-                      <th>PAYMENT STATUS</th>
-                      <th>PAYMENT METHOD</th>
-                      <th>REFERENCE NUMBER</th>
-                      <th>PHONE NUMBER</th>
-                      <th>DATE PAID</th>
-                      <th>DATE UPDATED</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for instance in queryset %}
-                    <tr>
-                      <td>{{forloop.counter}}</td>
-                      <td>{{instance.amount_paid}}</td>
-                      <td>{{instance.paid}}</td>
-                      <td>{{instance.payment_method}}</td>
-                      <td>{{instance.bill_reference_no}}</td>
-                      <td>{{instance.phone_number}}</td>
-                      <td>{{instance.date_paid}}</td>
-                      <td>{{instance.date_updated}}</td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                  <tfoot>
-                    <tr>
+                      <th>UNIT NAME</th>
+                      <th>LECTURER'S SIGNATURE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for instance in queryset %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{instance.unit_or_subject_name}}</td>
+                    <td>____________________</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+                <tfoot>
+                  <tr>
                       <th></th>
-                      <th>AMOUNT PAID</th>
-                      <th>PAYMENT METHOD</th>
-                      <th>PAYMENT STATUS</th>
-                      <th>PAYMENT METHOD</th>
-                      <th>REFERENCE NUMBER</th>
-                      <th>PHONE NUMBER</th>
-                      <th>DATE PAID</th>
-                      <th>DATE UPDATED</th>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
+                      <th>UNIT NAME</th>
+                      <th>LECTURER'S SIGNATURE</th>
+                  </tr>
+                </tfoot>
+              </table>
             </div>
-            <!-- /.card -->
+            <!-- /.card-body -->
           </div>
-          <!-- /.col -->
+          <!-- /.card -->
         </div>
-        <!-- /.row -->
+        <!-- /.col -->
       </div>
+      <!-- /.row -->
+    </div>
     <!-- /.container-fluid -->
 
 </body>
