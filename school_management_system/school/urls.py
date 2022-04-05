@@ -1,5 +1,5 @@
 from django.urls import path
-from .import views, my_views, views2, paypal_views
+from .import views, my_views, views2, paypal_views, pdf_views
 
 app_name='school'
 
@@ -213,5 +213,9 @@ urlpatterns = [
     path('delete_salary_payment/<str:pk>', views2.delete_salary_payment, name='delete_salary_payment'),
     path('salary_payment_records/', views2.salary_payment_records, name='salary_payment_records'),
     path('salary_payment_receipt/', views2.salary_payment_receipt, name='salary_payment_receipt'),
+
+
+    # Download PDF views
+    path('pdf_download/', pdf_views.DownloadPDF.as_view(), name="pdf_download"),
 
 ]
