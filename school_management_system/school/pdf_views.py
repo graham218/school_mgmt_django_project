@@ -35,7 +35,145 @@ def exam_card_yr1_pdf(request):
     pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr1_pdf.html', context)
 
     response = HttpResponse(pdf, content_type='application/pdf')
-    filename = 'Year1-Exam-Card-%s.pdf'
+    filename = 'Year-1-Exam-Card.pdf'
+    content = "attachment; filename='%s'" %(filename)
+    response['Content-Disposition'] = content
+    return response
+
+def exam_card_yr2_pdf(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr2.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset
+    }
+    pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr2_pdf.html', context)
+
+    response = HttpResponse(pdf, content_type='application/pdf')
+    filename = 'Year-2-Exam-Card.pdf'
+    content = "attachment; filename='%s'" %(filename)
+    response['Content-Disposition'] = content
+    return response
+
+def exam_card_yr3_pdf(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr3.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset
+    }
+    pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr3_pdf.html', context)
+
+    response = HttpResponse(pdf, content_type='application/pdf')
+    filename = 'Year-3-Exam-Card.pdf'
+    content = "attachment; filename='%s'" %(filename)
+    response['Content-Disposition'] = content
+    return response
+
+def exam_card_yr4_pdf(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr4.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset
+    }
+    pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr4_pdf.html', context)
+
+    response = HttpResponse(pdf, content_type='application/pdf')
+    filename = 'Year-4-Exam-Card.pdf'
+    content = "attachment; filename='%s'" %(filename)
+    response['Content-Disposition'] = content
+    return response
+
+def exam_card_yr5_pdf(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr5.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset
+    }
+    pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr5_pdf.html', context)
+
+    response = HttpResponse(pdf, content_type='application/pdf')
+    filename = 'Year-5-Exam-Card.pdf'
+    content = "attachment; filename='%s'" %(filename)
+    response['Content-Disposition'] = content
+    return response
+
+def exam_card_yr6_pdf(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr6.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset
+    }
+    pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr6_pdf.html', context)
+
+    response = HttpResponse(pdf, content_type='application/pdf')
+    filename = 'Year-6-Exam-Card.pdf'
+    content = "attachment; filename='%s'" %(filename)
+    response['Content-Disposition'] = content
+    return response
+
+def exam_card_yr7_pdf(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr7.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset
+    }
+    pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr7_pdf.html', context)
+
+    response = HttpResponse(pdf, content_type='application/pdf')
+    filename = 'Year-7-Exam-Card.pdf'
     content = "attachment; filename='%s'" %(filename)
     response['Content-Disposition'] = content
     return response
