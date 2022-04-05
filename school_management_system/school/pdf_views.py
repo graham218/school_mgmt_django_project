@@ -15,13 +15,13 @@ def render_to_pdf(template_src, context_dict={}):
 	return None
 
 #Automaticly downloads to PDF file
-class DownloadPDF(View):
+class exam_card_yr1_pdf(View):
 	def get(self, request, *args, **kwargs):
 		
-		pdf = render_to_pdf('app/pdf_template.html', data)
+		pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr1_pdf.html', data)
 
 		response = HttpResponse(pdf, content_type='application/pdf')
-		filename = "Invoice_%s.pdf" %("12341231")
+		filename = "Year1-Exam-Card-%s.pdf" %("1234567890")
 		content = "attachment; filename='%s'" %(filename)
 		response['Content-Disposition'] = content
 		return response

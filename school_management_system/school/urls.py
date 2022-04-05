@@ -216,6 +216,6 @@ urlpatterns = [
 
 
     # Download PDF views
-    path('pdf_download/', pdf_views.DownloadPDF.as_view(), name="pdf_download"),
+    path('exam_card_yr1_pdf/', pdf_views.exam_card_yr1_pdf.as_view(), name="exam_card_yr1_pdf"),
 
 ]
