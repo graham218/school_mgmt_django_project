@@ -216,6 +216,6 @@ urlpatterns = [
 
 
     # Download PDF views
-    path('exam_card_yr1_pdf/', pdf_views.exam_card_yr1_pdf.as_view(), name="exam_card_yr1_pdf"),
+    path('exam_card_yr1_pdf/', pdf_views.exam_card_yr1_pdf, name="exam_card_yr1_pdf"),
 
 ]

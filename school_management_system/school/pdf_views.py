@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from django.views import View
 from xhtml2pdf import pisa
+from .models import *
+import datetime
 
 def render_to_pdf(template_src, context_dict={}):
 	template = get_template(template_src)
@@ -15,13 +17,27 @@ def render_to_pdf(template_src, context_dict={}):
 	return None
 
 #Automaticly downloads to PDF file
-class exam_card_yr1_pdf(View):
-	def get(self, request, *args, **kwargs):
-		
-		pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr1_pdf.html', data)
+def exam_card_yr1_pdf(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr1.objects.filter(user=request.user)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset
+    }
+    pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr1_pdf.html', context)
 
-		response = HttpResponse(pdf, content_type='application/pdf')
-		filename = "Year1-Exam-Card-%s.pdf" %("1234567890")
-		content = "attachment; filename='%s'" %(filename)
-		response['Content-Disposition'] = content
-		return response
+    response = HttpResponse(pdf, content_type='application/pdf')
+    filename = 'Year1-Exam-Card-%s.pdf'
+    content = "attachment; filename='%s'" %(filename)
+    response['Content-Disposition'] = content
+    return response
+
+
