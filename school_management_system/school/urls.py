@@ -225,12 +225,12 @@ urlpatterns = [
     path('exam_card_yr7_pdf/', pdf_views.exam_card_yr7_pdf, name="exam_card_yr7_pdf"),
 
     # Download Retake Card PDF views
-    path('exam_card_yr1_pdf/', pdf_views.exam_card_yr1_pdf, name="exam_card_yr1_pdf"),
-    path('exam_card_yr2_pdf/', pdf_views.exam_card_yr2_pdf, name="exam_card_yr2_pdf"),
-    path('exam_card_yr3_pdf/', pdf_views.exam_card_yr3_pdf, name="exam_card_yr3_pdf"),
-    path('exam_card_yr4_pdf/', pdf_views.exam_card_yr4_pdf, name="exam_card_yr4_pdf"),
-    path('exam_card_yr5_pdf/', pdf_views.exam_card_yr5_pdf, name="exam_card_yr5_pdf"),
-    path('exam_card_yr6_pdf/', pdf_views.exam_card_yr6_pdf, name="exam_card_yr6_pdf"),
-    path('exam_card_yr7_pdf/', pdf_views.exam_card_yr7_pdf, name="exam_card_yr7_pdf"),
+    path('resit_card_yr1_pdf/', pdf_views.resit_card_yr1_pdf, name="resit_card_yr1_pdf"),
+    path('resit_card_yr2_pdf/', pdf_views.resit_card_yr2_pdf, name="resit_card_yr2_pdf"),
+    path('resit_card_yr3_pdf/', pdf_views.resit_card_yr3_pdf, name="resit_card_yr3_pdf"),
+    path('resit_card_yr4_pdf/', pdf_views.resit_card_yr4_pdf, name="resit_card_yr4_pdf"),
+    path('resit_card_yr5_pdf/', pdf_views.resit_card_yr5_pdf, name="resit_card_yr5_pdf"),
+    path('resit_card_yr6_pdf/', pdf_views.resit_card_yr6_pdf, name="resit_card_yr6_pdf"),
+    path('resit_card_yr7_pdf/', pdf_views.resit_card_yr7_pdf, name="resit_card_yr7_pdf"),
 
 ]
