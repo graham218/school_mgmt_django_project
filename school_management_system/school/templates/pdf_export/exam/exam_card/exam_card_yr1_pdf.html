@@ -1,3 +1,6 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
 <head>
   <style>
     @page {
@@ -43,7 +46,7 @@
                   <h4 style="text-align: left; font-size: large;">NAME: {{request.user.first_name}} {{request.user.middle_name}}  {{request.user.last_name}}</h4>
                   <h4 style="text-align: left; font-size: small;">Year 1 Exam Card</h4>
                 <thead>
-                  <tr>
+                  <tr style="text-align: left;">
                       <th></th>
                       <th>UNIT NAME</th>
                       <th>LECTURER'S SIGNATURE</th>
@@ -59,7 +62,7 @@
                   {% endfor %}
                 </tbody>
                 <tfoot>
-                  <tr>
+                  <tr style="text-align: left;">
                       <th></th>
                       <th>UNIT NAME</th>
                       <th>LECTURER'S SIGNATURE</th>
