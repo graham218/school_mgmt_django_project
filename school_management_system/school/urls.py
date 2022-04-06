@@ -234,5 +234,11 @@ urlpatterns = [
     path('resit_card_yr7_pdf/', pdf_views.resit_card_yr7_pdf, name="resit_card_yr7_pdf"),
 
     # Download Results Card PDF views
-    path('resit_card_yr1_pdf/', pdf_views.resit_card_yr1_pdf, name="resit_card_yr1_pdf"),
+    path('results_slip_year1_pdf/', pdf_views.results_slip_year1_pdf, name="results_slip_year1_pdf"),
+    path('results_slip_year2_pdf/', pdf_views.results_slip_year2_pdf, name="results_slip_year2_pdf"),
+    path('results_slip_year3_pdf/', pdf_views.results_slip_year3_pdf, name="results_slip_year3_pdf"),
+    path('results_slip_year4_pdf/', pdf_views.results_slip_year4_pdf, name="results_slip_year4_pdf"),
+    path('results_slip_year5_pdf/', pdf_views.results_slip_year5_pdf, name="results_slip_year5_pdf"),
+    path('results_slip_year6_pdf/', pdf_views.results_slip_year6_pdf, name="results_slip_year6_pdf"),
+    path('results_slip_year7_pdf/', pdf_views.results_slip_year7_pdf, name="results_slip_year7_pdf"),
 ]

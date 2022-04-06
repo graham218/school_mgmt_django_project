@@ -385,6 +385,8 @@ def resit_card_yr7_pdf(request):
     response['Content-Disposition'] = content
     return response
 
+
+# Download results slip/card
 def results_slip_year1_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
