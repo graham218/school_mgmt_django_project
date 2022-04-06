@@ -233,4 +233,6 @@ urlpatterns = [
     path('resit_card_yr6_pdf/', pdf_views.resit_card_yr6_pdf, name="resit_card_yr6_pdf"),
     path('resit_card_yr7_pdf/', pdf_views.resit_card_yr7_pdf, name="resit_card_yr7_pdf"),
 
+    # Download Results Card PDF views
+    path('resit_card_yr1_pdf/', pdf_views.resit_card_yr1_pdf, name="resit_card_yr1_pdf"),
 ]
