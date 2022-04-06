@@ -8,7 +8,7 @@ from .models import *
 import datetime
 from django.contrib.auth.decorators import login_required
 
-@login_required
+
 def render_to_pdf(template_src, context_dict={}):
 	template = get_template(template_src)
 	html  = template.render(context_dict)
@@ -19,7 +19,7 @@ def render_to_pdf(template_src, context_dict={}):
 	return None
 
 #Automaticly downloads to PDF file
-@login_required
+
 def exam_card_yr1_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -27,13 +27,15 @@ def exam_card_yr1_pdf(request):
     email='grahambill011@gmail.com'
     date_downloaded=datetime.datetime.now()
     queryset = marks_yr1.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
         "box": box,
         'tel':tel,
         'email':email,
         'date_downloaded':date_downloaded,
-        'queryset':queryset
+        'queryset':queryset,
+        'full_name':name
     }
     pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr1_pdf.html', context)
 
@@ -43,7 +45,7 @@ def exam_card_yr1_pdf(request):
     response['Content-Disposition'] = content
     return response
 
-@login_required
+
 def exam_card_yr2_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -51,13 +53,15 @@ def exam_card_yr2_pdf(request):
     email='grahambill011@gmail.com'
     date_downloaded=datetime.datetime.now()
     queryset = marks_yr2.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
         "box": box,
         'tel':tel,
         'email':email,
         'date_downloaded':date_downloaded,
-        'queryset':queryset
+        'queryset':queryset,
+        'full_name':name
     }
     pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr2_pdf.html', context)
 
@@ -67,7 +71,7 @@ def exam_card_yr2_pdf(request):
     response['Content-Disposition'] = content
     return response
 
-@login_required
+
 def exam_card_yr3_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -75,13 +79,15 @@ def exam_card_yr3_pdf(request):
     email='grahambill011@gmail.com'
     date_downloaded=datetime.datetime.now()
     queryset = marks_yr3.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
         "box": box,
         'tel':tel,
         'email':email,
         'date_downloaded':date_downloaded,
-        'queryset':queryset
+        'queryset':queryset,
+        'full_name':name
     }
     pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr3_pdf.html', context)
 
@@ -91,7 +97,7 @@ def exam_card_yr3_pdf(request):
     response['Content-Disposition'] = content
     return response
 
-@login_required
+
 def exam_card_yr4_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -99,13 +105,15 @@ def exam_card_yr4_pdf(request):
     email='grahambill011@gmail.com'
     date_downloaded=datetime.datetime.now()
     queryset = marks_yr4.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
         "box": box,
         'tel':tel,
         'email':email,
         'date_downloaded':date_downloaded,
-        'queryset':queryset
+        'queryset':queryset,
+        'full_name':name
     }
     pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr4_pdf.html', context)
 
@@ -115,7 +123,7 @@ def exam_card_yr4_pdf(request):
     response['Content-Disposition'] = content
     return response
 
-@login_required
+
 def exam_card_yr5_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -123,13 +131,15 @@ def exam_card_yr5_pdf(request):
     email='grahambill011@gmail.com'
     date_downloaded=datetime.datetime.now()
     queryset = marks_yr5.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
         "box": box,
         'tel':tel,
         'email':email,
         'date_downloaded':date_downloaded,
-        'queryset':queryset
+        'queryset':queryset,
+        'full_name':name
     }
     pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr5_pdf.html', context)
 
@@ -139,7 +149,7 @@ def exam_card_yr5_pdf(request):
     response['Content-Disposition'] = content
     return response
 
-@login_required
+
 def exam_card_yr6_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -147,13 +157,15 @@ def exam_card_yr6_pdf(request):
     email='grahambill011@gmail.com'
     date_downloaded=datetime.datetime.now()
     queryset = marks_yr6.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
         "box": box,
         'tel':tel,
         'email':email,
         'date_downloaded':date_downloaded,
-        'queryset':queryset
+        'queryset':queryset,
+        'full_name':name
     }
     pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr6_pdf.html', context)
 
@@ -163,7 +175,7 @@ def exam_card_yr6_pdf(request):
     response['Content-Disposition'] = content
     return response
 
-@login_required
+
 def exam_card_yr7_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -171,13 +183,15 @@ def exam_card_yr7_pdf(request):
     email='grahambill011@gmail.com'
     date_downloaded=datetime.datetime.now()
     queryset = marks_yr7.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
         "box": box,
         'tel':tel,
         'email':email,
         'date_downloaded':date_downloaded,
-        'queryset':queryset
+        'queryset':queryset,
+        'full_name':name
     }
     pdf = render_to_pdf('pdf_export/exam/exam_card/exam_card_yr7_pdf.html', context)
 
@@ -189,7 +203,7 @@ def exam_card_yr7_pdf(request):
 
 
 # Download Resit card pdf
-@login_required
+
 def resit_card_yr1_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -197,13 +211,15 @@ def resit_card_yr1_pdf(request):
     email='grahambill011@gmail.com'
     date_downloaded=datetime.datetime.now()
     queryset = resit_exam_yr1.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
         "box": box,
-        "tel":tel,
-        "email":email,
-        "queryset":queryset,
-        "date_downloaded":date_downloaded,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset,
+        'full_name':name
     }
     pdf = render_to_pdf('pdf_export/retakes/resit_card/resit_card_yr1_pdf.html', context)
 
@@ -213,7 +229,7 @@ def resit_card_yr1_pdf(request):
     response['Content-Disposition'] = content
     return response
 
-@login_required
+
 def resit_card_yr2_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -221,13 +237,15 @@ def resit_card_yr2_pdf(request):
     email='grahambill011@gmail.com'
     date_downloaded=datetime.datetime.now()
     queryset = resit_exam_yr2.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
         "box": box,
-        "tel":tel,
-        "email":email,
-        "queryset":queryset,
-        "date_downloaded":date_downloaded,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset,
+        'full_name':name
     }
     pdf = render_to_pdf('pdf_export/retakes/resit_card/resit_card_yr2_pdf.html', context)
 
@@ -237,7 +255,7 @@ def resit_card_yr2_pdf(request):
     response['Content-Disposition'] = content
     return response
 
-@login_required
+
 def resit_card_yr3_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -245,13 +263,15 @@ def resit_card_yr3_pdf(request):
     email='grahambill011@gmail.com'
     date_downloaded=datetime.datetime.now()
     queryset = resit_exam_yr3.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
         "box": box,
-        "tel":tel,
-        "email":email,
-        "queryset":queryset,
-        "date_downloaded":date_downloaded,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset,
+        'full_name':name
     }
     pdf = render_to_pdf('pdf_export/retakes/resit_card/resit_card_yr3_pdf.html', context)
 
@@ -261,7 +281,7 @@ def resit_card_yr3_pdf(request):
     response['Content-Disposition'] = content
     return response
 
-@login_required
+
 def resit_card_yr4_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -269,13 +289,15 @@ def resit_card_yr4_pdf(request):
     email='grahambill011@gmail.com'
     date_downloaded=datetime.datetime.now()
     queryset = resit_exam_yr4.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
         "box": box,
-        "tel":tel,
-        "email":email,
-        "queryset":queryset,
-        "date_downloaded":date_downloaded,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset,
+        'full_name':name
     }
     pdf = render_to_pdf('pdf_export/retakes/resit_card/resit_card_yr4_pdf.html', context)
 
@@ -285,7 +307,7 @@ def resit_card_yr4_pdf(request):
     response['Content-Disposition'] = content
     return response
 
-@login_required
+
 def resit_card_yr5_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -293,13 +315,15 @@ def resit_card_yr5_pdf(request):
     email='grahambill011@gmail.com'
     date_downloaded=datetime.datetime.now()
     queryset = resit_exam_yr5.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
         "box": box,
-        "tel":tel,
-        "email":email,
-        "queryset":queryset,
-        "date_downloaded":date_downloaded,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset,
+        'full_name':name
     }
     pdf = render_to_pdf('pdf_export/retakes/resit_card/resit_card_yr5_pdf.html', context)
 
@@ -309,7 +333,7 @@ def resit_card_yr5_pdf(request):
     response['Content-Disposition'] = content
     return response
 
-@login_required
+
 def resit_card_yr6_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -317,13 +341,15 @@ def resit_card_yr6_pdf(request):
     email='grahambill011@gmail.com'
     date_downloaded=datetime.datetime.now()
     queryset = resit_exam_yr6.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
         "box": box,
-        "tel":tel,
-        "email":email,
-        "queryset":queryset,
-        "date_downloaded":date_downloaded,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset,
+        'full_name':name
     }
     pdf = render_to_pdf('pdf_export/retakes/resit_card/resit_card_yr6_pdf.html', context)
 
@@ -333,7 +359,7 @@ def resit_card_yr6_pdf(request):
     response['Content-Disposition'] = content
     return response
 
-@login_required
+
 def resit_card_yr7_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
@@ -341,13 +367,15 @@ def resit_card_yr7_pdf(request):
     email='grahambill011@gmail.com'
     date_downloaded=datetime.datetime.now()
     queryset = resit_exam_yr7.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
         "box": box,
-        "tel":tel,
-        "email":email,
-        "queryset":queryset,
-        "date_downloaded":date_downloaded,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset,
+        'full_name':name
     }
     pdf = render_to_pdf('pdf_export/retakes/resit_card/resit_card_yr7_pdf.html', context)
 
