@@ -50,7 +50,17 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'mptt',
     'base',
+    'rest_framework',
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ]
+}
+
 AUTH_USER_MODEL = 'custom_user.User'
 
 MIDDLEWARE = [
