@@ -1,3 +1,4 @@
+{% load static %}
 <!-- Main content -->
 <section class="content">
   <div class="container-fluid">
@@ -68,44 +69,26 @@
         <!-- user information -->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">User Information</h3>
+            <h3 class="card-title">Profile Photo</h3>
           </div>
           <div class="card-body">
-
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">
-              More Information
-            </h3>
-          </div>
-          <div class="card-body">
-
+            <div class="profile_photo">
+              <img {% if request.user.profile_photo %}src="{{request.user.profile_photo.url}}" {% else %}src="{% static 'dist/img/user2-160x160.jpg' %}" {% endif %} alt="profile_pic">
+            </div>
           </div>
         </div>
       </section>
       <section class="col-lg-7 connectedSortable">
         <div class="card bg-gradient-info">
-          <div class="card-header border-0">
+          <div class="card-header">
             <h3 class="card-title">
-              <i class="fas fa-user"></i>
-              Others
+              School Badge
             </h3>
           </div>
           <div class="card-body">
-
-          </div>
-        </div>
-        <div class="card bg-gradient-info">
-          <div class="card-header border-0">
-            <h3 class="card-title">
-              <i class="fas fa-user"></i>
-              more
-            </h3>
-          </div>
-          <div class="card-body">
-
+            <div class="school_badge">
+              <img src="{% static 'dist/img/user2-160x160.jpg' %}" alt="school_badge">
+            </div>
           </div>
         </div>
       </section>
