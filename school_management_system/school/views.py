@@ -233,6 +233,25 @@ def EditStudents(request, pk):
     }
     return render(request, 'school/create-edit-students.html', context)
 
+@login_required
+def UpdateStudents(request, pk):
+    title = "Edit Student"
+    button = "Edit Student"
+    queryset = Students.objects.get(id=pk)
+    form = EditStudentsForm(request.POST or None, instance=queryset)
+    if request.method == "POST":
+        form = EditStudentsForm(request.POST or None, instance=queryset)
+        if form.is_valid():
+            messages.success(request, "Profile Updated Successfully")
+            form.save()
+            return redirect("/")
+    context = {
+        "title": title,
+        "button": button,
+        "form": form
+    }
+    return render(request, 'school/create-edit-students.html', context)
+
 
 @login_required
 def DeleteStudent(request, pk):
@@ -308,6 +327,25 @@ def EditLecturer(request, pk):
             messages.success(request, "Lecture Updated Successfully")
             form.save()
             return redirect("/school/all_lecturers")
+    context = {
+        "title": title,
+        "button": button,
+        "form": form
+    }
+    return render(request, 'school/create-edit-lecturers.html', context)
+
+@login_required
+def UpdateLecturer(request, pk):
+    title = "Update My Profile"
+    button = "Update Profile"
+    queryset = Lectures.objects.get(id=pk)
+    form = EditLectureForm(request.POST or None, instance=queryset)
+    if request.method == "POST":
+        form = EditLectureForm(request.POST or None, instance=queryset)
+        if form.is_valid():
+            messages.success(request, "Lecture Updated Successfully")
+            form.save()
+            return redirect("/")
     context = {
         "title": title,
         "button": button,
