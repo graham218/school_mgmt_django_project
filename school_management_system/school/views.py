@@ -129,7 +129,7 @@ def all_fee_receipts(request):
 
 
 def CreateAccountStudentsView(request):
-    form = CreateAccountStudentsForm(request.POST)
+    form = CreateAccountStudentsForm(request.POST, request.FILES)
     if form.is_valid():
         messages.success(
             request, "Congratulations! Registration Successful, you can now log in!")
@@ -140,7 +140,7 @@ def CreateAccountStudentsView(request):
     return render(request, 'account/register.html', {'form': form})
 
 def CreateAccountLecturerView(request):
-    form = CreateAccountLecturerForm(request.POST)
+    form = CreateAccountLecturerForm(request.POST, request.FILES)
     if form.is_valid():
         messages.success(
             request, "Congratulations! Registration Successful, you can now log in!")
@@ -149,7 +149,7 @@ def CreateAccountLecturerView(request):
     return render(request, 'account/register.html', {'form': form})
 
 def CreateAccountAdminView(request):
-    form = CreateAccountAdminForm(request.POST)
+    form = CreateAccountAdminForm(request.POST, request.FILES)
     if form.is_valid():
         messages.success(
             request, "Congratulations! Registration Successful, you can now log in!")
@@ -158,7 +158,7 @@ def CreateAccountAdminView(request):
     return render(request, 'account/register.html', {'form': form})
 
 def CreateAccountSupplierView(request):
-    form = CreateAccountSupplierForm(request.POST)
+    form = CreateAccountSupplierForm(request.POST, request.FILES)
     if form.is_valid():
         messages.success(
             request, "Congratulations! Registration Successful, you can now log in!")
@@ -167,7 +167,7 @@ def CreateAccountSupplierView(request):
     return render(request, 'account/register.html', {'form': form})
 
 def CreateAccountNonStaffView(request):
-    form = CreateAccountNonStaffForm(request.POST)
+    form = CreateAccountNonStaffForm(request.POST, request.FILES)
     if form.is_valid():
         messages.success(
             request, "Congratulations! Registration Successful, you can now log in!")

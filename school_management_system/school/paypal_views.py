@@ -20,6 +20,8 @@ def send_payment(request):
                 amount_paid = cleaned_data.get('amount_paid'),
                 payment_method = 'PAY-PAL',
                 bill_reference_no = request.user.email,
+                phone_number="-------------",
+                paid=False
             )
             payment.save()
             request.session['payment_id'] = payment.id

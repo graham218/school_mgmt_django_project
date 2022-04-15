@@ -19,7 +19,7 @@
         <div class="card-body">
           <p class="login-box-msg">Sign in to start your session</p>
           {% include 'messages.html' %}
-          <form action="" method="post">
+          <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div>
               {{form|crispy}}
