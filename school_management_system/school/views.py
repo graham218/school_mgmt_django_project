@@ -234,10 +234,10 @@ def EditStudents(request, pk):
     return render(request, 'school/create-edit-students.html', context)
 
 @login_required
-def UpdateStudents(request, pk):
+def UpdateStudent(request):
     title = "Edit Student"
     button = "Edit Student"
-    queryset = Students.objects.get(id=pk)
+    queryset = Students.objects.get(user=request.user)
     form = EditStudentsForm(request.POST or None, instance=queryset)
     if request.method == "POST":
         form = EditStudentsForm(request.POST or None, instance=queryset)
@@ -335,15 +335,15 @@ def EditLecturer(request, pk):
     return render(request, 'school/create-edit-lecturers.html', context)
 
 @login_required
-def UpdateLecturer(request, pk):
+def UpdateLecturer(request):
     title = "Update My Profile"
     button = "Update Profile"
-    queryset = Lectures.objects.get(id=pk)
+    queryset = Lectures.objects.get(user=request.user)
     form = EditLectureForm(request.POST or None, instance=queryset)
     if request.method == "POST":
         form = EditLectureForm(request.POST or None, instance=queryset)
         if form.is_valid():
-            messages.success(request, "Lecture Updated Successfully")
+            messages.success(request, "Profile Updated Successfully")
             form.save()
             return redirect("/")
     context = {
