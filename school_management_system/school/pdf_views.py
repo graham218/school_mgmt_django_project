@@ -639,7 +639,7 @@ def fee_structure_pdf(request):
         'queryset':queryset,
         'title':title
     }
-    pdf = render_to_pdf('pdf_export/exam/exam_results/exam_results_pdf.html', context)
+    pdf = render_to_pdf('pdf_export/fee/fee_structure_pdf.html', context)
 
     response = HttpResponse(pdf, content_type='application/pdf')
     filename = 'fee_structure.pdf'
