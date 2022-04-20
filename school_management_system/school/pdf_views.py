@@ -564,7 +564,7 @@ def results_slip_year7_pdf(request):
 
 
 # Fee payment receipt
-def results_slip_year7_pdf(request):
+def fee_payment_receipt_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
     tel='+254-787675655768'
@@ -591,7 +591,7 @@ def results_slip_year7_pdf(request):
 
 
 # Salary Payment receipt
-def results_slip_year7_pdf(request):
+def salary_payment_receipt_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
     tel='+254-787675655768'
@@ -618,7 +618,7 @@ def results_slip_year7_pdf(request):
 
 
 # Fee Structure
-def results_slip_year7_pdf(request):
+def fee_structure_pdf(request):
     school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
     box='P.O BOX 7676 NAIROBI(K)'
     tel='+254-787675655768'
