@@ -243,4 +243,11 @@ urlpatterns = [
     path('results_slip_year5_pdf/', pdf_views.results_slip_year5_pdf, name="results_slip_year5_pdf"),
     path('results_slip_year6_pdf/', pdf_views.results_slip_year6_pdf, name="results_slip_year6_pdf"),
     path('results_slip_year7_pdf/', pdf_views.results_slip_year7_pdf, name="results_slip_year7_pdf"),
+
+    # Download financial receipt
+    path('fee_structure_pdf/', pdf_views.fee_structure_pdf, name="fee_structure_pdf"),
+    path('fee_payment_receipt_pdf/', pdf_views.fee_payment_receipt_pdf, name="fee_payment_receipt_pdf"),
+    path('salary_payment_receipt_pdf/', pdf_views.salary_payment_receipt_pdf, name="salary_payment_receipt_pdf"),
+
+    
 ]

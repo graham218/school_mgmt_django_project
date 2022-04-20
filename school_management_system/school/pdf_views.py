@@ -563,3 +563,83 @@ def results_slip_year7_pdf(request):
     return response
 
 
+# Fee payment receipt
+def results_slip_year7_pdf(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr7.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset,
+        'full_name':name
+    }
+    pdf = render_to_pdf('pdf_export/exam/exam_results/exam_results_pdf.html', context)
+
+    response = HttpResponse(pdf, content_type='application/pdf')
+    filename = 'Year-7-Results-Card.pdf'
+    content = "attachment; filename='%s'" %(filename)
+    response['Content-Disposition'] = content
+    return response
+
+
+# Salary Payment receipt
+def results_slip_year7_pdf(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr7.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset,
+        'full_name':name
+    }
+    pdf = render_to_pdf('pdf_export/exam/exam_results/exam_results_pdf.html', context)
+
+    response = HttpResponse(pdf, content_type='application/pdf')
+    filename = 'Year-7-Results-Card.pdf'
+    content = "attachment; filename='%s'" %(filename)
+    response['Content-Disposition'] = content
+    return response
+
+
+# Fee Structure
+def results_slip_year7_pdf(request):
+    school = 'GRAHAM UNIVERSITY OF INNOVATION AND TECHNOLOGY'
+    box='P.O BOX 7676 NAIROBI(K)'
+    tel='+254-787675655768'
+    email='grahambill011@gmail.com'
+    date_downloaded=datetime.datetime.now()
+    queryset = marks_yr7.objects.filter(user=request.user)
+    name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
+    context = {
+        "school": school,
+        "box": box,
+        'tel':tel,
+        'email':email,
+        'date_downloaded':date_downloaded,
+        'queryset':queryset,
+        'full_name':name
+    }
+    pdf = render_to_pdf('pdf_export/exam/exam_results/exam_results_pdf.html', context)
+
+    response = HttpResponse(pdf, content_type='application/pdf')
+    filename = 'Year-7-Results-Card.pdf'
+    content = "attachment; filename='%s'" %(filename)
+    response['Content-Disposition'] = content
+    return response
+
