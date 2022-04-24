@@ -571,7 +571,7 @@ def fee_payment_receipt_pdf(request):
     email='grahambill011@gmail.com'
     title='FEE PAYMENT RECORDS'
     date_downloaded=datetime.datetime.now()
-    queryet=fee_payment.objects.filter(user=request.user)
+    queryset=fee_payment.objects.filter(user=request.user)
     name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
@@ -583,7 +583,7 @@ def fee_payment_receipt_pdf(request):
         'queryset':queryset,
         'full_name':name
     }
-    pdf = render_to_pdf('pdf_export/fee/fee_payment_receipt_pdf', context)
+    pdf = render_to_pdf('pdf_export/fee/fee_payment_receipt_pdf.html', context)
 
     response = HttpResponse(pdf, content_type='application/pdf')
     filename = 'fee_payment_receipt.pdf'
@@ -600,7 +600,7 @@ def salary_payment_receipt_pdf(request):
     email='grahambill011@gmail.com'
     title='SALARY PAYMENT RECORDS'
     date_downloaded=datetime.datetime.now()
-    queryet=fee_payment.objects.filter(user=request.user)
+    queryset=fee_payment.objects.filter(user=request.user)
     name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name)
     context = {
         "school": school,
@@ -612,7 +612,7 @@ def salary_payment_receipt_pdf(request):
         'queryset':queryset,
         'full_name':name
     }
-    pdf = render_to_pdf('pdf_export/salary/salary_payment_receipt_pdf', context)
+    pdf = render_to_pdf('pdf_export/salary/salary_payment_receipt_pdf.html', context)
 
     response = HttpResponse(pdf, content_type='application/pdf')
     filename = 'salary_payment_receipt.pdf'

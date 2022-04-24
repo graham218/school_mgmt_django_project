@@ -1,7 +1,10 @@
 from django.urls import path
-
+from rest_framework.routers import DefaultRouter
 from . import views
 app_name='mpesa_api'
+
+router = DefaultRouter()
+# router.register('paystack', Paystack, basename='paystack')
 
 urlpatterns = [
     path('access/token', views.getAccessToken, name='get_mpesa_access_token'),

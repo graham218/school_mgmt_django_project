@@ -11,6 +11,7 @@ from school_management_system.utils import accountNumberToPk
 from django.contrib import messages
 from .forms import MpesaForm
 from django.contrib.auth.decorators import login_required
+from rest_framework.views import APIView
 
 
 def getAccessToken(request):
@@ -174,3 +175,18 @@ def result_view(request):
 def timeout_view(request):
     mpesa_body = request.body.decode('utf-8')
     return HttpResponse(mpesa_body)
+
+
+# class Paystack(APIView):
+
+#     def get(self, request, reference_id):
+#         url = f"https://api.paystack.co/transaction/verify/{reference_id}"
+#         payload = {}
+#         files = {}
+#         headers = {
+#             'Authorization': 'Bearer SECRET_KEY',
+#             'Content-Type': 'application/json'
+#         }
+
+#         response = requests.request("GET", url, headers=headers, data= payload, files=files)
+#         return Response(response)

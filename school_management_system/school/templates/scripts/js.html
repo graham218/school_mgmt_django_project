@@ -11,6 +11,14 @@
 <!-- AdminLTE App -->
 <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
 
+<!-- Select2 -->
+<!-- <script src="{% static 'select2/select2.min.js' %}"></script> -->
+<!-- Select2 Implementation -->
+<script>
+  $(document).ready(function () {
+    $('#id_unit_or_subject_name').select2();
+  });
+</script>
 <!-- DataTables  & Plugins -->
 <script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
 <script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
@@ -31,7 +39,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'All Faculties/School'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'All Faculties/School'
       }]
@@ -41,7 +49,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'Lecture Units'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'Lecture Units'
       }]
@@ -51,7 +59,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'All Registered Users'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'All Registered Users'
       }]
@@ -61,7 +69,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'All Students'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'All Students'
       }]
@@ -73,7 +81,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'All Fee Payments'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'All Fee Payments'
       }]
@@ -83,7 +91,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'All Registered Genders'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'All Registered Genders'
       }]
@@ -93,7 +101,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'All Courses/Courses Offered'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'All Courses/Courses Offered'
       }]
@@ -104,7 +112,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'All Stages'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'All Stages'
       }]
@@ -114,7 +122,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'All Units Offered'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'All Units Offered'
       }]
@@ -124,7 +132,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'All Programmes Offered'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'All Programmes Offered'
       }]
@@ -135,7 +143,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'All Seats'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'All Seats'
       }]
@@ -145,7 +153,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'My Special Exams'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'My Special Exams'
       }]
@@ -155,7 +163,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'Special Exams'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'Special Exams'
       }]
@@ -165,7 +173,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'All Lecturers'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'All Lecturers'
       }]
@@ -175,7 +183,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'All Units Assigned'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'All Units Assigned'
       }]
@@ -186,7 +194,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'List of Students Doing Retakes'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'List of Students Doing Retakes'
       }]
@@ -198,7 +206,7 @@
       "buttons": [{
         extend: 'csvHtml5',
         title: 'List of Students Registered For Exams'
-      },{
+      }, {
         extend: 'excelHtml5',
         title: 'List of Students Registered For Exams'
       }]
@@ -254,15 +262,15 @@
 </script>
 <!-- Toastr Configuration -->
 {% if messages %}
-    {% for message in messages %}
-        {% if message.tags == 'success'%}
-            <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-        {% elif message.tags == 'info' %}
-            <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-        {% elif message.tags == 'warning' %}
-            <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-        {% elif message.tags == 'error' %}
-            <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-        {% endif %}
-    {% endfor %}
+{% for message in messages %}
+{% if message.tags == 'success'%}
+<script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+{% elif message.tags == 'info' %}
+<script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+{% elif message.tags == 'warning' %}
+<script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+{% elif message.tags == 'error' %}
+<script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+{% endif %}
+{% endfor %}
 {% endif %}
