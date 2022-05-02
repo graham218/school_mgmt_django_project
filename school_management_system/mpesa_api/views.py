@@ -70,15 +70,15 @@ def register_urls(request):
     headers = {"Authorization": "Bearer %s" % access_token}
     options = {"ShortCode": LipanaMpesaPassword.Business_short_code,
                "ResponseType": "Completed",
-               "ConfirmationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/call_back",
-               "ValidationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/validation"}
+               "ConfirmationURL": "https://ad30-2c0f-fe38-2247-3adb-322b-496-1f63-43ee.ngrok.io/api/v1/c2b/callback_response",
+               "ValidationURL": "https://ad30-2c0f-fe38-2247-3adb-322b-496-1f63-43ee.ngrok.io/api/v1/c2b/validation"}
     response = requests.post(api_url, json=options, headers=headers)
     return HttpResponse(response.text)
 # "ValidationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/validation",
 
 @csrf_exempt
 def call_back(request):
-    url="https://django-school-mis-lte.herokuapp.com/api/v1/c2b/call_back/"
+    url="https://ad30-2c0f-fe38-2247-3adb-322b-496-1f63-43ee.ngrok.io/api/v1/c2b/call_back/"
     json_data = requests.get(url).json()
     return HttpResponse(json_data)
 
@@ -176,6 +176,18 @@ def timeout_view(request):
     mpesa_body = request.body.decode('utf-8')
     return HttpResponse(mpesa_body)
 
+class ConfirmResponse(APIView):
+    def get(self, request, reference_id):
+        url = "https://ad30-2c0f-fe38-2247-3adb-322b-496-1f63-43ee.ngrok.io/api/v1/c2b/callback_response"
+        payload = {}
+        files = {}
+        headers = {
+            'Authorization': 'Bearer SECRET_KEY',
+            'Content-Type': 'application/json'
+        }
+
+        response = requests.request("GET", url, headers=headers, data= payload, files=files)
+        return Response(response)
 
 # class Paystack(APIView):
 

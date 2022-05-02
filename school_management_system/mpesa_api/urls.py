@@ -17,4 +17,6 @@ urlpatterns = [
     path('c2b/validation', views.validation, name="validation"),
     path('c2b/call_back', views.call_back, name="call_back"),
 
+    # response
+    path('c2b/callback_response', views.ConfirmResponse.as_view(), name="callback_response"),
 ]
