@@ -46,7 +46,7 @@ def lipa_na_mpesa_online(request):
                 "PartyA": mpesa_number,
                 "PartyB": LipanaMpesaPassword.Business_short_code,
                 "PhoneNumber": mpesa_number,
-                "CallBackURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/call_back/",
+                "CallBackURL": "https://bc29-41-89-192-24.ngrok.io/api/v1/c2b/callback_response",
                 "AccountReference": str(account_no),
                 "TransactionDesc": "Pay School Fee"
             }
@@ -65,20 +65,26 @@ def lipa_na_mpesa_online(request):
 
 @csrf_exempt
 def register_urls(request):
-    access_token = MpesaAccessToken.validated_mpesa_access_token
+    consumer_key = '2A8EUTy82YQuir2G7umw1ufjFDzPPQA3'
+    consumer_secret = 'EcRKxxFPvyKWBGQW'
+    api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
+    r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
+    mpesa_access_token = json.loads(r.text)
+    access_token = mpesa_access_token['access_token']
+
     api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl"
     headers = {"Authorization": "Bearer %s" % access_token}
-    options = {"ShortCode": LipanaMpesaPassword.Business_short_code,
+    options = {"ShortCode": 600610,
                "ResponseType": "Completed",
-               "ConfirmationURL": "https://ad30-2c0f-fe38-2247-3adb-322b-496-1f63-43ee.ngrok.io/api/v1/c2b/callback_response",
-               "ValidationURL": "https://ad30-2c0f-fe38-2247-3adb-322b-496-1f63-43ee.ngrok.io/api/v1/c2b/validation"}
+               "ConfirmationURL": "https://bc29-41-89-192-24.ngrok.io/api/v1/c2b/callback_response",
+               "ValidationURL": "https://bc29-41-89-192-24.ngrok.io/api/v1/c2b/validation"}
     response = requests.post(api_url, json=options, headers=headers)
     return HttpResponse(response.text)
 # "ValidationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/validation",
 
 @csrf_exempt
 def call_back(request):
-    url="https://ad30-2c0f-fe38-2247-3adb-322b-496-1f63-43ee.ngrok.io/api/v1/c2b/call_back/"
+    url="https://bc29-41-89-192-24.ngrok.io/api/v1/c2b/call_back/"
     json_data = requests.get(url).json()
     return HttpResponse(json_data)
 
@@ -91,6 +97,17 @@ def validation(request):
     }
     return JsonResponse(dict(context))
 
+class ConfirmResponse(APIView):
+    def get(self, request):
+        url = "https://bc29-41-89-192-24.ngrok.io/api/v1/c2b/callback_response"
+        payload = {}
+        files = {}
+        headers = {
+            'Authorization': 'Bearer SECRET_KEY',
+            'Content-Type': 'application/json'
+        }
+        response = requests.request("GET", url, headers=headers, data= payload, files=files)
+        return Response(response)
 
 @csrf_exempt
 def confirmation(request):
@@ -142,63 +159,24 @@ def confirmation(request):
     return render(request, 'confirmation.html', context)
 
 
-@csrf_exempt
-@login_required
-def simulate_payment(request):
-    if request.is_ajax():
-        paying_fee = get_object_or_404(fee_payment, id=request.POST['fee_payment_id'])
-        access_token = MpesaAccessToken.validated_mpesa_access_token
-        api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate"
-        headers = {"Authorization": "Bearer %s" % access_token}
-        request = {"ShortCode": "601481",
-                   "CommandID": "CustomerPayBillOnline",
-                   "Amount": paying_fee.amount_paid,
-                   "Msisdn": paying_fee.phone_number,
-                   "BillRefNumber": paying_fee.bill_reference_no
-                   }
-        requests.post(api_url, json=request, headers=headers)
-        if fee_payment.paid is True:
-            return JsonResponse({'message': 'Payment was successful', 'code': 0})
-        return JsonResponse({'message': 'We could not verify your payment', 'code': 1})
+# @csrf_exempt
+# @login_required
+# def simulate_payment(request):
+#     if request.is_ajax():
+#         paying_fee = get_object_or_404(fee_payment, id=request.POST['fee_payment_id'])
+#         access_token = MpesaAccessToken.validated_mpesa_access_token
+#         api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate"
+#         headers = {"Authorization": "Bearer %s" % access_token}
+#         request = {"ShortCode": "601481",
+#                    "CommandID": "CustomerPayBillOnline",
+#                    "Amount": paying_fee.amount_paid,
+#                    "Msisdn": paying_fee.phone_number,
+#                    "BillRefNumber": paying_fee.bill_reference_no
+#                    }
+#         requests.post(api_url, json=request, headers=headers)
+#         if fee_payment.paid is True:
+#             return JsonResponse({'message': 'Payment was successful', 'code': 0})
+#         return JsonResponse({'message': 'We could not verify your payment', 'code': 1})
 
-    raise Http404('Page not found')
+#     raise Http404('Page not found')
 
-
-@csrf_exempt
-def result_view(request):
-    mpesa_body = request.body.decode('utf-8')
-    print(mpesa_body)
-    return HttpResponse(mpesa_body)
-
-
-@csrf_exempt
-def timeout_view(request):
-    mpesa_body = request.body.decode('utf-8')
-    return HttpResponse(mpesa_body)
-
-class ConfirmResponse(APIView):
-    def get(self, request, reference_id):
-        url = "https://ad30-2c0f-fe38-2247-3adb-322b-496-1f63-43ee.ngrok.io/api/v1/c2b/callback_response"
-        payload = {}
-        files = {}
-        headers = {
-            'Authorization': 'Bearer SECRET_KEY',
-            'Content-Type': 'application/json'
-        }
-
-        response = requests.request("GET", url, headers=headers, data= payload, files=files)
-        return Response(response)
-
-# class Paystack(APIView):
-
-#     def get(self, request, reference_id):
-#         url = f"https://api.paystack.co/transaction/verify/{reference_id}"
-#         payload = {}
-#         files = {}
-#         headers = {
-#             'Authorization': 'Bearer SECRET_KEY',
-#             'Content-Type': 'application/json'
-#         }
-
-#         response = requests.request("GET", url, headers=headers, data= payload, files=files)
-#         return Response(response)
