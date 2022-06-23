@@ -66,9 +66,9 @@ def lipa_na_mpesa_online(request):
             paying_fee.save()
             # update Fee Balance
             students=get_object_or_404(Students, user=request.user)
-            students.total_fees_billed+=float(mpesa_payment['TransAmount'])
-            students.total_fees_paid+=float(mpesa_payment['TransAmount'])
-            students.balance-=float(mpesa_payment['TransAmount'])
+            students.total_fees_billed+=int(mpesa_payment['TransAmount'])
+            students.total_fees_paid+=int(mpesa_payment['TransAmount'])
+            students.balance-=int(mpesa_payment['TransAmount'])
             students.save()
             return redirect('/api/v1/c2b/lipa_na_mpesa_online')
             messages.success(request, "STK push success...Payment In Progress..")
