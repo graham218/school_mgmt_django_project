@@ -208,12 +208,12 @@ MPESA_ENVIRONMENT = 'sandbox'
 
 # Credentials for the daraja app
 
-MPESA_CONSUMER_KEY = 'mpesa_consumer_key'
-MPESA_CONSUMER_SECRET = 'mpesa_consumer_secret'
+MPESA_CONSUMER_KEY = 'VSnv0qW2jhAjKNrqlFDZpZ3NxXbvpMwt'
+MPESA_CONSUMER_SECRET = 'QfIReIomJXgxjxc6'
 
 #Shortcode to use for transactions. For sandbox  use the Shortcode 1 provided on test credentials page
 
-MPESA_SHORTCODE = 'mpesa_shortcode'
+MPESA_SHORTCODE = '174379'
 
 # Shortcode to use for Lipa na MPESA Online (MPESA Express) transactions
 # This is only used on sandbox, do not set this variable in production
@@ -236,11 +236,11 @@ MPESA_PASSKEY = 'mpesa_passkey'
 
 # Username for initiator (to be used in B2C, B2B, AccountBalance and TransactionStatusQuery Transactions)
 
-MPESA_INITIATOR_USERNAME = 'initiator_username'
+MPESA_INITIATOR_USERNAME = 'graham-school'
 
 # Plaintext password for initiator (to be used in B2C, B2B, AccountBalance and TransactionStatusQuery Transactions)
 
-MPESA_INITIATOR_SECURITY_CREDENTIAL = 'initiator_security_credential'
+MPESA_INITIATOR_SECURITY_CREDENTIAL = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
 
 
 
