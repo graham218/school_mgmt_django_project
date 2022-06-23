@@ -15,8 +15,8 @@ from rest_framework.views import APIView
 
 
 def getAccessToken(request):
-    consumer_key = '2A8EUTy82YQuir2G7umw1ufjFDzPPQA3'
-    consumer_secret = 'EcRKxxFPvyKWBGQW'
+    consumer_key = 'n9XAie1ssbthbRAKaRUAcgbVuXrJswr9'
+    consumer_secret = '6gqg9iqSsgb1STWC'
     api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
     r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
     mpesa_access_token = json.loads(r.text)
@@ -46,7 +46,7 @@ def lipa_na_mpesa_online(request):
                 "PartyA": mpesa_number,
                 "PartyB": LipanaMpesaPassword.Business_short_code,
                 "PhoneNumber": mpesa_number,
-                "CallBackURL": "https://bc29-41-89-192-24.ngrok.io/api/v1/c2b/callback_response",
+                "CallBackURL": "https://01a2-105-51-76-250.ngrok.io/api/v1/c2b/callback_response",
                 "AccountReference": str(account_no),
                 "TransactionDesc": "Pay School Fee"
             }
@@ -65,8 +65,8 @@ def lipa_na_mpesa_online(request):
 
 @csrf_exempt
 def register_urls(request):
-    consumer_key = '2A8EUTy82YQuir2G7umw1ufjFDzPPQA3'
-    consumer_secret = 'EcRKxxFPvyKWBGQW'
+    consumer_key = 'n9XAie1ssbthbRAKaRUAcgbVuXrJswr9'
+    consumer_secret = '6gqg9iqSsgb1STWC'
     api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
     r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
     mpesa_access_token = json.loads(r.text)
@@ -74,17 +74,17 @@ def register_urls(request):
 
     api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl"
     headers = {"Authorization": "Bearer %s" % access_token}
-    options = {"ShortCode": 600610,
+    options = {"ShortCode": LipanaMpesaPassword.Business_short_code,
                "ResponseType": "Completed",
-               "ConfirmationURL": "https://bc29-41-89-192-24.ngrok.io/api/v1/c2b/callback_response",
-               "ValidationURL": "https://bc29-41-89-192-24.ngrok.io/api/v1/c2b/validation"}
+               "ConfirmationURL": "https://01a2-105-51-76-250.ngrok.io/api/v1/c2b/callback_response",
+               "ValidationURL": "https://01a2-105-51-76-250.ngrok.io/api/v1/c2b/validation"}
     response = requests.post(api_url, json=options, headers=headers)
     return HttpResponse(response.text)
 # "ValidationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/validation",
 
 @csrf_exempt
 def call_back(request):
-    url="https://bc29-41-89-192-24.ngrok.io/api/v1/c2b/call_back/"
+    url="https://01a2-105-51-76-250.ngrok.io/api/v1/c2b/call_back/"
     json_data = requests.get(url).json()
     return HttpResponse(json_data)
 
@@ -99,7 +99,7 @@ def validation(request):
 
 class ConfirmResponse(APIView):
     def get(self, request):
-        url = "https://bc29-41-89-192-24.ngrok.io/api/v1/c2b/callback_response"
+        url = "https://01a2-105-51-76-250.ngrok.io/api/v1/c2b/callback_response"
         payload = {}
         files = {}
         headers = {
