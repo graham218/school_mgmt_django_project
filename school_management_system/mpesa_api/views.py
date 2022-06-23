@@ -61,15 +61,15 @@ def lipa_na_mpesa_online(request):
                 payment_method="Mpesa",
                 paid=True,
                 phone_number=mpesa_number,
-                bill_reference_no=bill_re
+                bill_reference_no=bill_ref
             )
             paying_fee.save()
             # update Fee Balance
-            # students=get_object_or_404(Students, user=request.user)
-            # students.total_fees_billed+=mpesa_payment['TransAmount']
-            # stuents.total_fees_paid+=mpesa_payment['TransAmount']
-            # students.balance-=mpesa_payment['TransAmount']
-            # students.save()
+            students=get_object_or_404(Students, user=request.user)
+            students.total_fees_billed+=float(mpesa_payment['TransAmount'])
+            students.total_fees_paid+=float(mpesa_payment['TransAmount'])
+            students.balance-=float(mpesa_payment['TransAmount'])
+            students.save()
             return redirect('/api/v1/c2b/lipa_na_mpesa_online')
             messages.success(request, "STK push success...Payment In Progress..")
         else:

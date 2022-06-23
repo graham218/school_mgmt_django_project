@@ -7,6 +7,7 @@ from django.conf import settings
 from decimal import Decimal
 from paypal.standard.forms import PayPalPaymentsForm
 from django.views.decorators.csrf import csrf_exempt
+import decimal
 
 
 def send_payment(request):
@@ -21,9 +22,15 @@ def send_payment(request):
                 payment_method = 'PAY-PAL',
                 bill_reference_no = request.user.email,
                 phone_number="-------------",
-                paid=False
+                paid=True
             )
             payment.save()
+            # update Fee Balance
+            students=get_object_or_404(Students, user=request.user)
+            students.total_fees_billed+=int(cleaned_data.get('amount_paid'))*110
+            students.total_fees_paid+=int(cleaned_data.get('amount_paid'))*110
+            students.balance-=int(cleaned_data.get('amount_paid'))*110
+            students.save()
             request.session['payment_id'] = payment.id
             return redirect('school:process_payment')
     else:
