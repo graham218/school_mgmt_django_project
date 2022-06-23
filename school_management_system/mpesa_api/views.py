@@ -65,8 +65,8 @@ def lipa_na_mpesa_online(request):
 
 @csrf_exempt
 def register_urls(request):
-    consumer_key = 'n9XAie1ssbthbRAKaRUAcgbVuXrJswr9'
-    consumer_secret = '6gqg9iqSsgb1STWC'
+    consumer_key = 'VSnv0qW2jhAjKNrqlFDZpZ3NxXbvpMwt'
+    consumer_secret = 'QfIReIomJXgxjxc6'
     api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
     r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
     mpesa_access_token = json.loads(r.text)
