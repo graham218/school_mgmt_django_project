@@ -20,6 +20,8 @@
               <thead>
                 <tr>
                   <th></th>
+                  <th>USERNAME</th>
+                  <th>FULL NAME</th>
                   <th>AMOUNT PAID</th>
                   <th>PAYMENT METHOD</th>
                   <th>PAYMENT STATUS</th>
@@ -36,6 +38,8 @@
                 {% for instance in queryset %}
                 <tr>
                   <td>{{forloop.counter}}</td>
+                  <td>{{instance.user}}</td>
+                  <td>{{instance.full_name}}</td>
                   <td>{{instance.amount_paid}}</td>
                   <td>{{instance.paid}}</td>
                   <td>{{instance.payment_method}}</td>
@@ -53,6 +57,8 @@
               <tfoot>
                 <tr>
                   <th></th>
+                  <th>USERNAME</th>
+                  <th>FULL NAME</th>
                   <th>AMOUNT PAID</th>
                   <th>PAYMENT METHOD</th>
                   <th>PAYMENT STATUS</th>

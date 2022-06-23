@@ -12,7 +12,7 @@ from django.contrib import messages
 from .forms import MpesaForm
 from django.contrib.auth.decorators import login_required
 from rest_framework.views import APIView
-
+import random
 
 def getAccessToken(request):
     consumer_key = 'n9XAie1ssbthbRAKaRUAcgbVuXrJswr9'
@@ -46,14 +46,32 @@ def lipa_na_mpesa_online(request):
                 "PartyA": mpesa_number,
                 "PartyB": LipanaMpesaPassword.Business_short_code,
                 "PhoneNumber": mpesa_number,
-                "CallBackURL": "https://6286-105-160-49-178.ngrok.io/api/v1/c2b/callback_response",
+                "CallBackURL": "https://6bc3-105-160-68-169.ngrok.io/api/v1/c2b/callback_response",
                 "AccountReference": str(account_no),
                 "TransactionDesc": "Pay School Fee"
             }
             response = requests.post(api_url, json=request, headers=headers)
-            # messages.success(
-            #     request, "Fee Payment made, waiting for confirmation from the callback url")
+
+            # insert fee payment into fee payment table
+            bill_ref = random.random()
+            paying_fee = fee_payment(
+                user=request.user,
+                full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name),
+                amount_paid=amount,
+                payment_method="Mpesa",
+                paid=True,
+                phone_number=mpesa_number,
+                bill_reference_no=bill_re
+            )
+            paying_fee.save()
+            # update Fee Balance
+            # students=get_object_or_404(Students, user=request.user)
+            # students.total_fees_billed+=mpesa_payment['TransAmount']
+            # stuents.total_fees_paid+=mpesa_payment['TransAmount']
+            # students.balance-=mpesa_payment['TransAmount']
+            # students.save()
             return redirect('/api/v1/c2b/lipa_na_mpesa_online')
+            messages.success(request, "STK push success...Payment In Progress..")
         else:
             messages.error(request, "Invalid phone number, please try again with a valid phone number")
             return redirect("/api/v1/c2b/lipa_na_mpesa_online")
@@ -76,15 +94,15 @@ def register_urls(request):
     headers = {"Authorization": "Bearer %s" % access_token}
     options = {"ShortCode": LipanaMpesaPassword.Business_short_code,
                "ResponseType": "Completed",
-               "ConfirmationURL": "https://6286-105-160-49-178.ngrok.io/api/v1/c2b/callback_response",
-               "ValidationURL": "https://6286-105-160-49-178.ngrok.io/api/v1/c2b/validation"}
+               "ConfirmationURL": "https://6bc3-105-160-68-169.ngrok.io/api/v1/c2b/confirmation",
+               "ValidationURL": "https://6bc3-105-160-68-169.ngrok.io/api/v1/c2b/validation"}
     response = requests.post(api_url, json=options, headers=headers)
     return HttpResponse(response.text)
 # "ValidationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/validation",
 
 @csrf_exempt
 def call_back(request):
-    url="https://01a2-105-51-76-250.ngrok.io/api/v1/c2b/call_back/"
+    url="https://6bc3-105-160-68-169.ngrok.io/api/v1/c2b/call_back/"
     json_data = requests.get(url).json()
     return HttpResponse(json_data)
 
@@ -99,7 +117,7 @@ def validation(request):
 
 class ConfirmResponse(APIView):
     def get(self, request):
-        url = "https://6286-105-160-49-178.ngrok.io/api/v1/c2b/callback_response"
+        url = "https://6bc3-105-160-68-169.ngrok.io/api/v1/c2b/callback_response"
         payload = {}
         files = {}
         # data = requests.get(url)
@@ -137,25 +155,25 @@ def confirmation(request):
             type=mpesa_payment['TransactionType'],
         )
         payment.save()
+
+        # insert fee payment into fee payment table
+        paying_fee = get_object_or_404(fee_payment, user=request.user)
+        paying_fee.user=request.user
+        paying_fee.full_name=request.user.first_name+' '+request.user.middle_name+' '+request.user.last_name
+        paying_fee.amount_paid=mpesa_payment['TransAmount']
+        paying_fee.payment_method="Mpesa"
+        paying_fee.paid=True
+        paying_fee.phone_number=mpesa_payment['MSISDN']
+        bill_reference_no=mpesa_payment['BillRefNumber']
+        paying_fee.save()
+        # update Fee Balance
+        students=get_object_or_404(Students, user=request.user)
+        students.total_fees_billed+=mpesa_payment['TransAmount']
+        stuents.total_fees_paid+=mpesa_payment['TransAmount']
+        students.balance-=mpesa_payment['TransAmount']
+        students.save()
     except IntegrityError:
         messages.error(request, "Fee payment confirmation was unable to take place")
-    
-    # insert fee payment into fee payment table
-    paying_fee = get_object_or_404(fee_payment, user=request.user)
-    paying_fee.user=request.user
-    paying_fee.full_name=request.user.first_name+' '+request.user.middle_name+' '+request.user.last_name
-    paying_fee.amount_paid=mpesa_payment['TransAmount']
-    paying_fee.payment_method="Mpesa"
-    paying_fee.paid=True
-    paying_fee.phone_number=mpesa_payment['MSISDN']
-    bill_reference_no=mpesa_payment['BillRefNumber']
-    paying_fee.save()
-    # update Fee Balance
-    students=get_object_or_404(Students, user=request.user)
-    students.total_fees_billed+=mpesa_payment['TransAmount']
-    stuents.total_fees_paid+=mpesa_payment['TransAmount']
-    students.balance-=mpesa_payment['TransAmount']
-    students.save()
     context={
         'first_name':mpesa_payment['FirstName'],
         'last_name':mpesa_payment['LastName'],
@@ -185,9 +203,9 @@ def simulate_payment(request):
                 }
     requests.post(api_url, json=request, headers=headers)
     return JsonResponse(request)
-    url = "https://6286-105-160-49-178.ngrok.io/api/v1/c2b/callback_response"
-    data = requests.get(url)
-    json_data = data.json()
-    item_list = json_data.get('data')
-    return JsonResponse(json_data)
+    # url = "https://6286-105-160-49-178.ngrok.io/api/v1/c2b/callback_response"
+    # data = requests.get(url)
+    # json_data = data.json()
+    # item_list = json_data.get('data')
+    # return JsonResponse(json_data)
 

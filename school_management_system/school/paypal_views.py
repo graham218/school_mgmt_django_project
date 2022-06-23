@@ -16,7 +16,7 @@ def send_payment(request):
             cleaned_data = form.cleaned_data
             payment= fee_payment(
                 user = request.user,
-                full_name=request.user.first_name+' '+request.user.middle_name+' '+request.user.last_name,
+                full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name),
                 amount_paid = cleaned_data.get('amount_paid'),
                 payment_method = 'PAY-PAL',
                 bill_reference_no = request.user.email,
