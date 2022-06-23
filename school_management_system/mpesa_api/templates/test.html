@@ -1,0 +1,11 @@
+<html>
+<head>
+    <title>API Display</title>
+</head>
+<body>
+    <h1>List of countries</h1>
+    {% for i in response %}
+    <strong>{{i.data}} ,</strong>
+    {% endfor %}
+</body>
+</html>

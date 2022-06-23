@@ -100,15 +100,15 @@ def validation(request):
 class ConfirmResponse(APIView):
     def get(self, request):
         url = "https://6286-105-160-49-178.ngrok.io/api/v1/c2b/callback_response"
-        # payload = {}
-        # files = {}
-        data = requests.get(url)
-        json_data = data.json()
+        payload = {}
+        files = {}
+        # data = requests.get(url)
+        # json_data = data.json()
         headers = {
             'Authorization': 'Bearer SECRET_KEY',
             'Content-Type': 'application/json'
         }
-        # response = requests.request("GET", url, headers=headers, data= data)
+        response = requests.request("GET", url, headers=headers, data= payload)
         # isolate the data key from the HTTP response object
         # item_list = json_data.get('data')
 
@@ -185,4 +185,9 @@ def simulate_payment(request):
                 }
     requests.post(api_url, json=request, headers=headers)
     return JsonResponse(request)
+    url = "https://6286-105-160-49-178.ngrok.io/api/v1/c2b/callback_response"
+    data = requests.get(url)
+    json_data = data.json()
+    item_list = json_data.get('data')
+    return JsonResponse(json_data)
 
