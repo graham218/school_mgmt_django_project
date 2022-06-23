@@ -30,6 +30,7 @@ urlpatterns = [
     path('api/v1/', include('mpesa_api.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('base/', include('base.urls')),
+    path('my_mpesa/', include('my_mpesa.urls')),
 
     # paypal
     path('paypal/', include('paypal.standard.ipn.urls')),
