@@ -40,9 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'school',
-    'my_mpesa'
-    'django_daraja',
+    # 'my_mpesa'
+    # 'django_daraja',
     'mpesa_api',
+    # 'mpesa',
     'paypal.standard.ipn',
     'django_countries',
     'custom_user',
