@@ -46,7 +46,7 @@ def lipa_na_mpesa_online(request):
                 "PartyA": mpesa_number,
                 "PartyB": LipanaMpesaPassword.Business_short_code,
                 "PhoneNumber": mpesa_number,
-                "CallBackURL": "https://01a2-105-51-76-250.ngrok.io/api/v1/c2b/callback_response",
+                "CallBackURL": "https://6286-105-160-49-178.ngrok.io/api/v1/c2b/callback_response",
                 "AccountReference": str(account_no),
                 "TransactionDesc": "Pay School Fee"
             }
@@ -76,8 +76,8 @@ def register_urls(request):
     headers = {"Authorization": "Bearer %s" % access_token}
     options = {"ShortCode": LipanaMpesaPassword.Business_short_code,
                "ResponseType": "Completed",
-               "ConfirmationURL": "https://01a2-105-51-76-250.ngrok.io/api/v1/c2b/callback_response",
-               "ValidationURL": "https://01a2-105-51-76-250.ngrok.io/api/v1/c2b/validation"}
+               "ConfirmationURL": "https://6286-105-160-49-178.ngrok.io/api/v1/c2b/callback_response",
+               "ValidationURL": "https://6286-105-160-49-178.ngrok.io/api/v1/c2b/validation"}
     response = requests.post(api_url, json=options, headers=headers)
     return HttpResponse(response.text)
 # "ValidationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/validation",
@@ -99,15 +99,26 @@ def validation(request):
 
 class ConfirmResponse(APIView):
     def get(self, request):
-        url = "https://01a2-105-51-76-250.ngrok.io/api/v1/c2b/callback_response"
-        payload = {}
-        files = {}
+        url = "https://6286-105-160-49-178.ngrok.io/api/v1/c2b/callback_response"
+        # payload = {}
+        # files = {}
+        data = requests.get(url)
+        json_data = data.json()
         headers = {
             'Authorization': 'Bearer SECRET_KEY',
             'Content-Type': 'application/json'
         }
-        response = requests.request("GET", url, headers=headers, data= payload, files=files)
-        return Response(response)
+        # response = requests.request("GET", url, headers=headers, data= data)
+        # isolate the data key from the HTTP response object
+        # item_list = json_data.get('data')
+
+        # for item in item_list:
+        # name = item['name']
+        # age = item['age']
+
+        # # This will create a new instance for every object in the array from JSON response
+        # YourModel.objects.create(name=name, age=age)
+        return JsonResponse(json_data)
 
 @csrf_exempt
 def confirmation(request):
@@ -159,24 +170,19 @@ def confirmation(request):
     return render(request, 'confirmation.html', context)
 
 
-# @csrf_exempt
-# @login_required
-# def simulate_payment(request):
-#     if request.is_ajax():
-#         paying_fee = get_object_or_404(fee_payment, id=request.POST['fee_payment_id'])
-#         access_token = MpesaAccessToken.validated_mpesa_access_token
-#         api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate"
-#         headers = {"Authorization": "Bearer %s" % access_token}
-#         request = {"ShortCode": "601481",
-#                    "CommandID": "CustomerPayBillOnline",
-#                    "Amount": paying_fee.amount_paid,
-#                    "Msisdn": paying_fee.phone_number,
-#                    "BillRefNumber": paying_fee.bill_reference_no
-#                    }
-#         requests.post(api_url, json=request, headers=headers)
-#         if fee_payment.paid is True:
-#             return JsonResponse({'message': 'Payment was successful', 'code': 0})
-#         return JsonResponse({'message': 'We could not verify your payment', 'code': 1})
-
-#     raise Http404('Page not found')
+@csrf_exempt
+@login_required
+def simulate_payment(request):
+    # paying_fee = get_object_or_404(fee_payment, id=request.POST['fee_payment_id'])
+    access_token = MpesaAccessToken.validated_mpesa_access_token
+    api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate"
+    headers = {"Authorization": "Bearer %s" % access_token}
+    request = {"ShortCode": "600995",
+                "CommandID": "CustomerPayBillOnline",
+                "Amount": 1000,
+                "Msisdn": 254790613916,
+                "BillRefNumber": "testing"
+                }
+    requests.post(api_url, json=request, headers=headers)
+    return JsonResponse(request)
 
