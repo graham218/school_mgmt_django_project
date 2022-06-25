@@ -57,18 +57,18 @@ def lipa_na_mpesa_online(request):
             paying_fee = fee_payment(
                 user=request.user,
                 full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name),
-                amount_paid=amount,
+                amount_paid=request.POST['amount'],
                 payment_method="Mpesa",
                 paid=True,
-                phone_number=mpesa_number,
+                phone_number=request.POST['mpesa_number'],
                 bill_reference_no=bill_ref
             )
             paying_fee.save()
             # update Fee Balance
             students=get_object_or_404(Students, user=request.user)
-            students.total_fees_billed+=int(mpesa_payment['TransAmount'])
-            students.total_fees_paid+=int(mpesa_payment['TransAmount'])
-            students.balance-=int(mpesa_payment['TransAmount'])
+            students.total_fees_billed+=int(request.POST['amount'])
+            students.total_fees_paid+=int(request.POST['amount'])
+            students.balance-=int(request.POST['amount'])
             students.save()
             return redirect('/api/v1/c2b/lipa_na_mpesa_online')
             messages.success(request, "STK push success...Payment In Progress..")
@@ -98,13 +98,13 @@ def register_urls(request):
                "ValidationURL": "https://6bc3-105-160-68-169.ngrok.io/api/v1/c2b/validation"}
     response = requests.post(api_url, json=options, headers=headers)
     return HttpResponse(response.text)
-# "ValidationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/validation",
+"ValidationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/validation",
 
-@csrf_exempt
-def call_back(request):
-    url="https://6bc3-105-160-68-169.ngrok.io/api/v1/c2b/call_back/"
-    json_data = requests.get(url).json()
-    return HttpResponse(json_data)
+# @csrf_exempt
+# def call_back(request):
+#     # url="https://6bc3-105-160-68-169.ngrok.io/api/v1/c2b/call_back/"
+#     # json_data = requests.get(url).json()
+#     # return HttpResponse(json_data)
 
 
 @csrf_exempt
@@ -115,28 +115,28 @@ def validation(request):
     }
     return JsonResponse(dict(context))
 
-class ConfirmResponse(APIView):
-    def get(self, request):
-        url = "https://6bc3-105-160-68-169.ngrok.io/api/v1/c2b/callback_response"
-        payload = {}
-        files = {}
-        # data = requests.get(url)
-        # json_data = data.json()
-        headers = {
-            'Authorization': 'Bearer SECRET_KEY',
-            'Content-Type': 'application/json'
-        }
-        response = requests.request("GET", url, headers=headers, data= payload)
-        # isolate the data key from the HTTP response object
-        # item_list = json_data.get('data')
+# class ConfirmResponse(APIView):
+#     def get(self, request):
+#         # url = "https://6bc3-105-160-68-169.ngrok.io/api/v1/c2b/callback_response"
+#         payload = {}
+#         files = {}
+#         # data = requests.get(url)
+#         # json_data = data.json()
+#         headers = {
+#             'Authorization': 'Bearer SECRET_KEY',
+#             'Content-Type': 'application/json'
+#         }
+#         # response = requests.request("GET", url, headers=headers, data= payload)
+#         # isolate the data key from the HTTP response object
+#         # item_list = json_data.get('data')
 
-        # for item in item_list:
-        # name = item['name']
-        # age = item['age']
+#         # for item in item_list:
+#         # name = item['name']
+#         # age = item['age']
 
-        # # This will create a new instance for every object in the array from JSON response
-        # YourModel.objects.create(name=name, age=age)
-        return JsonResponse(json_data)
+#         # # This will create a new instance for every object in the array from JSON response
+#         # YourModel.objects.create(name=name, age=age)
+#         # return JsonResponse(json_data)
 
 @csrf_exempt
 def confirmation(request):
@@ -188,21 +188,21 @@ def confirmation(request):
     return render(request, 'confirmation.html', context)
 
 
-@csrf_exempt
-@login_required
-def simulate_payment(request):
-    # paying_fee = get_object_or_404(fee_payment, id=request.POST['fee_payment_id'])
-    access_token = MpesaAccessToken.validated_mpesa_access_token
-    api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate"
-    headers = {"Authorization": "Bearer %s" % access_token}
-    request = {"ShortCode": "600995",
-                "CommandID": "CustomerPayBillOnline",
-                "Amount": 1000,
-                "Msisdn": 254790613916,
-                "BillRefNumber": "testing"
-                }
-    requests.post(api_url, json=request, headers=headers)
-    return JsonResponse(request)
+# @csrf_exempt
+# @login_required
+# def simulate_payment(request):
+#     # paying_fee = get_object_or_404(fee_payment, id=request.POST['fee_payment_id'])
+#     access_token = MpesaAccessToken.validated_mpesa_access_token
+#     api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate"
+#     headers = {"Authorization": "Bearer %s" % access_token}
+#     request = {"ShortCode": "600995",
+#                 "CommandID": "CustomerPayBillOnline",
+#                 "Amount": 1000,
+#                 "Msisdn": 254790613916,
+#                 "BillRefNumber": "testing"
+#                 }
+#     requests.post(api_url, json=request, headers=headers)
+#     return JsonResponse(request)
     # url = "https://6286-105-160-49-178.ngrok.io/api/v1/c2b/callback_response"
     # data = requests.get(url)
     # json_data = data.json()

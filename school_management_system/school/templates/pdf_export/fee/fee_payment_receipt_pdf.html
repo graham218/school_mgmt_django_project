@@ -1,19 +1,44 @@
 <head>
-  <style>
-    @page {
-        size: a4 portrait;
-        @frame header_frame {           /* Static Frame */
-            -pdf-frame-content: header_content;
-            left: 50pt; width: 512pt; top: 50pt; height: 40pt;
+  <style type="text/css">
+     @page {
+      size: a4 landscape;
+            margin: 1.0cm;
         }
-        @frame content_frame {          /* Content Frame */
-            left: 50pt; width: 512pt; top: 90pt; height: 632pt;
+
+        body {
+            font-size: 10pt;
         }
-        @frame footer_frame {           /* Another static Frame */
-            -pdf-frame-content: footer_content;
-            left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+
+        table {
+            border-collapse: collapse;
         }
-    }
+
+        table,
+        th,
+        td,
+        tr,{
+          word-wrap:break-word;
+          table-layout:fixed;
+          border: 1px solid black;
+          margin-top: 50%;
+          text-align: center;
+          padding: 8px;
+        }
+
+        .wrap {
+            width: 50%;
+
+        }
+
+        .left_col {
+            float: left;
+            width: 48.4%;
+        }
+
+        .right_col {
+            float: right;
+            width: 50%;
+        }
   </style>
 </head>
 
@@ -23,7 +48,7 @@
         <h3>SCHOOL FEE PAYMENT RECEIPT</h3>
     </div>
     <!-- Content for Static Frame 'footer_frame' -->
-    <div id="footer_content">(c) - page <pdf:pagenumber>
+    <div id="footer_content">Page <pdf:pagenumber>
             of <pdf:pagecount>
     </div>
 
@@ -45,10 +70,11 @@
                     <h4 style="text-align: center; font-size: large; font-style: italic; text-decoration: underline;">{{title}}</h4>
                     <tr>
                       <th></th>
+                      <th>USERNAME</th>
+                      <th>FULL NAME</th>
                       <th>AMOUNT PAID</th>
                       <th>PAYMENT METHOD</th>
                       <th>PAYMENT STATUS</th>
-                      <th>PAYMENT METHOD</th>
                       <th>REFERENCE NUMBER</th>
                       <th>PHONE NUMBER</th>
                       <th>DATE PAID</th>
@@ -59,9 +85,11 @@
                     {% for instance in queryset %}
                     <tr>
                       <td>{{forloop.counter}}</td>
+                      <td>{{instance.user}}</td>
+                      <td>{{instance.full_name}}</td>
                       <td>{{instance.amount_paid}}</td>
-                      <td>{{instance.paid}}</td>
                       <td>{{instance.payment_method}}</td>
+                      <td>{{instance.paid}}</td>
                       <td>{{instance.bill_reference_no}}</td>
                       <td>{{instance.phone_number}}</td>
                       <td>{{instance.date_paid}}</td>
@@ -72,10 +100,11 @@
                   <tfoot>
                     <tr>
                       <th></th>
+                      <th>USERNAME</th>
+                      <th>FULL NAME</th>
                       <th>AMOUNT PAID</th>
                       <th>PAYMENT METHOD</th>
                       <th>PAYMENT STATUS</th>
-                      <th>PAYMENT METHOD</th>
                       <th>REFERENCE NUMBER</th>
                       <th>PHONE NUMBER</th>
                       <th>DATE PAID</th>
