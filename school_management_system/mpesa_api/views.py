@@ -24,12 +24,34 @@ def getAccessToken(request):
     return HttpResponse(validated_mpesa_access_token)
     pass
 
+call_back_url=''
+validation_url=''
 
 @login_required
 def lipa_na_mpesa_online(request):
     paybill = LipanaMpesaPassword.Business_short_code
     form=MpesaForm(request.POST or None)
     if request.method == 'POST':
+        # insert fee payment into fee payment table
+        bill_ref = random.random()
+        paying_fee = fee_payment(
+            user=request.user,
+            full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name),
+            amount_paid=request.POST['amount'],
+            payment_method="Mpesa",
+            paid=True,
+            phone_number=request.POST['mpesa_number'],
+            bill_reference_no=bill_ref
+        )
+        paying_fee.save()
+        # update Fee Balance
+        students=get_object_or_404(Students, user=request.user)
+        students.total_fees_billed+=int(request.POST['amount'])
+        students.total_fees_paid+=int(request.POST['amount'])
+        students.balance-=int(request.POST['amount'])
+        students.save()
+
+
         account_no = request.user
         mpesa_number = request.POST['mpesa_number']
         amount = request.POST['amount']
@@ -46,30 +68,12 @@ def lipa_na_mpesa_online(request):
                 "PartyA": mpesa_number,
                 "PartyB": LipanaMpesaPassword.Business_short_code,
                 "PhoneNumber": mpesa_number,
-                "CallBackURL": "https://6bc3-105-160-68-169.ngrok.io/api/v1/c2b/callback_response",
+                "CallBackURL": call_back_url,
                 "AccountReference": str(account_no),
                 "TransactionDesc": "Pay School Fee"
             }
             response = requests.post(api_url, json=request, headers=headers)
 
-            # insert fee payment into fee payment table
-            bill_ref = random.random()
-            paying_fee = fee_payment(
-                user=request.user,
-                full_name=request.user.first_name+' '+str(request.user.middle_name)+' '+str(request.user.last_name),
-                amount_paid=request.POST['amount'],
-                payment_method="Mpesa",
-                paid=True,
-                phone_number=request.POST['mpesa_number'],
-                bill_reference_no=bill_ref
-            )
-            paying_fee.save()
-            # update Fee Balance
-            students=get_object_or_404(Students, user=request.user)
-            students.total_fees_billed+=int(request.POST['amount'])
-            students.total_fees_paid+=int(request.POST['amount'])
-            students.balance-=int(request.POST['amount'])
-            students.save()
             return redirect('/api/v1/c2b/lipa_na_mpesa_online')
             messages.success(request, "STK push success...Payment In Progress..")
         else:
@@ -94,11 +98,11 @@ def register_urls(request):
     headers = {"Authorization": "Bearer %s" % access_token}
     options = {"ShortCode": LipanaMpesaPassword.Business_short_code,
                "ResponseType": "Completed",
-               "ConfirmationURL": "https://6bc3-105-160-68-169.ngrok.io/api/v1/c2b/confirmation",
-               "ValidationURL": "https://6bc3-105-160-68-169.ngrok.io/api/v1/c2b/validation"}
+               "ConfirmationURL": call_back_url,
+               "ValidationURL": validation_url}
     response = requests.post(api_url, json=options, headers=headers)
     return HttpResponse(response.text)
-"ValidationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/validation",
+# "ValidationURL": "https://django-school-mis-lte.herokuapp.com/api/v1/c2b/validation",
 
 # @csrf_exempt
 # def call_back(request):
